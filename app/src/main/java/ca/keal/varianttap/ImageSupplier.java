@@ -52,8 +52,8 @@ class ImageSupplier {
     
     for (String name : names) {
       imgs.add(Pair.create(
-          Drawable.createFromPath("normals/" + name),
-          Drawable.createFromPath("variants/" + name)
+          Drawable.createFromStream(assets.open("normals/" + name), null),
+          Drawable.createFromStream(assets.open("variants/" + name), null)
       ));
     }
   }
