@@ -4,19 +4,29 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 
 public class GameActivity extends AppCompatActivity {
+  
+  /**
+   * The array of ImageViews in imgsGrid.
+   */
+  private ImageView[] imgs;
   
   /**
    * The layout containing the ImageViews in the centre of the screen. The user taps on the
    * ImageView they think is different than the others ('variant').
    */
-  private GridLayout imgs;
+  private GridLayout imgsGrid;
+  
+  private ImageSupplier imgSupplier;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game);
+  
+    imgSupplier = new ImageSupplier(getAssets());
     
     // There are 3 difficulties: 4 (easy), 6 (normal) and 9 (hard). The numbers are the number of
     // ImageViews in imgs -- the more ImageViews the harder it is.
@@ -25,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
     
     // Initialize imgs
     
-    imgs = (GridLayout) findViewById(R.id.imgs);
+    imgsGrid = (GridLayout) findViewById(R.id.imgs_grid);
     
     // Calculate imgs' rows/columns
     int rows, columns;
@@ -51,8 +61,15 @@ public class GameActivity extends AppCompatActivity {
     Log.i(getClass().getName(), "Difficulty " + difficulty + ", setting grid to "
         + rows + "x" + columns);
     
-    imgs.setRowCount(rows);
-    imgs.setColumnCount(columns);
+    imgsGrid.setRowCount(rows);
+    imgsGrid.setColumnCount(columns);
+    
+    imgs = new ImageView[difficulty];
+    
+    for (int i = 0; i < difficulty; i++) {
+      imgs[i] = new ImageView(getBaseContext());
+      imgsGrid.addView(imgs[i]);
+    }
   }
   
 }
