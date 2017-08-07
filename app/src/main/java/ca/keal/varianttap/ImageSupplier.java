@@ -7,7 +7,9 @@ import android.util.Pair;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Loads the normal and variant images and provides Drawables of random normal/variant pairs when
@@ -22,6 +24,8 @@ class ImageSupplier {
    * The list of (normal, variant) Drawable pairs.
    */
   private List<Pair<Drawable, Drawable>> imgs = new ArrayList<>();
+  
+  private Random random = new Random();
   
   /**
    * Initialize this {@link ImageSupplier} by loading the images from {@code assets}. There must be
@@ -52,6 +56,20 @@ class ImageSupplier {
           Drawable.createFromPath("variants/" + name)
       ));
     }
+  }
+  
+  /**
+   * @return An unmodifiable {@link List} of all loaded normal/variant Drawable pairs.
+   */
+  public List<Pair<Drawable, Drawable>> getAllPairs() {
+    return Collections.unmodifiableList(imgs);
+  }
+  
+  /**
+   * @return A psuedorandom normal/variant Drawable pair. Please don't modify it.
+   */
+  public Pair<Drawable, Drawable> getRandomPair() {
+    return imgs.get(random.nextInt(imgs.size()));
   }
   
 }
