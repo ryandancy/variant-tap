@@ -20,12 +20,12 @@ class ImageSupplier {
   // TODO if performance is bad, maybe don't load all the images but instead load their filenames
   // TODO "packages" of images
   
+  Random random = new Random();
+  
   /**
    * The list of (normal, variant) Drawable pairs.
    */
   private List<Pair<Drawable, Drawable>> imgs = new ArrayList<>();
-  
-  private Random random = new Random();
   
   /**
    * Initialize this {@link ImageSupplier} by loading the images from {@code assets}. There must be
@@ -33,7 +33,7 @@ class ImageSupplier {
    * same names.
    * @param assets - An {@link AssetManager}, most likely accessed via {@code getAssets()}.
    */
-  public ImageSupplier(AssetManager assets) {
+  ImageSupplier(AssetManager assets) {
     try {
       load(assets);
       Log.i(getClass().getName(), imgs.size() + " normal/variant image pairs loaded successfully.");
@@ -61,14 +61,14 @@ class ImageSupplier {
   /**
    * @return An unmodifiable {@link List} of all loaded normal/variant Drawable pairs.
    */
-  public List<Pair<Drawable, Drawable>> getAllPairs() {
+  List<Pair<Drawable, Drawable>> getAllPairs() {
     return Collections.unmodifiableList(imgs);
   }
   
   /**
    * @return A psuedorandom normal/variant Drawable pair. Please don't modify it.
    */
-  public Pair<Drawable, Drawable> getRandomPair() {
+  Pair<Drawable, Drawable> getRandomPair() {
     return imgs.get(random.nextInt(imgs.size()));
   }
   
