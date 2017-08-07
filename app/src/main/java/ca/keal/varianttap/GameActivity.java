@@ -1,8 +1,10 @@
 package ca.keal.varianttap;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 
@@ -69,6 +71,21 @@ public class GameActivity extends AppCompatActivity {
     for (int i = 0; i < difficulty; i++) {
       imgs[i] = new ImageView(getBaseContext());
       imgsGrid.addView(imgs[i]);
+    }
+  }
+  
+  /**
+   * Update the ImageViews with new images. One of the ImageViews has a variant image, the others
+   * have the corresponding normal image.
+   */
+  private void updateImages() {
+    Pair<Drawable, Drawable> normalAndVariant = imgSupplier.getRandomPair();
+    Drawable normal = normalAndVariant.first, variant = normalAndVariant.second;
+    
+    int variantIdx = imgSupplier.random.nextInt(imgs.length);
+    
+    for (int i = 0; i < imgs.length; i++) {
+      imgs[i].setImageDrawable(i == variantIdx ? variant : normal);
     }
   }
   
