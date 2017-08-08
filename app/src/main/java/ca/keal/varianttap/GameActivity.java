@@ -12,12 +12,17 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
-public class GameActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
   
   /**
    * The array of images in imgsGrid.
    */
   private ImageSwitcher[] imgs;
+  
+  /**
+   * The ID/index of the variant ImageSwitcher
+   */
+  private int variantId;
   
   /**
    * The layout containing the images in the centre of the screen. The user taps on the image they
@@ -75,7 +80,7 @@ public class GameActivity extends AppCompatActivity {
     imgs = new ImageSwitcher[difficulty];
     
     for (int i = 0; i < difficulty; i++) {
-      // Format the ImageSwitcher nicely
+      // Format the ImageSwitcher nicely and add it to imgsGrid
       
       GridLayout.Spec rowSpec = GridLayout.spec(GridLayout.UNDEFINED);
       GridLayout.Spec columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
@@ -89,17 +94,46 @@ public class GameActivity extends AppCompatActivity {
       
       imgs[i].setFactory(new ViewSwitcher.ViewFactory() { // no lambda expressions *sigh*
         public View makeView() {
-          ImageView imgView = new ImageView(getApplicationContext());
+          ImageView imgView = new ImageView(GameActivity.this);
           imgView.setAdjustViewBounds(true);
           imgView.setScaleType(ImageView.ScaleType.FIT_XY);
           return imgView;
         }
       });
       
+      imgs[i].setId(i); // for determining which is the variant
+      imgs[i].setOnClickListener(this);
+      
       imgsGrid.addView(imgs[i]);
     }
     
     updateImages();
+  }
+  
+  /**
+   * Handle clicking an ImageSwitcher. Delegates to either {@link #onVariantClick()} or
+   * {@link #onNormalClick()}.
+   */
+  @Override
+  public void onClick(View view) {
+    if (!(view instanceof ImageSwitcher)) return; // only dealing with ImageSwitchers
+    ImageSwitcher img = (ImageSwitcher) view;
+    
+    // Is img the variant?
+    if (img.getId() == variantId) {
+      onVariantClick();
+    } else {
+      onNormalClick();
+    }
+  }
+  
+  private void onVariantClick() {
+    // TODO: add score, reset timer, etc.
+    updateImages();
+  }
+  
+  private void onNormalClick() {
+    // TODO: stop clock, then delegate to an eventual onLose() method
   }
   
   /**
@@ -110,10 +144,10 @@ public class GameActivity extends AppCompatActivity {
     Pair<Drawable, Drawable> normalAndVariant = imgSupplier.getRandomPair();
     Drawable normal = normalAndVariant.first, variant = normalAndVariant.second;
     
-    int variantIdx = imgSupplier.random.nextInt(imgs.length);
+    variantId = imgSupplier.random.nextInt(imgs.length);
     
     for (int i = 0; i < imgs.length; i++) {
-      imgs[i].setImageDrawable(i == variantIdx ? variant : normal);
+      imgs[i].setImageDrawable(i == variantId ? variant : normal);
     }
   }
   
