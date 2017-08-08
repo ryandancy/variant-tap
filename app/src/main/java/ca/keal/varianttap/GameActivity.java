@@ -7,18 +7,21 @@ import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.ViewSwitcher;
 
 public class GameActivity extends AppCompatActivity {
   
   /**
-   * The array of ImageViews in imgsGrid.
+   * The array of images in imgsGrid.
    */
-  private ImageView[] imgs;
+  private ImageSwitcher[] imgs;
   
   /**
-   * The layout containing the ImageViews in the centre of the screen. The user taps on the
-   * ImageView they think is different than the others ('variant').
+   * The layout containing the images in the centre of the screen. The user taps on the image they
+   * think is different than the others ('variant').
    */
   private GridLayout imgsGrid;
   
@@ -32,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
     imgSupplier = new ImageSupplier(getAssets());
     
     // There are 3 difficulties: 4 (easy), 6 (normal) and 9 (hard). The numbers are the number of
-    // ImageViews in imgs -- the more ImageViews the harder it is.
+    // images in imgs -- the more images the harder it is.
     // TODO: get difficulty from intent
     int difficulty = 4; // TEMPORARY
     
@@ -67,9 +70,13 @@ public class GameActivity extends AppCompatActivity {
     imgsGrid.setRowCount(rows);
     imgsGrid.setColumnCount(columns);
     
-    imgs = new ImageView[difficulty];
+    // Add ImageSwitchers to imgsGrid
+    
+    imgs = new ImageSwitcher[difficulty];
     
     for (int i = 0; i < difficulty; i++) {
+      // Format the ImageSwitcher nicely
+      
       GridLayout.Spec rowSpec = GridLayout.spec(GridLayout.UNDEFINED);
       GridLayout.Spec columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
       
@@ -77,10 +84,18 @@ public class GameActivity extends AppCompatActivity {
       params.setGravity(Gravity.FILL);
       params.setMargins(20, 20, 20, 20);
       
-      imgs[i] = new ImageView(this);
-      imgs[i].setAdjustViewBounds(true);
-      imgs[i].setScaleType(ImageView.ScaleType.FIT_XY);
+      imgs[i] = new ImageSwitcher(this);
       imgs[i].setLayoutParams(params);
+      
+      imgs[i].setFactory(new ViewSwitcher.ViewFactory() { // no lambda expressions *sigh*
+        public View makeView() {
+          ImageView imgView = new ImageView(getApplicationContext());
+          imgView.setAdjustViewBounds(true);
+          imgView.setScaleType(ImageView.ScaleType.FIT_XY);
+          return imgView;
+        }
+      });
+      
       imgsGrid.addView(imgs[i]);
     }
     
@@ -88,8 +103,8 @@ public class GameActivity extends AppCompatActivity {
   }
   
   /**
-   * Update the ImageViews with new images. One of the ImageViews has a variant image, the others
-   * have the corresponding normal image.
+   * Update the ImagesSwitchers with new images. One of the ImageSwitchers has a variant image, the
+   * others have the corresponding normal image.
    */
   private void updateImages() {
     Pair<Drawable, Drawable> normalAndVariant = imgSupplier.getRandomPair();
