@@ -13,7 +13,10 @@
       android:layout_height="@dimen/countdown_circle_diameter"
       android:layout_centerHorizontal="true"
       android:layout_margin="@dimen/countdown_circle_margin"
-      app:donut_finished_color="@color/colorPrimary"
+      app:donut_text=""
+      app:donut_text_color="@color/colorAccent"
+      app:donut_circle_starting_degree="-90"
+      app:donut_finished_color="@color/colorAccent"
       app:donut_finished_stroke_width="@dimen/countdown_circle_width"
       app:donut_unfinished_stroke_width="@dimen/countdown_circle_width" />
   
