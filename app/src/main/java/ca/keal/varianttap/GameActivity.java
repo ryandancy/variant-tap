@@ -16,15 +16,14 @@ import android.widget.ViewSwitcher;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
   
-  /**
-   * The array of images in imgsGrid.
-   */
-  private ImageSwitcher[] imgs;
-  
-  /**
-   * The ID/index of the variant ImageSwitcher
-   */
+  /**  The ID/index of the variant ImageSwitcher. */
   private int variantId;
+  
+  /** Which round we're on. */
+  private int round;
+  
+  /** The array of images in imgsGrid. */
+  private ImageSwitcher[] imgs;
   
   private ImageSupplier imgSupplier;
   
@@ -34,6 +33,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     setContentView(R.layout.activity_game);
   
     imgSupplier = new ImageSupplier(getAssets());
+    round = 0;
     
     // There are 3 difficulties: 4 (easy), 6 (normal) and 9 (hard). The numbers are the number of
     // images in imgs -- the more images the harder it is.
@@ -136,6 +136,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private void onVariantClick() {
     // TODO: add score, reset timer, etc.
     updateImages();
+    round++;
   }
   
   private void onNormalClick() {
