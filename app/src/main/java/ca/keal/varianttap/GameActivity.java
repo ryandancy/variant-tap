@@ -8,6 +8,8 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
@@ -79,8 +81,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     imgs = new ImageSwitcher[difficulty];
     
+    // Create the animations outside the loop so as not to load them multiple times
+    // The out animation is just the in animation reversed, so we use ReverseInterpolator.
+    Animation in = AnimationUtils.loadAnimation(this, R.anim.grow_in);
+    Animation out = AnimationUtils.loadAnimation(this, R.anim.grow_in);
+    out.setInterpolator(new ReverseInterpolator(out.getInterpolator()));
+    
     for (int i = 0; i < difficulty; i++) {
-      // Format the ImageSwitcher nicely and add it to imgsGrid
+      // Construct the ImageSwitcher and add it to the grid
       
       GridLayout.Spec rowSpec = GridLayout.spec(GridLayout.UNDEFINED);
       GridLayout.Spec columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
@@ -92,6 +100,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       imgs[i] = new ImageSwitcher(this);
       imgs[i].setLayoutParams(params);
       
+      // The factory is to provide correctly formatted ImageViews for the ImageSwitcher
       imgs[i].setFactory(new ViewSwitcher.ViewFactory() { // no lambda expressions *sigh*
         public View makeView() {
           ImageView imgView = new ImageView(GameActivity.this);
@@ -101,7 +110,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
       });
       
-      imgs[i].setId(i); // for determining which is the variant
+      imgs[i].setInAnimation(in);
+      imgs[i].setOutAnimation(out);
+      
+      imgs[i].setId(i); // for determining which is the variant; equal to the index
       imgs[i].setOnClickListener(this);
       
       imgsGrid.addView(imgs[i]);
