@@ -12,7 +12,7 @@
       android:layout_width="@dimen/countdown_circle_diameter"
       android:layout_height="wrap_content"
       android:layout_centerHorizontal="true"
-      android:layout_margin="20dp"
+      android:layout_margin="@dimen/countdown_circle_margin"
       app:cpv_circle_color="@color/colorPrimary"
       app:cpv_circle_width="@dimen/countdown_circle_width"
       app:cpv_background_circle_width="@dimen/countdown_circle_width" />
@@ -20,7 +20,7 @@
   <android.support.v7.widget.GridLayout
       android:id="@+id/imgs_grid"
       android:layout_centerInParent="true"
-      android:padding="40dp"
+      android:padding="@dimen/grid_padding"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
   

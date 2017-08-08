@@ -2,4 +2,8 @@
 <resources>
   <dimen name="countdown_circle_width">10dp</dimen>
   <dimen name="countdown_circle_diameter">100dp</dimen>
+  <dimen name="countdown_circle_margin">20dp</dimen>
+  
+  <dimen name="grid_padding">40dp</dimen>
+  <dimen name="grid_spacing">10dp</dimen>
 </resources>

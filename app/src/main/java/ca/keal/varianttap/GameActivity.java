@@ -96,7 +96,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       
       GridLayout.LayoutParams params = new GridLayout.LayoutParams(rowSpec, columnSpec);
       params.setGravity(Gravity.FILL);
-      params.setMargins(20, 20, 20, 20);
+      
+      int margin = (int) getResources().getDimension(R.dimen.grid_spacing);
+      params.setMargins(margin, margin, margin, margin);
       
       imgs[i] = new ImageSwitcher(this);
       imgs[i].setLayoutParams(params);
