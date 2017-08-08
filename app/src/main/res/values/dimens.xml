@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="countdown_circle_width">10dp</dimen>
+  <dimen name="countdown_circle_diameter">100dp</dimen>
+</resources>

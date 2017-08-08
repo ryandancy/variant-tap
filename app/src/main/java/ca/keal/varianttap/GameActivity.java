@@ -14,6 +14,8 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
+import com.eralp.circleprogressview.CircleProgressView;
+
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
   
   /**  The ID/index of the variant ImageSwitcher. */
@@ -25,6 +27,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
   
+  /** The circle at the top of the screen that counts down time and also shows score. */
+  private CircleProgressView countdownCircle;
+  
   private ImageSupplier imgSupplier;
   
   @Override
@@ -34,6 +39,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
     imgSupplier = new ImageSupplier(getAssets());
     round = 0;
+    
+    countdownCircle = (CircleProgressView) findViewById(R.id.countdown_circle);
     
     // There are 3 difficulties: 4 (easy), 6 (normal) and 9 (hard). The numbers are the number of
     // images in imgs -- the more images the harder it is.
@@ -113,34 +120,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       imgsGrid.addView(imgs[i]);
     }
     
-    updateImages();
+    nextRound();
   }
   
   /**
-   * Handle clicking an ImageSwitcher. Delegates to either {@link #onVariantClick()} or
-   * {@link #onNormalClick()}.
+   * Go to the next round; this involves updating the images, resetting animations, and so on.
    */
-  @Override
-  public void onClick(View view) {
-    if (!(view instanceof ImageSwitcher)) return; // only dealing with ImageSwitchers
-    ImageSwitcher img = (ImageSwitcher) view;
-    
-    // Is img the variant?
-    if (img.getId() == variantId) {
-      onVariantClick();
-    } else {
-      onNormalClick();
-    }
-  }
-  
-  private void onVariantClick() {
-    // TODO: add score, reset timer, etc.
-    updateImages();
+  private void nextRound() {
     round++;
-  }
-  
-  private void onNormalClick() {
-    // TODO: stop clock, then delegate to an eventual onLose() method
+    updateImages();
   }
   
   /**
@@ -156,6 +144,27 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     for (int i = 0; i < imgs.length; i++) {
       imgs[i].setImageDrawable(i == variantId ? variant : normal);
     }
+  }
+  
+  /**
+   * Handle clicking an ImageSwitcher. Delegates to either {@link #nextRound()} or
+   * {@link #onLose()}.
+   */
+  @Override
+  public void onClick(View view) {
+    if (!(view instanceof ImageSwitcher)) return; // only dealing with ImageSwitchers
+    ImageSwitcher img = (ImageSwitcher) view;
+    
+    // Is img the variant?
+    if (img.getId() == variantId) {
+      nextRound();
+    } else {
+      onLose();
+    }
+  }
+  
+  private void onLose() {
+    // TODO: stop clock, go to post-game activity, etc.
   }
   
 }
