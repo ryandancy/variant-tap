@@ -26,12 +26,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
    */
   private int variantId;
   
-  /**
-   * The layout containing the images in the centre of the screen. The user taps on the image they
-   * think is different than the others ('variant').
-   */
-  private GridLayout imgsGrid;
-  
   private ImageSupplier imgSupplier;
   
   @Override
@@ -46,11 +40,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     // TODO: get difficulty from intent
     int difficulty = 4; // TEMPORARY
     
-    // Initialize imgs
+    // Initialize the grid of images
     
-    imgsGrid = (GridLayout) findViewById(R.id.imgs_grid);
+    GridLayout imgsGrid = (GridLayout) findViewById(R.id.imgs_grid);
     
-    // Calculate imgs' rows/columns
+    // Calculate rows/columns
     int rows, columns;
     switch (difficulty) {
       case 4:
