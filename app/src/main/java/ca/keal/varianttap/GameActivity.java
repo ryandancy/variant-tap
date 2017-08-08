@@ -3,9 +3,10 @@ package ca.keal.varianttap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.util.Pair;
-import android.widget.GridLayout;
+import android.view.Gravity;
 import android.widget.ImageView;
 
 public class GameActivity extends AppCompatActivity {
@@ -69,9 +70,21 @@ public class GameActivity extends AppCompatActivity {
     imgs = new ImageView[difficulty];
     
     for (int i = 0; i < difficulty; i++) {
-      imgs[i] = new ImageView(getBaseContext());
+      GridLayout.Spec rowSpec = GridLayout.spec(GridLayout.UNDEFINED);
+      GridLayout.Spec columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+      
+      GridLayout.LayoutParams params = new GridLayout.LayoutParams(rowSpec, columnSpec);
+      params.setGravity(Gravity.FILL);
+      params.setMargins(20, 20, 20, 20);
+      
+      imgs[i] = new ImageView(this);
+      imgs[i].setAdjustViewBounds(true);
+      imgs[i].setScaleType(ImageView.ScaleType.FIT_XY);
+      imgs[i].setLayoutParams(params);
       imgsGrid.addView(imgs[i]);
     }
+    
+    updateImages();
   }
   
   /**
