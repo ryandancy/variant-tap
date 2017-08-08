@@ -14,7 +14,7 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
-import com.eralp.circleprogressview.CircleProgressView;
+import com.github.lzyzsd.circleprogress.DonutProgress;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
   
@@ -28,7 +28,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private ImageSwitcher[] imgs;
   
   /** The circle at the top of the screen that counts down time and also shows score. */
-  private CircleProgressView countdownCircle;
+  private DonutProgress countdownCircle;
   
   private ImageSupplier imgSupplier;
   
@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     imgSupplier = new ImageSupplier(getAssets());
     round = 0;
     
-    countdownCircle = (CircleProgressView) findViewById(R.id.countdown_circle);
+    countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
     
     // There are 3 difficulties: 4 (easy), 6 (normal) and 9 (hard). The numbers are the number of
     // images in imgs -- the more images the harder it is.

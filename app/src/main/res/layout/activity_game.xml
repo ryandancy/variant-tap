@@ -7,15 +7,15 @@
     android:layout_height="match_parent"
     tools:context="ca.keal.varianttap.GameActivity">
   
-  <com.eralp.circleprogressview.CircleProgressView
+  <com.github.lzyzsd.circleprogress.DonutProgress
       android:id="@+id/countdown_circle"
       android:layout_width="@dimen/countdown_circle_diameter"
-      android:layout_height="wrap_content"
+      android:layout_height="@dimen/countdown_circle_diameter"
       android:layout_centerHorizontal="true"
       android:layout_margin="@dimen/countdown_circle_margin"
-      app:cpv_circle_color="@color/colorPrimary"
-      app:cpv_circle_width="@dimen/countdown_circle_width"
-      app:cpv_background_circle_width="@dimen/countdown_circle_width" />
+      app:donut_finished_color="@color/colorPrimary"
+      app:donut_finished_stroke_width="@dimen/countdown_circle_width"
+      app:donut_unfinished_stroke_width="@dimen/countdown_circle_width" />
   
   <android.support.v7.widget.GridLayout
       android:id="@+id/imgs_grid"
