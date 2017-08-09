@@ -1,5 +1,7 @@
 package ca.keal.varianttap;
 
+import android.animation.AnimatorInflater;
+import android.animation.ValueAnimator;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,8 @@ import android.widget.ViewSwitcher;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
+import static ca.keal.varianttap.R.animator.countdown;
+
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
   
   /**  The ID/index of the variant ImageSwitcher. */
@@ -29,6 +33,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
   /** The circle at the top of the screen that counts down time and also shows score. */
   private DonutProgress countdownCircle;
+  private ValueAnimator countdownAnim;
   
   private ImageSupplier imgSupplier;
   
@@ -36,11 +41,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game);
+    
+    // Initialize everything
   
     imgSupplier = new ImageSupplier(getAssets());
     round = 0;
     
     countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
+    
+    countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, countdown);
+    countdownAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+      public void onAnimationUpdate(ValueAnimator animation) {
+        countdownCircle.setProgress((Float) animation.getAnimatedValue());
+        countdownCircle.setText(String.valueOf(((Float) animation.getAnimatedValue()).intValue()));
+      }
+    });
     
     // There are 3 difficulties: 4 (easy), 6 (normal) and 9 (hard). The numbers are the number of
     // images in imgs -- the more images the harder it is.
@@ -129,8 +144,44 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
    * Go to the next round; this involves updating the images, resetting animations, and so on.
    */
   private void nextRound() {
+    int maxScore = getMaxScoreForRound(round);
+    countdownCircle.setMax(maxScore);
+    countdownCircle.setProgress(maxScore);
+    
+    countdownAnim.setFloatValues(maxScore, 0);
+    countdownAnim.setDuration(getTimeForRoundMillis(round));
+    countdownAnim.start();
+    
     round++;
+    
     updateImages();
+  }
+  
+  private int getMaxScoreForRound(int round) {
+    // Linear - TODO ~5-round "steps" with accompanying fade-out animated text like "+50"
+    int minScore = getResources().getInteger(R.integer.min_score);
+    int scorePerRound = getResources().getInteger(R.integer.score_per_round);
+    
+    return round * scorePerRound + minScore;
+  }
+  
+  private int getTimeForRoundMillis(int round) {
+    // Start out slowly decreasing, speed up, then slow down
+    int initial = getResources().getInteger(R.integer.initial_time_ms);
+    int min = getResources().getInteger(R.integer.min_time_ms);
+    int roundsAtMin = getResources().getInteger(R.integer.min_time_rounds);
+    
+    if (round >= roundsAtMin) {
+      return min;
+    }
+    
+    double a = (double) (initial - min) / 2.0;
+    double b = (double) min;
+    double c = 1.0 / (double) roundsAtMin;
+
+    // See https://www.desmos.com/calculator/93igcfor0b
+    double time = a * Math.cos(c * round * Math.PI) + a + b;
+    return (int) time;
   }
   
   /**
