@@ -28,6 +28,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   /** Which round we're on. */
   private int round;
   
+  /** The amount that would be added to the score if the user tapped the variant right now. */
+  private int scoreForRound;
+  
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
   
@@ -52,8 +55,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, countdown);
     countdownAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
       public void onAnimationUpdate(ValueAnimator animation) {
-        countdownCircle.setProgress((Float) animation.getAnimatedValue());
-        countdownCircle.setText(String.valueOf(((Float) animation.getAnimatedValue()).intValue()));
+        float progress = (float) animation.getAnimatedValue();
+        countdownCircle.setProgress(progress);
+        
+        // round to nearest step
+        int step = getResources().getInteger(R.integer.score_step);
+        scoreForRound = Math.round(progress / step) * step;
+        countdownCircle.setText(String.valueOf(scoreForRound));
       }
     });
     

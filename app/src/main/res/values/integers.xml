@@ -2,6 +2,10 @@
 <resources>
   <!-- TODO Balance all game-related integers -->
   
+  <!-- The score decreases in multiples of this (e.g. 100->90->80) -->
+  <!-- For best results this should be a divisor of score_per_round -->
+  <integer name="score_step">10</integer>
+  
   <integer name="min_score">100</integer>
   <integer name="score_per_round">10</integer>
   
