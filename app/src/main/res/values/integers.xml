@@ -5,7 +5,7 @@
   <integer name="min_score">100</integer>
   <integer name="score_per_round">10</integer>
   
-  <integer name="initial_time_ms">1000</integer>
-  <integer name="min_time_ms">75</integer>
-  <integer name="min_time_rounds">50</integer>
+  <integer name="initial_time_ms">3000</integer>
+  <integer name="min_time_ms">500</integer>
+  <integer name="min_time_rounds">70</integer>
 </resources>
