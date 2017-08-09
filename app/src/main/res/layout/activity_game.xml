@@ -12,6 +12,7 @@
       android:layout_width="@dimen/countdown_circle_diameter"
       android:layout_height="@dimen/countdown_circle_diameter"
       android:layout_centerHorizontal="true"
+      android:layout_alignParentTop="true"
       android:layout_margin="@dimen/countdown_circle_margin"
       app:donut_text=""
       app:donut_suffix_text=""
@@ -27,5 +28,25 @@
       android:padding="@dimen/grid_padding"
       android:layout_width="match_parent"
       android:layout_height="wrap_content" />
+  
+  <TextView
+      android:id="@+id/score_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:paddingBottom="10dp"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:textColor="@color/colorPrimary"
+      android:textSize="70sp" />
+  
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_above="@id/score_text"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="-20dp"
+      android:text="@string/score_label"
+      android:textColor="@color/colorPrimary"
+      android:textSize="20sp" />
   
 </RelativeLayout>

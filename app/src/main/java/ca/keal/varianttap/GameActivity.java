@@ -14,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
@@ -28,6 +29,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
   /** The amount that would be added to the score if the user tapped the variant right now. */
   private int scoreForRound;
+  private int score;
   
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
@@ -35,6 +37,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   /** The circle at the top of the screen that counts down time and also shows score. */
   private DonutProgress countdownCircle;
   private ValueAnimator countdownAnim;
+  
+  private TextView scoreText;
   
   private ImageSupplier imgSupplier;
   
@@ -47,8 +51,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
     imgSupplier = new ImageSupplier(getAssets());
     round = 0;
+    score = 0;
     
     countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
+    scoreText = (TextView) findViewById(R.id.score_text);
     
     countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.countdown);
     countdownAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -150,6 +156,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
    * Go to the next round; this involves updating the images, resetting animations, and so on.
    */
   private void nextRound() {
+    addToScore(scoreForRound);
+    
     int maxScore = getMaxScoreForRound(round);
     countdownCircle.setMax(maxScore);
     countdownCircle.setProgress(maxScore);
@@ -203,6 +211,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     for (int i = 0; i < imgs.length; i++) {
       imgs[i].setImageDrawable(i == variantId ? variant : normal);
     }
+  }
+  
+  /**
+   * Add {@code scoreToAdd} to {@link #score} and update {@link #scoreText}. Also maybe animations
+   * eventually?
+   * @param scoreToAdd - the amount to add to the score.
+   */
+  private void addToScore(int scoreToAdd) {
+    score += scoreToAdd;
+    scoreText.setText(String.valueOf(score));
   }
   
   /**
