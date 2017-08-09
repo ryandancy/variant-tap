@@ -18,8 +18,6 @@ import android.widget.ViewSwitcher;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
-import static ca.keal.varianttap.R.animator.countdown;
-
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
   
   /**  The ID/index of the variant ImageSwitcher. */
@@ -52,7 +50,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
     
-    countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, countdown);
+    countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.countdown);
     countdownAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
       public void onAnimationUpdate(ValueAnimator animation) {
         float progress = (float) animation.getAnimatedValue();
