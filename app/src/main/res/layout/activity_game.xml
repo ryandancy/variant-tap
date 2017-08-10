@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="ca.keal.varianttap.GameActivity">
   
+  <!-- Note that if donut_text is ever >5 characters it'll exceed the width of the donut -->
   <com.github.lzyzsd.circleprogress.DonutProgress
       android:id="@+id/countdown_circle"
       android:layout_width="@dimen/countdown_circle_diameter"
@@ -17,6 +18,7 @@
       app:donut_text=""
       app:donut_suffix_text=""
       app:donut_text_color="@color/colorAccent"
+      app:donut_text_size="24dp"
       app:donut_circle_starting_degree="-90"
       app:donut_finished_color="@color/colorAccent"
       app:donut_finished_stroke_width="@dimen/countdown_circle_width"
