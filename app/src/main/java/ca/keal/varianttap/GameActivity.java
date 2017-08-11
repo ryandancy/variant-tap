@@ -33,6 +33,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private int scoreForRound;
   private int score;
   
+  /** Whether to process the user's taps on the images. */
+  private boolean allowImgTaps;
+  
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
   
@@ -55,6 +58,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     imgSupplier = new ImageSupplier(getAssets());
     round = 0;
     score = 0;
+    allowImgTaps = false;
     
     countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
     scoreText = (TextView) findViewById(R.id.score_text);
@@ -174,6 +178,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
    * is BEFORE the reset animation ends.
    */
   private void nextRound() {
+    allowImgTaps = false;
     addToScore(scoreForRound);
     
     countdownAnim.cancel();
@@ -213,15 +218,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
    */
   private void startRound() {
     updateImages();
-  
+    
     int maxScore = getMaxScoreForRound(round);
     countdownCircle.setMax(maxScore);
     countdownCircle.setProgress(maxScore);
-  
+    
     countdownAnim.setFloatValues(maxScore, 0);
     countdownAnim.setDuration(getTimeForRoundMillis(round));
     countdownAnim.start();
-  
+    
+    allowImgTaps = true;
+    
     round++;
   }
   
@@ -284,6 +291,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   @Override
   public void onClick(View view) {
     if (!(view instanceof ImageSwitcher)) return; // only dealing with ImageSwitchers
+    if (!allowImgTaps) return;
+    
     ImageSwitcher img = (ImageSwitcher) view;
     
     // Is img the variant?
