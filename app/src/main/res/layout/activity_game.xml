@@ -38,8 +38,10 @@
       android:paddingBottom="10dp"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
+      android:text="0"
       android:textColor="@color/colorPrimary"
-      android:textSize="70sp" />
+      android:textSize="70sp"
+      tools:ignore="HardcodedText" />
   
   <TextView
       android:layout_width="wrap_content"

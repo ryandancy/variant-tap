@@ -1,6 +1,8 @@
 package ca.keal.varianttap;
 
+import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -37,6 +39,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   /** The circle at the top of the screen that counts down time and also shows score. */
   private DonutProgress countdownCircle;
   private ValueAnimator countdownAnim;
+  private ObjectAnimator resetCountdownAnim;
   
   private TextView scoreText;
   
@@ -66,6 +69,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int step = getResources().getInteger(R.integer.score_step);
         scoreForRound = Math.round(progress / step) * step;
         countdownCircle.setText(String.valueOf(scoreForRound));
+      }
+    });
+    
+    resetCountdownAnim = (ObjectAnimator) AnimatorInflater.loadAnimator(this,
+        R.animator.reset_countdown);
+    resetCountdownAnim.setTarget(countdownCircle);
+    
+    resetCountdownAnim.addListener(new Animator.AnimatorListener() {
+      public void onAnimationCancel(Animator animation) {}
+      public void onAnimationRepeat(Animator animation) {}
+      public void onAnimationStart(Animator animation) {}
+      
+      public void onAnimationEnd(Animator animation) {
+        onResetAnimationEnd();
       }
     });
     
@@ -149,26 +166,63 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       imgsGrid.addView(imgs[i]);
     }
     
-    nextRound();
+    startRound();
   }
   
   /**
-   * Go to the next round; this involves updating the images, resetting animations, and so on.
+   * Go to the next round; this involves starting the reset countdown animation. This
+   * is BEFORE the reset animation ends.
    */
   private void nextRound() {
     addToScore(scoreForRound);
     
+    countdownAnim.cancel();
+    countdownCircle.setText(String.valueOf(scoreForRound));
+    
+    resetCountdownAnim.setFloatValues(countdownCircle.getProgress(), countdownCircle.getMax());
+    resetCountdownAnim.setDuration(getResetCountdownAnimationDuration(countdownCircle));
+    resetCountdownAnim.start();
+  }
+  
+  /**
+   * Calculate the duration of the reset countdown animation with a constant speed.
+   * countdownCircle is a parameter so that it's a pure function.
+   */
+  private long getResetCountdownAnimationDuration(DonutProgress countdownCircle) {
+    int minDuration = getResources().getInteger(R.integer.reset_countdown_min_ms);
+    int maxDuration = getResources().getInteger(R.integer.reset_countdown_max_ms);
+    
+    float progressPct = countdownCircle.getProgress() / countdownCircle.getMax();
+    float pctToGo = 1 - progressPct;
+    
+    float duration = pctToGo * maxDuration;
+    
+    return (long) Math.max(duration, minDuration);
+  }
+  
+  /**
+   * Wait for a certain amount of time, then call startRound().
+   */
+  private void onResetAnimationEnd() {
+    countdownCircle.setText(String.valueOf(getMaxScoreForRound(round)));
+    startRound();
+  }
+  
+  /**
+   * Begin the next round; this involves updating the images, starting animations, and so on.
+   */
+  private void startRound() {
+    updateImages();
+  
     int maxScore = getMaxScoreForRound(round);
     countdownCircle.setMax(maxScore);
     countdownCircle.setProgress(maxScore);
-    
+  
     countdownAnim.setFloatValues(maxScore, 0);
     countdownAnim.setDuration(getTimeForRoundMillis(round));
     countdownAnim.start();
-    
+  
     round++;
-    
-    updateImages();
   }
   
   private int getMaxScoreForRound(int round) {

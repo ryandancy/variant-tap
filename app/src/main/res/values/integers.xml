@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!-- GAME-RELATED INTEGERS -->
   <!-- TODO Balance all game-related integers -->
   
   <!-- The score decreases in multiples of this (e.g. 100->90->80) -->
@@ -12,4 +13,14 @@
   <integer name="initial_time_ms">3000</integer>
   <integer name="min_time_ms">500</integer>
   <integer name="min_time_rounds">70</integer>
+  
+  <!-- UI-RELATED INTEGERS -->
+  
+  <integer name="img_in_out_transition_ms">200</integer>
+  
+  <!-- The minimum duration of the reset_countdown animation, used when there's not far to go. -->
+  <integer name="reset_countdown_min_ms">50</integer>
+  <!-- The maximum duration of the reset_countdown animation, used when there's the whole circle to
+       go. Other times are reset_countdown_max_ms * fraction_of_circle_to_go. -->
+  <integer name="reset_countdown_max_ms">500</integer>
 </resources>
