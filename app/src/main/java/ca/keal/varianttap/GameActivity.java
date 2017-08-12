@@ -4,8 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayout;
 import android.util.Log;
@@ -74,6 +76,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         scoreForRound = Math.round(progress / step) * step;
         countdownCircle.setText(String.valueOf(scoreForRound));
       }
+    });
+    countdownAnim.addListener(new Animator.AnimatorListener() {
+      // The whole thing with canceled is to not lose on a canceled animation, which happens every
+      // time the user taps the variant.
+      private boolean canceled = false;
+      
+      public void onAnimationCancel(Animator animation) {
+        canceled = true;
+      }
+      
+      public void onAnimationEnd(Animator animation) {
+        if (canceled) {
+          canceled = false;
+        } else {
+          onLose();
+        }
+      }
+      
+      public void onAnimationStart(Animator animation) {}
+      public void onAnimationRepeat(Animator animation) {}
     });
     
     resetCountdownAnim = (ObjectAnimator) AnimatorInflater.loadAnimator(this,
@@ -303,8 +325,29 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
   }
   
+  /**
+   * Handle losing the game: cancel the countdown animation, wait a bit, then go to the post-game
+   * activity.
+   */
   private void onLose() {
-    // TODO: stop clock, go to post-game activity, etc.
+    // TODO a losing animation!!!
+    allowImgTaps = false;
+    
+    if (countdownAnim.isRunning()) {
+      countdownAnim.cancel();
+    }
+    
+    new Handler().postDelayed(new Runnable() { // no lambdas *cry*
+      public void run() {
+        toPostGameActivity();
+      }
+    }, getResources().getInteger(R.integer.after_lose_wait_time_ms));
+  }
+  
+  private void toPostGameActivity() {
+    Intent intent = new Intent(this, PostGameActivity.class);
+    intent.putExtra("SCORE", score);
+    startActivity(intent);
   }
   
 }

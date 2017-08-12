@@ -23,4 +23,6 @@
   <!-- The maximum duration of the reset_countdown animation, used when there's the whole circle to
        go. Other times are reset_countdown_max_ms * fraction_of_circle_to_go. -->
   <integer name="reset_countdown_max_ms">500</integer>
+  
+  <integer name="after_lose_wait_time_ms">1000</integer>
 </resources>
