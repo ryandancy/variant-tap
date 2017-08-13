@@ -3,6 +3,8 @@
   <color name="colorPrimary">#8e24aa</color>
   <color name="colorPrimaryDark">#7b1fa2</color>
   <color name="colorAccent">#d500f9</color>
+  <!-- TODO the accent colour should probably not be purple -->
   
   <color name="textDark">#000000</color>
+  <color name="textLight">#eeeeee</color>
 </resources>

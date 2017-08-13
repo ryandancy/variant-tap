@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- TODO maybe all the text shouldn't be the same color??? -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,8 +13,88 @@
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
       android:layout_centerHorizontal="true"
-      android:padding="40dp"
+      android:layout_margin="40dp"
       android:textSize="100sp"
       android:textColor="@color/colorPrimary" />
+  
+  <!-- TODO animate? -->
+  <TextView
+      android:id="@+id/new_best_score_text"
+      android:visibility="invisible"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignBottom="@id/post_score_text"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="-10dp"
+      android:text="@string/new_best_score"
+      android:textColor="@color/colorAccent"
+      android:textSize="20sp" />
+  
+  <!-- Best score text -->
+  <LinearLayout
+      android:id="@+id/best_score_text_layout"
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/post_score_text"
+      android:layout_marginTop="10dp"
+      android:layout_marginStart="20dp"
+      android:layout_centerHorizontal="true">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/best_score"
+        android:textSize="@dimen/post_game_stats_size"
+        android:textColor="@color/textDark" />
+    
+    <TextView
+        android:id="@+id/best_score_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textSize="@dimen/post_game_stats_size"
+        android:textColor="@color/colorAccent" />
+    
+  </LinearLayout>
+  
+  <!-- Average score text -->
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/best_score_text_layout"
+      android:layout_marginTop="5sp"
+      android:layout_marginStart="20dp"
+      android:layout_centerHorizontal="true">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/average_score"
+        android:textSize="@dimen/post_game_stats_size"
+        android:textColor="@color/textDark" />
+    
+    <TextView
+        android:id="@+id/average_score_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textSize="@dimen/post_game_stats_size"
+        android:textColor="@color/colorAccent" />
+    
+  </LinearLayout>
+  
+  <!-- TODO: what should go in between average and the play again button? Currently empty space! -->
+  
+  <Button
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_alignParentBottom="true"
+      android:layout_margin="10dp"
+      android:text="@string/play_again"
+      android:textColor="@color/textLight"
+      android:textSize="20sp"
+      android:background="@color/colorPrimaryDark" />
   
 </RelativeLayout>

@@ -1,4 +1,8 @@
 <resources>
   <string name="app_name">VariantTap</string>
   <string name="score_label">Score</string>
+  <string name="new_best_score">New Best Score!</string>
+  <string name="best_score">Best</string>
+  <string name="average_score">Average</string>
+  <string name="play_again">Play Again</string>
 </resources>
