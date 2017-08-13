@@ -87,6 +87,7 @@
   
   <!-- TODO: what should go in between average and the play again button? Currently empty space! -->
   
+  <!-- TODO difficulties from post-game! -->
   <Button
       android:layout_width="match_parent"
       android:layout_height="60dp"
@@ -95,6 +96,7 @@
       android:text="@string/play_again"
       android:textColor="@color/textLight"
       android:textSize="20sp"
-      android:background="@color/colorPrimaryDark" />
+      android:background="@color/colorPrimaryDark"
+      android:onClick="playAgain" />
   
 </RelativeLayout>
