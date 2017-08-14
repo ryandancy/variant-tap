@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Note: these dimensions are for a 1440x2560 screen because that's what my testing phone is -->
+<!-- Note: dimensions are for a 1440x2560/640dpi screen because that's my testing phone (LG G4) -->
 <resources>
   <!-- TODO extract most (all?) dimensions -->
   
@@ -12,8 +12,10 @@
   
   <!-- TEXT SIZES -->
   
+  <dimen name="button_text_size">20sp</dimen>
+  
   <!-- Note: this should be exactly the correct size to fit in the screen width (and margins) -->
-  <dimen name="main_menu_title_size">78dp</dimen>
+  <dimen name="main_menu_title_size">68dp</dimen>
   
   <dimen name="post_game_stats_size">20sp</dimen>
 </resources>
