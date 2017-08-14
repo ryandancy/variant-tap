@@ -17,7 +17,6 @@
       android:textSize="95sp"
       android:textColor="@color/colorPrimary" />
   
-  <!-- TODO animate? -->
   <TextView
       android:id="@+id/new_best_score_text"
       android:visibility="invisible"

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 public class PostGameActivity extends AppCompatActivity {
@@ -52,8 +54,11 @@ public class PostGameActivity extends AppCompatActivity {
     SharedPreferences.Editor editor = prefs.edit();
     
     if (score > bestScore) {
+      // Make the "New Best Score!" TextView visible + animate it
       TextView newBestScoreText = (TextView) findViewById(R.id.new_best_score_text);
+      Animation pulseAnim = AnimationUtils.loadAnimation(this, R.anim.pulse);
       newBestScoreText.setVisibility(View.VISIBLE);
+      newBestScoreText.startAnimation(pulseAnim);
       
       editor.putInt("bestScore", score);
     }
