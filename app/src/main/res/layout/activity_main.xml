@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ca.keal.varianttap.MainActivity">
@@ -21,6 +22,7 @@
       tools:ignore="SpUsage" />
   
   <Button
+      android:id="@+id/play_button"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
@@ -30,22 +32,25 @@
       android:text="@string/play"
       android:textColor="@color/textLight"
       android:textSize="@dimen/button_text_size"
-      android:background="@color/colorPrimaryDark" />
+      android:background="@color/colorPrimaryDark"
+      android:onClick="showDifficultyButtons" />
   
   <LinearLayout
+      android:id="@+id/difficulty_button_layout"
       android:orientation="vertical"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
+      android:layout_above="@id/play_button"
       android:layout_marginLeft="20dp"
       android:layout_marginRight="20dp"
-      android:layout_marginBottom="50dp"
-      android:visibility="gone"
+      android:layout_marginBottom="10dp"
+      android:visibility="invisible"
       style="?android:attr/buttonBarStyle">
     
     <!-- TODO consistent button style (with rounded corners and cool stuff like that!) -->
     
     <Button
+        android:id="@+id/easy_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/easy"
@@ -55,6 +60,7 @@
         style="?android:attr/buttonBarButtonStyle" />
     
     <Button
+        android:id="@+id/normal_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -65,6 +71,7 @@
         style="?android:attr/buttonBarButtonStyle" />
   
     <Button
+        android:id="@+id/hard_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

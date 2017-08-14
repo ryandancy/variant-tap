@@ -16,6 +16,9 @@
   
   <!-- UI-RELATED INTEGERS -->
   
+  <!-- The difficulty buttons will take this time (in ms) to move 100dp -->
+  <integer name="slide_up_speed">125</integer>
+  
   <integer name="img_in_out_transition_ms">200</integer>
   
   <!-- The minimum duration of the reset_countdown animation, used when there's not far to go. -->
