@@ -33,7 +33,7 @@
       android:textColor="@color/textLight"
       android:textSize="@dimen/button_text_size"
       android:background="@color/colorPrimaryDark"
-      android:onClick="showDifficultyButtons" />
+      android:onClick="toggleDifficultyButtons" />
   
   <LinearLayout
       android:id="@+id/difficulty_button_layout"

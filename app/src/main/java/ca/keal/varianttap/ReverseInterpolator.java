@@ -19,4 +19,8 @@ class ReverseInterpolator implements Interpolator {
     return 1f - delegate.getInterpolation(input);
   }
   
+  Interpolator getDelegate() {
+    return delegate;
+  }
+  
 }

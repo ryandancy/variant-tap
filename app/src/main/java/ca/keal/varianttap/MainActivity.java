@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
    */
   private List<Animation> slideUpAnims = new ArrayList<>();
   
+  private boolean difficultyBtnsShowing = false;
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
           TranslateAnimation anim = new TranslateAnimation(0, 0, fromYDelta, 0);
           anim.setInterpolator(new DecelerateInterpolator());
           anim.setDuration((long) duration);
+          anim.setFillAfter(true);
           
           slideUpAnims.add(anim);
         }
@@ -70,15 +73,56 @@ public class MainActivity extends AppCompatActivity {
     });
   }
     
+  public void toggleDifficultyButtons(View v) {
+    if (difficultyBtnsShowing) {
+      hideDifficultyButtons();
+    } else {
+      showDifficultyButtons();
+    }
+  }
   
-  public void showDifficultyButtons(View v) {
+  private void showDifficultyButtons() {
+    difficultyBtnsShowing = true;
+    
     difficultyBtnsLayout.setVisibility(View.VISIBLE);
     
     for (int i = 0; i < difficultyBtns.size(); i++) {
       Button button = difficultyBtns.get(i);
       Animation anim = slideUpAnims.get(i);
+      
+      // Undo reversing from hideDifficultyButtons()
+      if (anim.getInterpolator() instanceof ReverseInterpolator) {
+        anim.setInterpolator(((ReverseInterpolator) anim.getInterpolator()).getDelegate());
+      }
+      
       button.startAnimation(anim);
     }
+  }
+  
+  private void hideDifficultyButtons() {
+    difficultyBtnsShowing = false;
+    
+    for (int i = 0; i < difficultyBtns.size(); i++) {
+      Button button = difficultyBtns.get(i);
+      Animation anim = slideUpAnims.get(i);
+      
+      // Reverse the animation
+      anim.setInterpolator(new ReverseInterpolator(anim.getInterpolator()));
+      
+      button.startAnimation(anim);
+    }
+    
+    // Make the difficulty buttons invisible when the animations finish
+    // slideUpAnims[0] is the longest so we use it to detect the animations' finishing
+    slideUpAnims.get(0).setAnimationListener(new Animation.AnimationListener() {
+      public void onAnimationStart(Animation animation) {}
+      public void onAnimationRepeat(Animation animation) {}
+      
+      public void onAnimationEnd(Animation animation) {
+        difficultyBtnsLayout.setVisibility(View.INVISIBLE);
+        slideUpAnims.get(0).setAnimationListener(null);
+      }
+    });
   }
   
 }
