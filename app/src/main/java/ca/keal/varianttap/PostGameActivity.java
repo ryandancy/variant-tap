@@ -12,6 +12,9 @@ import android.widget.TextView;
 public class PostGameActivity extends AppCompatActivity
     implements DifficultyButtonsFragment.OnFragmentInteractionListener {
   
+  // DO NOT CHANGE EVER - a change will break all local leaderboards
+  private static final String SHARED_PREFS_LEADERBOARD_PREFIX = "local_leaderboard_";
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -56,11 +59,13 @@ public class PostGameActivity extends AppCompatActivity
     TextView difficultyText = (TextView) findViewById(R.id.post_difficulty_text);
     difficultyText.setText(difficultyStr);
   
-    // Get data from shared preferences
+    // Get data from shared preferences for the difficulty
     // The user is allowed to mess with the shared preferences, Google Play Games won't use them
     // TODO: Google Play Games integration
     
-    SharedPreferences prefs = getPreferences(MODE_PRIVATE); // hopefully only one prefs file needed
+    SharedPreferences prefs = getSharedPreferences(
+        SHARED_PREFS_LEADERBOARD_PREFIX + difficulty, MODE_PRIVATE);
+    
     int bestScore = prefs.getInt("bestScore", 0); // TODO extract into constants? "SCORE" too?
     int totalScore = prefs.getInt("totalScore", 0);
     int timesPlayed = prefs.getInt("timesPlayed", 0);
