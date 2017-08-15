@@ -72,12 +72,15 @@ public class MainActivity extends AppCompatActivity {
       }
     });
   }
-    
+  
   public void toggleDifficultyButtons(View v) {
-    if (difficultyBtnsShowing) {
-      hideDifficultyButtons();
-    } else {
-      showDifficultyButtons();
+    // Don't toggle if the animation's playing, using first animation (longest) as representative
+    if (!slideUpAnims.get(0).hasStarted() || slideUpAnims.get(0).hasEnded()) {
+      if (difficultyBtnsShowing) {
+        hideDifficultyButtons();
+      } else {
+        showDifficultyButtons();
+      }
     }
   }
   
