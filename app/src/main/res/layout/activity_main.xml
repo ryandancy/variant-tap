@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,69 +22,15 @@
       android:textAlignment="center"
       tools:ignore="SpUsage" />
   
-  <Button
-      android:id="@+id/play_button"
+  <fragment
+      android:name="ca.keal.varianttap.DifficultyButtonsFragment"
+      android:id="@+id/main_menu_difficulty_buttons_fragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:layout_marginLeft="20dp"
       android:layout_marginRight="20dp"
       android:layout_marginBottom="50dp"
-      android:text="@string/play"
-      android:textColor="@color/textLight"
-      android:textSize="@dimen/button_text_size"
-      android:background="@color/colorPrimaryDark"
-      android:onClick="toggleDifficultyButtons" />
-  
-  <LinearLayout
-      android:id="@+id/difficulty_button_layout"
-      android:orientation="vertical"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_above="@id/play_button"
-      android:layout_marginLeft="20dp"
-      android:layout_marginRight="20dp"
-      android:layout_marginBottom="10dp"
-      android:visibility="invisible"
-      style="?android:attr/buttonBarStyle">
-    
-    <!-- TODO consistent button style (with rounded corners and cool stuff like that!) -->
-    
-    <Button
-        android:id="@+id/easy_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/easy"
-        android:textSize="@dimen/button_text_size"
-        android:textColor="@color/textLight"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="onEasyClick"
-        style="?android:attr/buttonBarButtonStyle" />
-    
-    <Button
-        android:id="@+id/normal_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/normal"
-        android:textSize="@dimen/button_text_size"
-        android:textColor="@color/textLight"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="onNormalClick"
-        style="?android:attr/buttonBarButtonStyle" />
-    
-    <Button
-        android:id="@+id/hard_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/hard"
-        android:textSize="@dimen/button_text_size"
-        android:textColor="@color/textLight"
-        android:background="@color/colorPrimaryDark"
-        android:onClick="onHardClick"
-        style="?android:attr/buttonBarButtonStyle" />
-      
-  </LinearLayout>
+      app:show_text="@string/play" />
   
 </RelativeLayout>
