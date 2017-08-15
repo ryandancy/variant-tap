@@ -18,6 +18,7 @@ import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 public class MainActivity extends AppCompatActivity {
   
+  private Button playButton;
   private LinearLayout difficultyBtnsLayout;
   
   /** The list of buttons which when selected will start the game at a certain difficulty. */
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
   
     difficultyBtnsLayout = (LinearLayout) findViewById(R.id.difficulty_button_layout);
   
-    final Button playButton = (Button) findViewById(R.id.play_button);
+    playButton = (Button) findViewById(R.id.play_button);
   
     // Initialize difficultyBtns
     Collections.addAll(difficultyBtns,
@@ -104,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
       
       button.startAnimation(anim);
     }
+    
+    playButton.setText(getString(R.string.close_difficulty_btns));
   }
   
   private void hideDifficultyButtons() {
@@ -130,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
         slideUpAnims.get(0).setAnimationListener(null);
       }
     });
+    
+    playButton.setText(getString(R.string.play));
   }
   
 }

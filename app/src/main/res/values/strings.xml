@@ -5,6 +5,7 @@
   <!-- MainActivity -->
   <string name="app_name_lowercase">variant tap</string>
   <string name="play">Play</string>
+  <string name="close_difficulty_btns">Close</string>
   <string name="easy">Easy</string>
   <string name="normal">Normal</string>
   <string name="hard">Hard</string>
