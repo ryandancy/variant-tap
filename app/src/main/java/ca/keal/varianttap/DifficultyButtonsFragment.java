@@ -197,6 +197,15 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   }
   
   @Override
+  public void onPause() {
+    super.onPause();
+    if (difficultyBtnsShowing) {
+      // Don't show the difficulty buttons if the user presses back after clicking on one of them
+      hideDifficultyButtons();
+    }
+  }
+  
+  @Override
   public void onDetach() {
     super.onDetach();
     listener = null;
@@ -298,7 +307,6 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     Intent intent = new Intent(getActivity(), GameActivity.class);
     intent.putExtra("DIFFICULTY", difficulty);
     startActivity(intent);
-    hideDifficultyButtons(); // don't show them if back button is pressed
     listener.afterToGameActivity(difficulty);
   }
   
