@@ -73,9 +73,13 @@ public class MainActivity extends AppCompatActivity {
     });
   }
   
+  /** @return Whether the sliding up animations are playing, using the first (longest) animation. */
+  private boolean areSlidingUpAnimationsPlaying() {
+    return !slideUpAnims.get(0).hasStarted() || slideUpAnims.get(0).hasEnded();
+  }
+  
   public void toggleDifficultyButtons(View v) {
-    // Don't toggle if the animation's playing, using first animation (longest) as representative
-    if (!slideUpAnims.get(0).hasStarted() || slideUpAnims.get(0).hasEnded()) {
+    if (areSlidingUpAnimationsPlaying()) {
       if (difficultyBtnsShowing) {
         hideDifficultyButtons();
       } else {
