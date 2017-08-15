@@ -1,6 +1,5 @@
 package ca.keal.varianttap;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
-public class PostGameActivity extends AppCompatActivity {
+public class PostGameActivity extends AppCompatActivity
+    implements DifficultyButtonsFragment.OnFragmentInteractionListener {
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -70,15 +70,13 @@ public class PostGameActivity extends AppCompatActivity {
   }
   
   /**
-   * Play again - i.e. go to GameActivity.
-   * @param v - ignored
+   * Hook for after going to the game activity.
+   * @param difficulty ignored
    */
-  public void playAgain(View v) {
-    Intent intent = new Intent(this, GameActivity.class);
-    // TODO set a difficulty here - always easy for now!
-    intent.putExtra("DIFFICULTY", 4);
-    startActivity(intent);
-    finish(); // remove this activity from the stack so the user can't navigate back to it
+  @Override
+  public void afterToGameActivity(int difficulty) {
+    // Remove this activity from the stack
+    finish();
   }
   
 }
