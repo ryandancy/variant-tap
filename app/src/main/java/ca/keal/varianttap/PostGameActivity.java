@@ -27,6 +27,35 @@ public class PostGameActivity extends AppCompatActivity
     TextView scoreText = (TextView) findViewById(R.id.post_score_text);
     scoreText.setText(String.valueOf(score));
     
+    // Get difficulty from intent, set it to the difficulty TextView
+    
+    int difficulty = getIntent().getExtras().getInt("DIFFICULTY", -1);
+    if (difficulty == -1) { // difficulty was not in the extras
+      Log.e(getClass().getName(), "Intent did not have \"DIFFICULTY\" extra!");
+    }
+    
+    String difficultyStr;
+    switch (difficulty) {
+      case 0:
+        difficultyStr = getString(R.string.easy_mode);
+        break;
+      case 1:
+        difficultyStr = getString(R.string.normal_mode);
+        break;
+      case 2:
+        difficultyStr = getString(R.string.hard_mode);
+        break;
+      case -1: // difficulty wasn't passed; don't log a second error
+        difficultyStr = "";
+        break;
+      default:
+        Log.e(getClass().getName(), "Intent has nonsensical \"DIFFICULTY\" " + difficulty + "!");
+        difficultyStr = "";
+    }
+    
+    TextView difficultyText = (TextView) findViewById(R.id.post_difficulty_text);
+    difficultyText.setText(difficultyStr);
+  
     // Get data from shared preferences
     // The user is allowed to mess with the shared preferences, Google Play Games won't use them
     // TODO: Google Play Games integration

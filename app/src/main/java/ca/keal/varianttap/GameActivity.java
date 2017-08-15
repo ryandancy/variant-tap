@@ -30,6 +30,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
   /** Which round we're on. */
   private int round;
+  private int difficulty;
   
   /** The amount that would be added to the score if the user tapped the variant right now. */
   private int scoreForRound;
@@ -116,7 +117,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     // a higher number of images: easy has 4 images, normal has 6, and hard has 9.
     
     // Get the difficulty from the Intent
-    int difficulty = getIntent().getIntExtra("DIFFICULTY", -1);
+    difficulty = getIntent().getIntExtra("DIFFICULTY", -1);
     if (difficulty == -1) { // no difficulty extra in the intent
       Log.e(getClass().getName(), "Intent did not have \"DIFFICULTY\" extra!");
     }
@@ -352,6 +353,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private void toPostGameActivity() {
     Intent intent = new Intent(this, PostGameActivity.class);
     intent.putExtra("SCORE", score);
+    intent.putExtra("DIFFICULTY", difficulty);
     startActivity(intent);
   }
   

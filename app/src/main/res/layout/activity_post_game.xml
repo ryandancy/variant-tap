@@ -14,7 +14,9 @@
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
       android:layout_centerHorizontal="true"
-      android:layout_margin="40dp"
+      android:layout_marginLeft="40dp"
+      android:layout_marginRight="40dp"
+      android:layout_marginTop="40dp"
       android:textSize="95sp"
       android:textColor="@color/colorPrimary" />
   
@@ -30,15 +32,24 @@
       android:textColor="@color/colorAccent"
       android:textSize="20sp" />
   
+  <TextView
+      android:id="@+id/post_difficulty_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/post_score_text"
+      android:layout_marginTop="30dp"
+      android:layout_centerHorizontal="true"
+      android:textSize="@dimen/post_game_stats_size"
+      android:textColor="@color/colorPrimary" />
+  
   <!-- Best score text -->
   <LinearLayout
       android:id="@+id/best_score_text_layout"
       android:orientation="horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_below="@id/post_score_text"
-      android:layout_marginTop="10dp"
-      android:layout_marginStart="20dp"
+      android:layout_below="@id/post_difficulty_text"
+      android:layout_marginTop="5sp"
       android:layout_centerHorizontal="true">
     
     <TextView
@@ -65,7 +76,6 @@
       android:layout_height="wrap_content"
       android:layout_below="@id/best_score_text_layout"
       android:layout_marginTop="5sp"
-      android:layout_marginStart="20dp"
       android:layout_centerHorizontal="true">
     
     <TextView

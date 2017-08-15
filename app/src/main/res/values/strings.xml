@@ -15,6 +15,9 @@
   
   <!-- PostGameActivity -->
   <string name="new_best_score">New Best Score!</string>
+  <string name="easy_mode">Easy Mode</string>
+  <string name="normal_mode">Normal Mode</string>
+  <string name="hard_mode">Hard Mode</string>
   <string name="best_score">Best</string>
   <string name="average_score">Average</string>
   <string name="play_again">Play Again</string>
