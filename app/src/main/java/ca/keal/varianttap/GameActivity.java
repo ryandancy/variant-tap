@@ -352,8 +352,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
   private void toPostGameActivity() {
     Intent intent = new Intent(this, PostGameActivity.class);
-    intent.putExtra("SCORE", score);
-    intent.putExtra("DIFFICULTY", difficulty);
+    intent.putExtra(PostGameActivity.EXTRA_SCORE, score);
+    intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
     startActivity(intent);
   }
   

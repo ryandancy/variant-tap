@@ -302,10 +302,10 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     playButton.setText(showText);
   }
   
-  /** Go to {@link GameActivity}, setting the {@code "DIFFICULTY"} extra with the parameter. */
+  /** Go to {@link GameActivity}, setting the difficulty extra with the parameter. */
   private void toGameActivity(int difficulty) {
     Intent intent = new Intent(getActivity(), GameActivity.class);
-    intent.putExtra("DIFFICULTY", difficulty);
+    intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
     startActivity(intent);
     listener.afterToGameActivity(difficulty);
   }

@@ -12,8 +12,16 @@ import android.widget.TextView;
 public class PostGameActivity extends AppCompatActivity
     implements DifficultyButtonsFragment.OnFragmentInteractionListener {
   
-  // DO NOT CHANGE EVER - a change will break all local leaderboards
+  // DO NOT CHANGE THESE CONSTANTS EVER - changes will break all local leaderboards
+  
   private static final String SHARED_PREFS_LEADERBOARD_PREFIX = "local_leaderboard_";
+  
+  private static final String PREF_BEST_SCORE = "bestScore";
+  private static final String PREF_TOTAL_SCORE = "totalScore";
+  private static final String PREF_TIMES_PLAYED = "timesPlayed";
+  
+  public static final String EXTRA_SCORE = "SCORE";
+  public static final String EXTRA_DIFFICULTY = "DIFFICULTY";
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +30,9 @@ public class PostGameActivity extends AppCompatActivity
     
     // Get score from intent, set it to the score TextView
     
-    int score = getIntent().getExtras().getInt("SCORE", -1);
+    int score = getIntent().getExtras().getInt(EXTRA_SCORE, -1);
     if (score == -1) { // score was not in the extras
-      Log.e(getClass().getName(), "Intent did not have \"SCORE\" extra!");
+      Log.e(getClass().getName(), "Intent did not have \"" + EXTRA_SCORE + "\" extra!");
     }
     
     TextView scoreText = (TextView) findViewById(R.id.post_score_text);
@@ -32,9 +40,9 @@ public class PostGameActivity extends AppCompatActivity
     
     // Get difficulty from intent, set it to the difficulty TextView
     
-    int difficulty = getIntent().getExtras().getInt("DIFFICULTY", -1);
+    int difficulty = getIntent().getExtras().getInt(EXTRA_DIFFICULTY, -1);
     if (difficulty == -1) { // difficulty was not in the extras
-      Log.e(getClass().getName(), "Intent did not have \"DIFFICULTY\" extra!");
+      Log.e(getClass().getName(), "Intent did not have \"" + EXTRA_DIFFICULTY + "\" extra!");
     }
     
     String difficultyStr;
@@ -52,7 +60,7 @@ public class PostGameActivity extends AppCompatActivity
         difficultyStr = "";
         break;
       default:
-        Log.e(getClass().getName(), "Intent has nonsensical \"DIFFICULTY\" " + difficulty + "!");
+        Log.e(getClass().getName(), "Intent has nonsensical difficulty " + difficulty + "!");
         difficultyStr = "";
     }
     
@@ -66,9 +74,9 @@ public class PostGameActivity extends AppCompatActivity
     SharedPreferences prefs = getSharedPreferences(
         SHARED_PREFS_LEADERBOARD_PREFIX + difficulty, MODE_PRIVATE);
     
-    int bestScore = prefs.getInt("bestScore", 0); // TODO extract into constants? "SCORE" too?
-    int totalScore = prefs.getInt("totalScore", 0);
-    int timesPlayed = prefs.getInt("timesPlayed", 0);
+    int bestScore = prefs.getInt(PREF_BEST_SCORE, 0);
+    int totalScore = prefs.getInt(PREF_TOTAL_SCORE, 0);
+    int timesPlayed = prefs.getInt(PREF_TIMES_PLAYED, 0);
     
     totalScore += score;
     timesPlayed++;
@@ -94,11 +102,11 @@ public class PostGameActivity extends AppCompatActivity
       newBestScoreText.setVisibility(View.VISIBLE);
       newBestScoreText.startAnimation(pulseAnim);
       
-      editor.putInt("bestScore", score);
+      editor.putInt(PREF_BEST_SCORE, score);
     }
     
-    editor.putInt("totalScore", totalScore);
-    editor.putInt("timesPlayed", timesPlayed);
+    editor.putInt(PREF_TOTAL_SCORE, totalScore);
+    editor.putInt(PREF_TIMES_PLAYED, timesPlayed);
     
     editor.apply();
   }
