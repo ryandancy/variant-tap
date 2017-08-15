@@ -228,13 +228,13 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
         toggleDifficultyButtons();
         break;
       case R.id.easy_button:
-        toGameActivity(4);
+        toGameActivity(0);
         break;
       case R.id.normal_button:
-        toGameActivity(6);
+        toGameActivity(1);
         break;
       case R.id.hard_button:
-        toGameActivity(9);
+        toGameActivity(2);
         break;
     }
   }

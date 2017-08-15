@@ -112,8 +112,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       }
     });
     
-    // There are 3 difficulties: 4 (easy), 6 (normal) and 9 (hard). The numbers are the number of
-    // images in imgs -- the more images the harder it is.
+    // There are 3 difficulties: 0 (easy), 1 (normal) and 2 (hard). Each successive difficulty has
+    // a higher number of images: easy has 4 images, normal has 6, and hard has 9.
     
     // Get the difficulty from the Intent
     int difficulty = getIntent().getIntExtra("DIFFICULTY", -1);
@@ -128,15 +128,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     // Calculate rows/columns
     int rows, columns;
     switch (difficulty) {
-      case 4:
+      case 0: // easy
         rows = 2;
         columns = 2;
         break;
-      case 6:
+      case 1: // normal
         rows = 2;
         columns = 3;
         break;
-      case 9:
+      case 2: // hard
         rows = 3;
         columns = 3;
         break;
@@ -154,7 +154,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     // Add ImageSwitchers to imgsGrid
     
-    imgs = new ImageSwitcher[difficulty];
+    int numImgs = rows * columns;
+    imgs = new ImageSwitcher[numImgs];
     
     // Create the animations outside the loop so as not to load them multiple times
     // The out animation is just the in animation reversed, so we use ReverseInterpolator.
@@ -162,7 +163,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     Animation out = AnimationUtils.loadAnimation(this, R.anim.grow_in);
     out.setInterpolator(new ReverseInterpolator(out.getInterpolator()));
     
-    for (int i = 0; i < difficulty; i++) {
+    for (int i = 0; i < numImgs; i++) {
       // Construct the ImageSwitcher and add it to the grid
       
       GridLayout.Spec rowSpec = GridLayout.spec(GridLayout.UNDEFINED);
