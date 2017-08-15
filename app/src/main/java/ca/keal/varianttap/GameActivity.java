@@ -114,8 +114,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     // There are 3 difficulties: 4 (easy), 6 (normal) and 9 (hard). The numbers are the number of
     // images in imgs -- the more images the harder it is.
-    // TODO: get difficulty from intent
-    int difficulty = 4; // TEMPORARY
+    
+    // Get the difficulty from the Intent
+    int difficulty = getIntent().getIntExtra("DIFFICULTY", -1);
+    if (difficulty == -1) { // no difficulty extra in the intent
+      Log.e(getClass().getName(), "Intent did not have \"DIFFICULTY\" extra!");
+    }
     
     // Initialize the grid of images
     

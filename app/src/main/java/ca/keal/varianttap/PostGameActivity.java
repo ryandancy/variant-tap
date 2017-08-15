@@ -75,7 +75,8 @@ public class PostGameActivity extends AppCompatActivity {
    */
   public void playAgain(View v) {
     Intent intent = new Intent(this, GameActivity.class);
-    // TODO set a difficulty here
+    // TODO set a difficulty here - always easy for now!
+    intent.putExtra("DIFFICULTY", 4);
     startActivity(intent);
     finish(); // remove this activity from the stack so the user can't navigate back to it
   }

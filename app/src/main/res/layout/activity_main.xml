@@ -57,6 +57,7 @@
         android:textSize="@dimen/button_text_size"
         android:textColor="@color/textLight"
         android:background="@color/colorPrimaryDark"
+        android:onClick="onEasyClick"
         style="?android:attr/buttonBarButtonStyle" />
     
     <Button
@@ -68,8 +69,9 @@
         android:textSize="@dimen/button_text_size"
         android:textColor="@color/textLight"
         android:background="@color/colorPrimaryDark"
+        android:onClick="onNormalClick"
         style="?android:attr/buttonBarButtonStyle" />
-  
+    
     <Button
         android:id="@+id/hard_button"
         android:layout_width="match_parent"
@@ -79,8 +81,9 @@
         android:textSize="@dimen/button_text_size"
         android:textColor="@color/textLight"
         android:background="@color/colorPrimaryDark"
+        android:onClick="onHardClick"
         style="?android:attr/buttonBarButtonStyle" />
-    
+      
   </LinearLayout>
   
 </RelativeLayout>

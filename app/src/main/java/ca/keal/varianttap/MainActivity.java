@@ -1,5 +1,6 @@
 package ca.keal.varianttap;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -135,6 +136,26 @@ public class MainActivity extends AppCompatActivity {
     });
     
     playButton.setText(getString(R.string.play));
+  }
+  
+  /** Go to {@link GameActivity}, setting the {@code "DIFFICULTY"} extra with the parameter. */
+  private void toGameActivity(int difficulty) {
+    Intent intent = new Intent(this, GameActivity.class);
+    intent.putExtra("DIFFICULTY", difficulty);
+    startActivity(intent);
+    hideDifficultyButtons(); // don't show them when back button is pressed post-game
+  }
+  
+  public void onEasyClick(View v) {
+    toGameActivity(4);
+  }
+  
+  public void onNormalClick(View v) {
+    toGameActivity(6);
+  }
+  
+  public void onHardClick(View v) {
+    toGameActivity(9);
   }
   
 }
