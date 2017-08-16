@@ -5,11 +5,13 @@
   <color name="colorAccent">#d500f9</color>
   <!-- TODO the accent colour should probably not be purple -->
   
-  <color name="gameMain">@color/colorAccent</color>
+  <color name="gameMain">@color/colorPrimary</color>
   <color name="gamePausedMain">#e040fb</color>
   
-  <color name="countdownCircleFinished">@color/gameMain</color>
+  <color name="countdownCircleText">@color/countdownCircleFinished</color>
+  <color name="countdownCircleFinished">@color/colorAccent</color>
   <color name="countdownCircleUnfinished">#bbbbbb</color>
+  <color name="countdownCirclePausedText">@color/countdownCirclePausedFinished</color>
   <color name="countdownCirclePausedFinished">@color/gamePausedMain</color>
   <color name="countdownCirclePausedUnfinished">#555555</color>
   

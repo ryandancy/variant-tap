@@ -389,13 +389,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     pauseOverlay.setVisibility(View.VISIBLE);
     
     // Change colours - TODO abstract the colours into themes for less repitition???
+    countdownCircle.setTextColor(
+        ResourcesCompat.getColor(getResources(), R.color.countdownCirclePausedText, null));
     countdownCircle.setFinishedStrokeColor(
         ResourcesCompat.getColor(getResources(), R.color.countdownCirclePausedFinished, null));
     countdownCircle.setUnfinishedStrokeColor(
         ResourcesCompat.getColor(getResources(), R.color.countdownCirclePausedUnfinished, null));
     
     int gameMainColor = ResourcesCompat.getColor(getResources(), R.color.gamePausedMain, null);
-    countdownCircle.setTextColor(gameMainColor);
     scoreText.setTextColor(gameMainColor);
     scoreLabel.setTextColor(gameMainColor);
     
@@ -465,13 +466,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     // Reset the colours - undo the changes in pause()
     
+    countdownCircle.setTextColor(
+        ResourcesCompat.getColor(getResources(), R.color.countdownCircleText, null));
     countdownCircle.setFinishedStrokeColor(
         ResourcesCompat.getColor(getResources(), R.color.countdownCircleFinished, null));
     countdownCircle.setUnfinishedStrokeColor(
         ResourcesCompat.getColor(getResources(), R.color.countdownCircleUnfinished, null));
-  
+    
     int gameMainColor = ResourcesCompat.getColor(getResources(), R.color.gameMain, null);
-    countdownCircle.setTextColor(gameMainColor);
     scoreText.setTextColor(gameMainColor);
     scoreLabel.setTextColor(gameMainColor);
     

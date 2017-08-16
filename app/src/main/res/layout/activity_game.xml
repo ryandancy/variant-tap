@@ -17,7 +17,7 @@
       android:layout_margin="@dimen/countdown_circle_margin"
       app:donut_text=""
       app:donut_suffix_text=""
-      app:donut_text_color="@color/gameMain"
+      app:donut_text_color="@color/countdownCircleText"
       app:donut_text_size="24dp"
       app:donut_circle_starting_degree="-90"
       app:donut_finished_color="@color/countdownCircleFinished"
