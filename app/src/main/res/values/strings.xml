@@ -15,6 +15,9 @@
   <string name="pause_button_desc">Pause button</string>
   <string name="paused">Paused</string>
   <string name="unpause">Resume Game</string>
+  <string name="quit">Quit Game</string>
+  <string name="quit_message">Are you sure you want to quit the game?</string>
+  <string name="quit_action">Yes, quit</string>
   
   <!-- PostGameActivity -->
   <string name="new_best_score">New Best Score!</string>

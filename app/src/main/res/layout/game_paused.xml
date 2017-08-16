@@ -17,7 +17,7 @@
       android:layerType="software"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintVertical_bias="0.4"
+      app:layout_constraintVertical_bias="0.325"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       tools:ignore="SpUsage" />
@@ -35,9 +35,23 @@
       android:onClick="startUnpause"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintVertical_bias="0.7"
+      app:layout_constraintVertical_bias="0.625"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent" />
+  
+  <Button
+      android:id="@+id/quit_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+      android:text="@string/quit"
+      android:textColor="@color/textSubtleOnDark"
+      android:textSize="@dimen/button_text_size"
+      android:background="@android:color/transparent"
+      android:onClick="quit"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/unpause_button" />
   
   <TextView
       android:id="@+id/unpause_countdown_text"

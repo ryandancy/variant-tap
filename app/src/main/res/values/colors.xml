@@ -19,6 +19,7 @@
   
   <color name="textDark">#000000</color>
   <color name="textLight">#eeeeee</color>
+  <color name="textSubtleOnDark">#bbbbbb</color>
   
   <color name="pausedBackground">#212121</color>
 </resources>

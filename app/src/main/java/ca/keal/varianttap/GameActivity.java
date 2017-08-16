@@ -4,6 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.util.Pair;
@@ -47,6 +50,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private ConstraintLayout pauseOverlay;
   private TextView pausedText;
   private Button unpauseButton;
+  private Button quitButton;
   private TextView unpauseCountdownText;
   
   /** The array of images in imgsGrid. */
@@ -82,6 +86,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     pauseOverlay = (ConstraintLayout) findViewById(R.id.pause_overlay);
     pausedText = (TextView) findViewById(R.id.paused_text);
     unpauseButton = (Button) findViewById(R.id.unpause_button);
+    quitButton = (Button) findViewById(R.id.quit_button);
     unpauseCountdownText = (TextView) findViewById(R.id.unpause_countdown_text);
     
     countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.countdown);
@@ -421,9 +426,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   public void startUnpause(View v) {
     if (!isPaused) return;
     
-    // Replace the paused text + unpause button with the unpause countdown text
+    // Replace the paused text + buttons with the unpause countdown text
     pausedText.setVisibility(View.INVISIBLE);
     unpauseButton.setVisibility(View.INVISIBLE);
+    quitButton.setVisibility(View.INVISIBLE);
     unpauseCountdownText.setVisibility(View.VISIBLE);
     
     // Make and play the unpause animation
@@ -455,6 +461,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     unpauseCountdownText.setVisibility(View.INVISIBLE);
     pausedText.setVisibility(View.VISIBLE);
     unpauseButton.setVisibility(View.VISIBLE);
+    quitButton.setVisibility(View.VISIBLE);
     
     // Reset the colours - undo the changes in pause()
     
@@ -476,6 +483,24 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     isPaused = false;
     allowImgTaps = true;
+  }
+  
+  /**
+   * Quit the game and return to the main menu. This consists of sending a confirmation dialog, then
+   * returning to MainActivity if an affirmative response is received.
+   */
+  public void quit(View v) {
+    // Send a confirmation dialog
+    new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo_Dialog))
+    .setMessage(R.string.quit_message)
+    .setPositiveButton(R.string.quit_action, new DialogInterface.OnClickListener() {
+      public void onClick(DialogInterface dialog, int which) {
+        // Wipe this activity off the stack, which will return the user to MainActivity
+        finish();
+      }
+    })
+    .setNegativeButton(android.R.string.cancel, null)
+    .show();
   }
   
 }
