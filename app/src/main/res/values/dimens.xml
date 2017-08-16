@@ -15,7 +15,11 @@
   <dimen name="button_text_size">20sp</dimen>
   
   <!-- Note: this should be exactly the correct size to fit in the screen width (and margins) -->
+  <!-- This may need i18n for different values of @string/app_name_lowercase! -->
   <dimen name="main_menu_title_size">68dp</dimen>
+  
+  <dimen name="paused_text_size">80dp</dimen>
+  <dimen name="unpause_countdown_text_size">200dp</dimen>
   
   <dimen name="post_game_stats_size">20sp</dimen>
 </resources>

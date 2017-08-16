@@ -12,6 +12,8 @@
   
   <!-- GameActivity -->
   <string name="score_label">Score</string>
+  <string name="paused">Paused</string>
+  <string name="unpause">Resume Game</string>
   
   <!-- PostGameActivity -->
   <string name="new_best_score">New Best Score!</string>

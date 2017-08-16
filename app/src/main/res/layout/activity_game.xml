@@ -53,4 +53,8 @@
       android:textColor="@color/colorPrimary"
       android:textSize="20sp" />
   
+  <include
+      layout="@layout/game_paused"
+      android:visibility="invisible" />
+  
 </RelativeLayout>
