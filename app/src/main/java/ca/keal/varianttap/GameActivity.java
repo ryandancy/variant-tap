@@ -406,6 +406,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     scoreLabel.bringToFront();
   }
   
+  @Override
+  public void onBackPressed() {
+    // Pause on back button press
+    // TODO a way to quit from the pause overlay
+    pause(null);
+  }
+  
   /**
    * Start the process of unpausing; i.e., start the 3..2..1 animation counting down to unpausing.
    */
