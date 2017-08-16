@@ -17,11 +17,12 @@
       android:layout_margin="@dimen/countdown_circle_margin"
       app:donut_text=""
       app:donut_suffix_text=""
-      app:donut_text_color="@color/colorAccent"
+      app:donut_text_color="@color/gameMain"
       app:donut_text_size="24dp"
       app:donut_circle_starting_degree="-90"
-      app:donut_finished_color="@color/colorAccent"
+      app:donut_finished_color="@color/countdownCircleFinished"
       app:donut_finished_stroke_width="@dimen/countdown_circle_width"
+      app:donut_unfinished_color="@color/countdownCircleUnfinished"
       app:donut_unfinished_stroke_width="@dimen/countdown_circle_width" />
   
   <android.support.v7.widget.GridLayout
@@ -39,18 +40,19 @@
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
       android:text="0"
-      android:textColor="@color/colorPrimary"
+      android:textColor="@color/gameMain"
       android:textSize="70sp"
       tools:ignore="HardcodedText" />
   
   <TextView
+      android:id="@+id/score_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_above="@id/score_text"
       android:layout_centerHorizontal="true"
       android:layout_marginBottom="-20dp"
       android:text="@string/score_label"
-      android:textColor="@color/colorPrimary"
+      android:textColor="@color/gameMain"
       android:textSize="20sp" />
   
   <ImageButton
@@ -64,9 +66,11 @@
       android:adjustViewBounds="true"
       android:scaleType="fitCenter"
       android:contentDescription="@string/pause_button_desc"
+      android:onClick="pause"
       tools:ignore="RtlHardcoded" />
   
   <include
+      android:id="@+id/pause_overlay"
       layout="@layout/game_paused"
       android:visibility="invisible" />
   

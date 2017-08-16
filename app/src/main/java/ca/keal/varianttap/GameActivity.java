@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayout;
 import android.util.Log;
@@ -39,6 +41,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   /** Whether to process the user's taps on the images. */
   private boolean allowImgTaps;
   
+  private boolean isPaused;
+  private ConstraintLayout pauseOverlay;
+  
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
   
@@ -48,6 +53,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private ObjectAnimator resetCountdownAnim;
   
   private TextView scoreText;
+  private TextView scoreLabel;
   
   private ImageSupplier imgSupplier;
   
@@ -62,9 +68,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     round = 0;
     score = 0;
     allowImgTaps = false;
+    isPaused = false;
     
+    pauseOverlay = (ConstraintLayout) findViewById(R.id.pause_overlay);
     countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
     scoreText = (TextView) findViewById(R.id.score_text);
+    scoreLabel = (TextView) findViewById(R.id.score_label);
     
     countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.countdown);
     countdownAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -355,6 +364,38 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     intent.putExtra(PostGameActivity.EXTRA_SCORE, score);
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
     startActivity(intent);
+  }
+  
+  /**
+   * Pause the game; i.e., pause the animations and bring up the pause overlay.
+   */
+  public void pause(View v) {
+    if (isPaused) return; // can't pause if it's already paused
+    
+    isPaused = true;
+    allowImgTaps = false; // no tapping on the images when it's paused
+    
+    if (countdownAnim.isRunning()) countdownAnim.pause();
+    if (resetCountdownAnim.isRunning()) resetCountdownAnim.pause();
+    // Note: not pausing ImageSwitcher animations - TODO is doing so possible? worth it?
+    
+    pauseOverlay.setVisibility(View.VISIBLE);
+    
+    // Change colours - TODO abstract the colours into themes for less repitition???
+    countdownCircle.setFinishedStrokeColor(
+        ResourcesCompat.getColor(getResources(), R.color.countdownCirclePausedFinished, null));
+    countdownCircle.setUnfinishedStrokeColor(
+        ResourcesCompat.getColor(getResources(), R.color.countdownCirclePausedUnfinished, null));
+    
+    int gameMainColor = ResourcesCompat.getColor(getResources(), R.color.gamePausedMain, null);
+    countdownCircle.setTextColor(gameMainColor);
+    scoreText.setTextColor(gameMainColor);
+    scoreLabel.setTextColor(gameMainColor);
+    
+    // Bring countdownCircle, scoreText, scoreLabel on top of pause overlay
+    countdownCircle.bringToFront();
+    scoreText.bringToFront();
+    scoreLabel.bringToFront();
   }
   
 }
