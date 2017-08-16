@@ -14,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.util.Pair;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -48,6 +47,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private ConstraintLayout pauseOverlay;
   private TextView pausedText;
   private Button unpauseButton;
+  private TextView unpauseCountdownText;
   
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
@@ -74,13 +74,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     score = 0;
     allowImgTaps = false;
     isPaused = false;
+  
+    countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
+    scoreText = (TextView) findViewById(R.id.score_text);
+    scoreLabel = (TextView) findViewById(R.id.score_label);
     
     pauseOverlay = (ConstraintLayout) findViewById(R.id.pause_overlay);
     pausedText = (TextView) findViewById(R.id.paused_text);
     unpauseButton = (Button) findViewById(R.id.unpause_button);
-    countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
-    scoreText = (TextView) findViewById(R.id.score_text);
-    scoreLabel = (TextView) findViewById(R.id.score_label);
+    unpauseCountdownText = (TextView) findViewById(R.id.unpause_countdown_text);
     
     countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.countdown);
     countdownAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -388,7 +390,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     pauseOverlay.setVisibility(View.VISIBLE);
     
-    // Change colours - TODO abstract the colours into themes for less repitition???
+    // Change colours - TODO abstract the colours into themes for less repetition???
     countdownCircle.setTextColor(
         ResourcesCompat.getColor(getResources(), R.color.countdownCirclePausedText, null));
     countdownCircle.setFinishedStrokeColor(
@@ -419,21 +421,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   public void startUnpause(View v) {
     if (!isPaused) return;
     
-    // Change the layout for the unpause countdown
-    // TODO make another TextView for the unpause countdown instead of using pausedText
-    
-    // Bigger text for the 3..2..1 animation
-    pausedText.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(
-        R.dimen.unpause_countdown_text_size));
-     
-    // Move pausedText to the centre
-    ConstraintLayout.LayoutParams pausedTextParams =
-        (ConstraintLayout.LayoutParams) pausedText.getLayoutParams();
-    final float previousVerticalBias = pausedTextParams.verticalBias; // for resetting
-    pausedTextParams.verticalBias = 0.5f; // hopefully this works
-    
-    // Remove the unpause button
-    unpauseButton.setVisibility(View.GONE);
+    // Replace the paused text + unpause button with the unpause countdown text
+    pausedText.setVisibility(View.INVISIBLE);
+    unpauseButton.setVisibility(View.INVISIBLE);
+    unpauseCountdownText.setVisibility(View.VISIBLE);
     
     // Make and play the unpause animation
     ValueAnimator unpauseAnim = ValueAnimator.ofFloat(3f, 0f);
@@ -444,9 +435,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         
         if (countdownNum == 0) {
           // The animation's finished
-          unpause(previousVerticalBias);
+          unpause();
         } else {
-          pausedText.setText(String.valueOf(countdownNum));
+          unpauseCountdownText.setText(String.valueOf(countdownNum));
         }
       }
     });
@@ -456,19 +447,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
   /**
    * Finish unpausing; i.e. hide the overlay, reset the layout, and unpause the animations.
-   * @param previousPausedTextVerticalBias pausedText's vertical bias before the unpause animation.
    */
-  public void unpause(float previousPausedTextVerticalBias) {
+  public void unpause() {
     pauseOverlay.setVisibility(View.INVISIBLE);
     
     // Reset the overlay - undo the changes in startUnpause()
-    
-    pausedText.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(
-        R.dimen.paused_text_size));
-    ((ConstraintLayout.LayoutParams) pausedText.getLayoutParams()).verticalBias
-        = previousPausedTextVerticalBias;
-    pausedText.setText(getString(R.string.paused));
-    
+    unpauseCountdownText.setVisibility(View.INVISIBLE);
+    pausedText.setVisibility(View.VISIBLE);
     unpauseButton.setVisibility(View.VISIBLE);
     
     // Reset the colours - undo the changes in pause()
