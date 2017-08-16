@@ -27,5 +27,7 @@
        go. Other times are reset_countdown_max_ms * fraction_of_circle_to_go. -->
   <integer name="reset_countdown_max_ms">500</integer>
   
+  <integer name="unpause_delay_ms">3000</integer>
+  
   <integer name="after_lose_wait_time_ms">1000</integer>
 </resources>
