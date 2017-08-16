@@ -12,6 +12,7 @@
   
   <!-- GameActivity -->
   <string name="score_label">Score</string>
+  <string name="pause_button_desc">Pause button</string>
   <string name="paused">Paused</string>
   <string name="unpause">Resume Game</string>
   

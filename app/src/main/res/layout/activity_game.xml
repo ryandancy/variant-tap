@@ -53,6 +53,19 @@
       android:textColor="@color/colorPrimary"
       android:textSize="20sp" />
   
+  <ImageButton
+      android:layout_width="25dp"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentRight="true"
+      android:layout_margin="20dp"
+      android:src="@drawable/pause"
+      android:background="@android:color/transparent"
+      android:adjustViewBounds="true"
+      android:scaleType="fitCenter"
+      android:contentDescription="@string/pause_button_desc"
+      tools:ignore="RtlHardcoded" />
+  
   <include
       layout="@layout/game_paused"
       android:visibility="invisible" />
