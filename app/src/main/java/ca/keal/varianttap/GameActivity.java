@@ -64,16 +64,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private TextView scoreText;
   private TextView scoreLabel;
   
-  private ImageSupplier imgSupplier;
-  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_game);
     
     // Initialize everything
-  
-    imgSupplier = new ImageSupplier(getAssets());
+    
     round = 0;
     score = 0;
     allowImgTaps = false;
@@ -315,10 +312,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
    * others have the corresponding normal image.
    */
   private void updateImages() {
-    Pair<Drawable, Drawable> normalAndVariant = imgSupplier.getRandomPair();
+    Pair<Drawable, Drawable> normalAndVariant = ImageSupplier.getInstance(this).getRandomPair();
     Drawable normal = normalAndVariant.first, variant = normalAndVariant.second;
     
-    variantId = imgSupplier.random.nextInt(imgs.length);
+    variantId = ImageSupplier.getInstance(this).random.nextInt(imgs.length);
     
     for (int i = 0; i < imgs.length; i++) {
       imgs[i].setImageDrawable(i == variantId ? variant : normal);

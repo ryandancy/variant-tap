@@ -1,5 +1,6 @@
 package ca.keal.varianttap;
 
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -17,8 +18,9 @@ import java.util.Random;
  */
 class ImageSupplier {
   
-  // TODO if performance is bad, maybe don't load all the images but instead load their filenames
   // TODO "packages" of images
+  
+  private static ImageSupplier instance = null;
   
   Random random = new Random();
   
@@ -28,12 +30,24 @@ class ImageSupplier {
   private List<Pair<Drawable, Drawable>> imgs = new ArrayList<>();
   
   /**
+   * Get the global ImageSupplier instance, creating it if necessary.
+   * @param context The Context that an AssetManager can be gotten from if necessary.
+   * @return the global ImageSupplier instance.
+   */
+  static ImageSupplier getInstance(Context context) {
+    if (instance == null) {
+      instance = new ImageSupplier(context.getAssets());
+    }
+    return instance;
+  }
+  
+  /**
    * Initialize this {@link ImageSupplier} by loading the images from {@code assets}. There must be
    * a normals/ and variants/ directory in the assets directory, and their contents must have the
-   * same names.
-   * @param assets - An {@link AssetManager}, most likely accessed via {@code getAssets()}.
+   * same names. For internal use.
+   * @param assets An {@link AssetManager}, most likely accessed via {@code getAssets()}.
    */
-  ImageSupplier(AssetManager assets) {
+  private ImageSupplier(AssetManager assets) {
     try {
       load(assets);
       Log.i(getClass().getName(), imgs.size() + " normal/variant image pairs loaded successfully.");
@@ -70,6 +84,14 @@ class ImageSupplier {
    */
   Pair<Drawable, Drawable> getRandomPair() {
     return imgs.get(random.nextInt(imgs.size()));
+  }
+  
+  /**
+   * @return A random normal or variant. Please don't modify it.
+   */
+  Drawable getRandomImage() {
+    Pair<Drawable, Drawable> possible = getRandomPair();
+    return random.nextBoolean() ? possible.first : possible.second;
   }
   
 }
