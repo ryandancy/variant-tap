@@ -3,6 +3,21 @@
 <resources>
   <!-- TODO extract most (all?) dimensions -->
   
+  <dimen name="thrown_image_size">40dp</dimen>
+  
+  <!-- These define range of vertical biases thrown images can have without overlapping anything -->
+  <item name="min_thrown_image_vertical_bias" type="dimen" format="float">0.3</item>
+  <item name="max_thrown_image_vertical_bias" type="dimen" format="float">0.7</item>
+  <item name="min_start_min_thrown_image_bias_diff" type="dimen" format="float">0.2</item>
+  
+  <!-- These define the range of horizontal biases the horizontal bias at the vertex can be -->
+  <item name="min_thrown_image_horizontal_bias" type="dimen" format="float">0.6</item>
+  <item name="max_thrown_image_horizontal_bias" type="dimen" format="float">1.2</item>
+  
+  <!-- These define the range of number of times the thrown images can rotate -->
+  <item name="min_thrown_image_rotate_times" type="dimen" format="float">0.3</item>
+  <item name="max_thrown_image_rotate_times" type="dimen" format="float">1.8</item>
+  
   <dimen name="countdown_circle_width">10dp</dimen>
   <dimen name="countdown_circle_diameter">100dp</dimen>
   <dimen name="countdown_circle_margin">20dp</dimen>
