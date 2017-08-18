@@ -24,15 +24,12 @@
   
   <Button
       android:id="@+id/unpause_button"
+      style="@style/ButtonStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="@dimen/button_margin_sides"
-      android:layout_marginRight="@dimen/button_margin_sides"
       android:background="@color/gamePausedMain"
       android:onClick="startUnpause"
       android:text="@string/unpause"
-      android:textColor="@color/textLight"
-      android:textSize="@dimen/button_text_size"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
@@ -41,6 +38,7 @@
   
   <Button
       android:id="@+id/quit_button"
+      style="@style/ButtonStyle"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
@@ -48,7 +46,6 @@
       android:onClick="quit"
       android:text="@string/quit"
       android:textColor="@color/textSubtleOnDark"
-      android:textSize="@dimen/button_text_size"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@id/unpause_button" />

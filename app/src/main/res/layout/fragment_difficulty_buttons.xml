@@ -7,12 +7,10 @@
   
   <Button
       android:id="@+id/play_button"
+      style="@style/ButtonStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:background="@color/colorPrimaryDark"
-      android:textColor="@color/textLight"
-      android:textSize="@dimen/button_text_size" />
+      android:layout_alignParentBottom="true" />
   
   <LinearLayout
       android:id="@+id/difficulty_button_layout"
@@ -28,35 +26,26 @@
     
     <Button
         android:id="@+id/easy_button"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:text="@string/easy"
-        android:textColor="@color/textLight"
-        android:textSize="@dimen/button_text_size" />
+        android:text="@string/easy" />
     
     <Button
         android:id="@+id/normal_button"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/difficulty_buttons_spacing"
-        android:background="@color/colorPrimaryDark"
-        android:text="@string/normal"
-        android:textColor="@color/textLight"
-        android:textSize="@dimen/button_text_size" />
+        android:text="@string/normal" />
     
     <Button
         android:id="@+id/hard_button"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/difficulty_buttons_spacing"
-        android:background="@color/colorPrimaryDark"
-        android:text="@string/hard"
-        android:textColor="@color/textLight"
-        android:textSize="@dimen/button_text_size" />
+        android:text="@string/hard" />
     
   </LinearLayout>
   

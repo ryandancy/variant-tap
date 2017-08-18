@@ -43,8 +43,6 @@
   
   <!-- TEXT SIZES (and other textual dimensions) -->
   
-  <dimen name="button_text_size">20sp</dimen>
-  
   <!-- Note: this should be exactly the correct size to fit in the screen width (and margins) -->
   <!-- This may need i18n for different values of @string/app_name_lowercase! -->
   <!-- TODO: Generate main_menu_title_size in code, don't hardcode it -->
