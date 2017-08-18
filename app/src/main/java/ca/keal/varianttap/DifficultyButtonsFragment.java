@@ -137,7 +137,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     }
     if (hideText == null) {
       // default to "close"
-      hideText = getActivity().getString(R.string.close_difficulty_btns);
+      hideText = getString(R.string.close_difficulty_btns);
     }
     
     a.recycle();
@@ -181,7 +181,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
           Button button = difficultyBtns.get(i);
         
           float fromYDelta = Math.abs(button.getY() - (playButton.getY() - playButton.getHeight()));
-          float duration = Util.pxToDp(getActivity(), fromYDelta) / 100 * slideUpSpeed;
+          float duration = Util.pxToDp(getResources(), fromYDelta) / 100 * slideUpSpeed;
         
           TranslateAnimation anim = new TranslateAnimation(0, 0, fromYDelta, 0);
           anim.setInterpolator(new DecelerateInterpolator());

@@ -1,6 +1,7 @@
 package ca.keal.varianttap;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.annotation.DimenRes;
 import android.util.TypedValue;
 
@@ -11,11 +12,19 @@ final class Util {
   private Util() {}
   
   static float pxToDp(Context context, float px) {
-    return px / context.getResources().getDisplayMetrics().density;
+    return pxToDp(context.getResources(), px);
+  }
+  
+  static float pxToDp(Resources resources, float px) {
+    return px / resources.getDisplayMetrics().density;
   }
   
   static float dpToPx(Context context, float dp) {
-    return dp * context.getResources().getDisplayMetrics().density;
+    return dpToPx(context.getResources(), dp);
+  }
+  
+  static float dpToPx(Resources resources, float dp) {
+    return dp * resources.getDisplayMetrics().density;
   }
   
   static float getFloatResource(Context context, @DimenRes int floatRes) {
