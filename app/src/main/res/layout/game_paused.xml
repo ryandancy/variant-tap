@@ -11,15 +11,15 @@
       android:id="@+id/paused_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layerType="software"
       android:text="@string/paused"
       android:textColor="@color/textLight"
       android:textSize="@dimen/paused_text_size"
-      android:layerType="software"
-      app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintVertical_bias="0.325"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.325"
       tools:ignore="SpUsage" />
   
   <Button
@@ -28,27 +28,27 @@
       android:layout_height="wrap_content"
       android:layout_marginLeft="20dp"
       android:layout_marginRight="20dp"
+      android:background="@color/gamePausedMain"
+      android:onClick="startUnpause"
       android:text="@string/unpause"
       android:textColor="@color/textLight"
       android:textSize="@dimen/button_text_size"
-      android:background="@color/gamePausedMain"
-      android:onClick="startUnpause"
-      app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintVertical_bias="0.625"
       app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent" />
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.625" />
   
   <Button
       android:id="@+id/quit_button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
+      android:background="@android:color/transparent"
+      android:onClick="quit"
       android:text="@string/quit"
       android:textColor="@color/textSubtleOnDark"
       android:textSize="@dimen/button_text_size"
-      android:background="@android:color/transparent"
-      android:onClick="quit"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@id/unpause_button" />
@@ -57,14 +57,14 @@
       android:id="@+id/unpause_countdown_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:visibility="invisible"
       android:textColor="@color/textLight"
       android:textSize="@dimen/unpause_countdown_text_size"
-      app:layout_constraintTop_toTopOf="parent"
+      android:visibility="invisible"
       app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintVertical_bias="0.5"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.5"
       tools:ignore="SpUsage" />
   
 </android.support.constraint.ConstraintLayout>

@@ -10,54 +10,54 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
+      android:background="@color/colorPrimaryDark"
       android:textColor="@color/textLight"
-      android:textSize="@dimen/button_text_size"
-      android:background="@color/colorPrimaryDark" />
+      android:textSize="@dimen/button_text_size" />
   
   <LinearLayout
       android:id="@+id/difficulty_button_layout"
-      android:orientation="vertical"
+      style="?android:attr/buttonBarStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_above="@id/play_button"
       android:layout_marginBottom="10dp"
-      android:visibility="invisible"
-      style="?android:attr/buttonBarStyle">
+      android:orientation="vertical"
+      android:visibility="invisible">
     
     <!-- TODO consistent button style (with rounded corners and cool stuff like that!) -->
     
     <Button
         android:id="@+id/easy_button"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/easy"
-        android:textSize="@dimen/button_text_size"
-        android:textColor="@color/textLight"
         android:background="@color/colorPrimaryDark"
-        style="?android:attr/buttonBarButtonStyle" />
+        android:text="@string/easy"
+        android:textColor="@color/textLight"
+        android:textSize="@dimen/button_text_size" />
     
     <Button
         android:id="@+id/normal_button"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/normal"
-        android:textSize="@dimen/button_text_size"
-        android:textColor="@color/textLight"
         android:background="@color/colorPrimaryDark"
-        style="?android:attr/buttonBarButtonStyle" />
+        android:text="@string/normal"
+        android:textColor="@color/textLight"
+        android:textSize="@dimen/button_text_size" />
     
     <Button
         android:id="@+id/hard_button"
+        style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/hard"
-        android:textSize="@dimen/button_text_size"
-        android:textColor="@color/textLight"
         android:background="@color/colorPrimaryDark"
-        style="?android:attr/buttonBarButtonStyle" />
-  
+        android:text="@string/hard"
+        android:textColor="@color/textLight"
+        android:textSize="@dimen/button_text_size" />
+    
   </LinearLayout>
   
 </RelativeLayout>

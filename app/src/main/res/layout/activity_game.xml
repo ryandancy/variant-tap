@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ca.keal.varianttap.GameActivity">
@@ -12,33 +12,33 @@
       android:id="@+id/countdown_circle"
       android:layout_width="@dimen/countdown_circle_diameter"
       android:layout_height="@dimen/countdown_circle_diameter"
-      android:layout_centerHorizontal="true"
       android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true"
       android:layout_margin="@dimen/countdown_circle_margin"
-      app:donut_text=""
-      app:donut_suffix_text=""
-      app:donut_text_color="@color/countdownCircleText"
-      app:donut_text_size="24dp"
       app:donut_circle_starting_degree="-90"
       app:donut_finished_color="@color/countdownCircleFinished"
       app:donut_finished_stroke_width="@dimen/countdown_circle_width"
+      app:donut_suffix_text=""
+      app:donut_text=""
+      app:donut_text_color="@color/countdownCircleText"
+      app:donut_text_size="24dp"
       app:donut_unfinished_color="@color/countdownCircleUnfinished"
       app:donut_unfinished_stroke_width="@dimen/countdown_circle_width" />
   
   <android.support.v7.widget.GridLayout
       android:id="@+id/imgs_grid"
-      android:layout_centerInParent="true"
-      android:padding="@dimen/grid_padding"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content" />
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:padding="@dimen/grid_padding" />
   
   <TextView
       android:id="@+id/score_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:paddingBottom="10dp"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
+      android:paddingBottom="10dp"
       android:text="0"
       android:textColor="@color/gameMain"
       android:textSize="70sp"
@@ -58,15 +58,15 @@
   <ImageButton
       android:layout_width="25dp"
       android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
       android:layout_alignParentRight="true"
+      android:layout_alignParentTop="true"
       android:layout_margin="20dp"
-      android:src="@drawable/pause"
-      android:background="@android:color/transparent"
       android:adjustViewBounds="true"
-      android:scaleType="fitCenter"
+      android:background="@android:color/transparent"
       android:contentDescription="@string/pause_button_desc"
       android:onClick="pause"
+      android:scaleType="fitCenter"
+      android:src="@drawable/pause"
       tools:ignore="RtlHardcoded" />
   
   <include

@@ -2,10 +2,10 @@
 <!-- TODO maybe all the text shouldn't be the same color??? -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="ca.keal.varianttap.PostGameActivity">
   
   <TextView
@@ -17,12 +17,11 @@
       android:layout_marginLeft="40dp"
       android:layout_marginRight="40dp"
       android:layout_marginTop="40dp"
-      android:textSize="95sp"
-      android:textColor="@color/colorPrimary" />
+      android:textColor="@color/colorPrimary"
+      android:textSize="95sp" />
   
   <TextView
       android:id="@+id/new_best_score_text"
-      android:visibility="invisible"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignBottom="@id/post_score_text"
@@ -30,68 +29,69 @@
       android:layout_marginBottom="-10dp"
       android:text="@string/new_best_score"
       android:textColor="@color/colorAccent"
-      android:textSize="20sp" />
+      android:textSize="20sp"
+      android:visibility="invisible" />
   
   <TextView
       android:id="@+id/post_difficulty_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_below="@id/post_score_text"
-      android:layout_marginTop="30dp"
       android:layout_centerHorizontal="true"
-      android:textSize="@dimen/post_game_stats_size"
-      android:textColor="@color/colorPrimary" />
+      android:layout_marginTop="30dp"
+      android:textColor="@color/colorPrimary"
+      android:textSize="@dimen/post_game_stats_size" />
   
   <!-- Best score text -->
   <LinearLayout
       android:id="@+id/best_score_text_layout"
-      android:orientation="horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_below="@id/post_difficulty_text"
+      android:layout_centerHorizontal="true"
       android:layout_marginTop="5sp"
-      android:layout_centerHorizontal="true">
+      android:orientation="horizontal">
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/best_score"
-        android:textSize="@dimen/post_game_stats_size"
-        android:textColor="@color/textDark" />
+        android:textColor="@color/textDark"
+        android:textSize="@dimen/post_game_stats_size" />
     
     <TextView
         android:id="@+id/best_score_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:textSize="@dimen/post_game_stats_size"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/post_game_stats_size" />
     
   </LinearLayout>
   
   <!-- Average score text -->
   <LinearLayout
-      android:orientation="horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_below="@id/best_score_text_layout"
+      android:layout_centerHorizontal="true"
       android:layout_marginTop="5sp"
-      android:layout_centerHorizontal="true">
+      android:orientation="horizontal">
     
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/average_score"
-        android:textSize="@dimen/post_game_stats_size"
-        android:textColor="@color/textDark" />
+        android:textColor="@color/textDark"
+        android:textSize="@dimen/post_game_stats_size" />
     
     <TextView
         android:id="@+id/average_score_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:textSize="@dimen/post_game_stats_size"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/post_game_stats_size" />
     
   </LinearLayout>
   
@@ -99,14 +99,14 @@
        (Are the difficulty buttons enough to fill the space?) -->
   
   <fragment
-      android:name="ca.keal.varianttap.DifficultyButtonsFragment"
       android:id="@+id/post_game_difficulty_buttons_fragment"
+      android:name="ca.keal.varianttap.DifficultyButtonsFragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
+      android:layout_marginBottom="50dp"
       android:layout_marginLeft="20dp"
       android:layout_marginRight="20dp"
-      android:layout_marginBottom="50dp"
       app:show_text="@string/play_again" />
   
 </RelativeLayout>
