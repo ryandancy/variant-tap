@@ -21,7 +21,7 @@
       app:donut_suffix_text=""
       app:donut_text=""
       app:donut_text_color="@color/countdownCircleText"
-      app:donut_text_size="24dp"
+      app:donut_text_size="@dimen/countdown_circle_text_size"
       app:donut_unfinished_color="@color/countdownCircleUnfinished"
       app:donut_unfinished_stroke_width="@dimen/countdown_circle_width" />
   
@@ -38,10 +38,10 @@
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
-      android:paddingBottom="10dp"
+      android:paddingBottom="@dimen/score_text_margin_bottom"
       android:text="0"
       android:textColor="@color/gameMain"
-      android:textSize="70sp"
+      android:textSize="@dimen/score_text_size"
       tools:ignore="HardcodedText" />
   
   <TextView
@@ -56,11 +56,11 @@
       android:textSize="20sp" />
   
   <ImageButton
-      android:layout_width="25dp"
+      android:layout_width="@dimen/pause_button_width"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
       android:layout_alignParentTop="true"
-      android:layout_margin="20dp"
+      android:layout_margin="@dimen/pause_button_margin"
       android:adjustViewBounds="true"
       android:background="@android:color/transparent"
       android:contentDescription="@string/pause_button_desc"

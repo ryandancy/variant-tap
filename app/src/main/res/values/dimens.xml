@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Note: dimensions are for a 1440x2560/640dpi screen because that's my testing phone (LG G4) -->
 <resources>
-  <!-- TODO extract most (all?) dimensions -->
+  <!-- RANGES FOR MAIN ACTIVITY IMAGE-THROWING ANIMATION -->
   
   <dimen name="thrown_image_size">50dp</dimen>
   
@@ -18,23 +18,49 @@
   <item name="min_thrown_image_rotate_times" type="dimen" format="float">0.3</item>
   <item name="max_thrown_image_rotate_times" type="dimen" format="float">1.8</item>
   
+  <!-- DIMENSIONS -->
+  
+  <dimen name="main_menu_title_margin_top">50dp</dimen>
+  
   <dimen name="countdown_circle_width">10dp</dimen>
   <dimen name="countdown_circle_diameter">100dp</dimen>
   <dimen name="countdown_circle_margin">20dp</dimen>
   
+  <dimen name="pause_button_margin">20dp</dimen>
+  
   <dimen name="grid_padding">40dp</dimen>
   <dimen name="grid_spacing">10dp</dimen>
   
-  <!-- TEXT SIZES -->
+  <dimen name="score_text_margin_bottom">10dp</dimen>
+  
+  <dimen name="post_game_score_margin_top">40dp</dimen>
+  <dimen name="difficulty_below_score">30dp</dimen>
+  
+  <dimen name="bottom_button_margin_bottom">50dp</dimen>
+  <dimen name="button_margin_sides">20dp</dimen>
+  
+  <dimen name="difficulty_buttons_spacing">10dp</dimen>
+  
+  <!-- TEXT SIZES (and other textual dimensions) -->
   
   <dimen name="button_text_size">20sp</dimen>
   
   <!-- Note: this should be exactly the correct size to fit in the screen width (and margins) -->
   <!-- This may need i18n for different values of @string/app_name_lowercase! -->
+  <!-- TODO: Generate main_menu_title_size in code, don't hardcode it -->
   <dimen name="main_menu_title_size">68dp</dimen>
+  
+  <dimen name="countdown_circle_text_size">24dp</dimen>
+  <dimen name="pause_button_width">25dp</dimen>
+  <dimen name="score_text_size">70sp</dimen>
   
   <dimen name="paused_text_size">80dp</dimen>
   <dimen name="unpause_countdown_text_size">300dp</dimen>
   
+  <dimen name="post_score_size">95sp</dimen>
+  <dimen name="new_best_score_size">20sp</dimen>
+  
   <dimen name="post_game_stats_size">20sp</dimen>
+  <dimen name="post_game_stats_line_spacing">5sp</dimen>
+  <dimen name="post_game_stats_space_width">5sp</dimen>
 </resources>

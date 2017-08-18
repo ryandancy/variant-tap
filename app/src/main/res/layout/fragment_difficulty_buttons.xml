@@ -20,7 +20,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_above="@id/play_button"
-      android:layout_marginBottom="10dp"
+      android:layout_marginBottom="@dimen/difficulty_buttons_spacing"
       android:orientation="vertical"
       android:visibility="invisible">
     
@@ -41,7 +41,7 @@
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/difficulty_buttons_spacing"
         android:background="@color/colorPrimaryDark"
         android:text="@string/normal"
         android:textColor="@color/textLight"
@@ -52,7 +52,7 @@
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/difficulty_buttons_spacing"
         android:background="@color/colorPrimaryDark"
         android:text="@string/hard"
         android:textColor="@color/textLight"
