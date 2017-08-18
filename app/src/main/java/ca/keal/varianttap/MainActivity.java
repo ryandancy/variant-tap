@@ -7,6 +7,7 @@ import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,10 +23,41 @@ public class MainActivity extends AppCompatActivity {
   
   private Random random = null;
   
+  private Runnable throwingRunnable;
+  private Handler throwingHandler;
+  private boolean throwFromLeft;
+  private int msBetweenThrows;
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+  
+    // Set up periodic throwing animations
+    
+    throwFromLeft = false;
+    msBetweenThrows = getResources().getInteger(R.integer.ms_between_throws);
+    
+    throwingHandler = new Handler();
+    throwingRunnable = new Runnable() {
+      public void run() {
+        throwImage(throwFromLeft);
+        throwFromLeft = !throwFromLeft;
+        throwingHandler.postDelayed(this, msBetweenThrows);
+      }
+    };
+  }
+  
+  @Override
+  protected void onResume() {
+    super.onResume();
+    throwingRunnable.run(); // start/restart the throwing animation
+  }
+  
+  @Override
+  protected void onPause() {
+    super.onPause();
+    throwingHandler.removeCallbacks(throwingRunnable); // pause the throwing animation
   }
   
   /**
@@ -34,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
    * @param invert if true, the image will be thrown right-to-left instead of left-to-right.
    */
   // TODO split up this huge method
+  // TODO make images slide off to the side instead of disappearing at the edge of the screen
   private void throwImage(final boolean invert) {
     if (random == null) random = new Random();
     
@@ -125,14 +158,14 @@ public class MainActivity extends AppCompatActivity {
         image, ImageView.ROTATION, initialRotation, rotateTimes * 360 + initialRotation);
     // noinspection RedundantCast - it was casting to BaseInterpolator, only available with API 22
     rotateAnimator.setInterpolator(random.nextBoolean()
-        ? (TimeInterpolator) new AccelerateInterpolator()
-        : (TimeInterpolator) new DecelerateInterpolator());
+        ? (TimeInterpolator) new AccelerateInterpolator(0.5f)
+        : (TimeInterpolator) new DecelerateInterpolator(0.5f));
     
     // Put them together and play
     AnimatorSet throwAnim = new AnimatorSet();
     throwAnim.play(parabolaAnimator).with(rotateAnimator);
     throwAnim.setDuration(getResources().getInteger(R.integer.image_throw_duration));
-    parentLayout.addView(image);
+    parentLayout.addView(image, 0); // add at back, below all other elements
     throwAnim.start();
   }
   
