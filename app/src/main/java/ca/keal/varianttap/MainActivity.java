@@ -17,6 +17,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
   private boolean throwFromLeft;
   private int msBetweenThrows;
   
+  /** Contains all throw animations currently playing; used to pause and restart the animations. */
+  private List<AnimatorSet> throwAnims;
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     
     throwFromLeft = false;
     msBetweenThrows = getResources().getInteger(R.integer.ms_between_throws);
+    throwAnims = new ArrayList<>();
     
     throwingHandler = new Handler();
     throwingRunnable = new Runnable() {
@@ -51,13 +57,31 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    throwingRunnable.run(); // start/restart the throwing animation
+    
+    // Resume all throw animations
+    for (AnimatorSet anim : throwAnims) {
+      if (anim.isPaused()) {
+        anim.resume();
+      }
+    }
+    
+    // Start/restart adding more throwing animations
+    throwingRunnable.run();
   }
   
   @Override
   protected void onPause() {
     super.onPause();
-    throwingHandler.removeCallbacks(throwingRunnable); // pause the throwing animation
+    
+    // Don't add any more throw animations
+    throwingHandler.removeCallbacks(throwingRunnable);
+    
+    // Pause all throw animations
+    for (AnimatorSet anim : throwAnims) {
+      if (anim.isRunning()) {
+        anim.pause();
+      }
+    }
   }
   
   /**
@@ -73,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
     // Construct the ImageView to be thrown
     
     final ImageView image = new ImageView(this);
+    final AnimatorSet throwAnim = new AnimatorSet(); // defined up here for anonymous inner classes
     
     int parent = R.id.main_layout;
     final ViewGroup parentLayout = (ViewGroup) findViewById(R.id.main_layout);
@@ -148,8 +173,8 @@ public class MainActivity extends AppCompatActivity {
       public void onAnimationRepeat(Animator animation) {}
       public void onAnimationCancel(Animator animation) {}
       public void onAnimationEnd(Animator animation) {
-        parentLayout.removeView(image);
-        // hopefully image is gone now...
+        parentLayout.removeView(image); // hopefully image is gone now...
+        throwAnims.remove(throwAnim);
       }
     });
     
@@ -162,9 +187,10 @@ public class MainActivity extends AppCompatActivity {
         : (TimeInterpolator) new DecelerateInterpolator(0.5f));
     
     // Put them together and play
-    AnimatorSet throwAnim = new AnimatorSet();
     throwAnim.play(parabolaAnimator).with(rotateAnimator);
     throwAnim.setDuration(getResources().getInteger(R.integer.image_throw_duration));
+    throwAnims.add(throwAnim);
+    
     parentLayout.addView(image, 0); // add at back, below all other elements
     throwAnim.start();
   }
