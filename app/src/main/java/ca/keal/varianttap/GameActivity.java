@@ -45,8 +45,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
   /** Whether to process the user's taps on the images. */
   private boolean allowImgTaps;
-  
+  private boolean hasLost;
   private boolean isPaused;
+  
   private ConstraintLayout pauseOverlay;
   private TextView pausedText;
   private Button unpauseButton;
@@ -75,6 +76,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     score = 0;
     allowImgTaps = false;
     isPaused = false;
+    hasLost = false;
     
     countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
     scoreText = (TextView) findViewById(R.id.score_text);
@@ -221,6 +223,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     startRound();
   }
   
+  @Override
+  protected void onPause() {
+    super.onPause();
+    
+    if (!isPaused && !hasLost) {
+      pause(null); // go to the pause screen
+    }
+  }
+  
   /**
    * Go to the next round; this involves starting the reset countdown animation. This
    * is BEFORE the reset animation ends.
@@ -358,6 +369,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private void onLose() {
     // TODO a losing animation!!!
     allowImgTaps = false;
+    hasLost = true;
     
     if (countdownAnim.isRunning()) {
       countdownAnim.cancel();
@@ -375,6 +387,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     intent.putExtra(PostGameActivity.EXTRA_SCORE, score);
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
     startActivity(intent);
+    finish();
   }
   
   /**
@@ -413,7 +426,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   @Override
   public void onBackPressed() {
     // Pause on back button press
-    // TODO a way to quit from the pause overlay
     pause(null);
   }
   
@@ -493,6 +505,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     .setPositiveButton(R.string.quit_action, new DialogInterface.OnClickListener() {
       public void onClick(DialogInterface dialog, int which) {
         // Wipe this activity off the stack, which will return the user to MainActivity
+        hasLost = true;
         finish();
       }
     })

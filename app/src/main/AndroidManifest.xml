@@ -15,9 +15,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity
-        android:name=".GameActivity"
-        android:noHistory="true" />
+    <activity android:name=".GameActivity" />
     <activity android:name=".PostGameActivity" />
   </application>
 
