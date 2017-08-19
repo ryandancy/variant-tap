@@ -203,6 +203,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     super.onPause();
     if (difficultyBtnsShowing) {
       // Don't show the difficulty buttons if the user presses back after clicking on one of them
+      // The animations still play because there's a slight delay before launching GameActivity
       hideDifficultyButtons();
     }
   }
@@ -221,6 +222,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     playButton = null;
     difficultyBtnsLayout = null;
     difficultyBtns.clear(); // hopefully this cleans up properly
+    slideUpAnims.clear(); // this too
   }
   
   @Override
