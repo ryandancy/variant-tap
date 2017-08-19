@@ -100,6 +100,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   @Override
   public void onAttach(Context context) {
     super.onAttach(context);
+    
     if (context instanceof OnFragmentInteractionListener) {
       listener = (OnFragmentInteractionListener) context;
     } else {
@@ -107,6 +108,11 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
       listener = new OnFragmentInteractionListener() {
         public void afterToGameActivity(int difficulty) {}
       };
+    }
+    
+    if (hideText == null) {
+      // default to "close" - in onAttach() because in onInflate() it may not be attached yet
+      hideText = getString(R.string.close_difficulty_btns);
     }
   }
   
@@ -134,10 +140,6 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     String newHideText = a.getString(R.styleable.DifficultyButtonsFragment_hide_text);
     if (newHideText != null) {
       hideText = newHideText;
-    }
-    if (hideText == null) {
-      // default to "close"
-      hideText = getString(R.string.close_difficulty_btns);
     }
     
     a.recycle();
