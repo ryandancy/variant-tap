@@ -23,6 +23,9 @@ public class PostGameActivity extends AppCompatActivity
   public static final String EXTRA_SCORE = "SCORE";
   public static final String EXTRA_DIFFICULTY = "DIFFICULTY";
   
+  private boolean isNewBestScore;
+  private TextView newBestScoreText;
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -81,6 +84,8 @@ public class PostGameActivity extends AppCompatActivity
     totalScore += score;
     timesPlayed++;
     
+    isNewBestScore = score > bestScore;
+    
     // Update UI with shared preferences data
     
     int average = totalScore / timesPlayed;
@@ -91,16 +96,16 @@ public class PostGameActivity extends AppCompatActivity
     TextView bestText = (TextView) findViewById(R.id.best_score_text);
     bestText.setText(String.valueOf(newBest));
     
-    // Update shared preferences (and also update "New Best Score!" text's visibility)
+    // Update shared preferences (and also update "New Best Score!" text's visibility/animation)
     
     SharedPreferences.Editor editor = prefs.edit();
     
-    if (score > bestScore) {
+    if (isNewBestScore) {
       // Make the "New Best Score!" TextView visible + animate it
-      TextView newBestScoreText = (TextView) findViewById(R.id.new_best_score_text);
+      newBestScoreText = (TextView) findViewById(R.id.new_best_score_text);
       Animation pulseAnim = AnimationUtils.loadAnimation(this, R.anim.pulse);
       newBestScoreText.setVisibility(View.VISIBLE);
-      newBestScoreText.startAnimation(pulseAnim);
+      newBestScoreText.setAnimation(pulseAnim);
       
       editor.putInt(PREF_BEST_SCORE, score);
     }
@@ -109,6 +114,28 @@ public class PostGameActivity extends AppCompatActivity
     editor.putInt(PREF_TIMES_PLAYED, timesPlayed);
     
     editor.apply();
+  }
+  
+  @Override
+  protected void onPause() {
+    super.onPause();
+    
+    if (isNewBestScore) {
+      // Stop the new best score animation and set it up to start again
+      // It's a view animation so it's not pausable, and no one cares if we miss a bit of pulsing
+      newBestScoreText.getAnimation().cancel();
+      newBestScoreText.getAnimation().reset();
+    }
+  }
+  
+  @Override
+  protected void onResume() {
+    super.onResume();
+    
+    if (isNewBestScore) {
+      // Start/restart the pulse animation
+      newBestScoreText.getAnimation().start();
+    }
   }
   
   /**
