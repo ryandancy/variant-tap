@@ -90,9 +90,9 @@ public class PostGameActivity extends AppCompatActivity
     int newBest = Math.max(bestScore, score);
     TextView bestText = (TextView) findViewById(R.id.best_score_text);
     bestText.setText(String.valueOf(newBest));
-  
+    
     // Update shared preferences (and also update "New Best Score!" text's visibility)
-  
+    
     SharedPreferences.Editor editor = prefs.edit();
     
     if (score > bestScore) {

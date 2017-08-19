@@ -150,25 +150,25 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
                            Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_difficulty_buttons, container, false);
-  
+    
     //noinspection ConstantConditions
     difficultyBtnsLayout = (LinearLayout) view.findViewById(R.id.difficulty_button_layout);
-  
+    
     playButton = (Button) view.findViewById(R.id.play_button);
     playButton.setText(showText);
     playButton.setOnClickListener(this);
-  
+    
     // Initialize difficultyBtns
     Collections.addAll(difficultyBtns,
         (Button) view.findViewById(R.id.easy_button),
         (Button) view.findViewById(R.id.normal_button),
         (Button) view.findViewById(R.id.hard_button)
     );
-  
+    
     for (Button button : difficultyBtns) {
       button.setOnClickListener(this);
     }
-  
+    
     RelativeLayout layout = (RelativeLayout)
         view.findViewById(R.id.difficulty_button_fragment_layout);
     layout.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
@@ -176,20 +176,20 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
         // Initialize slideUpAnims with properly initialized animations.
         // This is in an OnGlobalLayoutListener so that the calls to getY() happen after the layout
         // is actually laid out (if this was in the main method, getY() would return 0).
-      
+        
         int slideUpSpeed = getResources().getInteger(R.integer.slide_up_speed);
-      
+        
         for (int i = 0; i < difficultyBtns.size(); i++) {
           Button button = difficultyBtns.get(i);
-        
+          
           float fromYDelta = Math.abs(button.getY() - (playButton.getY() - playButton.getHeight()));
           float duration = Util.pxToDp(getResources(), fromYDelta) / 100 * slideUpSpeed;
-        
+          
           TranslateAnimation anim = new TranslateAnimation(0, 0, fromYDelta, 0);
           anim.setInterpolator(new DecelerateInterpolator());
           anim.setDuration((long) duration);
           anim.setFillAfter(true);
-        
+          
           slideUpAnims.add(anim);
         }
       }

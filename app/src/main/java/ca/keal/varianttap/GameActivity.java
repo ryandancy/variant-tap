@@ -32,7 +32,7 @@ import com.github.lzyzsd.circleprogress.DonutProgress;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
   
-  /**  The ID/index of the variant ImageSwitcher. */
+  /** The ID/index of the variant ImageSwitcher. */
   private int variantId;
   
   /** Which round we're on. */
@@ -75,7 +75,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     score = 0;
     allowImgTaps = false;
     isPaused = false;
-  
+    
     countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
     scoreText = (TextView) findViewById(R.id.score_text);
     scoreLabel = (TextView) findViewById(R.id.score_label);
@@ -301,7 +301,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     double a = (double) (initial - min) / 2.0;
     double b = (double) min;
     double c = 1.0 / (double) roundsAtMin;
-
+    
     // See https://www.desmos.com/calculator/93igcfor0b
     double time = a * Math.cos(c * round * Math.PI) + a + b;
     return (int) time;

@@ -4,7 +4,7 @@ import android.view.animation.Interpolator;
 
 /**
  * Reverses the interpolation of whatever interpolator it's passed.
- * From https://stackoverflow.com/a/28459276. 
+ * From https://stackoverflow.com/a/28459276.
  */
 class ReverseInterpolator implements Interpolator {
   
