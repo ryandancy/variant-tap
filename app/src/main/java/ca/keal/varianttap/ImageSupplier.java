@@ -94,4 +94,16 @@ class ImageSupplier {
     return random.nextBoolean() ? possible.first : possible.second;
   }
   
+  int getPairId(Pair<Drawable, Drawable> pair) {
+    int idx = imgs.indexOf(pair);
+    if (idx < 0) {
+      Log.w(getClass().getName(), "getPairId() passed nonexistent Drawable pair");
+    }
+    return idx;
+  }
+  
+  Pair<Drawable, Drawable> getPairById(int id) {
+    return imgs.get(id);
+  }
+  
 }

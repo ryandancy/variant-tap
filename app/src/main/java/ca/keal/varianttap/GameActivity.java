@@ -32,6 +32,21 @@ import com.github.lzyzsd.circleprogress.DonutProgress;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
   
+  // Constants for saving the state
+  // Note: difficulty is not persisted because it's gotten from the intent
+  private static final String STATE_ROUND = "round";
+  private static final String STATE_SCORE = "score";
+  private static final String STATE_SCORE_FOR_ROUND = "scoreForRound";
+  private static final String STATE_VARIANT_ID = "variantId";
+  private static final String STATE_ALLOW_IMG_TAPS = "allowImgTaps";
+  private static final String STATE_HAS_LOST = "hasLost";
+  private static final String STATE_IS_PAUSED = "isPaused";
+  private static final String STATE_COUNTDOWN_CIRCLE_MAX = "countdownCircleMax";
+  private static final String STATE_COUNTDOWN_CIRCLE_PROGRESS = "countdownCircleProgress";
+  private static final String STATE_COUNTDOWN_CIRCLE_VALUE = "countdownCircleValue";
+  private static final String STATE_COUNTDOWN_CIRCLE_RESETTING = "countdownCircleResetting";
+  private static final String STATE_IMG_PAIR_ID = "imgPairId";
+  
   /** The ID/index of the variant ImageSwitcher. */
   private int variantId;
   
@@ -56,6 +71,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
+  private Pair<Drawable, Drawable> currentImgPair;
   
   /** The circle at the top of the screen that counts down time and also shows score. */
   private DonutProgress countdownCircle;
@@ -220,7 +236,88 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       imgsGrid.addView(imgs[i]);
     }
     
-    startRound();
+    if (savedInstanceState == null) { // fresh startup with no state to be restored
+      startRound();
+    } else {
+      restoreState(savedInstanceState);
+    }
+  }
+  
+  @Override
+  protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    Log.d(getClass().getName(), "Saving instance state...");
+    
+    outState.putInt(STATE_ROUND, round);
+    outState.putInt(STATE_SCORE, score);
+    outState.putInt(STATE_SCORE_FOR_ROUND, scoreForRound);
+    outState.putInt(STATE_VARIANT_ID, variantId);
+    
+    outState.putBoolean(STATE_ALLOW_IMG_TAPS, allowImgTaps);
+    outState.putBoolean(STATE_HAS_LOST, hasLost);
+    outState.putBoolean(STATE_IS_PAUSED, isPaused);
+    
+    outState.putInt(STATE_COUNTDOWN_CIRCLE_MAX, countdownCircle.getMax());
+    outState.putFloat(STATE_COUNTDOWN_CIRCLE_PROGRESS, countdownCircle.getProgress());
+    outState.putInt(STATE_COUNTDOWN_CIRCLE_VALUE, Integer.valueOf(countdownCircle.getText()));
+    outState.putBoolean(STATE_COUNTDOWN_CIRCLE_RESETTING, resetCountdownAnim.isRunning());
+    
+    outState.putInt(STATE_IMG_PAIR_ID, ImageSupplier.getInstance(this).getPairId(currentImgPair));
+  }
+  
+  private void restoreState(Bundle savedInstanceState) {
+    Log.d(getClass().getName(), "Restoring state...");
+    
+    // Restore the simple state variables
+    
+    round = savedInstanceState.getInt(STATE_ROUND);
+    score = savedInstanceState.getInt(STATE_SCORE);
+    scoreForRound = savedInstanceState.getInt(STATE_SCORE_FOR_ROUND);
+    variantId = savedInstanceState.getInt(STATE_VARIANT_ID);
+    
+    allowImgTaps = savedInstanceState.getBoolean(STATE_ALLOW_IMG_TAPS);
+    hasLost = savedInstanceState.getBoolean(STATE_HAS_LOST);
+    isPaused = savedInstanceState.getBoolean(STATE_IS_PAUSED);
+    
+    // Restore view state
+    
+    countdownCircle.setMax(savedInstanceState.getInt(STATE_COUNTDOWN_CIRCLE_MAX));
+    countdownCircle.setProgress(savedInstanceState.getFloat(STATE_COUNTDOWN_CIRCLE_PROGRESS));
+    countdownCircle.setText(String.valueOf(
+        savedInstanceState.getInt(STATE_COUNTDOWN_CIRCLE_VALUE)));
+    
+    scoreText.setText(String.valueOf(score));
+    
+    currentImgPair = ImageSupplier.getInstance(this).getPairById(
+        savedInstanceState.getInt(STATE_IMG_PAIR_ID));
+    
+    for (int i = 0; i < imgs.length; i++) {
+      imgs[i].setImageDrawable(i == variantId ? currentImgPair.second : currentImgPair.first);
+    }
+    
+    // Restore animation state
+    
+    if (savedInstanceState.getBoolean(STATE_COUNTDOWN_CIRCLE_RESETTING)) {
+      // Not restored exactly - interpolator is reset
+      resetCountdownAnim.setDuration(getResetCountdownAnimationDuration(countdownCircle));
+      resetCountdownAnim.start();
+    } else {
+      // "Continue" the countdown animation with another animator
+      countdownAnim.setFloatValues(countdownCircle.getProgress(), 0);
+      countdownAnim.setDuration((long) (getTimeForRoundMillis(round)
+          * (countdownCircle.getProgress() / countdownCircle.getMax())));
+      countdownAnim.start();
+    }
+    
+    // Restore paused state
+    // Note: since onPause() usually pauses the game, isPaused will almost always be true
+    // This means that if the activity is destroyed and recreated, it'll come back paused
+    
+    if (isPaused) {
+      Log.d(getClass().getName(), "pausing from state");
+      isPaused = false; // so that pause() actually pauses
+      pause(null);
+    }
   }
   
   @Override
@@ -323,8 +420,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
    * others have the corresponding normal image.
    */
   private void updateImages() {
-    Pair<Drawable, Drawable> normalAndVariant = ImageSupplier.getInstance(this).getRandomPair();
-    Drawable normal = normalAndVariant.first, variant = normalAndVariant.second;
+    currentImgPair = ImageSupplier.getInstance(this).getRandomPair();
+    Drawable normal = currentImgPair.first, variant = currentImgPair.second;
     
     variantId = ImageSupplier.getInstance(this).random.nextInt(imgs.length);
     
