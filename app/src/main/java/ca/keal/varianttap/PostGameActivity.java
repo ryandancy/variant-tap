@@ -23,7 +23,21 @@ public class PostGameActivity extends AppCompatActivity
   public static final String EXTRA_SCORE = "SCORE";
   public static final String EXTRA_DIFFICULTY = "DIFFICULTY";
   
+  // Constants for saving the state
+  // Difficulty and score aren't saved because they're gotten from the intent
+  private static final String STATE_BEST_SCORE = "bestScore";
+  private static final String STATE_AVERAGE_SCORE = "averageScore";
+  private static final String STATE_IS_NEW_BEST_SCORE = "isNewBestScore";
+  
+  private int difficulty;
+  private int score;
+  
+  private int bestScore;
+  private int averageScore;
   private boolean isNewBestScore;
+  
+  private TextView bestText;
+  private TextView averageText;
   private TextView newBestScoreText;
   
   @Override
@@ -33,7 +47,7 @@ public class PostGameActivity extends AppCompatActivity
     
     // Get score from intent, set it to the score TextView
     
-    int score = getIntent().getExtras().getInt(EXTRA_SCORE, -1);
+    score = getIntent().getExtras().getInt(EXTRA_SCORE, -1);
     if (score == -1) { // score was not in the extras
       Log.e(getClass().getName(), "Intent did not have \"" + EXTRA_SCORE + "\" extra!");
     }
@@ -43,7 +57,7 @@ public class PostGameActivity extends AppCompatActivity
     
     // Get difficulty from intent, set it to the difficulty TextView
     
-    int difficulty = getIntent().getExtras().getInt(EXTRA_DIFFICULTY, -1);
+    difficulty = getIntent().getExtras().getInt(EXTRA_DIFFICULTY, -1);
     if (difficulty == -1) { // difficulty was not in the extras
       Log.e(getClass().getName(), "Intent did not have \"" + EXTRA_DIFFICULTY + "\" extra!");
     }
@@ -69,7 +83,19 @@ public class PostGameActivity extends AppCompatActivity
     
     TextView difficultyText = (TextView) findViewById(R.id.post_difficulty_text);
     difficultyText.setText(difficultyStr);
+    
+    bestText = (TextView) findViewById(R.id.best_score_text);
+    averageText = (TextView) findViewById(R.id.average_score_text);
+    newBestScoreText = (TextView) findViewById(R.id.new_best_score_text);
   
+    if (savedInstanceState == null) { // is this a fresh start?
+      accessAndUpdateSharedPreferences();
+    } else {
+      restoreState(savedInstanceState);
+    }
+  }
+  
+  private void accessAndUpdateSharedPreferences() {
     // Get data from shared preferences for the difficulty
     // The user is allowed to mess with the shared preferences, Google Play Games won't use them
     // TODO: Google Play Games integration
@@ -77,7 +103,7 @@ public class PostGameActivity extends AppCompatActivity
     SharedPreferences prefs = getSharedPreferences(
         SHARED_PREFS_LEADERBOARD_PREFIX + difficulty, MODE_PRIVATE);
     
-    int bestScore = prefs.getInt(PREF_BEST_SCORE, 0);
+    int oldBestScore = prefs.getInt(PREF_BEST_SCORE, 0);
     int totalScore = prefs.getInt(PREF_TOTAL_SCORE, 0);
     int timesPlayed = prefs.getInt(PREF_TIMES_PLAYED, 0);
     
@@ -86,27 +112,14 @@ public class PostGameActivity extends AppCompatActivity
     
     isNewBestScore = score > bestScore;
     
-    // Update UI with shared preferences data
-    
-    int average = totalScore / timesPlayed;
-    TextView averageText = (TextView) findViewById(R.id.average_score_text);
-    averageText.setText(String.valueOf(average));
-    
-    int newBest = Math.max(bestScore, score);
-    TextView bestText = (TextView) findViewById(R.id.best_score_text);
-    bestText.setText(String.valueOf(newBest));
+    averageScore = totalScore / timesPlayed;
+    bestScore = Math.max(oldBestScore, score);
     
     // Update shared preferences (and also update "New Best Score!" text's visibility/animation)
     
     SharedPreferences.Editor editor = prefs.edit();
     
     if (isNewBestScore) {
-      // Make the "New Best Score!" TextView visible + animate it
-      newBestScoreText = (TextView) findViewById(R.id.new_best_score_text);
-      Animation pulseAnim = AnimationUtils.loadAnimation(this, R.anim.pulse);
-      newBestScoreText.setVisibility(View.VISIBLE);
-      newBestScoreText.setAnimation(pulseAnim);
-      
       editor.putInt(PREF_BEST_SCORE, score);
     }
     
@@ -114,6 +127,37 @@ public class PostGameActivity extends AppCompatActivity
     editor.putInt(PREF_TIMES_PLAYED, timesPlayed);
     
     editor.apply();
+    
+    updateUi();
+  }
+  
+  private void restoreState(Bundle savedInstanceState) {
+    bestScore = savedInstanceState.getInt(STATE_BEST_SCORE);
+    averageScore = savedInstanceState.getInt(STATE_AVERAGE_SCORE);
+    isNewBestScore = savedInstanceState.getBoolean(STATE_IS_NEW_BEST_SCORE);
+    
+    updateUi();
+  }
+  
+  private void updateUi() {
+    bestText.setText(String.valueOf(bestScore));
+    averageText.setText(String.valueOf(averageScore));
+    
+    if (isNewBestScore) {
+      // Make the "New Best Score!" TextView visible + animate it
+      Animation pulseAnim = AnimationUtils.loadAnimation(this, R.anim.pulse);
+      newBestScoreText.setVisibility(View.VISIBLE);
+      newBestScoreText.setAnimation(pulseAnim);
+    }
+  }
+  
+  @Override
+  protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    
+    outState.putInt(STATE_BEST_SCORE, bestScore);
+    outState.putInt(STATE_AVERAGE_SCORE, averageScore);
+    outState.putBoolean(STATE_IS_NEW_BEST_SCORE, isNewBestScore);
   }
   
   @Override
