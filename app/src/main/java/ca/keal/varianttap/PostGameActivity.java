@@ -110,7 +110,7 @@ public class PostGameActivity extends AppCompatActivity
     totalScore += score;
     timesPlayed++;
     
-    isNewBestScore = score > bestScore;
+    isNewBestScore = score > oldBestScore;
     
     averageScore = totalScore / timesPlayed;
     bestScore = Math.max(oldBestScore, score);
