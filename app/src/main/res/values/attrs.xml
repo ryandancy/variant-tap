@@ -4,5 +4,9 @@
     <!-- Note: for some reason using showText causes an error, that's why it's show_text -->
     <attr name="show_text" format="string" />
     <attr name="hide_text" format="string" />
+    <attr name="transition_direction" format="enum">
+      <enum name="left" value="0" />
+      <enum name="right" value="1" />
+    </attr>
   </declare-styleable>
 </resources>

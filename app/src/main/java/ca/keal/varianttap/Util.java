@@ -1,7 +1,9 @@
 package ca.keal.varianttap;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.annotation.DimenRes;
 import android.util.TypedValue;
 
@@ -38,6 +40,16 @@ final class Util {
    */
   static float randomFloatBetween(Random random, float min, float max) {
     return (max - min) * random.nextFloat() + min;
+  }
+  
+  static Bundle getToLeftTransition(Context context) {
+    return ActivityOptions.makeCustomAnimation(
+        context, R.anim.slide_in_left, R.anim.slide_out_right).toBundle();
+  }
+  
+  static Bundle getToRightTransition(Context context) {
+    return ActivityOptions.makeCustomAnimation(
+        context, R.anim.slide_in_right, R.anim.slide_out_left).toBundle();
   }
   
 }

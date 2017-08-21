@@ -483,7 +483,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     Intent intent = new Intent(this, PostGameActivity.class);
     intent.putExtra(PostGameActivity.EXTRA_SCORE, score);
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
-    startActivity(intent);
+    startActivity(intent, Util.getToRightTransition(this));
     finish();
   }
   
@@ -604,6 +604,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         // Wipe this activity off the stack, which will return the user to MainActivity
         hasLost = true;
         finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
       }
     })
     .setNegativeButton(android.R.string.cancel, null)
