@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     final AnimatorSet throwAnim = new AnimatorSet(); // defined up here for anonymous inner classes
     
     int parent = R.id.main_layout;
-    final ViewGroup parentLayout = (ViewGroup) findViewById(R.id.main_layout);
+    final ViewGroup parentLayout = findViewById(R.id.main_layout);
     
     int length = (int) getResources().getDimension(R.dimen.thrown_image_size);
     final ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(length, length);

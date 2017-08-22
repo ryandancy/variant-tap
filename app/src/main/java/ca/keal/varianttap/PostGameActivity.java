@@ -52,7 +52,7 @@ public class PostGameActivity extends AppCompatActivity
       Log.e(getClass().getName(), "Intent did not have \"" + EXTRA_SCORE + "\" extra!");
     }
     
-    TextView scoreText = (TextView) findViewById(R.id.post_score_text);
+    TextView scoreText = findViewById(R.id.post_score_text);
     scoreText.setText(String.valueOf(score));
     
     // Get difficulty from intent, set it to the difficulty TextView
@@ -81,12 +81,12 @@ public class PostGameActivity extends AppCompatActivity
         difficultyStr = "";
     }
     
-    TextView difficultyText = (TextView) findViewById(R.id.post_difficulty_text);
+    TextView difficultyText = findViewById(R.id.post_difficulty_text);
     difficultyText.setText(difficultyStr);
     
-    bestText = (TextView) findViewById(R.id.best_score_text);
-    averageText = (TextView) findViewById(R.id.average_score_text);
-    newBestScoreText = (TextView) findViewById(R.id.new_best_score_text);
+    bestText = findViewById(R.id.best_score_text);
+    averageText = findViewById(R.id.average_score_text);
+    newBestScoreText = findViewById(R.id.new_best_score_text);
   
     if (savedInstanceState == null) { // is this a fresh start?
       accessAndUpdateSharedPreferences();

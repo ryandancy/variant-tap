@@ -160,9 +160,9 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     View view = inflater.inflate(R.layout.fragment_difficulty_buttons, container, false);
     
     //noinspection ConstantConditions
-    difficultyBtnsLayout = (LinearLayout) view.findViewById(R.id.difficulty_button_layout);
+    difficultyBtnsLayout = view.findViewById(R.id.difficulty_button_layout);
     
-    playButton = (Button) view.findViewById(R.id.play_button);
+    playButton = view.findViewById(R.id.play_button);
     playButton.setText(showText);
     playButton.setOnClickListener(this);
     
@@ -177,8 +177,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
       button.setOnClickListener(this);
     }
     
-    RelativeLayout layout = (RelativeLayout)
-        view.findViewById(R.id.difficulty_button_fragment_layout);
+    RelativeLayout layout = view.findViewById(R.id.difficulty_button_fragment_layout);
     layout.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
       public void onGlobalLayout() {
         // Initialize slideUpAnims with properly initialized animations.

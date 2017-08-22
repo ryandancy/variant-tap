@@ -94,15 +94,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     isPaused = false;
     hasLost = false;
     
-    countdownCircle = (DonutProgress) findViewById(R.id.countdown_circle);
-    scoreText = (TextView) findViewById(R.id.score_text);
-    scoreLabel = (TextView) findViewById(R.id.score_label);
+    countdownCircle = findViewById(R.id.countdown_circle);
+    scoreText = findViewById(R.id.score_text);
+    scoreLabel = findViewById(R.id.score_label);
     
-    pauseOverlay = (ConstraintLayout) findViewById(R.id.pause_overlay);
-    pausedText = (TextView) findViewById(R.id.paused_text);
-    unpauseButton = (Button) findViewById(R.id.unpause_button);
-    quitButton = (Button) findViewById(R.id.quit_button);
-    unpauseCountdownText = (TextView) findViewById(R.id.unpause_countdown_text);
+    pauseOverlay = findViewById(R.id.pause_overlay);
+    pausedText = findViewById(R.id.paused_text);
+    unpauseButton = findViewById(R.id.unpause_button);
+    quitButton = findViewById(R.id.quit_button);
+    unpauseCountdownText = findViewById(R.id.unpause_countdown_text);
     
     countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.countdown);
     countdownAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -162,7 +162,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     // Initialize the grid of images
     
-    GridLayout imgsGrid = (GridLayout) findViewById(R.id.imgs_grid);
+    GridLayout imgsGrid = findViewById(R.id.imgs_grid);
     
     // Calculate rows/columns
     int rows, columns;
