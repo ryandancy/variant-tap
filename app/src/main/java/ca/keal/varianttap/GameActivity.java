@@ -21,8 +21,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -63,6 +63,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private boolean hasLost;
   private boolean isPaused;
   
+  private ImageButton pauseButton;
   private ConstraintLayout pauseOverlay;
   private TextView pausedText;
   private Button unpauseButton;
@@ -72,6 +73,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
   private Pair<Drawable, Drawable> currentImgPair;
+  
+  private TextView startingCountdownText;
+  private TextView startingCountdownHint;
   
   /** The circle at the top of the screen that counts down time and also shows score. */
   private DonutProgress countdownCircle;
@@ -98,6 +102,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     scoreText = findViewById(R.id.score_text);
     scoreLabel = findViewById(R.id.score_label);
     
+    startingCountdownText = findViewById(R.id.starting_countdown_text);
+    startingCountdownHint = findViewById(R.id.starting_countdown_hint);
+    
+    pauseButton = findViewById(R.id.pause_button);
     pauseOverlay = findViewById(R.id.pause_overlay);
     pausedText = findViewById(R.id.paused_text);
     unpauseButton = findViewById(R.id.unpause_button);
@@ -237,10 +245,32 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
     
     if (savedInstanceState == null) { // fresh startup with no state to be restored
-      startRound();
+      startCountdownToGameStart();
     } else {
       restoreState(savedInstanceState);
     }
+  }
+  
+  private void startCountdownToGameStart() {
+    // TODO vary pre-game hints (startingCountdownHint)
+    countdownCircle.setText(String.valueOf(getMaxScoreForRound(round)));
+    
+    Util.getCountdownAnimator(
+        getResources().getInteger(R.integer.start_delay_ms),
+        startingCountdownText,
+        new Util.CountdownEndListener() {
+          public void onEnd() {
+            hideStartingCountdown();
+            startRound();
+          }
+        }
+    ).start();
+  }
+  
+  private void hideStartingCountdown() {
+    startingCountdownText.setVisibility(View.GONE);
+    startingCountdownHint.setVisibility(View.GONE);
+    pauseButton.setVisibility(View.VISIBLE);
   }
   
   @Override
@@ -267,6 +297,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   
   private void restoreState(Bundle savedInstanceState) {
     Log.d(getClass().getName(), "Restoring state...");
+    
+    hideStartingCountdown();
     
     // Restore the simple state variables
     
@@ -539,22 +571,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     unpauseCountdownText.setVisibility(View.VISIBLE);
     
     // Make and play the unpause animation
-    ValueAnimator unpauseAnim = ValueAnimator.ofFloat(3f, 0f);
-    unpauseAnim.setInterpolator(new LinearInterpolator());
-    unpauseAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-      public void onAnimationUpdate(ValueAnimator anim) {
-        int countdownNum = (int) Math.ceil((float) anim.getAnimatedValue());
-        
-        if (countdownNum == 0) {
-          // The animation's finished
-          unpause();
-        } else {
-          unpauseCountdownText.setText(String.valueOf(countdownNum));
+    Util.getCountdownAnimator(
+        getResources().getInteger(R.integer.unpause_delay_ms),
+        unpauseCountdownText,
+        new Util.CountdownEndListener() {
+          public void onEnd() {
+            unpause();
+          }
         }
-      }
-    });
-    unpauseAnim.setDuration(getResources().getInteger(R.integer.unpause_delay_ms));
-    unpauseAnim.start();
+    ).start();
   }
   
   /**

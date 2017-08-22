@@ -22,6 +22,12 @@
   
   <dimen name="main_menu_title_margin_top">50dp</dimen>
   
+  <!-- The bottom padding for the starting countdown text - the off-centre offset -->
+  <dimen name="starting_countdown_text_offset">70dp</dimen>
+  <!-- *Must* be equal to -starting_countdown_text_offset - 30dp -->
+  <dimen name="starting_countdown_hint_margin_top">-100dp</dimen>
+  <dimen name="starting_countdown_hint_margin_sides">30dp</dimen>
+  
   <dimen name="countdown_circle_width">10dp</dimen>
   <dimen name="countdown_circle_diameter">100dp</dimen>
   <dimen name="countdown_circle_margin">20dp</dimen>
@@ -48,6 +54,7 @@
   <!-- TODO: Generate main_menu_title_size in code, don't hardcode it -->
   <dimen name="main_menu_title_size">68dp</dimen>
   
+  <dimen name="starting_countdown_text_size">200dp</dimen>
   <dimen name="countdown_circle_text_size">24dp</dimen>
   <dimen name="pause_button_width">25dp</dimen>
   <dimen name="score_text_size">70sp</dimen>

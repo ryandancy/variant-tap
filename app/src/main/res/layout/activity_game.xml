@@ -18,6 +18,7 @@
       app:donut_circle_starting_degree="-90"
       app:donut_finished_color="@color/countdownCircleFinished"
       app:donut_finished_stroke_width="@dimen/countdown_circle_width"
+      app:donut_progress="100"
       app:donut_suffix_text=""
       app:donut_text=""
       app:donut_text_color="@color/countdownCircleText"
@@ -31,6 +32,30 @@
       android:layout_height="wrap_content"
       android:layout_centerInParent="true"
       android:padding="@dimen/grid_padding" />
+  
+  <TextView
+      android:id="@+id/starting_countdown_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:paddingBottom="@dimen/starting_countdown_text_offset"
+      android:textColor="@color/colorPrimary"
+      android:textSize="@dimen/starting_countdown_text_size"
+      tools:ignore="SpUsage" />
+  
+  <TextView
+      android:id="@+id/starting_countdown_hint"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/starting_countdown_text"
+      android:layout_centerHorizontal="true"
+      android:layout_marginLeft="@dimen/starting_countdown_hint_margin_sides"
+      android:layout_marginRight="@dimen/starting_countdown_hint_margin_sides"
+      android:layout_marginTop="@dimen/starting_countdown_hint_margin_top"
+      android:text="@string/countdown_hint"
+      android:textAlignment="center"
+      android:textColor="@color/textDark"
+      android:textSize="20sp" />
   
   <TextView
       android:id="@+id/score_text"
@@ -56,6 +81,7 @@
       android:textSize="20sp" />
   
   <ImageButton
+      android:id="@+id/pause_button"
       android:layout_width="@dimen/pause_button_width"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
@@ -67,6 +93,7 @@
       android:onClick="pause"
       android:scaleType="fitCenter"
       android:src="@drawable/pause"
+      android:visibility="invisible"
       tools:ignore="RtlHardcoded" />
   
   <include
