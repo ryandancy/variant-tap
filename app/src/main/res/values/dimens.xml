@@ -20,6 +20,8 @@
   
   <!-- DIMENSIONS -->
   
+  <dimen name="button_radius">30dp</dimen>
+  
   <dimen name="main_menu_title_margin_top">50dp</dimen>
   
   <!-- The bottom padding for the starting countdown text - the off-centre offset -->

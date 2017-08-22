@@ -22,8 +22,6 @@
       android:orientation="vertical"
       android:visibility="invisible">
     
-    <!-- TODO consistent button style (with rounded corners and cool stuff like that!) -->
-    
     <Button
         android:id="@+id/easy_button"
         style="@style/ButtonStyle"
