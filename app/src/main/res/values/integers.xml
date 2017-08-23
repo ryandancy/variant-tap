@@ -18,7 +18,7 @@
   
   <integer name="activity_transition_duration">200</integer>
   
-  <integer name="image_throw_duration">900</integer>
+  <integer name="image_throw_duration">1300</integer>
   <integer name="ms_between_throws">250</integer>
   
   <!-- The difficulty buttons will take this time (in ms) to move 100dp -->

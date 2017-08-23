@@ -11,10 +11,12 @@ import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -112,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
    * path across the screen and rotates. This is for a cool animation for the MainActivity.
    * @param invert if true, the image will be thrown right-to-left instead of left-to-right.
    */
-  // TODO split up this huge method
-  // TODO make images slide off to the side instead of disappearing at the edge of the screen
+  @SuppressWarnings("RtlHardcoded")
   private void throwImage(final boolean invert) {
     if (random == null) random = new Random();
     
@@ -122,17 +123,12 @@ public class MainActivity extends AppCompatActivity {
     final ImageView image = new ImageView(this);
     final AnimatorSet throwAnim = new AnimatorSet(); // defined up here for anonymous inner classes
     
-    int parent = R.id.main_layout;
-    final ViewGroup parentLayout = findViewById(R.id.main_layout);
+    int parent = R.id.throwing_layout;
+    final ViewGroup parentLayout = findViewById(parent);
     
     int length = (int) getResources().getDimension(R.dimen.thrown_image_size);
-    final ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(length, length);
-    
-    params.leftToLeft = parent;
-    params.rightToRight = parent;
-    params.topToTop = parent;
-    params.bottomToBottom = parent;
-    
+    final FrameLayout.LayoutParams params
+        = new FrameLayout.LayoutParams(length, length, Gravity.TOP | Gravity.LEFT);
     image.setLayoutParams(params);
     
     Drawable drawable = ImageSupplier.getInstance(this).getRandomImage();
@@ -177,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     
     // Construct the parabola animator, which moves the image
     
-    ValueAnimator parabolaAnimator = ValueAnimator.ofFloat(0, 1); // TODO come from off left side
+    ValueAnimator parabolaAnimator = ValueAnimator.ofFloat(-0.2f, 1.2f);
     parabolaAnimator.setInterpolator(new LinearInterpolator());
     parabolaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
       public void onAnimationUpdate(ValueAnimator animation) {
@@ -186,8 +182,10 @@ public class MainActivity extends AppCompatActivity {
         // Equation is y = a(x - h)^2 + k
         float yBias = factor * (float) Math.pow(xBias - vertexHorizBias, 2) + minBias;
         
-        params.horizontalBias = invert ? 1f - xBias : xBias; // handle right-to-left
-        params.verticalBias = yBias;
+        xBias = invert ? 1f - xBias : xBias; // handle right-to-left
+        
+        params.leftMargin = (int) (parentLayout.getWidth() * xBias);
+        params.topMargin = (int) (parentLayout.getHeight() * yBias);
         image.setLayoutParams(params);
       }
     });

@@ -21,6 +21,11 @@
       app:layout_constraintTop_toTopOf="parent"
       tools:ignore="SpUsage" />
   
+  <FrameLayout
+      android:id="@+id/throwing_layout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+  
   <fragment
       android:id="@+id/main_menu_difficulty_buttons_fragment"
       android:name="ca.keal.varianttap.DifficultyButtonsFragment"
