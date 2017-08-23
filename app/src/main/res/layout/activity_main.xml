@@ -9,13 +9,13 @@
     tools:context="ca.keal.varianttap.MainActivity">
   
   <TextView
+      android:id="@+id/main_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/main_menu_title_margin_top"
       android:text="@string/app_name_lowercase"
       android:textAlignment="center"
       android:textColor="@color/colorPrimaryDark"
-      android:textSize="@dimen/main_menu_title_size"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"

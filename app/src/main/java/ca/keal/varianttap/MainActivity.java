@@ -16,10 +16,13 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 public class MainActivity extends AppCompatActivity {
   
@@ -52,6 +55,26 @@ public class MainActivity extends AppCompatActivity {
         throwingHandler.postDelayed(this, msBetweenThrows);
       }
     };
+    
+    // Set the title TextView's font size to exactly line up with the parent's border
+    
+    final ConstraintLayout layout = findViewById(R.id.main_layout);
+    layout.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+      public void onGlobalLayout() {
+        // In OnGlobalLayoutListener so layout.getWidth() works properly
+        TextView title = findViewById(R.id.main_title);
+        title.setTextSize(Util.getLargestTextSize(
+            title,
+            title.getText().toString(),
+            layout.getWidth() - 2 * getResources().getDimension(
+                R.dimen.main_menu_title_side_padding),
+            Util.pxToSp(MainActivity.this, getResources().getDimension(R.dimen.max_main_title_size))
+        ));
+        
+        // Don't let this listener be called multiple times
+        layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
+    });
   }
   
   @Override

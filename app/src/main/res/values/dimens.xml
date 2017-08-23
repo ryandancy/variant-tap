@@ -23,6 +23,7 @@
   <dimen name="button_radius">30dp</dimen>
   
   <dimen name="main_menu_title_margin_top">50dp</dimen>
+  <dimen name="main_menu_title_side_padding">20dp</dimen>
   
   <!-- The bottom padding for the starting countdown text - the off-centre offset -->
   <dimen name="starting_countdown_text_offset">70dp</dimen>
@@ -51,10 +52,7 @@
   
   <!-- TEXT SIZES (and other textual dimensions) -->
   
-  <!-- Note: this should be exactly the correct size to fit in the screen width (and margins) -->
-  <!-- This may need i18n for different values of @string/app_name_lowercase! -->
-  <!-- TODO: Generate main_menu_title_size in code, don't hardcode it -->
-  <dimen name="main_menu_title_size">68dp</dimen>
+  <dimen name="max_main_title_size">150sp</dimen>
   
   <dimen name="starting_countdown_text_size">200dp</dimen>
   <dimen name="countdown_circle_text_size">24dp</dimen>

@@ -6,12 +6,15 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.DimenRes;
+import android.text.TextPaint;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
 import java.util.Random;
 
+@SuppressWarnings({"unused", "WeakerAccess"})
 final class Util {
   
   private Util() {}
@@ -32,6 +35,22 @@ final class Util {
     return dp * resources.getDisplayMetrics().density;
   }
   
+  static float spToPx(Context context, float sp) {
+    return spToPx(context.getResources(), sp);
+  }
+  
+  static float spToPx(Resources resources, float sp) {
+    return sp * resources.getDisplayMetrics().scaledDensity;
+  }
+  
+  static float pxToSp(Context context, float px) {
+    return pxToSp(context.getResources(), px);
+  }
+  
+  static float pxToSp(Resources resources, float px) {
+    return px / resources.getDisplayMetrics().scaledDensity;
+  }
+  
   static float getFloatResource(Context context, @DimenRes int floatRes) {
     TypedValue floatValue = new TypedValue();
     context.getResources().getValue(floatRes, floatValue, true);
@@ -43,6 +62,47 @@ final class Util {
    */
   static float randomFloatBetween(Random random, float min, float max) {
     return (max - min) * random.nextFloat() + min;
+  }
+  
+  /**
+   * @return The largest text size that will make {@code text} in {@code textView} take up less than
+   * or equal to {@code maxPxWidth px}, using a binary search with maximum {@code max}, in sp.
+   */
+  static float getLargestTextSize(TextView textView, String text, float maxPxWidth, float max) {
+    float low = 0;
+    float high = max;
+    float size;
+    
+    while (low < high) {
+      size = (int) ((low + high) / 2);
+      float width = measureText(textView, text, size);
+      float widthPlus1 = measureText(textView, text, size + 1);
+      
+      if (width <= maxPxWidth && widthPlus1 > maxPxWidth) {
+        // optimal width
+        Log.d("Util.getLargestTextSize", "Setting \"" + text + "\" size to " + size + "sp");
+        return size;
+      }
+      
+      if (width < maxPxWidth && widthPlus1 <= maxPxWidth) {
+        // too low
+        low = size + 1;
+      }
+      
+      if (width > maxPxWidth) {
+        // too high
+        high = size - 1;
+      }
+    }
+    
+    Log.w("Util.getLargestTextSize", "Binary search could not complete: check arguments");
+    return max; // maybe we're on a tablet or something?
+  }
+  
+  private static float measureText(TextView textView, String text, float size) {
+    TextPaint paint = textView.getPaint();
+    paint.setTextSize(spToPx(textView.getResources(), size));
+    return paint.measureText(text);
   }
   
   static Bundle getToLeftTransition(Context context) {
