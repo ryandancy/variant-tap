@@ -85,6 +85,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
   private TextView scoreText;
   private TextView scoreLabel;
   
+  private SFXManager sfx;
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -158,6 +160,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         onResetAnimationEnd();
       }
     });
+    
+    sfx = new SFXManager(this);
     
     // There are 3 difficulties: 0 (easy), 1 (normal) and 2 (hard). Each successive difficulty has
     // a higher number of images: easy has 4 images, normal has 6, and hard has 9.
@@ -237,6 +241,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       
       imgs[i].setInAnimation(in);
       imgs[i].setOutAnimation(out);
+      
+      imgs[i].setSoundEffectsEnabled(false);
       
       imgs[i].setId(i); // for determining which is the variant; equal to the index
       imgs[i].setOnClickListener(this);
@@ -485,6 +491,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     
     // Is img the variant?
     if (img.getId() == variantId) {
+      sfx.play(this, R.raw.success);
       nextRound();
     } else {
       onLose();
@@ -499,6 +506,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     // TODO a losing animation!!!
     allowImgTaps = false;
     hasLost = true;
+    sfx.play(this, R.raw.lose);
     
     if (countdownAnim.isRunning()) {
       countdownAnim.cancel();
