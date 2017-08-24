@@ -7,12 +7,12 @@ import android.animation.ValueAnimator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.GridLayout;
 import android.util.Log;
@@ -30,7 +30,9 @@ import android.widget.ViewSwitcher;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener {
+import java.io.IOException;
+
+public class GameActivity extends MusicActivity implements View.OnClickListener {
   
   // Constants for saving the state
   // Note: difficulty is not persisted because it's gotten from the intent
@@ -657,6 +659,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     })
     .setNegativeButton(android.R.string.cancel, null)
     .show();
+  }
+  
+  @Override
+  protected AssetFileDescriptor getBackgroundMusicFD() throws IOException {
+    return getAssets().openFd("music/game.mp3");
   }
   
 }
