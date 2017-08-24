@@ -161,8 +161,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       }
     });
     
-    sfx = new SFXManager(this);
-    
     // There are 3 difficulties: 0 (easy), 1 (normal) and 2 (hard). Each successive difficulty has
     // a higher number of images: easy has 4 images, normal has 6, and hard has 9.
     
@@ -356,6 +354,23 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
       isPaused = false; // so that pause() actually pauses
       pause(null);
     }
+  }
+  
+  @Override
+  protected void onStart() {
+    super.onStart();
+    
+    // Allocate audio resources
+    sfx = new SFXManager(this);
+  }
+  
+  @Override
+  protected void onStop() {
+    super.onStop();
+    
+    // Release audio resources
+    sfx.release();
+    sfx = null;
   }
   
   @Override

@@ -84,4 +84,10 @@ class SFXManager {
     sound.stop(streamId);
   }
   
+  void release() {
+    sound.release();
+    resToSoundIds.clear();
+    resToStreamIds.clear();
+  }
+  
 }
