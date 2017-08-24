@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,13 +12,12 @@
       android:id="@+id/main_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true"
       android:layout_marginTop="@dimen/main_menu_title_margin_top"
       android:text="@string/app_name_lowercase"
       android:textAlignment="center"
       android:textColor="@color/colorPrimaryDark"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
       tools:ignore="SpUsage" />
   
   <FrameLayout
@@ -26,16 +25,60 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent" />
   
+  <LinearLayout
+      android:id="@+id/circle_buttons"
+      style="?android:attr/buttonBarStyle"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/circle_button_radius"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="@dimen/circle_button_margin_top"
+      android:layout_marginBottom="@dimen/circle_button_margin_bottom"
+      android:gravity="center_horizontal"
+      android:orientation="horizontal"
+      tools:ignore="RtlHardcoded">
+    
+    <ImageButton
+        android:layout_width="@dimen/circle_button_radius"
+        android:layout_height="@dimen/circle_button_radius"
+        android:background="@drawable/circle"
+        android:padding="@dimen/circle_button_padding"
+        android:src="@android:drawable/ic_media_play" />
+    
+    <ImageButton
+        android:layout_width="@dimen/circle_button_radius"
+        android:layout_height="@dimen/circle_button_radius"
+        android:layout_marginLeft="@dimen/circle_button_spacing"
+        android:background="@drawable/circle"
+        android:padding="@dimen/circle_button_padding"
+        android:src="@android:drawable/ic_media_play" />
+    
+    <ImageButton
+        android:layout_width="@dimen/circle_button_radius"
+        android:layout_height="@dimen/circle_button_radius"
+        android:layout_marginLeft="@dimen/circle_button_spacing"
+        android:background="@drawable/circle"
+        android:padding="@dimen/circle_button_padding"
+        android:src="@android:drawable/ic_media_play" />
+    
+    <ImageButton
+        android:layout_width="@dimen/circle_button_radius"
+        android:layout_height="@dimen/circle_button_radius"
+        android:layout_marginLeft="@dimen/circle_button_spacing"
+        android:background="@drawable/circle"
+        android:padding="@dimen/circle_button_padding"
+        android:src="@android:drawable/ic_media_play" />
+    
+  </LinearLayout>
+  
   <fragment
       android:id="@+id/main_menu_difficulty_buttons_fragment"
       android:name="ca.keal.varianttap.DifficultyButtonsFragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/bottom_button_margin_bottom"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintLeft_toLeftOf="parent"
-      app:layout_constraintRight_toRightOf="parent"
+      android:layout_above="@id/circle_buttons"
+      android:layout_centerHorizontal="true"
       app:show_text="@string/play"
       app:transition_direction="right" />
   
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

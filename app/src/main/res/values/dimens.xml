@@ -25,6 +25,12 @@
   <dimen name="main_menu_title_margin_top">50dp</dimen>
   <dimen name="main_menu_title_side_padding">20dp</dimen>
   
+  <dimen name="circle_button_radius">50dp</dimen>
+  <dimen name="circle_button_padding">10dp</dimen>
+  <dimen name="circle_button_spacing">15dp</dimen>
+  <dimen name="circle_button_margin_top">15dp</dimen>
+  <dimen name="circle_button_margin_bottom">30dp</dimen>
+  
   <!-- The bottom padding for the starting countdown text - the off-centre offset -->
   <dimen name="starting_countdown_text_offset">70dp</dimen>
   <!-- *Must* be equal to -starting_countdown_text_offset - 30dp -->

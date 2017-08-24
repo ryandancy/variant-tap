@@ -8,7 +8,6 @@ import android.animation.ValueAnimator;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     
     // Set the title TextView's font size to exactly line up with the parent's border
     
-    final ConstraintLayout layout = findViewById(R.id.main_layout);
+    final ViewGroup layout = findViewById(R.id.main_layout);
     layout.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
       public void onGlobalLayout() {
         // In OnGlobalLayoutListener so layout.getWidth() works properly
