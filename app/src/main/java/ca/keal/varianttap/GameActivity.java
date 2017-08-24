@@ -34,6 +34,8 @@ import java.io.IOException;
 
 public class GameActivity extends MusicActivity implements View.OnClickListener {
   
+  private static final String TAG = "GameActivity";
+  
   // Constants for saving the state
   // Note: difficulty is not persisted because it's gotten from the intent
   private static final String STATE_ROUND = "round";
@@ -169,7 +171,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     // Get the difficulty from the Intent
     difficulty = getIntent().getIntExtra("DIFFICULTY", -1);
     if (difficulty == -1) { // no difficulty extra in the intent
-      Log.e(getClass().getName(), "Intent did not have \"DIFFICULTY\" extra!");
+      Log.e(TAG, "Intent did not have \"DIFFICULTY\" extra!");
     }
     
     // Initialize the grid of images
@@ -192,13 +194,12 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
         columns = 3;
         break;
       default:
-        Log.e(getClass().getName(), "Passed unknown difficulty: " + difficulty);
+        Log.e(TAG, "Passed unknown difficulty: " + difficulty);
         rows = 0;
         columns = 0;
     }
     
-    Log.i(getClass().getName(), "Difficulty " + difficulty + ", setting grid to "
-        + rows + "x" + columns);
+    Log.i(TAG, "Difficulty " + difficulty + ", setting grid to " + rows + "x" + columns);
     
     imgsGrid.setRowCount(rows);
     imgsGrid.setColumnCount(columns);
@@ -282,7 +283,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
   @Override
   protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    Log.d(getClass().getName(), "Saving instance state...");
+    Log.d(TAG, "Saving instance state...");
     
     outState.putInt(STATE_ROUND, round);
     outState.putInt(STATE_SCORE, score);
@@ -302,7 +303,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
   }
   
   private void restoreState(Bundle savedInstanceState) {
-    Log.d(getClass().getName(), "Restoring state...");
+    Log.d(TAG, "Restoring state...");
     
     hideStartingCountdown();
     
@@ -352,7 +353,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     // This means that if the activity is destroyed and recreated, it'll come back paused
     
     if (isPaused) {
-      Log.d(getClass().getName(), "pausing from state");
+      Log.d(TAG, "Pausing from state");
       isPaused = false; // so that pause() actually pauses
       pause(null);
     }

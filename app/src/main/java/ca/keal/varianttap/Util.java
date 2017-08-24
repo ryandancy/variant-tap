@@ -17,6 +17,8 @@ import java.util.Random;
 @SuppressWarnings({"unused", "WeakerAccess"})
 final class Util {
   
+  private static final String TAG = "Util";
+  
   private Util() {}
   
   static float pxToDp(Context context, float px) {
@@ -80,7 +82,7 @@ final class Util {
       
       if (width <= maxPxWidth && widthPlus1 > maxPxWidth) {
         // optimal width
-        Log.d("Util.getLargestTextSize", "Setting \"" + text + "\" size to " + size + "sp");
+        Log.d(TAG, "getLargestTextSize() setting \"" + text + "\" size to " + size + "sp");
         return size;
       }
       
@@ -95,7 +97,7 @@ final class Util {
       }
     }
     
-    Log.w("Util.getLargestTextSize", "Binary search could not complete: check arguments");
+    Log.w(TAG, "getLargestTextSize() binary search could not complete: check arguments");
     return max; // maybe we're on a tablet or something?
   }
   

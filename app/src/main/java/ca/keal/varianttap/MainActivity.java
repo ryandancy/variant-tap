@@ -28,6 +28,8 @@ import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 public class MainActivity extends AppCompatActivity {
   
+  private static final String TAG = "MainActivity";
+  
   private Random random = null;
   
   private Runnable throwingRunnable;
@@ -166,10 +168,9 @@ public class MainActivity extends AppCompatActivity {
     
     float initialRotation = Util.randomFloatBetween(random, 0, 360);
     
-    Log.d(getClass().getName(), "Throwing image with startBias = " + startBias + ", vertex = ("
+    Log.d(TAG, "Throwing image with startBias = " + startBias + ", vertex = ("
         + vertexHorizBias + ", " + minBias + "), rotating " + rotateTimes + " times");
-    Log.d(getClass().getName(),
-        "Equation: y = " + factor + "(x - " + vertexHorizBias + ")^2 + " + minBias);
+    Log.d(TAG, "Equation: y = " + factor + "(x - " + vertexHorizBias + ")^2 + " + minBias);
     
     // Construct the parabola animator, which moves the image
     

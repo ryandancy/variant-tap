@@ -16,6 +16,8 @@ import java.io.IOException;
 public abstract class MusicActivity extends AppCompatActivity
     implements MediaPlayer.OnPreparedListener, MediaPlayer.OnErrorListener {
   
+  private static final String TAG = "MusicActivity";
+  
   protected MediaPlayer music;
   
   // For starting the music after both prepared and resumed
@@ -35,7 +37,7 @@ public abstract class MusicActivity extends AppCompatActivity
       AssetFileDescriptor afd = getBackgroundMusicFD();
       music.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
     } catch (IOException e) {
-      Log.e(getClass().getName(), "Loading of " + getClass().getName() + "'s music failed!", e);
+      Log.e(TAG, "Loading of " + getClass().getName() + "'s music failed!", e);
       return;
     }
     
@@ -97,7 +99,7 @@ public abstract class MusicActivity extends AppCompatActivity
   
   @Override
   public boolean onError(MediaPlayer mediaPlayer, int what, int extra) {
-    Log.e(getClass().getName(), "Error playing music: code = " + what + ", extra code = " + extra);
+    Log.e(TAG, "Error playing music: code = " + what + ", extra code = " + extra);
     return false;
   }
   
