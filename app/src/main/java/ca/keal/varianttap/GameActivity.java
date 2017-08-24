@@ -523,11 +523,13 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     // TODO a losing animation!!!
     allowImgTaps = false;
     hasLost = true;
-    sfx.play(this, R.raw.lose);
     
     if (countdownAnim.isRunning()) {
       countdownAnim.cancel();
     }
+    
+    sfx.play(this, R.raw.lose);
+    music.stop();
     
     new Handler().postDelayed(new Runnable() { // no lambdas *cry*
       public void run() {
