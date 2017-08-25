@@ -30,10 +30,9 @@
       style="?android:attr/buttonBarStyle"
       android:layout_width="match_parent"
       android:layout_height="@dimen/circle_button_radius"
-      android:layout_alignParentBottom="true"
+      android:layout_below="@id/main_title"
       android:layout_centerHorizontal="true"
       android:layout_marginTop="@dimen/circle_button_margin_top"
-      android:layout_marginBottom="@dimen/circle_button_margin_bottom"
       android:gravity="center_horizontal"
       android:orientation="horizontal"
       tools:ignore="RtlHardcoded">
@@ -76,8 +75,9 @@
       android:name="ca.keal.varianttap.DifficultyButtonsFragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_above="@id/circle_buttons"
+      android:layout_alignParentBottom="true"
       android:layout_centerHorizontal="true"
+      android:layout_marginBottom="@dimen/bottom_button_margin_bottom"
       app:show_text="@string/play"
       app:transition_direction="right" />
   
