@@ -4,11 +4,9 @@
   
   <!-- MainActivity -->
   <string name="app_name_lowercase">variant tap</string>
+  <string name="sound_on_desc">Turn sound on</string>
+  <string name="sound_off_desc">Turn sound off</string>
   <string name="play">Play</string>
-  <string name="close_difficulty_btns">Close</string>
-  <string name="easy">Easy</string>
-  <string name="normal">Normal</string>
-  <string name="hard">Hard</string>
   
   <!-- GameActivity -->
   <string name="countdown_hint">Tap the image that\'s different than the others!</string>
@@ -28,4 +26,10 @@
   <string name="best_score">Best</string>
   <string name="average_score">Average</string>
   <string name="play_again">Play Again</string>
+  
+  <!-- DifficultyButtonsFragment -->
+  <string name="close_difficulty_btns">Close</string>
+  <string name="easy">Easy</string>
+  <string name="normal">Normal</string>
+  <string name="hard">Hard</string>
 </resources>

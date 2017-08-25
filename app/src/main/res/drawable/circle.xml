@@ -3,8 +3,8 @@
     android:shape="oval">
   <stroke
       android:color="@color/circleButtonColor"
-      android:width="2dp" />
+      android:width="@dimen/circle_button_thickness" />
   <size
-      android:width="@dimen/circle_button_radius"
-      android:height="@dimen/circle_button_radius" />
+      android:width="@dimen/circle_button_diameter"
+      android:height="@dimen/circle_button_diameter" />
 </shape>

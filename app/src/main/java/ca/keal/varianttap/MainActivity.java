@@ -5,17 +5,21 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
   
   private static final String TAG = "MainActivity";
   
+  // For circle buttons
+  private boolean soundOn;
+  
+  // For image-throwing animation
   private Random random = null;
   
   private Runnable throwingRunnable;
@@ -43,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    
+    // TEMP: TODO get sound from SharedPreferences in Application, actually toggle sound
+    soundOn = true;
+    ImageButton soundBtn = findViewById(R.id.toggle_sound_btn);
+    if (soundOn) {
+      toggleSoundButtonOn(soundBtn);
+    } else {
+      toggleSoundButtonOff(soundBtn);
+    }
     
     // Set up periodic throwing animations
     
@@ -214,6 +231,30 @@ public class MainActivity extends AppCompatActivity {
     
     parentLayout.addView(image, 0); // add at back, below all other elements
     throwAnim.start();
+  }
+  
+  public void toggleSound(View view) {
+    soundOn = !soundOn;
+    ImageButton btn = (ImageButton) view;
+    if (soundOn) {
+      toggleSoundButtonOn(btn);
+    } else {
+      toggleSoundButtonOff(btn);
+    }
+  }
+  
+  private void toggleSoundButtonOn(ImageButton btn) {
+    int circleButtonColor = ContextCompat.getColor(this, R.color.circleButtonColor);
+    btn.getDrawable().setColorFilter(circleButtonColor, PorterDuff.Mode.MULTIPLY);
+    btn.setBackgroundResource(R.drawable.circle);
+    btn.setContentDescription(getString(R.string.sound_on_desc));
+  }
+  
+  private void toggleSoundButtonOff(ImageButton btn) {
+    int disabledColor = ContextCompat.getColor(this, R.color.circleButtonDisabled);
+    btn.getDrawable().setColorFilter(disabledColor, PorterDuff.Mode.MULTIPLY);
+    btn.setBackgroundResource(R.drawable.circle_disabled);
+    btn.setContentDescription(getString(R.string.sound_off_desc));
   }
   
 }

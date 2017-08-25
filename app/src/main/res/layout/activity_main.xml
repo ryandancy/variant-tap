@@ -29,7 +29,7 @@
       android:id="@+id/circle_buttons"
       style="?android:attr/buttonBarStyle"
       android:layout_width="match_parent"
-      android:layout_height="@dimen/circle_button_radius"
+      android:layout_height="@dimen/circle_button_diameter"
       android:layout_below="@id/main_title"
       android:layout_centerHorizontal="true"
       android:layout_marginTop="@dimen/circle_button_margin_top"
@@ -38,34 +38,45 @@
       tools:ignore="RtlHardcoded">
     
     <ImageButton
-        android:layout_width="@dimen/circle_button_radius"
-        android:layout_height="@dimen/circle_button_radius"
+        android:id="@+id/toggle_sound_btn"
+        android:layout_width="@dimen/circle_button_diameter"
+        android:layout_height="@dimen/circle_button_diameter"
+        android:adjustViewBounds="true"
+        android:background="@drawable/circle"
+        android:onClick="toggleSound"
+        android:padding="@dimen/circle_button_padding"
+        android:scaleType="fitCenter"
+        android:src="@drawable/music_note"
+        tools:ignore="ContentDescription" />
+    
+    <ImageButton
+        android:layout_width="@dimen/circle_button_diameter"
+        android:layout_height="@dimen/circle_button_diameter"
+        android:layout_marginLeft="@dimen/circle_button_spacing"
+        android:adjustViewBounds="true"
         android:background="@drawable/circle"
         android:padding="@dimen/circle_button_padding"
+        android:scaleType="fitCenter"
         android:src="@android:drawable/ic_media_play" />
     
     <ImageButton
-        android:layout_width="@dimen/circle_button_radius"
-        android:layout_height="@dimen/circle_button_radius"
+        android:layout_width="@dimen/circle_button_diameter"
+        android:layout_height="@dimen/circle_button_diameter"
         android:layout_marginLeft="@dimen/circle_button_spacing"
+        android:adjustViewBounds="true"
         android:background="@drawable/circle"
         android:padding="@dimen/circle_button_padding"
+        android:scaleType="fitCenter"
         android:src="@android:drawable/ic_media_play" />
     
     <ImageButton
-        android:layout_width="@dimen/circle_button_radius"
-        android:layout_height="@dimen/circle_button_radius"
+        android:layout_width="@dimen/circle_button_diameter"
+        android:layout_height="@dimen/circle_button_diameter"
         android:layout_marginLeft="@dimen/circle_button_spacing"
+        android:adjustViewBounds="true"
         android:background="@drawable/circle"
         android:padding="@dimen/circle_button_padding"
-        android:src="@android:drawable/ic_media_play" />
-    
-    <ImageButton
-        android:layout_width="@dimen/circle_button_radius"
-        android:layout_height="@dimen/circle_button_radius"
-        android:layout_marginLeft="@dimen/circle_button_spacing"
-        android:background="@drawable/circle"
-        android:padding="@dimen/circle_button_padding"
+        android:scaleType="fitCenter"
         android:src="@android:drawable/ic_media_play" />
     
   </LinearLayout>

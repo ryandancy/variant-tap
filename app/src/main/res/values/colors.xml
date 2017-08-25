@@ -6,6 +6,7 @@
   <!-- TODO the accent colour should probably not be purple -->
   
   <color name="circleButtonColor">@color/colorPrimary</color>
+  <color name="circleButtonDisabled">#888888</color>
   
   <color name="gameMain">@color/colorPrimary</color>
   <color name="gamePausedMain">#e040fb</color>
