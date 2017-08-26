@@ -6,6 +6,7 @@
   <string name="app_name_lowercase">variant tap</string>
   <string name="sound_on_desc">Turn sound on</string>
   <string name="sound_off_desc">Turn sound off</string>
+  <string name="about_desc">About this app</string>
   <string name="play">Play</string>
   
   <!-- GameActivity -->

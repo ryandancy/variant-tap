@@ -55,9 +55,10 @@
         android:layout_marginLeft="@dimen/circle_button_spacing"
         android:adjustViewBounds="true"
         android:background="@drawable/circle"
+        android:contentDescription="@string/about_desc"
         android:padding="@dimen/circle_button_padding"
         android:scaleType="fitCenter"
-        android:src="@android:drawable/ic_media_play" />
+        android:src="@drawable/information" />
     
     <ImageButton
         android:layout_width="@dimen/circle_button_diameter"

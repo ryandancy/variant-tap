@@ -53,7 +53,21 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
+    // Make all the circle button icons circleButtonColor instead of white
+    
+    int circleButtonColor = ContextCompat.getColor(this, R.color.circleButtonColor);
+    ViewGroup circleButtons = findViewById(R.id.circle_buttons);
+    
+    for (int i = 0; i < circleButtons.getChildCount(); i++) {
+      View child = circleButtons.getChildAt(i);
+      if (!(child instanceof ImageButton)) return;
+      
+      ImageButton circleButton = (ImageButton) child;
+      circleButton.getDrawable().setColorFilter(circleButtonColor, PorterDuff.Mode.MULTIPLY);
+    }
+    
     // Update sound circle button
+    
     SharedPreferences prefs = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE);
     soundOn = prefs.getBoolean(Util.PREF_SOUND_ON, true); // sound on by default
     
