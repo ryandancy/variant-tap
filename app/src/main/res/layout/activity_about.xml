@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+  
+  <LinearLayout
+      android:gravity="center_horizontal"
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:orientation="vertical">
+    
+    <TextView
+        style="@style/AboutText.Header"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/code" />
+    
+    <TextView
+        style="@style/AboutText.Body"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/developer_name" />
+    
+    <TextView
+        style="@style/AboutText.Header"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/music" />
+    
+    <TextView
+        style="@style/AboutText.Body"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/music_attrib" />
+    
+    <TextView
+        style="@style/AboutText.Header"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/icons" />
+    
+    <LinearLayout
+        style="@style/AboutTextKeyValueLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+      
+      <TextView
+          style="@style/AboutText.Body.Key"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:text="@string/icon_music_note_name" />
+      
+      <TextView
+          style="@style/AboutText.Body.Value"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:text="@string/icon_music_note_attrib" />
+    
+    </LinearLayout>
+    
+    <LinearLayout
+        style="@style/AboutTextKeyValueLayout"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+      
+      <TextView
+          style="@style/AboutText.Body.Key"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:text="@string/icon_information_name" />
+      
+      <TextView
+          style="@style/AboutText.Body.Value"
+          android:layout_height="wrap_content"
+          android:layout_width="wrap_content"
+          android:text="@string/icon_information_attrib" />
+      
+    </LinearLayout>
+    
+  </LinearLayout>
+  
+</ScrollView>

@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -278,6 +279,11 @@ public class MainActivity extends AppCompatActivity {
     btn.getDrawable().setColorFilter(disabledColor, PorterDuff.Mode.MULTIPLY);
     btn.setBackgroundResource(R.drawable.circle_disabled);
     btn.setContentDescription(getString(R.string.sound_off_desc));
+  }
+  
+  public void toAbout(View v) {
+    Intent intent = new Intent(this, AboutActivity.class);
+    startActivity(intent, Util.getToLeftTransition(this));
   }
   
 }

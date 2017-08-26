@@ -9,6 +9,21 @@
   <string name="about_desc">About this app</string>
   <string name="play">Play</string>
   
+  <!-- AboutActivity -->
+  <string name="code">Code</string>
+  <string name="developer_name">Ryan Dancy</string>
+  <string name="music">Music</string>
+  <string name="music_attrib">
+    \"Shiny Tech II\" Kevin Macleod (incompetech.com)
+    \nLicensed under Creative Commons: By Attribution License
+    \nhttp://creativecomons.org/licenses/by/3.0/
+  </string>
+  <string name="icons">Icons</string>
+  <string name="icon_music_note_name">Music Note</string>
+  <string name="icon_music_note_attrib">Hea Poh Lea (The Noun Project)</string>
+  <string name="icon_information_name">Information</string>
+  <string name="icon_information_attrib">Viktor Vorobyev (The Noun Project)</string>
+  
   <!-- GameActivity -->
   <string name="countdown_hint">Tap the image that\'s different than the others!</string>
   <string name="score_label">Score</string>
