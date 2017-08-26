@@ -259,6 +259,9 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
   }
   
   private void startCountdownToGameStart() {
+    isPaused = true; // don't allow pausing with the back button
+    allowImgTaps = false;
+    
     // TODO vary pre-game hints (startingCountdownHint)
     countdownCircle.setText(String.valueOf(getMaxScoreForRound(round)));
     
@@ -267,6 +270,9 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
         startingCountdownText,
         new Util.CountdownEndListener() {
           public void onEnd() {
+            isPaused = false;
+            allowImgTaps = true;
+            
             hideStartingCountdown();
             startRound();
           }
