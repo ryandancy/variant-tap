@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#8e24aa</color>
-  <color name="colorPrimaryDark">#7b1fa2</color>
+  <color name="colorPrimary">#9c27b0</color>
+  <color name="colorPrimaryDark">#8e24aa</color>
   <color name="colorAccent">#d500f9</color>
   <!-- TODO the accent colour should probably not be purple -->
   
-  <color name="circleButtonColor">@color/colorPrimary</color>
+  <color name="circleButtonColor">@color/colorPrimaryDark</color>
   <color name="circleButtonDisabled">#888888</color>
   
   <color name="gameMain">@color/colorPrimary</color>
