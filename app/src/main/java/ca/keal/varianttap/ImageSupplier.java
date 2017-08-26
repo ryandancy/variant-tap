@@ -20,6 +20,8 @@ class ImageSupplier {
   
   // TODO "packages" of images
   
+  private static String TAG = "ImageSupplier";
+  
   private static ImageSupplier instance = null;
   
   Random random = new Random();
@@ -50,9 +52,9 @@ class ImageSupplier {
   private ImageSupplier(AssetManager assets) {
     try {
       load(assets);
-      Log.i(getClass().getName(), imgs.size() + " normal/variant image pairs loaded successfully.");
+      Log.i(TAG, imgs.size() + " normal/variant image pairs loaded successfully.");
     } catch (IOException e) {
-      Log.e(getClass().getName(), "Error loading images: " + e);
+      Log.e(TAG, "Error loading images: " + e);
       throw new RuntimeException(e); // UncheckedIOException is API Level 24, our min is 19
     }
   }
@@ -97,7 +99,7 @@ class ImageSupplier {
   int getPairId(Pair<Drawable, Drawable> pair) {
     int idx = imgs.indexOf(pair);
     if (idx < 0) {
-      Log.w(getClass().getName(), "getPairId() passed nonexistent Drawable pair");
+      Log.w(TAG, "getPairId() passed nonexistent Drawable pair");
     }
     return idx;
   }
