@@ -372,7 +372,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     super.onStop();
     
     // Release audio resources
-    sfx.release();
+    sfx.release(this);
     sfx = null;
   }
   

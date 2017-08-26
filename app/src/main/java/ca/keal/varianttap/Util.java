@@ -17,6 +17,10 @@ import java.util.Random;
 @SuppressWarnings({"unused", "WeakerAccess"})
 final class Util {
   
+  /** The filename for the SharedPreferences file that's actually preferences, not a leaderboard. */
+  public static final String PREF_FILE = "preferences";
+  public static final String PREF_SOUND_ON = "soundOn";
+  
   private static final String TAG = "Util";
   
   private Util() {}

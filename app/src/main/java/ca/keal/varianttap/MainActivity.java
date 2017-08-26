@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -52,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
-    // TEMP: TODO get sound from SharedPreferences in Application, actually toggle sound
-    soundOn = true;
+    // Update sound circle button
+    SharedPreferences prefs = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE);
+    soundOn = prefs.getBoolean(Util.PREF_SOUND_ON, true); // sound on by default
+    
     ImageButton soundBtn = findViewById(R.id.toggle_sound_btn);
     if (soundOn) {
       toggleSoundButtonOn(soundBtn);
@@ -235,12 +238,18 @@ public class MainActivity extends AppCompatActivity {
   
   public void toggleSound(View view) {
     soundOn = !soundOn;
+    
     ImageButton btn = (ImageButton) view;
     if (soundOn) {
       toggleSoundButtonOn(btn);
     } else {
       toggleSoundButtonOff(btn);
     }
+    
+    // Write the sound to the SharedPreferences
+    SharedPreferences.Editor editPrefs = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE).edit();
+    editPrefs.putBoolean(Util.PREF_SOUND_ON, soundOn);
+    editPrefs.apply();
   }
   
   private void toggleSoundButtonOn(ImageButton btn) {
