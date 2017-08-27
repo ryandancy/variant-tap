@@ -14,7 +14,7 @@
         style="@style/AboutText.Header"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/code" />
+        android:text="@string/developer" />
     
     <TextView
         style="@style/AboutText.Body"
@@ -77,6 +77,26 @@
           android:layout_height="wrap_content"
           android:layout_width="wrap_content"
           android:text="@string/icon_information_attrib" />
+      
+    </LinearLayout>
+    
+    <LinearLayout
+        style="@style/AboutTextKeyValueLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+      
+      <TextView
+          style="@style/AboutText.Body.Key"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/icon_leaderboard_name" />
+      
+      <TextView
+          style="@style/AboutText.Body.Value"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/icon_leaderboard_attrib" />
       
     </LinearLayout>
     
