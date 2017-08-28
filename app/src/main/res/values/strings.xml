@@ -8,11 +8,12 @@
   <string name="sound_off_desc">Turn sound on</string>
   <string name="about_desc">About</string>
   <string name="leaderboard_desc">Leaderboard</string>
+  <string name="remove_ads_desc">Remove ads</string>
   <string name="play">Play</string>
   
   <!-- AboutActivity -->
   <string name="developer">Developer</string>
-  <string name="developer_name">Ryan Dancy</string>
+  <string name="developer_name">A game by Ryan Dancy.</string>
   <string name="music">Music</string>
   <string name="music_attrib">
     \"Shiny Tech II\" Kevin Macleod (incompetech.com)

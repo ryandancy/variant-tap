@@ -77,10 +77,11 @@
         android:layout_height="@dimen/circle_button_diameter"
         android:layout_marginLeft="@dimen/circle_button_spacing"
         android:adjustViewBounds="true"
-        android:background="@drawable/circle"
+        android:background="@drawable/circle_slashed"
+        android:contentDescription="@string/remove_ads_desc"
         android:padding="@dimen/circle_button_padding"
         android:scaleType="fitCenter"
-        android:src="@android:drawable/ic_media_play" />
+        android:src="@drawable/ad" />
     
   </LinearLayout>
   
