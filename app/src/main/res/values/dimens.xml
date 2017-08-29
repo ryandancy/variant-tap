@@ -75,4 +75,9 @@
   <dimen name="post_game_stats_size">20sp</dimen>
   <dimen name="post_game_stats_line_spacing">5sp</dimen>
   <dimen name="post_game_stats_space_width">5sp</dimen>
+  
+  <!-- MISCELLANEOUS -->
+  
+  <dimen name="lose_variant_anim_size">175dp</dimen>
+  <dimen name="lose_variant_anim_pulse_size">185dp</dimen>
 </resources>

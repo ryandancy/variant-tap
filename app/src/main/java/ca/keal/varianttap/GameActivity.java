@@ -2,6 +2,7 @@ package ca.keal.varianttap;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.AlertDialog;
@@ -10,7 +11,6 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.view.ContextThemeWrapper;
@@ -19,8 +19,12 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.CycleInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
@@ -31,6 +35,8 @@ import android.widget.ViewSwitcher;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameActivity extends MusicActivity implements View.OnClickListener {
   
@@ -523,11 +529,10 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
   }
   
   /**
-   * Handle losing the game: cancel the countdown animation, wait a bit, then go to the post-game
-   * activity.
+   * Handle losing the game: cancel the countdown animation, play an animation, then go to the
+   * post-game activity.
    */
   private void onLose() {
-    // TODO a losing animation!!!
     allowImgTaps = false;
     hasLost = true;
     
@@ -538,11 +543,102 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     sfx.play(this, R.raw.lose);
     music.stop();
     
-    new Handler().postDelayed(new Runnable() { // no lambdas *cry*
-      public void run() {
+    // Don't allow pausing during the losing animation
+    pauseButton.setVisibility(View.INVISIBLE);
+    isPaused = true; // don't allow pausing with the back button
+    
+    // Play the lose animation, go to PostGameActivity afterwards
+    AnimatorSet loseAnim = getLoseAnimation();
+    loseAnim.addListener(new Animator.AnimatorListener() {
+      public void onAnimationCancel(Animator animator) {}
+      public void onAnimationRepeat(Animator animator) {}
+      public void onAnimationStart(Animator animator) {}
+      
+      public void onAnimationEnd(Animator animator) {
         toPostGameActivity();
       }
-    }, getResources().getInteger(R.integer.after_lose_wait_time_ms));
+    });
+    loseAnim.start();
+  }
+  
+  /**
+   * Makes and returns the lose animation: the normals fall to the bottom, while the variant goes to
+   * the centre while growing, pulses a bit, then falls to the bottom like the normals.
+   * @return The {@link AnimatorSet} representing the lose animation.
+   */
+  private AnimatorSet getLoseAnimation() {
+    // Gee I wish I could define this in XML, but there's dynamic stuff so that can't be done!
+    
+    ViewGroup parent = (ViewGroup) imgs[0].getParent();
+    ViewGroup root = (ViewGroup) imgs[0].getRootView();
+    
+    // Construct the variant animation
+    
+    ImageSwitcher variant = imgs[variantId];
+    
+    // Move into centre
+    float transX = (parent.getWidth() / 2f) - (variant.getWidth() / 2f) - variant.getX();
+    float transY = (parent.getHeight() / 2f) - (variant.getHeight() / 2f) - variant.getY();
+    
+    ObjectAnimator transXAnim = ObjectAnimator.ofFloat(variant, View.TRANSLATION_X, 0f, transX);
+    ObjectAnimator transYAnim = ObjectAnimator.ofFloat(variant, View.TRANSLATION_Y, 0f, transY);
+    
+    // Get bigger
+    float size = getResources().getDimension(R.dimen.lose_variant_anim_size);
+    float scale = size / variant.getWidth();
+    ObjectAnimator scaleXAnim = ObjectAnimator.ofFloat(variant, View.SCALE_X, 1f, scale);
+    ObjectAnimator scaleYAnim = ObjectAnimator.ofFloat(variant, View.SCALE_Y, 1f, scale);
+    
+    AnimatorSet moveAnim = new AnimatorSet();
+    moveAnim.playTogether(transXAnim, transYAnim, scaleXAnim, scaleYAnim);
+    moveAnim.setDuration(getResources().getInteger(R.integer.lose_variant_move_time_ms));
+    moveAnim.setInterpolator(new AccelerateDecelerateInterpolator());
+    
+    // Pulse a bit
+    float pulseSize = getResources().getDimension(R.dimen.lose_variant_anim_pulse_size);
+    float pulseScale = pulseSize / variant.getWidth();
+    ObjectAnimator pulseXAnim = ObjectAnimator.ofFloat(variant, View.SCALE_X, scale, pulseScale);
+    ObjectAnimator pulseYAnim = ObjectAnimator.ofFloat(variant, View.SCALE_Y, scale, pulseScale);
+    
+    AnimatorSet pulseAnim = new AnimatorSet();
+    pulseAnim.playTogether(pulseXAnim, pulseYAnim);
+    pulseAnim.setDuration(getResources().getInteger(R.integer.lose_variant_pulse_time_ms));
+    pulseAnim.setInterpolator(new CycleInterpolator(getResources()
+        .getInteger(R.integer.lose_variant_pulse_times)));
+    
+    // Fall
+    ObjectAnimator fallAnim = ObjectAnimator.ofFloat(
+        variant, View.TRANSLATION_Y, transY, root.getHeight() - variant.getY());
+    fallAnim.setDuration(getResources().getInteger(R.integer.lose_variant_fall_time_ms));
+    fallAnim.setInterpolator(new AccelerateInterpolator());
+    
+    AnimatorSet variantAnim = new AnimatorSet();
+    variantAnim.playSequentially(moveAnim, pulseAnim, fallAnim);
+    variantAnim.setStartDelay(getResources().getInteger(R.integer.lose_before_variant_time_ms));
+    
+    // Construct the normal animations
+    
+    AnimatorSet normalAnim = new AnimatorSet();
+    List<Animator> normalAnims = new ArrayList<>();
+    
+    for (int i = 0; i < imgs.length; i++) {
+      if (i == variantId) continue;
+      ImageSwitcher normal = imgs[i];
+      
+      ObjectAnimator normalFallAnim = ObjectAnimator.ofFloat(
+          normal, View.TRANSLATION_Y, 0f, root.getHeight() - normal.getY());
+      normalFallAnim.setInterpolator(new AccelerateInterpolator());
+      normalFallAnim.setDuration(getResources().getInteger(R.integer.lose_normal_fall_time_ms));
+      normalAnims.add(normalFallAnim);
+    }
+    
+    normalAnim.playTogether(normalAnims);
+    
+    // Play them together
+    AnimatorSet loseAnim = new AnimatorSet();
+    loseAnim.playTogether(normalAnim, variantAnim);
+    
+    return loseAnim;
   }
   
   private void toPostGameActivity() {

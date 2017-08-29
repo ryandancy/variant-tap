@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context="ca.keal.varianttap.GameActivity">
   
   <!-- Note that if donut_text is ever >5 characters it'll exceed the width of the donut -->
@@ -31,6 +33,8 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_centerInParent="true"
+      android:clipChildren="false"
+      android:clipToPadding="false"
       android:padding="@dimen/grid_padding" />
   
   <TextView
