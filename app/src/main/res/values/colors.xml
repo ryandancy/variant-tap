@@ -4,6 +4,7 @@
   <color name="colorPrimaryDark">#8e24aa</color>
   <color name="colorAccent">#d500f9</color>
   <!-- TODO the accent colour should probably not be purple -->
+  <color name="colorBackground">#ffffff</color>
   
   <color name="circleButtonColor">@color/colorPrimaryDark</color>
   <color name="circleButtonDisabled">#888888</color>
