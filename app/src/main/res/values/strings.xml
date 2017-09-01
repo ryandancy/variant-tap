@@ -27,6 +27,8 @@
   <string name="icon_information_attrib">Viktor Vorobyev (The Noun Project)</string>
   <string name="icon_leaderboard_name">Leaderboard</string>
   <string name="icon_leaderboard_attrib">Maxim Kulikov (The Noun Project)</string>
+  <string name="icon_trophy_name">Trophy</string>
+  <string name="icon_trophy_attrib">Stanislav Levin (The Noun Project)</string>
   
   <!-- GameActivity -->
   <string name="countdown_hint">Tap the image that\'s different than the others!</string>
