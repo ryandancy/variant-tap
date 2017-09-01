@@ -18,6 +18,15 @@ allprojects {
     maven { url 'https://jitpack.io' }
     maven { url 'https://maven.google.com' }
   }
+  project.ext {
+    android_compile_version = 26
+    android_version = 26
+    build_tools_version = '26.0.1'
+    android_min_sdk_version = 19
+    appcompat_library_version = '26.0.1'
+    support_library_version = '26.0.1'
+    gms_library_version = '11.2.0'
+  }
 }
 
 task clean(type: Delete) {
