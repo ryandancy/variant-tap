@@ -5,7 +5,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -26,7 +25,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesActivityResultCodes;
 import com.google.example.games.basegameutils.GameHelper;
 
@@ -57,27 +55,6 @@ public class MainActivity extends AppCompatActivity implements GameHelper.GameHe
   
   /** The interface to the Google Play game services API. */
   private GameHelper gameHelper;
-  
-  /** Actions that can be performed with Google Play games services. */
-  private enum GPGSAction {
-    ShowLeaderboard() {
-      @Override
-      public void performAction(Activity activity, GameHelper gameHelper) {
-        super.performAction(activity, gameHelper);
-        activity.startActivityForResult(
-            Games.Leaderboards.getAllLeaderboardsIntent(gameHelper.getApiClient()),
-            Util.REQUEST_LEADERBOARD);
-      }
-    },
-    Nothing;
-    
-    private static final String TAG = "GPGSAction";
-    
-    public void performAction(Activity activity, GameHelper gameHelper) {
-      Log.d(TAG, "GPGS action " + this + " performed in " + activity.getLocalClassName());
-    }
-  }
-  
   private GPGSAction actionOnSignIn = GPGSAction.Nothing;
   
   @Override
