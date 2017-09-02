@@ -68,6 +68,7 @@
         android:adjustViewBounds="true"
         android:background="@drawable/circle"
         android:contentDescription="@string/leaderboard_desc"
+        android:onClick="toLeaderboard"
         android:padding="@dimen/circle_button_small_padding"
         android:scaleType="fitCenter"
         android:src="@drawable/leaderboard" />

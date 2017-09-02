@@ -15,7 +15,11 @@ import android.widget.TextView;
 import java.util.Random;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
+// TODO should Util be split up into smaller, more specific util classes?
 final class Util {
+  
+  /** Arbitrary request codes for starting activities with a result. */
+  public static final int REQUEST_LEADERBOARD = 4182;
   
   /** The filename for the SharedPreferences file that's actually preferences, not a leaderboard. */
   public static final String PREF_FILE = "preferences";
@@ -24,6 +28,8 @@ final class Util {
   private static final String TAG = "Util";
   
   private Util() {}
+  
+  // MEASUREMENT UTILS
   
   static float pxToDp(Context context, float px) {
     return pxToDp(context.getResources(), px);
@@ -110,6 +116,8 @@ final class Util {
     paint.setTextSize(spToPx(textView.getResources(), size));
     return paint.measureText(text);
   }
+  
+  // ANIMATION UTILS
   
   static Bundle getToLeftTransition(Context context) {
     return ActivityOptions.makeCustomAnimation(
