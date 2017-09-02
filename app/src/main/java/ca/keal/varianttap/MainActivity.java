@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
@@ -25,13 +26,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.games.Games;
+import com.google.android.gms.games.GamesActivityResultCodes;
+import com.google.example.games.basegameutils.GameHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class MainActivity extends AppCompatActivity {
+// TODO move all circle buttons to fragments
+public class MainActivity extends AppCompatActivity implements GameHelper.GameHelperListener {
   
   private static final String TAG = "MainActivity";
   
@@ -48,6 +54,31 @@ public class MainActivity extends AppCompatActivity {
   
   /** Contains all throw animations currently playing; used to pause and restart the animations. */
   private List<AnimatorSet> throwAnims;
+  
+  /** The interface to the Google Play game services API. */
+  private GameHelper gameHelper;
+  
+  /** Actions that can be performed with Google Play games services. */
+  private enum GPGSAction {
+    ShowLeaderboard() {
+      @Override
+      public void performAction(Activity activity, GameHelper gameHelper) {
+        super.performAction(activity, gameHelper);
+        activity.startActivityForResult(
+            Games.Leaderboards.getAllLeaderboardsIntent(gameHelper.getApiClient()),
+            Util.REQUEST_LEADERBOARD);
+      }
+    },
+    Nothing;
+    
+    private static final String TAG = "GPGSAction";
+    
+    public void performAction(Activity activity, GameHelper gameHelper) {
+      Log.d(TAG, "GPGS action " + this + " performed in " + activity.getLocalClassName());
+    }
+  }
+  
+  private GPGSAction actionOnSignIn = GPGSAction.Nothing;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +144,26 @@ public class MainActivity extends AppCompatActivity {
         layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
       }
     });
+    
+    // Setup the Google Play games services helper
+    if (gameHelper == null) {
+      gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
+    }
+    gameHelper.enableDebugLog(true);
+    gameHelper.setMaxAutoSignInAttempts(1);
+    gameHelper.setup(this);
+  }
+  
+  @Override
+  protected void onStart() {
+    super.onStart();
+    gameHelper.onStart(this);
+  }
+  
+  @Override
+  protected void onStop() {
+    super.onStop();
+    gameHelper.onStop();
   }
   
   @Override
@@ -202,9 +253,8 @@ public class MainActivity extends AppCompatActivity {
     
     float initialRotation = Util.randomFloatBetween(random, 0, 360);
     
-    Log.d(TAG, "Throwing image with startBias = " + startBias + ", vertex = ("
+    Log.v(TAG, "Throwing image with startBias = " + startBias + ", vertex = ("
         + vertexHorizBias + ", " + minBias + "), rotating " + rotateTimes + " times");
-    Log.d(TAG, "Equation: y = " + factor + "(x - " + vertexHorizBias + ")^2 + " + minBias);
     
     // Construct the parabola animator, which moves the image
     
@@ -284,6 +334,45 @@ public class MainActivity extends AppCompatActivity {
   public void toAbout(View v) {
     Intent intent = new Intent(this, AboutActivity.class);
     startActivity(intent, Util.getToLeftTransition(this));
+  }
+  
+  public void toLeaderboard(View v) {
+    if (gameHelper.isSignedIn()) { // connected?
+      GPGSAction.ShowLeaderboard.performAction(this, gameHelper);
+    } else {
+      actionOnSignIn = GPGSAction.ShowLeaderboard;
+      gameHelper.beginUserInitiatedSignIn();
+    }
+  }
+  
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    gameHelper.onActivityResult(requestCode, resultCode, data);
+    
+    if (requestCode == Util.REQUEST_LEADERBOARD
+        && resultCode == GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED) {
+      Log.d(TAG, "User signed out from within default UI: disconnecting");
+      
+      // Fix weird GameHelper bug with connection state and isSignedIn()
+      gameHelper.disconnect();
+      
+      // Don't automatically sign the user in again
+      gameHelper.setConnectOnStart(false);
+    }
+  }
+  
+  @Override
+  public void onSignInFailed() {
+    if (gameHelper.hasSignInError()) {
+      gameHelper.showFailureDialog();
+    }
+  }
+  
+  @Override
+  public void onSignInSucceeded() {
+    actionOnSignIn.performAction(this, gameHelper);
+    actionOnSignIn = GPGSAction.Nothing;
   }
   
 }
