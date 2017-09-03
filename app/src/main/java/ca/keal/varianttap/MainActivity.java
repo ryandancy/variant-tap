@@ -25,9 +25,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.games.GamesActivityResultCodes;
-import com.google.example.games.basegameutils.GameHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -35,7 +32,8 @@ import java.util.Random;
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 // TODO move all circle buttons to fragments
-public class MainActivity extends AppCompatActivity implements GameHelper.GameHelperListener {
+public class MainActivity extends AppCompatActivity
+    implements GPGSHelperServiceConnection.ServiceReceiver {
   
   private static final String TAG = "MainActivity";
   
@@ -53,9 +51,8 @@ public class MainActivity extends AppCompatActivity implements GameHelper.GameHe
   /** Contains all throw animations currently playing; used to pause and restart the animations. */
   private List<AnimatorSet> throwAnims;
   
-  /** The interface to the Google Play game services API. */
-  private GameHelper gameHelper;
-  private GPGSAction actionOnSignIn = GPGSAction.Nothing;
+  private GPGSHelperService gpgsHelper;
+  private GPGSHelperServiceConnection connection;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -122,25 +119,22 @@ public class MainActivity extends AppCompatActivity implements GameHelper.GameHe
       }
     });
     
-    // Setup the Google Play games services helper
-    if (gameHelper == null) {
-      gameHelper = new GameHelper(this, GameHelper.CLIENT_GAMES);
-    }
-    gameHelper.enableDebugLog(true);
-    gameHelper.setMaxAutoSignInAttempts(1);
-    gameHelper.setup(this);
+    connection = new GPGSHelperServiceConnection(this);
   }
   
   @Override
   protected void onStart() {
     super.onStart();
-    gameHelper.onStart(this);
+    
+    // Bind to GPGSHelperService
+    Intent intent = new Intent(this, GPGSHelperService.class);
+    bindService(intent, connection, BIND_AUTO_CREATE);
   }
   
   @Override
   protected void onStop() {
     super.onStop();
-    gameHelper.onStop();
+    unbindService(connection);
   }
   
   @Override
@@ -171,6 +165,12 @@ public class MainActivity extends AppCompatActivity implements GameHelper.GameHe
         anim.pause();
       }
     }
+  }
+  
+  @Override
+  public void receiveService(GPGSHelperService service) {
+    gpgsHelper = service;
+    gpgsHelper.tryAutoConnect(this);
   }
   
   /**
@@ -314,42 +314,18 @@ public class MainActivity extends AppCompatActivity implements GameHelper.GameHe
   }
   
   public void toLeaderboard(View v) {
-    if (gameHelper.isSignedIn()) { // connected?
-      GPGSAction.ShowLeaderboard.performAction(this, gameHelper);
+    if (gpgsHelper.isConnected()) {
+      GPGSAction.ShowLeaderboard.performAction(this, gpgsHelper.getApiClient());
     } else {
-      actionOnSignIn = GPGSAction.ShowLeaderboard;
-      gameHelper.beginUserInitiatedSignIn();
+      gpgsHelper.setActionOnSignIn(this, GPGSAction.ShowLeaderboard);
+      gpgsHelper.connect(this);
     }
   }
   
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    gameHelper.onActivityResult(requestCode, resultCode, data);
-    
-    if (requestCode == Util.REQUEST_LEADERBOARD
-        && resultCode == GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED) {
-      Log.d(TAG, "User signed out from within default UI: disconnecting");
-      
-      // Fix weird GameHelper bug with connection state and isSignedIn()
-      gameHelper.disconnect();
-      
-      // Don't automatically sign the user in again
-      gameHelper.setConnectOnStart(false);
-    }
-  }
-  
-  @Override
-  public void onSignInFailed() {
-    if (gameHelper.hasSignInError()) {
-      gameHelper.showFailureDialog();
-    }
-  }
-  
-  @Override
-  public void onSignInSucceeded() {
-    actionOnSignIn.performAction(this, gameHelper);
-    actionOnSignIn = GPGSAction.Nothing;
+    gpgsHelper.onActivityResult(this, requestCode, resultCode);
   }
   
 }
