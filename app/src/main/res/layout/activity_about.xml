@@ -1,105 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
   
-  <LinearLayout
-      android:gravity="center_horizontal"
-      android:layout_height="wrap_content"
+  <ScrollView
       android:layout_width="match_parent"
-      android:orientation="vertical">
-    
-    <TextView
-        style="@style/AboutText.Header"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/developer" />
-    
-    <TextView
-        style="@style/AboutText.Body"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/developer_name" />
-    
-    <TextView
-        style="@style/AboutText.Header"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/music" />
-    
-    <TextView
-        style="@style/AboutText.Body"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/music_attrib" />
-    
-    <TextView
-        style="@style/AboutText.Header"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/icons" />
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true">
     
     <LinearLayout
-        style="@style/AboutTextKeyValueLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
       
       <TextView
-          style="@style/AboutText.Body.Key"
-          android:layout_height="wrap_content"
+          style="@style/AboutText.Header"
           android:layout_width="wrap_content"
-          android:text="@string/icon_music_note_name" />
+          android:layout_height="wrap_content"
+          android:text="@string/developer" />
       
       <TextView
-          style="@style/AboutText.Body.Value"
-          android:layout_height="wrap_content"
+          style="@style/AboutText.Body"
           android:layout_width="wrap_content"
-          android:text="@string/icon_music_note_attrib" />
-    
+          android:layout_height="wrap_content"
+          android:text="@string/developer_name" />
+      
+      <TextView
+          style="@style/AboutText.Header"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/music" />
+      
+      <TextView
+          style="@style/AboutText.Body"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/music_attrib" />
+      
+      <TextView
+          style="@style/AboutText.Header"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/icons" />
+      
+      <LinearLayout
+          style="@style/AboutTextKeyValueLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+        
+        <TextView
+            style="@style/AboutText.Body.Key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_music_note_name" />
+        
+        <TextView
+            style="@style/AboutText.Body.Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_music_note_attrib" />
+        
+      </LinearLayout>
+      
+      <LinearLayout
+          style="@style/AboutTextKeyValueLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+        
+        <TextView
+            style="@style/AboutText.Body.Key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_information_name" />
+        
+        <TextView
+            style="@style/AboutText.Body.Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_information_attrib" />
+        
+      </LinearLayout>
+      
+      <LinearLayout
+          style="@style/AboutTextKeyValueLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+        
+        <TextView
+            style="@style/AboutText.Body.Key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_trophy_name" />
+        
+        <TextView
+            style="@style/AboutText.Body.Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/icon_trophy_attrib" />
+        
+      </LinearLayout>
+      
     </LinearLayout>
     
-    <LinearLayout
-        style="@style/AboutTextKeyValueLayout"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal">
-      
-      <TextView
-          style="@style/AboutText.Body.Key"
-          android:layout_height="wrap_content"
-          android:layout_width="wrap_content"
-          android:text="@string/icon_information_name" />
-      
-      <TextView
-          style="@style/AboutText.Body.Value"
-          android:layout_height="wrap_content"
-          android:layout_width="wrap_content"
-          android:text="@string/icon_information_attrib" />
-      
-    </LinearLayout>
-    
-    <LinearLayout
-        style="@style/AboutTextKeyValueLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-      
-      <TextView
-          style="@style/AboutText.Body.Key"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/icon_trophy_name" />
-      
-      <TextView
-          style="@style/AboutText.Body.Value"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="@string/icon_trophy_attrib" />
-      
-    </LinearLayout>
-    
-  </LinearLayout>
+  </ScrollView>
   
-</ScrollView>
+  <Button
+      android:id="@+id/sign_in_out_button"
+      style="@style/ButtonStyle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_marginBottom="@dimen/bottom_button_margin_bottom"
+      android:drawablePadding="@dimen/button_drawable_spacing"
+      android:gravity="center|end"
+      android:onClick="signInOrOutOfGPGS"
+      android:text="@string/gpgs_sign_in" />
+  
+</RelativeLayout>
