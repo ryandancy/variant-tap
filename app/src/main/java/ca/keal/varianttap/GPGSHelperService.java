@@ -19,8 +19,12 @@ import com.google.example.games.basegameutils.BaseGameUtils;
 /**
  * A bound service that provies access to one instance of {@link GoogleApiClient} across multiple
  * activities and handles its lifecycle. Activities binding to this service must call
- * {@link GPGSHelperBinder#onActivityResult(Activity, int, int)} from their
- * {@link Activity#onActivityResult(int, int, Intent)} methods.
+ * {@link #onActivityResult(Activity, int, int)} from their
+ * {@link Activity#onActivityResult(int, int, Intent)} methods. Binding activities should also
+ * (but are not required to) call either {@link #tryAutoConnect(Activity)} or
+ * {@link #connectWithoutSignInFlow(Activity)} as soon as they receive an instance of this service
+ * (usually in an implementation of
+ * {@link GPGSHelperServiceConnection.ServiceReceiver#receiveService(GPGSHelperService)}).
  */
 public class GPGSHelperService extends Service
     implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
@@ -48,6 +52,8 @@ public class GPGSHelperService extends Service
   }
   
   public void tryAutoConnect(Activity activity) {
+    if (isConnected()) return;
+    
     // Auto-connect if the shared preferences say we should
     SharedPreferences prefs = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE);
     if (prefs.getBoolean(Util.PREF_AUTO_SIGN_IN, true)) {
@@ -56,12 +62,51 @@ public class GPGSHelperService extends Service
   }
   
   public void connect(Activity activity) {
-    trySignIn = true;
+    connect(activity, true);
+  }
+  
+  /**
+   * Attempt to connect, but if the attempt fails, don't try to resolve it (i.e. don't start the
+   * sign-in flow).
+   */
+  public void connectWithoutSignInFlow(Activity activity) {
+    connect(activity, false);
+  }
+  
+  private void connect(Activity activity, boolean trySignIn) {
+    if (resolvingConnectionFailure) {
+      Log.w(TAG, "Attempted to connect while resolving connection failure");
+      return;
+    }
+    
+    if (isConnected()) {
+      // Treat it as if we connected and succeeded
+      actionOnSignIn.performAction(activity, client);
+      return;
+    }
+    
+    Log.d(TAG, "Attempting to connect...");
+    this.trySignIn = trySignIn;
     currentActivity = activity;
     client.connect();
   }
   
+  public void signOut() {
+    if (!isConnected()) {
+      Log.w(TAG, "Attempted to sign out when already disconnected");
+      return;
+    }
+    
+    Log.d(TAG, "Signing out");
+    setAutoSignIn(false);
+    Games.signOut(client);
+    client.disconnect();
+  }
+  
   public void onActivityResult(Activity activity, int requestCode, int resultCode) {
+    Log.d(TAG, "Received activity result in " + activity.getLocalClassName()
+        + " (request = " + requestCode + ", result = " + resultCode + ")");
+    
     if (requestCode == REQUEST_SIGN_IN) {
       trySignIn = false;
       resolvingConnectionFailure = false;
@@ -86,7 +131,7 @@ public class GPGSHelperService extends Service
       // The user signed out from within one of the default GPGS UIs (i.e. the leaderboard UI)
       Log.d(TAG, "User signed out from within default GPGS UI");
       setAutoSignIn(false);
-      getApiClient().disconnect();
+      client.disconnect();
     }
   }
   
@@ -135,7 +180,7 @@ public class GPGSHelperService extends Service
     if (trySignIn) {
       // Attempt to resolve the connection failure, usually resulting in the sign-in flow
       Log.d(TAG, "Attempt to connect failed, attempting to resolve...");
-      Log.d(TAG, "(Error message: " + result.getErrorMessage() + ")");
+      Log.d(TAG, "(Error: " + result + ")");
       trySignIn = false;
       resolvingConnectionFailure = true;
       

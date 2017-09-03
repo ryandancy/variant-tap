@@ -12,6 +12,8 @@
   <string name="play">Play</string>
   
   <!-- AboutActivity -->
+  <string name="gpgs_sign_in">Sign in to Google Play</string>
+  <string name="gpgs_sign_out">Sign out of Google Play</string>
   <string name="developer">Developer</string>
   <string name="developer_name">A game by Ryan Dancy.</string>
   <string name="music">Music</string>
