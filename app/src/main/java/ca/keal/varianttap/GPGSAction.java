@@ -1,6 +1,7 @@
 package ca.keal.varianttap;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -16,8 +17,8 @@ enum GPGSAction {
   
   HideSignInButton() {
     @Override
-    void performAction(Activity activity, GoogleApiClient client) {
-      super.performAction(activity, client);
+    void performAction(Activity activity, GoogleApiClient client, Bundle args) {
+      super.performAction(activity, client, args);
       
       // Check that it has a sign-in button
       if (!(activity instanceof HasSignInButton)) {
@@ -33,8 +34,8 @@ enum GPGSAction {
   
   ShowLeaderboard() {
     @Override
-    void performAction(Activity activity, GoogleApiClient client) {
-      super.performAction(activity, client);
+    void performAction(Activity activity, GoogleApiClient client, Bundle args) {
+      super.performAction(activity, client, args);
       activity.startActivityForResult(
           Games.Leaderboards.getAllLeaderboardsIntent(client),
           Util.REQUEST_LEADERBOARD);
@@ -45,8 +46,13 @@ enum GPGSAction {
   
   private static final String TAG = "GPGSAction";
   
+  void performAction(Activity activity, GoogleApiClient client, Bundle args) {
+    Log.d(TAG, "GPGS action " + this + " performed in " + activity.getLocalClassName()
+        + (args == null ? "" : " (arguments: " + args + ")"));
+  }
+  
   void performAction(Activity activity, GoogleApiClient client) {
-    Log.d(TAG, "GPGS action " + this + " performed in " + activity.getLocalClassName());
+    performAction(activity, client, null);
   }
   
 }
