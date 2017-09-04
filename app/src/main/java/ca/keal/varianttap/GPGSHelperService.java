@@ -42,6 +42,7 @@ public class GPGSHelperService extends Service
   private boolean trySignIn = false; // try to sign in when connection fails?
   
   private GPGSAction actionOnSignIn = GPGSAction.Nothing;
+  private Bundle actionOnSignInArgs = null;
   
   public GoogleApiClient getApiClient() {
     return client;
@@ -135,9 +136,14 @@ public class GPGSHelperService extends Service
     }
   }
   
-  public void setActionOnSignIn(Activity activity, GPGSAction action) {
-    actionOnSignIn = action;
+  public void setActionOnSignIn(Activity activity, GPGSAction action, Bundle args) {
     currentActivity = activity;
+    actionOnSignIn = action;
+    actionOnSignInArgs = args;
+  }
+  
+  public void setActionOnSignIn(Activity activity, GPGSAction action) {
+    setActionOnSignIn(activity, action, null);
   }
   
   private void setAutoSignIn(boolean autoSignIn) {
@@ -196,7 +202,7 @@ public class GPGSHelperService extends Service
   @Override
   public void onConnected(@Nullable Bundle bundle) {
     Log.d(TAG, "Connected");
-    actionOnSignIn.performAction(currentActivity, client);
+    actionOnSignIn.performAction(currentActivity, client, actionOnSignInArgs);
     setAutoSignIn(true);
   }
   
