@@ -33,12 +33,14 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
+import com.google.android.gms.games.Games;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameActivity extends MusicActivity implements View.OnClickListener {
+public class GameActivity extends MusicActivity implements View.OnClickListener,
+    GPGSHelperServiceConnection.ServiceReceiver {
   
   private static final String TAG = "GameActivity";
   
@@ -96,6 +98,9 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
   private TextView scoreLabel;
   
   private SFXManager sfx;
+  
+  private GPGSHelperService gpgsHelper;
+  private GPGSHelperServiceConnection connection;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -262,6 +267,8 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     } else {
       restoreState(savedInstanceState);
     }
+    
+    connection = new GPGSHelperServiceConnection(this);
   }
   
   private void startCountdownToGameStart() {
@@ -377,6 +384,10 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     
     // Allocate audio resources
     sfx = new SFXManager(this);
+    
+    // Bind to service
+    Intent intent = new Intent(this, GPGSHelperService.class);
+    bindService(intent, connection, BIND_AUTO_CREATE);
   }
   
   @Override
@@ -386,6 +397,15 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     // Release audio resources
     sfx.release(this);
     sfx = null;
+    
+    // Unbind from service
+    unbindService(connection);
+  }
+  
+  @Override
+  public void receiveService(GPGSHelperService service) {
+    gpgsHelper = service;
+    gpgsHelper.connectWithoutSignInFlow(this);
   }
   
   @Override
@@ -546,6 +566,28 @@ public class GameActivity extends MusicActivity implements View.OnClickListener 
     // Don't allow pausing during the losing animation
     pauseButton.setVisibility(View.INVISIBLE);
     isPaused = true; // don't allow pausing with the back button
+    
+    // Get the leaderboard ID
+    int leaderboardRes = -1;
+    switch (difficulty) {
+      case 0:
+        leaderboardRes = R.string.leaderboard_id_easy;
+        break;
+      case 1:
+        leaderboardRes = R.string.leaderboard_id_normal;
+        break;
+      case 2:
+        leaderboardRes = R.string.leaderboard_id_hard;
+        break;
+    }
+    String leaderboardId = getString(leaderboardRes);
+    
+    // Submit or cache the score
+    if (gpgsHelper.isConnected()) {
+      Games.Leaderboards.submitScore(gpgsHelper.getApiClient(), leaderboardId, score);
+    } else {
+      gpgsHelper.getScoreCache().cache(this, new Score(leaderboardId, score));
+    }
     
     // Play the lose animation, go to PostGameActivity afterwards
     AnimatorSet loseAnim = getLoseAnimation();
