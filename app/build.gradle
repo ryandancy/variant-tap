@@ -30,4 +30,5 @@ dependencies {
   compile 'com.android.support.constraint:constraint-layout:1.0.2'
   compile "com.google.android.gms:play-services-games:${gms_library_version}"
   compile 'com.github.lzyzsd:circleprogress:1.2.1'
+  compile 'com.github.simbiose:Encryption:2.0.1'
 }

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_id">885088898223</string>
+  <string name="leaderboard_id_easy">CgkIr5mjm-EZEAIQAQ</string>
+  <string name="leaderboard_id_normal">CgkIr5mjm-EZEAIQAg</string>
+  <string name="leaderboard_id_hard">CgkIr5mjm-EZEAIQAw</string>
 </resources>

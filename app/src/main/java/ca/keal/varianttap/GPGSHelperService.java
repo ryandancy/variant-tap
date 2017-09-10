@@ -44,8 +44,15 @@ public class GPGSHelperService extends Service
   private GPGSAction actionOnSignIn = GPGSAction.Nothing;
   private Bundle actionOnSignInArgs = null;
   
+  private ScoreCache scoreCache = new ScoreCache();
+  private boolean trySubmitCacheOnSignIn = true; // try to submit the cache when signed in?
+  
   public GoogleApiClient getApiClient() {
     return client;
+  }
+  
+  public ScoreCache getScoreCache() {
+    return scoreCache;
   }
   
   public boolean isConnected() {
@@ -202,8 +209,14 @@ public class GPGSHelperService extends Service
   @Override
   public void onConnected(@Nullable Bundle bundle) {
     Log.d(TAG, "Connected");
+    
     actionOnSignIn.performAction(currentActivity, client, actionOnSignInArgs);
     setAutoSignIn(true);
+    
+    if (trySubmitCacheOnSignIn) {
+      trySubmitCacheOnSignIn = false;
+      scoreCache.submitCache(currentActivity, client);
+    }
   }
   
   @Override
