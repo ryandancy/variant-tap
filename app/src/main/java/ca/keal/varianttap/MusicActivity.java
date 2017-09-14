@@ -22,6 +22,9 @@ public abstract class MusicActivity extends AppCompatActivity
   
   private static final String TAG = "MusicActivity";
   
+  private static final String STATE_MUSIC_POS = "musicPos";
+  private int musicPos = 0;
+  
   protected MediaPlayer music;
   
   private boolean soundOn;
@@ -35,6 +38,15 @@ public abstract class MusicActivity extends AppCompatActivity
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    if (savedInstanceState != null) {
+      musicPos = savedInstanceState.getInt(STATE_MUSIC_POS);
+    }
+  }
+  
+  @Override
+  protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    outState.putInt(STATE_MUSIC_POS, music.getCurrentPosition());
   }
   
   @Override
@@ -98,7 +110,7 @@ public abstract class MusicActivity extends AppCompatActivity
     // Start the music after both the music is prepared and the activity is resumed
     isPrepared = true;
     if (isResumed) {
-      music.start();
+      startMusic();
     }
   }
   
@@ -109,13 +121,19 @@ public abstract class MusicActivity extends AppCompatActivity
     // Start the music after both the music is prepared and the activity is resumed
     isResumed = true;
     if (isPrepared) {
-      music.start();
+      startMusic();
     }
+  }
+  
+  private void startMusic() {
+    music.seekTo(musicPos);
+    music.start();
   }
   
   @Override
   protected void onPause() {
     super.onPause();
+    musicPos = music.getCurrentPosition();
     music.pause();
   }
   
