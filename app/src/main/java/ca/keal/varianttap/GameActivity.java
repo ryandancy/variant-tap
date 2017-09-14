@@ -53,6 +53,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private static final String STATE_ALLOW_IMG_TAPS = "allowImgTaps";
   private static final String STATE_HAS_LOST = "hasLost";
   private static final String STATE_IS_PAUSED = "isPaused";
+  private static final String STATE_SWITCH_ON_RESUME = "switchOnResume";
   private static final String STATE_COUNTDOWN_CIRCLE_MAX = "countdownCircleMax";
   private static final String STATE_COUNTDOWN_CIRCLE_PROGRESS = "countdownCircleProgress";
   private static final String STATE_COUNTDOWN_CIRCLE_VALUE = "countdownCircleValue";
@@ -75,6 +76,9 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private boolean hasLost;
   private boolean isPaused;
   
+  /** Go to PostGameActivity in onResume()? (used for exiting out of lose animation) */
+  private boolean switchOnResume;
+  
   private ImageButton pauseButton;
   private ConstraintLayout pauseOverlay;
   private TextView pausedText;
@@ -93,6 +97,8 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private DonutProgress countdownCircle;
   private ValueAnimator countdownAnim;
   private ObjectAnimator resetCountdownAnim;
+  
+  private AnimatorSet loseAnim;
   
   private TextView scoreText;
   private TextView scoreLabel;
@@ -114,6 +120,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     allowImgTaps = false;
     isPaused = false;
     hasLost = false;
+    switchOnResume = false;
     
     countdownCircle = findViewById(R.id.countdown_circle);
     scoreText = findViewById(R.id.score_text);
@@ -313,6 +320,8 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     outState.putBoolean(STATE_HAS_LOST, hasLost);
     outState.putBoolean(STATE_IS_PAUSED, isPaused);
     
+    outState.putBoolean(STATE_SWITCH_ON_RESUME, switchOnResume);
+    
     outState.putInt(STATE_COUNTDOWN_CIRCLE_MAX, countdownCircle.getMax());
     outState.putFloat(STATE_COUNTDOWN_CIRCLE_PROGRESS, countdownCircle.getProgress());
     outState.putInt(STATE_COUNTDOWN_CIRCLE_VALUE, Integer.valueOf(countdownCircle.getText()));
@@ -336,6 +345,8 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     allowImgTaps = savedInstanceState.getBoolean(STATE_ALLOW_IMG_TAPS);
     hasLost = savedInstanceState.getBoolean(STATE_HAS_LOST);
     isPaused = savedInstanceState.getBoolean(STATE_IS_PAUSED);
+    
+    switchOnResume = savedInstanceState.getBoolean(STATE_SWITCH_ON_RESUME);
     
     // Restore view state
     
@@ -412,8 +423,23 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   protected void onPause() {
     super.onPause();
     
-    if (!isPaused && !hasLost) {
+    if (hasLost) {
+      loseAnim.cancel();
+      switchOnResume = true;
+      return;
+    }
+    
+    if (!isPaused) {
       pause(null); // go to the pause screen
+    }
+  }
+  
+  @Override
+  protected void onResume() {
+    super.onResume();
+    
+    if (switchOnResume) {
+      toPostGameActivity(false);
     }
   }
   
@@ -590,15 +616,21 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     }
     
     // Play the lose animation, go to PostGameActivity afterwards
-    AnimatorSet loseAnim = getLoseAnimation();
+    loseAnim = getLoseAnimation();
     loseAnim.addListener(new Animator.AnimatorListener() {
-      public void onAnimationCancel(Animator animator) {}
-      public void onAnimationRepeat(Animator animator) {}
-      public void onAnimationStart(Animator animator) {}
+      private boolean canceled = false;
+      
+      public void onAnimationCancel(Animator animator) {
+        canceled = true;
+      }
       
       public void onAnimationEnd(Animator animator) {
-        toPostGameActivity();
+        if (canceled) return;
+        toPostGameActivity(true);
       }
+      
+      public void onAnimationRepeat(Animator animator) {}
+      public void onAnimationStart(Animator animator) {}
     });
     loseAnim.start();
   }
@@ -683,11 +715,15 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     return loseAnim;
   }
   
-  private void toPostGameActivity() {
+  private void toPostGameActivity(boolean transition) {
     Intent intent = new Intent(this, PostGameActivity.class);
     intent.putExtra(PostGameActivity.EXTRA_SCORE, score);
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
-    startActivity(intent, Util.getToRightTransition(this));
+    if (transition) {
+      startActivity(intent, Util.getToRightTransition(this));
+    } else {
+      startActivity(intent);
+    }
     finish();
   }
   
