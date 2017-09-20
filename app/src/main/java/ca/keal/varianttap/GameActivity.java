@@ -40,7 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends MusicActivity implements View.OnClickListener,
-    GPGSHelperServiceConnection.ServiceReceiver {
+    GPGSHelperServiceClient {
   
   private static final String TAG = "GameActivity";
   
@@ -417,6 +417,11 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
     gpgsHelper.connectWithoutSignInFlow(this);
+  }
+  
+  @Override
+  public GPGSHelperService getService() {
+    return gpgsHelper;
   }
   
   @Override

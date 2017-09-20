@@ -7,16 +7,17 @@ import android.util.Log;
 
 /**
  * A helper class for implementing a {@link ServiceConnection} to {@link GPGSHelperService}. Classes
- * using {@link GPGSHelperService} must pass a {@link ServiceReceiver} to this class' constructor
- * and must store the service passed to {@link ServiceReceiver#receiveService(GPGSHelperService)};
+ * using {@link GPGSHelperService} must pass a {@link GPGSHelperServiceClient} to this class'
+ * constructor and must store the service passed to
+ * {@link GPGSHelperServiceClient#receiveService(GPGSHelperService)};
  */
 class GPGSHelperServiceConnection implements ServiceConnection {
   
   private static final String TAG = "GPGSHelperServiceConn"; // must be <23 chars
   
-  private final ServiceReceiver receiver;
+  private final GPGSHelperServiceClient receiver;
   
-  GPGSHelperServiceConnection(ServiceReceiver receiver) {
+  GPGSHelperServiceConnection(GPGSHelperServiceClient receiver) {
     this.receiver = receiver;
   }
   
@@ -30,15 +31,6 @@ class GPGSHelperServiceConnection implements ServiceConnection {
   @Override
   public void onServiceDisconnected(ComponentName name) {
     Log.e(TAG, "GPGSHelperService disconnected! This should not happen!");
-  }
-  
-  interface ServiceReceiver {
-  
-    /**
-     * Receive {@code service} and store it to be used later for API calls, etc.
-     */
-    void receiveService(GPGSHelperService service);
-    
   }
   
 }

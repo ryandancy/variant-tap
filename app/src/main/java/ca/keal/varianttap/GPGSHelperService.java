@@ -24,7 +24,7 @@ import com.google.example.games.basegameutils.BaseGameUtils;
  * (but are not required to) call either {@link #tryAutoConnect(Activity)} or
  * {@link #connectWithoutSignInFlow(Activity)} as soon as they receive an instance of this service
  * (usually in an implementation of
- * {@link GPGSHelperServiceConnection.ServiceReceiver#receiveService(GPGSHelperService)}).
+ * {@link GPGSHelperServiceClient#receiveService(GPGSHelperService)}).
  */
 public class GPGSHelperService extends Service
     implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {

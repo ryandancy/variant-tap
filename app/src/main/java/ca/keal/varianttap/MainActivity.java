@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -32,13 +31,9 @@ import java.util.Random;
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 // TODO move all circle buttons to fragments
-public class MainActivity extends AppCompatActivity
-    implements GPGSHelperServiceConnection.ServiceReceiver {
+public class MainActivity extends AppCompatActivity implements GPGSHelperServiceClient {
   
   private static final String TAG = "MainActivity";
-  
-  // For circle buttons
-  private boolean soundOn;
   
   // For image-throwing animation
   private Random random = null;
@@ -70,18 +65,6 @@ public class MainActivity extends AppCompatActivity
       
       ImageButton circleButton = (ImageButton) child;
       circleButton.getDrawable().setColorFilter(circleButtonColor, PorterDuff.Mode.MULTIPLY);
-    }
-    
-    // Update sound circle button
-    
-    SharedPreferences prefs = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE);
-    soundOn = prefs.getBoolean(Util.PREF_SOUND_ON, true); // sound on by default
-    
-    ImageButton soundBtn = findViewById(R.id.toggle_sound_btn);
-    if (soundOn) {
-      toggleSoundButtonOn(soundBtn);
-    } else {
-      toggleSoundButtonOff(soundBtn);
     }
     
     // Set up periodic throwing animations
@@ -171,6 +154,11 @@ public class MainActivity extends AppCompatActivity
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
     gpgsHelper.tryAutoConnect(this);
+  }
+  
+  @Override
+  public GPGSHelperService getService() {
+    return gpgsHelper;
   }
   
   /**
@@ -276,50 +264,6 @@ public class MainActivity extends AppCompatActivity
     
     parentLayout.addView(image, 0); // add at back, below all other elements
     throwAnim.start();
-  }
-  
-  public void toggleSound(View view) {
-    soundOn = !soundOn;
-    
-    ImageButton btn = (ImageButton) view;
-    if (soundOn) {
-      toggleSoundButtonOn(btn);
-    } else {
-      toggleSoundButtonOff(btn);
-    }
-    
-    // Write the sound to the SharedPreferences
-    SharedPreferences.Editor editPrefs = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE).edit();
-    editPrefs.putBoolean(Util.PREF_SOUND_ON, soundOn);
-    editPrefs.apply();
-  }
-  
-  private void toggleSoundButtonOn(ImageButton btn) {
-    int circleButtonColor = ContextCompat.getColor(this, R.color.circleButtonColor);
-    btn.getDrawable().setColorFilter(circleButtonColor, PorterDuff.Mode.MULTIPLY);
-    btn.setBackgroundResource(R.drawable.circle);
-    btn.setContentDescription(getString(R.string.sound_on_desc));
-  }
-  
-  private void toggleSoundButtonOff(ImageButton btn) {
-    int disabledColor = ContextCompat.getColor(this, R.color.circleButtonDisabled);
-    btn.getDrawable().setColorFilter(disabledColor, PorterDuff.Mode.MULTIPLY);
-    btn.setBackgroundResource(R.drawable.circle_disabled);
-    btn.setContentDescription(getString(R.string.sound_off_desc));
-  }
-  
-  public void toAbout(View v) {
-    Intent intent = new Intent(this, AboutActivity.class);
-    startActivity(intent, Util.getToLeftTransition(this));
-  }
-  
-  public void toLeaderboard(View v) {
-    if (gpgsHelper.isConnected()) {
-      GPGSAction.ShowLeaderboard.performAction(this, gpgsHelper.getApiClient());
-    } else {
-      gpgsHelper.setActionOnSignIn(this, GPGSAction.ShowLeaderboard);
-      gpgsHelper.connect(this);
-    }
   }
   
   @Override
