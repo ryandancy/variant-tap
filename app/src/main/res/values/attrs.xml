@@ -9,4 +9,10 @@
       <enum name="right" value="1" />
     </attr>
   </declare-styleable>
+  
+  <attr name="circleButtonStyle" type="reference" />
+  <attr name="toggleSoundCircleButtonStyle" type="reference" />
+  <attr name="aboutCircleButtonStyle" type="reference" />
+  <attr name="leaderboardCircleButtonStyle" type="reference" />
+  <attr name="removeAdsCircleButtonStyle" type="reference" />
 </resources>

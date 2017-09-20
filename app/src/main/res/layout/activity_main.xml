@@ -37,52 +37,20 @@
       android:orientation="horizontal"
       tools:ignore="RtlHardcoded">
     
-    <ImageButton
-        android:id="@+id/toggle_sound_btn"
-        android:layout_width="@dimen/circle_button_diameter"
-        android:layout_height="@dimen/circle_button_diameter"
-        android:adjustViewBounds="true"
-        android:background="@drawable/circle"
-        android:onClick="toggleSound"
-        android:padding="@dimen/circle_button_padding"
-        android:scaleType="fitCenter"
-        android:src="@drawable/music_note"
-        tools:ignore="ContentDescription" />
+    <ca.keal.varianttap.SoundToggleCircleButton
+        style="@style/CircleButton.ToggleSound" />
     
-    <ImageButton
-        android:layout_width="@dimen/circle_button_diameter"
-        android:layout_height="@dimen/circle_button_diameter"
-        android:layout_marginLeft="@dimen/circle_button_spacing"
-        android:adjustViewBounds="true"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/about_desc"
-        android:onClick="toAbout"
-        android:padding="@dimen/circle_button_padding"
-        android:scaleType="fitCenter"
-        android:src="@drawable/information" />
+    <ca.keal.varianttap.AboutCircleButton
+        style="@style/CircleButton.About"
+        android:layout_marginLeft="@dimen/circle_button_spacing" />
     
-    <ImageButton
-        android:layout_width="@dimen/circle_button_diameter"
-        android:layout_height="@dimen/circle_button_diameter"
-        android:layout_marginLeft="@dimen/circle_button_spacing"
-        android:adjustViewBounds="true"
-        android:background="@drawable/circle"
-        android:contentDescription="@string/leaderboard_desc"
-        android:onClick="toLeaderboard"
-        android:padding="@dimen/circle_button_small_padding"
-        android:scaleType="fitCenter"
-        android:src="@drawable/leaderboard" />
+    <ca.keal.varianttap.LeaderboardCircleButton
+        style="@style/CircleButton.Leaderboard"
+        android:layout_marginLeft="@dimen/circle_button_spacing" />
     
-    <ImageButton
-        android:layout_width="@dimen/circle_button_diameter"
-        android:layout_height="@dimen/circle_button_diameter"
-        android:layout_marginLeft="@dimen/circle_button_spacing"
-        android:adjustViewBounds="true"
-        android:background="@drawable/circle_slashed"
-        android:contentDescription="@string/remove_ads_desc"
-        android:padding="@dimen/circle_button_small_padding"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ad" />
+    <ca.keal.varianttap.RemoveAdsCircleButton
+        style="@style/CircleButton.RemoveAds"
+        android:layout_marginLeft="@dimen/circle_button_spacing" />
     
   </LinearLayout>
   

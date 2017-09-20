@@ -13,7 +13,7 @@ import android.widget.Button;
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 public class AboutActivity extends AppCompatActivity
-    implements GPGSHelperServiceConnection.ServiceReceiver, HasSignInButton {
+    implements GPGSHelperServiceClient, HasSignInButton {
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
@@ -70,6 +70,11 @@ public class AboutActivity extends AppCompatActivity
     gpgsHelper = service;
     gpgsHelper.setActionOnSignIn(this, GPGSAction.HideSignInButton);
     gpgsHelper.connectWithoutSignInFlow(this);
+  }
+  
+  @Override
+  public GPGSHelperService getService() {
+    return gpgsHelper;
   }
   
   public void signInOrOutOfGPGS(View v) {
