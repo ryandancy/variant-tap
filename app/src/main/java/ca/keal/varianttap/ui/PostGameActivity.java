@@ -1,5 +1,6 @@
 package ca.keal.varianttap.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,10 +11,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.gpgs.GPGSHelperService;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.util.Util;
 
 public class PostGameActivity extends AppCompatActivity
-    implements DifficultyButtonsFragment.OnFragmentInteractionListener {
+    implements DifficultyButtonsFragment.OnFragmentInteractionListener, GPGSHelperServiceClient {
   
   private static final String TAG = "PostGameActivity";
   
@@ -44,6 +48,9 @@ public class PostGameActivity extends AppCompatActivity
   private TextView bestText;
   private TextView averageText;
   private TextView newBestScoreText;
+  
+  private GPGSHelperService gpgsHelper;
+  private GPGSHelperServiceConnection connection;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +105,8 @@ public class PostGameActivity extends AppCompatActivity
     } else {
       restoreState(savedInstanceState);
     }
+    
+    connection = new GPGSHelperServiceConnection(this);
   }
   
   private void accessAndUpdateSharedPreferences() {
@@ -142,6 +151,32 @@ public class PostGameActivity extends AppCompatActivity
     isNewBestScore = savedInstanceState.getBoolean(STATE_IS_NEW_BEST_SCORE);
     
     updateUi();
+  }
+  
+  @Override
+  protected void onStart() {
+    super.onStart();
+    
+    // Bind to service
+    Intent intent = new Intent(this, GPGSHelperService.class);
+    bindService(intent, connection, BIND_AUTO_CREATE);
+  }
+  
+  @Override
+  protected void onStop() {
+    super.onStop();
+    unbindService(connection);
+  }
+  
+  @Override
+  public void receiveService(GPGSHelperService service) {
+    gpgsHelper = service;
+    gpgsHelper.connectWithoutSignInFlow(this);
+  }
+  
+  @Override
+  public GPGSHelperService getService() {
+    return gpgsHelper;
   }
   
   private void updateUi() {
