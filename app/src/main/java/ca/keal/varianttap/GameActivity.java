@@ -725,7 +725,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     intent.putExtra(PostGameActivity.EXTRA_SCORE, score);
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
     if (transition) {
-      startActivity(intent, Util.getToRightTransition(this));
+      startActivity(intent, Util.getActivityTransition(this));
     } else {
       startActivity(intent);
     }
@@ -842,7 +842,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
         // Wipe this activity off the stack, which will return the user to MainActivity
         hasLost = true;
         finish();
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        Util.doTransition(GameActivity.this);
       }
     })
     .setNegativeButton(android.R.string.cancel, null)
