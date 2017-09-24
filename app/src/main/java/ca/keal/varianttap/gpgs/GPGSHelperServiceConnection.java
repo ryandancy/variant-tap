@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.gpgs;
 
 import android.content.ComponentName;
 import android.content.ServiceConnection;
@@ -11,13 +11,13 @@ import android.util.Log;
  * constructor and must store the service passed to
  * {@link GPGSHelperServiceClient#receiveService(GPGSHelperService)};
  */
-class GPGSHelperServiceConnection implements ServiceConnection {
+public class GPGSHelperServiceConnection implements ServiceConnection {
   
   private static final String TAG = "GPGSHelperServiceConn"; // must be <23 chars
   
   private final GPGSHelperServiceClient receiver;
   
-  GPGSHelperServiceConnection(GPGSHelperServiceClient receiver) {
+  public GPGSHelperServiceConnection(GPGSHelperServiceClient receiver) {
     this.receiver = receiver;
   }
   

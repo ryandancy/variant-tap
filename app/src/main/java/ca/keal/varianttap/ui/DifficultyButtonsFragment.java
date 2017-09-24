@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,10 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import ca.keal.varianttap.R;
+import ca.keal.varianttap.util.ReverseInterpolator;
+import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 

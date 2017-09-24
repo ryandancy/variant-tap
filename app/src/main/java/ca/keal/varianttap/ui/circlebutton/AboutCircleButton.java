@@ -1,8 +1,12 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui.circlebutton;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
+
+import ca.keal.varianttap.ui.AboutActivity;
+import ca.keal.varianttap.R;
+import ca.keal.varianttap.util.Util;
 
 public class AboutCircleButton extends BaseCircleButton {
   

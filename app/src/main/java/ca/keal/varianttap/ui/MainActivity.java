@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -27,6 +27,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import ca.keal.varianttap.R;
+import ca.keal.varianttap.gpgs.GPGSHelperService;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
+import ca.keal.varianttap.util.ImageSupplier;
+import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 

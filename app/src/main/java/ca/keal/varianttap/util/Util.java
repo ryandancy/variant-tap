@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.util;
 
 import android.animation.ValueAnimator;
 import android.app.Activity;
@@ -15,9 +15,11 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+import ca.keal.varianttap.R;
+
 @SuppressWarnings({"unused", "WeakerAccess"})
 // TODO should Util be split up into smaller, more specific util classes?
-final class Util {
+public final class Util {
   
   /** Arbitrary request codes for starting activities with a result. */
   public static final int REQUEST_LEADERBOARD = 4182;
@@ -33,39 +35,39 @@ final class Util {
   
   // MEASUREMENT UTILS
   
-  static float pxToDp(Context context, float px) {
+  public static float pxToDp(Context context, float px) {
     return pxToDp(context.getResources(), px);
   }
   
-  static float pxToDp(Resources resources, float px) {
+  public static float pxToDp(Resources resources, float px) {
     return px / resources.getDisplayMetrics().density;
   }
   
-  static float dpToPx(Context context, float dp) {
+  public static float dpToPx(Context context, float dp) {
     return dpToPx(context.getResources(), dp);
   }
   
-  static float dpToPx(Resources resources, float dp) {
+  public static float dpToPx(Resources resources, float dp) {
     return dp * resources.getDisplayMetrics().density;
   }
   
-  static float spToPx(Context context, float sp) {
+  public static float spToPx(Context context, float sp) {
     return spToPx(context.getResources(), sp);
   }
   
-  static float spToPx(Resources resources, float sp) {
+  public static float spToPx(Resources resources, float sp) {
     return sp * resources.getDisplayMetrics().scaledDensity;
   }
   
-  static float pxToSp(Context context, float px) {
+  public static float pxToSp(Context context, float px) {
     return pxToSp(context.getResources(), px);
   }
   
-  static float pxToSp(Resources resources, float px) {
+  public static float pxToSp(Resources resources, float px) {
     return px / resources.getDisplayMetrics().scaledDensity;
   }
   
-  static float getFloatResource(Context context, @DimenRes int floatRes) {
+  public static float getFloatResource(Context context, @DimenRes int floatRes) {
     TypedValue floatValue = new TypedValue();
     context.getResources().getValue(floatRes, floatValue, true);
     return floatValue.getFloat();
@@ -74,7 +76,7 @@ final class Util {
   /**
    * @return A random float {@code n}, where {@code min <= n <= max}, determined by {@code random}.
    */
-  static float randomFloatBetween(Random random, float min, float max) {
+  public static float randomFloatBetween(Random random, float min, float max) {
     return (max - min) * random.nextFloat() + min;
   }
   
@@ -82,7 +84,8 @@ final class Util {
    * @return The largest text size that will make {@code text} in {@code textView} take up less than
    * or equal to {@code maxPxWidth px}, using a binary search with maximum {@code max}, in sp.
    */
-  static float getLargestTextSize(TextView textView, String text, float maxPxWidth, float max) {
+  public static float getLargestTextSize(
+      TextView textView, String text, float maxPxWidth, float max) {
     float low = 0;
     float high = max;
     float size;
@@ -121,17 +124,17 @@ final class Util {
   
   // ANIMATION UTILS
   
-  static Bundle getActivityTransition(Context context) {
+  public static Bundle getActivityTransition(Context context) {
     return ActivityOptions.makeCustomAnimation(context,
         R.anim.activity_transition_in, R.anim.activity_transition_out).toBundle();
   }
   
-  static void doTransition(Activity activity) {
+  public static void doTransition(Activity activity) {
     activity.overridePendingTransition(
         R.anim.activity_transition_in, R.anim.activity_transition_out);
   }
   
-  static ValueAnimator getCountdownAnimator(
+  public static ValueAnimator getCountdownAnimator(
       long duration, final TextView text, final CountdownEndListener endListener) {
     ValueAnimator animator = ValueAnimator.ofFloat(3f, 0f);
     animator.setInterpolator(new LinearInterpolator());
@@ -151,7 +154,7 @@ final class Util {
     return animator;
   }
   
-  interface CountdownEndListener {
+  public interface CountdownEndListener {
     void onEnd();
   }
   

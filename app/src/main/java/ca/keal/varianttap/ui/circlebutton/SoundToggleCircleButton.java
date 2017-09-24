@@ -1,10 +1,13 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui.circlebutton;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+
+import ca.keal.varianttap.R;
+import ca.keal.varianttap.util.Util;
 
 import static android.content.Context.MODE_PRIVATE;
 

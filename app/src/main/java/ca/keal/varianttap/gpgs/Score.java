@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.gpgs;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,18 +11,18 @@ import com.google.android.gms.games.Games;
  * Represents a score, with a leaderboard.
  */
 // TODO maybe add scoretags?
-class Score {
+public class Score {
   
   @NonNull
   private final String leaderboardId;
   private final int score;
   
-  Score(@NonNull String leaderboardId, int score) {
+  public Score(@NonNull String leaderboardId, int score) {
     this.leaderboardId = leaderboardId;
     this.score = score;
   }
   
-  Score(Context context, @StringRes int leaderboardResId, int score) {
+  public Score(Context context, @StringRes int leaderboardResId, int score) {
     this(context.getString(leaderboardResId), score);
   }
   

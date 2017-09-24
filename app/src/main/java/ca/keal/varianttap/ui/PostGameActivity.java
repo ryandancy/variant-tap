@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+
+import ca.keal.varianttap.R;
+import ca.keal.varianttap.util.Util;
 
 public class PostGameActivity extends AppCompatActivity
     implements DifficultyButtonsFragment.OnFragmentInteractionListener {

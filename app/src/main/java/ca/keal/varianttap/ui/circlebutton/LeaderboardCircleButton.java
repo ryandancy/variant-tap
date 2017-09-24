@@ -1,9 +1,14 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui.circlebutton;
 
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+
+import ca.keal.varianttap.gpgs.GPGSAction;
+import ca.keal.varianttap.gpgs.GPGSHelperService;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
+import ca.keal.varianttap.R;
 
 public class LeaderboardCircleButton extends BaseCircleButton {
   

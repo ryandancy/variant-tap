@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -16,7 +16,7 @@ import java.util.Random;
  * Loads the normal and variant images and provides Drawables of random normal/variant pairs when
  * requested.
  */
-class ImageSupplier {
+public class ImageSupplier {
   
   // TODO "packages" of images
   
@@ -24,7 +24,7 @@ class ImageSupplier {
   
   private static ImageSupplier instance = null;
   
-  Random random = new Random();
+  public Random random = new Random();
   
   /**
    * The list of (normal, variant) Drawable pairs.
@@ -36,7 +36,7 @@ class ImageSupplier {
    * @param context The Context that an AssetManager can be gotten from if necessary.
    * @return the global ImageSupplier instance.
    */
-  static ImageSupplier getInstance(Context context) {
+  public static ImageSupplier getInstance(Context context) {
     if (instance == null) {
       instance = new ImageSupplier(context.getAssets());
     }
@@ -77,26 +77,26 @@ class ImageSupplier {
   /**
    * @return An unmodifiable {@link List} of all loaded normal/variant Drawable pairs.
    */
-  List<Pair<Drawable, Drawable>> getAllPairs() {
+  public List<Pair<Drawable, Drawable>> getAllPairs() {
     return Collections.unmodifiableList(imgs);
   }
   
   /**
    * @return A psuedorandom normal/variant Drawable pair. Please don't modify it.
    */
-  Pair<Drawable, Drawable> getRandomPair() {
+  public Pair<Drawable, Drawable> getRandomPair() {
     return imgs.get(random.nextInt(imgs.size()));
   }
   
   /**
    * @return A random normal or variant. Please don't modify it.
    */
-  Drawable getRandomImage() {
+  public Drawable getRandomImage() {
     Pair<Drawable, Drawable> possible = getRandomPair();
     return random.nextBoolean() ? possible.first : possible.second;
   }
   
-  int getPairId(Pair<Drawable, Drawable> pair) {
+  public int getPairId(Pair<Drawable, Drawable> pair) {
     int idx = imgs.indexOf(pair);
     if (idx < 0) {
       Log.w(TAG, "getPairId() passed nonexistent Drawable pair");
@@ -104,7 +104,7 @@ class ImageSupplier {
     return idx;
   }
   
-  Pair<Drawable, Drawable> getPairById(int id) {
+  public Pair<Drawable, Drawable> getPairById(int id) {
     return imgs.get(id);
   }
   

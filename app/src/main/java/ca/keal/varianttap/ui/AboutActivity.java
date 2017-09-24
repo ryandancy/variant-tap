@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui;
 
 import android.content.Intent;
 import android.graphics.PorterDuff;
@@ -9,6 +9,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import ca.keal.varianttap.R;
+import ca.keal.varianttap.gpgs.GPGSAction;
+import ca.keal.varianttap.gpgs.GPGSHelperService;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
+import ca.keal.varianttap.gpgs.HasSignInButton;
+import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 

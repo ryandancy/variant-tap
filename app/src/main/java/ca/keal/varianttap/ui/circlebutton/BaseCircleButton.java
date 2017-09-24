@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui.circlebutton;
 
 import android.content.Context;
 import android.support.annotation.AttrRes;
@@ -6,8 +6,9 @@ import android.support.v7.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 import android.view.View;
 
-public abstract class BaseCircleButton extends AppCompatImageButton
-    implements View.OnClickListener {
+import ca.keal.varianttap.R;
+
+abstract class BaseCircleButton extends AppCompatImageButton implements View.OnClickListener {
   
   protected Context context;
   

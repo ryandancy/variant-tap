@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -38,6 +38,17 @@ import com.google.android.gms.games.Games;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import ca.keal.varianttap.R;
+import ca.keal.varianttap.gpgs.GPGSHelperService;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
+import ca.keal.varianttap.gpgs.Score;
+import ca.keal.varianttap.util.ImageSupplier;
+import ca.keal.varianttap.util.MusicActivity;
+import ca.keal.varianttap.util.ReverseInterpolator;
+import ca.keal.varianttap.util.SFXManager;
+import ca.keal.varianttap.util.Util;
 
 public class GameActivity extends MusicActivity implements View.OnClickListener,
     GPGSHelperServiceClient {
