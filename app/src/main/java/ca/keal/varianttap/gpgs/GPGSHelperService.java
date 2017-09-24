@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.gpgs;
 
 import android.app.Activity;
 import android.app.Service;
@@ -15,6 +15,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesActivityResultCodes;
 import com.google.example.games.basegameutils.BaseGameUtils;
+
+import ca.keal.varianttap.R;
+import ca.keal.varianttap.util.Util;
 
 /**
  * A bound service that provies access to one instance of {@link GoogleApiClient} across multiple

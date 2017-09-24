@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ca.keal.varianttap.PostGameActivity">
+    tools:context="ca.keal.varianttap.ui.PostGameActivity">
   
   <TextView
       android:id="@+id/post_score_text"
@@ -98,7 +98,7 @@
   
   <fragment
       android:id="@+id/post_game_difficulty_buttons_fragment"
-      android:name="ca.keal.varianttap.DifficultyButtonsFragment"
+      android:name="ca.keal.varianttap.ui.DifficultyButtonsFragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"

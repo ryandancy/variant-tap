@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.gpgs;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -23,7 +23,7 @@ import se.simbio.encryption.Encryption;
  * order to prevent users on rooted devices from messing with the public leaderboards. Everything is
  * done async.
  */
-class ScoreCache {
+public class ScoreCache {
   
   private static final String TAG = "ScoreCache";
   

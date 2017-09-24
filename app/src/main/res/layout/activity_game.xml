@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context="ca.keal.varianttap.GameActivity">
+    tools:context="ca.keal.varianttap.ui.GameActivity">
   
   <!-- Note that if donut_text is ever >5 characters it'll exceed the width of the donut -->
   <com.github.lzyzsd.circleprogress.DonutProgress

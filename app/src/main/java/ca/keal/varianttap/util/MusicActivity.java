@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.util;
 
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import java.io.IOException;
+
+import ca.keal.varianttap.R;
 
 /**
  * A superclass for an Activity with background music.

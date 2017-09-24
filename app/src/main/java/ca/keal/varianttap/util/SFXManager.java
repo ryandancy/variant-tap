@@ -1,4 +1,4 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,7 +10,9 @@ import android.support.annotation.RawRes;
 import android.util.Log;
 import android.util.SparseIntArray;
 
-class SFXManager implements SharedPreferences.OnSharedPreferenceChangeListener {
+import ca.keal.varianttap.R;
+
+public class SFXManager implements SharedPreferences.OnSharedPreferenceChangeListener {
   
   /** All SFX known to the SFXManager. Note that more may be loaded at runtime. */
   private static int[] ALL_SFX = {R.raw.success, R.raw.lose};
@@ -21,7 +23,7 @@ class SFXManager implements SharedPreferences.OnSharedPreferenceChangeListener {
   
   private boolean soundOn;
   
-  SFXManager(Context context) {
+  public SFXManager(Context context) {
     // Initialize the SoundPool using AudioAttributes if in Lollipop or above
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       AudioAttributes attrs = new AudioAttributes.Builder()
@@ -50,7 +52,7 @@ class SFXManager implements SharedPreferences.OnSharedPreferenceChangeListener {
     prefs.registerOnSharedPreferenceChangeListener(this);
   }
   
-  void play(Context context, @RawRes int resId) {
+  public void play(Context context, @RawRes int resId) {
     if (!soundOn) return;
     
     int soundId = resToSoundIds.get(resId, -1);
@@ -65,7 +67,7 @@ class SFXManager implements SharedPreferences.OnSharedPreferenceChangeListener {
     resToStreamIds.put(resId, streamId);
   }
   
-  void pause(@RawRes int resId) {
+  public void pause(@RawRes int resId) {
     if (!soundOn) return;
     
     int streamId = resToSoundIds.get(resId, -1);
@@ -77,7 +79,7 @@ class SFXManager implements SharedPreferences.OnSharedPreferenceChangeListener {
     sound.pause(streamId);
   }
   
-  void resume(@RawRes int resId) {
+  public void resume(@RawRes int resId) {
     if (!soundOn) return;
     
     int streamId = resToSoundIds.get(resId, -1);
@@ -89,7 +91,7 @@ class SFXManager implements SharedPreferences.OnSharedPreferenceChangeListener {
     sound.resume(streamId);
   }
   
-  void stop(@RawRes int resId) {
+  public void stop(@RawRes int resId) {
     if (!soundOn) return;
     
     int streamId = resToSoundIds.get(resId, -1);
@@ -101,7 +103,7 @@ class SFXManager implements SharedPreferences.OnSharedPreferenceChangeListener {
     sound.stop(streamId);
   }
   
-  void release(Context context) {
+  public void release(Context context) {
     context.getSharedPreferences(Util.PREF_FILE, Context.MODE_PRIVATE)
         .unregisterOnSharedPreferenceChangeListener(this);
     

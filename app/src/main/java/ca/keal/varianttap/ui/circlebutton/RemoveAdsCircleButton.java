@@ -1,7 +1,9 @@
-package ca.keal.varianttap;
+package ca.keal.varianttap.ui.circlebutton;
 
 import android.content.Context;
 import android.util.AttributeSet;
+
+import ca.keal.varianttap.R;
 
 public class RemoveAdsCircleButton extends BaseCircleButton {
   
