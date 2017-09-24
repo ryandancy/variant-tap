@@ -6,21 +6,17 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -59,19 +55,6 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperService
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    
-    // Make all the circle button icons circleButtonColor instead of white
-    
-    int circleButtonColor = ContextCompat.getColor(this, R.color.circleButtonColor);
-    ViewGroup circleButtons = findViewById(R.id.circle_buttons);
-    
-    for (int i = 0; i < circleButtons.getChildCount(); i++) {
-      View child = circleButtons.getChildAt(i);
-      if (!(child instanceof ImageButton)) return;
-      
-      ImageButton circleButton = (ImageButton) child;
-      circleButton.getDrawable().setColorFilter(circleButtonColor, PorterDuff.Mode.MULTIPLY);
-    }
     
     // Set up periodic throwing animations
     

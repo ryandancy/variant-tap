@@ -2,10 +2,10 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
     <shape android:shape="oval">
-      <solid android:color="@color/colorBackground" />
+      <solid android:color="@android:color/transparent" />
       <stroke
           android:width="@dimen/circle_button_thickness"
-          android:color="@color/circleButtonColor" />
+          android:color="#ffffff" />
       <size
           android:width="@dimen/circle_button_diameter"
           android:height="@dimen/circle_button_diameter" />
@@ -20,7 +20,7 @@
       <shape android:shape="line">
         <stroke
             android:width="@dimen/circle_button_thickness"
-            android:color="@color/circleButtonColor" />
+            android:color="#ffffff" />
       </shape>
     </rotate>
   </item>

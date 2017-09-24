@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
@@ -95,6 +96,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private TextView pausedText;
   private Button unpauseButton;
   private Button quitButton;
+  private LinearLayout circleButtons;
   private TextView unpauseCountdownText;
   
   /** The array of images in imgsGrid. */
@@ -145,6 +147,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     pausedText = findViewById(R.id.paused_text);
     unpauseButton = findViewById(R.id.unpause_button);
     quitButton = findViewById(R.id.quit_button);
+    circleButtons = findViewById(R.id.paused_circle_buttons);
     unpauseCountdownText = findViewById(R.id.unpause_countdown_text);
     
     countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.countdown);
@@ -794,6 +797,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     pausedText.setVisibility(View.INVISIBLE);
     unpauseButton.setVisibility(View.INVISIBLE);
     quitButton.setVisibility(View.INVISIBLE);
+    circleButtons.setVisibility(View.INVISIBLE);
     unpauseCountdownText.setVisibility(View.VISIBLE);
     
     // Make and play the unpause animation
@@ -819,6 +823,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     pausedText.setVisibility(View.VISIBLE);
     unpauseButton.setVisibility(View.VISIBLE);
     quitButton.setVisibility(View.VISIBLE);
+    circleButtons.setVisibility(View.VISIBLE);
     
     // Reset the colours - undo the changes in pause()
     

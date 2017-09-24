@@ -6,6 +6,10 @@
     <attr name="hide_text" format="string" />
   </declare-styleable>
   
+  <declare-styleable name="BaseCircleButton">
+    <attr name="baseColor" format="color" />
+  </declare-styleable>
+  
   <attr name="circleButtonStyle" type="reference" />
   <attr name="toggleSoundCircleButtonStyle" type="reference" />
   <attr name="aboutCircleButtonStyle" type="reference" />
