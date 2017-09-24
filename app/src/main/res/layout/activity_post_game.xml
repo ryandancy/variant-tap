@@ -96,13 +96,17 @@
   <!-- TODO: what should go in between average and the play again button? Currently empty space!
        (Are the difficulty buttons enough to fill the space?) -->
   
+  <include android:id="@+id/circle_buttons"
+      layout="@layout/circle_button_bar" />
+  
   <fragment
       android:id="@+id/post_game_difficulty_buttons_fragment"
       android:name="ca.keal.varianttap.ui.DifficultyButtonsFragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:layout_marginBottom="@dimen/bottom_button_margin_bottom"
+      android:layout_above="@id/circle_buttons"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="@dimen/circle_button_margin_top"
       app:show_text="@string/play_again" />
   
 </RelativeLayout>
