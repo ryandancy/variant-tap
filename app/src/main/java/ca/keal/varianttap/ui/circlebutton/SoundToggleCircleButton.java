@@ -9,13 +9,13 @@ import android.util.AttributeSet;
 import ca.keal.varianttap.R;
 import ca.keal.varianttap.util.Util;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class SoundToggleCircleButton extends BaseCircleButton
     implements SharedPreferences.OnSharedPreferenceChangeListener {
   
   private boolean soundOn;
   private boolean registered = false; // is the OnSharedPreferenceChangeListener registered?
+  
+  private int realBaseColor;
   
   public SoundToggleCircleButton(Context context) {
     this(context, null);
@@ -23,13 +23,14 @@ public class SoundToggleCircleButton extends BaseCircleButton
   
   public SoundToggleCircleButton(Context context, AttributeSet attrs) {
     super(context, attrs, R.attr.toggleSoundCircleButtonStyle);
+    realBaseColor = baseColor;
   }
   
   @Override
   protected void onAttachedToWindow() {
     super.onAttachedToWindow();
     
-    SharedPreferences prefs = context.getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE);
+    SharedPreferences prefs = context.getSharedPreferences(Util.PREF_FILE, Context.MODE_PRIVATE);
     soundOn = prefs.getBoolean(Util.PREF_SOUND_ON, true); // sound on by default
     
     if (soundOn) {
@@ -48,7 +49,7 @@ public class SoundToggleCircleButton extends BaseCircleButton
   protected void onDetachedFromWindow() {
     super.onDetachedFromWindow();
     if (registered) {
-      context.getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE)
+      context.getSharedPreferences(Util.PREF_FILE, Context.MODE_PRIVATE)
           .unregisterOnSharedPreferenceChangeListener(this);
       registered = false;
     }
@@ -72,16 +73,17 @@ public class SoundToggleCircleButton extends BaseCircleButton
   }
   
   private void toggleOn() {
-    int circleButtonColor = ContextCompat.getColor(context, R.color.circleButtonColor);
-    getDrawable().setColorFilter(circleButtonColor, PorterDuff.Mode.MULTIPLY);
+    baseColor = realBaseColor;
     setBackgroundResource(R.drawable.circle);
+    getBackground().setColorFilter(baseColor, PorterDuff.Mode.MULTIPLY);
     setContentDescription(context.getString(R.string.sound_on_desc));
   }
   
   private void toggleOff() {
     int disabledColor = ContextCompat.getColor(context, R.color.circleButtonDisabled);
-    getDrawable().setColorFilter(disabledColor, PorterDuff.Mode.MULTIPLY);
-    setBackgroundResource(R.drawable.circle_disabled);
+    baseColor = disabledColor;
+    setBackgroundResource(R.drawable.circle_slashed);
+    getBackground().setColorFilter(disabledColor, PorterDuff.Mode.MULTIPLY);
     setContentDescription(context.getString(R.string.sound_off_desc));
   }
   

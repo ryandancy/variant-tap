@@ -44,6 +44,7 @@
   
   <style name="CircleButton.Leaderboard">
     <item name="android:contentDescription">@string/leaderboard_desc</item>
+    <item name="android:padding">@dimen/circle_button_small_padding</item>
     <item name="android:src">@drawable/leaderboard</item>
   </style>
   
