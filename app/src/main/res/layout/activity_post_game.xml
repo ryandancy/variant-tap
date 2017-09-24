@@ -103,7 +103,6 @@
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:layout_marginBottom="@dimen/bottom_button_margin_bottom"
-      app:show_text="@string/play_again"
-      app:transition_direction="left" />
+      app:show_text="@string/play_again" />
   
 </RelativeLayout>

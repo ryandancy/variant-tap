@@ -26,7 +26,7 @@ public class SoundToggleCircleButton extends BaseCircleButton
   protected void onAttachedToWindow() {
     super.onAttachedToWindow();
     
-    SharedPreferences prefs = context.getSharedPreferences(Util.PREF_FILE, Context.MODE_PRIVATE);
+    SharedPreferences prefs = context.getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE);
     soundOn = prefs.getBoolean(Util.PREF_SOUND_ON, true); // sound on by default
     
     if (soundOn) {
@@ -45,7 +45,7 @@ public class SoundToggleCircleButton extends BaseCircleButton
   protected void onDetachedFromWindow() {
     super.onDetachedFromWindow();
     if (registered) {
-      context.getSharedPreferences(Util.PREF_FILE, Context.MODE_PRIVATE)
+      context.getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE)
           .unregisterOnSharedPreferenceChangeListener(this);
       registered = false;
     }
@@ -63,7 +63,7 @@ public class SoundToggleCircleButton extends BaseCircleButton
     
     // Write the sound to the SharedPreferences
     SharedPreferences.Editor editPrefs = context.getSharedPreferences(
-        Util.PREF_FILE, MODE_PRIVATE).edit();
+        Util.PREF_FILE, Context.MODE_PRIVATE).edit();
     editPrefs.putBoolean(Util.PREF_SOUND_ON, soundOn);
     editPrefs.apply();
   }

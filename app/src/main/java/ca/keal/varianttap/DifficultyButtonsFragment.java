@@ -32,10 +32,6 @@ import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
  */
 public class DifficultyButtonsFragment extends Fragment implements View.OnClickListener {
   
-  // Transition direction constants
-  public static final int DIRECTION_LEFT = 0;
-  public static final int DIRECTION_RIGHT = 1;
-  
   // The fragment initialization parameters
   private static final String ARG_SHOW_TEXT = "SHOW_TEXT";
   private static final String ARG_HIDE_TEXT = "HIDE_TEXT";
@@ -43,7 +39,6 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   // Fragment parameters
   private String showText = null;
   private String hideText = null;
-  private int transitionDirection = -1;
   
   /** The listener that may receive callbacks. */
   private OnFragmentInteractionListener listener;
@@ -146,9 +141,6 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     if (newHideText != null) {
       hideText = newHideText;
     }
-    
-    transitionDirection = a.getInt(
-        R.styleable.DifficultyButtonsFragment_transition_direction, DIRECTION_RIGHT);
     
     a.recycle();
   }
@@ -321,15 +313,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     Intent intent = new Intent(getActivity(), GameActivity.class);
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
     
-    // Handle the transition direction
-    Bundle options;
-    if (transitionDirection == DIRECTION_LEFT) {
-      options = Util.getToLeftTransition(getActivity());
-    } else { // transitionDirection == DIRECTION_RIGHT
-      options = Util.getToRightTransition(getActivity());
-    }
-    
-    startActivity(intent, options);
+    startActivity(intent, Util.getActivityTransition(getActivity()));
     listener.afterToGameActivity(difficulty);
   }
   

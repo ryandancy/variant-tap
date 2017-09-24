@@ -1,6 +1,7 @@
 package ca.keal.varianttap;
 
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.res.Resources;
@@ -120,14 +121,14 @@ final class Util {
   
   // ANIMATION UTILS
   
-  static Bundle getToLeftTransition(Context context) {
-    return ActivityOptions.makeCustomAnimation(
-        context, R.anim.slide_in_left, R.anim.slide_out_right).toBundle();
+  static Bundle getActivityTransition(Context context) {
+    return ActivityOptions.makeCustomAnimation(context,
+        R.anim.activity_transition_in, R.anim.activity_transition_out).toBundle();
   }
   
-  static Bundle getToRightTransition(Context context) {
-    return ActivityOptions.makeCustomAnimation(
-        context, R.anim.slide_in_right, R.anim.slide_out_left).toBundle();
+  static void doTransition(Activity activity) {
+    activity.overridePendingTransition(
+        R.anim.activity_transition_in, R.anim.activity_transition_out);
   }
   
   static ValueAnimator getCountdownAnimator(

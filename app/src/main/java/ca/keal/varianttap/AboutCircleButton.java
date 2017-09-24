@@ -17,7 +17,7 @@ public class AboutCircleButton extends BaseCircleButton {
   @Override
   protected void onClick() {
     Intent intent = new Intent(context, AboutActivity.class);
-    context.startActivity(intent, Util.getToLeftTransition(context));
+    context.startActivity(intent, Util.getActivityTransition(context));
   }
   
 }

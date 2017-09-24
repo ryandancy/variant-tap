@@ -30,7 +30,6 @@ import java.util.Random;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-// TODO move all circle buttons to fragments
 public class MainActivity extends AppCompatActivity implements GPGSHelperServiceClient {
   
   private static final String TAG = "MainActivity";
