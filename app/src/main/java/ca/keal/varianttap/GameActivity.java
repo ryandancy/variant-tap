@@ -429,7 +429,9 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     super.onPause();
     
     if (hasLost) {
-      loseAnim.cancel();
+      if (loseAnim != null) {
+        loseAnim.cancel();
+      }
       switchOnResume = true;
       return;
     }
