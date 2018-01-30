@@ -42,7 +42,7 @@ import java.util.List;
 
 import ca.keal.varianttap.R;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
-import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
+import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.gpgs.Score;
 import ca.keal.varianttap.util.ImageSupplier;
@@ -51,8 +51,7 @@ import ca.keal.varianttap.util.ReverseInterpolator;
 import ca.keal.varianttap.util.SFXManager;
 import ca.keal.varianttap.util.Util;
 
-public class GameActivity extends MusicActivity implements View.OnClickListener,
-    GPGSHelperServiceClient {
+public class GameActivity extends MusicActivity implements View.OnClickListener, GPGSHelperClient {
   
   private static final String TAG = "GameActivity";
   

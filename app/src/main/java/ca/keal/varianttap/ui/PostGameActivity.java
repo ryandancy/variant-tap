@@ -11,13 +11,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
-import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.util.Util;
 
 public class PostGameActivity extends AppCompatActivity
-    implements DifficultyButtonsFragment.OnFragmentInteractionListener, GPGSHelperServiceClient {
+    implements DifficultyButtonsFragment.OnFragmentInteractionListener, GPGSHelperClient {
   
   private static final String TAG = "PostGameActivity";
   

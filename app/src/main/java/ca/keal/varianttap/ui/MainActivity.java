@@ -25,15 +25,15 @@ import java.util.List;
 import java.util.Random;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
-import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.util.ImageSupplier;
 import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class MainActivity extends AppCompatActivity implements GPGSHelperServiceClient {
+public class MainActivity extends AppCompatActivity implements GPGSHelperClient {
   
   private static final String TAG = "MainActivity";
   

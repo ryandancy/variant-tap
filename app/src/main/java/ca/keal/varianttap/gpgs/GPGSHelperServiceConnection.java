@@ -7,17 +7,17 @@ import android.util.Log;
 
 /**
  * A helper class for implementing a {@link ServiceConnection} to {@link GPGSHelperService}. Classes
- * using {@link GPGSHelperService} must pass a {@link GPGSHelperServiceClient} to this class'
+ * using {@link GPGSHelperService} must pass a {@link GPGSHelperClient} to this class'
  * constructor and must store the service passed to
- * {@link GPGSHelperServiceClient#receiveService(GPGSHelperService)};
+ * {@link GPGSHelperClient#receiveService(GPGSHelperService)};
  */
 public class GPGSHelperServiceConnection implements ServiceConnection {
   
   private static final String TAG = "GPGSHelperServiceConn"; // must be <23 chars
   
-  private final GPGSHelperServiceClient receiver;
+  private final GPGSHelperClient receiver;
   
-  public GPGSHelperServiceConnection(GPGSHelperServiceClient receiver) {
+  public GPGSHelperServiceConnection(GPGSHelperClient receiver) {
     this.receiver = receiver;
   }
   
