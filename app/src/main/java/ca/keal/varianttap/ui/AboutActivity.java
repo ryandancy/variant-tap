@@ -13,15 +13,14 @@ import android.widget.Button;
 import ca.keal.varianttap.R;
 import ca.keal.varianttap.gpgs.GPGSAction;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
-import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
+import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.gpgs.HasSignInButton;
 import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class AboutActivity extends AppCompatActivity
-    implements GPGSHelperServiceClient, HasSignInButton {
+public class AboutActivity extends AppCompatActivity implements GPGSHelperClient, HasSignInButton {
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;

@@ -7,14 +7,14 @@ import android.util.Log;
 
 import ca.keal.varianttap.gpgs.GPGSAction;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
-import ca.keal.varianttap.gpgs.GPGSHelperServiceClient;
+import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.R;
 
 public class LeaderboardCircleButton extends BaseCircleButton {
   
   private static final String TAG = "LeaderboardCircleButton";
   
-  private GPGSHelperServiceClient gpgsHelperClient;
+  private GPGSHelperClient gpgsHelperClient;
   
   public LeaderboardCircleButton(Context context) {
     this(context, null);
@@ -23,18 +23,18 @@ public class LeaderboardCircleButton extends BaseCircleButton {
   public LeaderboardCircleButton(Context context, AttributeSet attrs) {
     super(context, attrs, R.attr.leaderboardCircleButtonStyle);
     
-    if (!(context instanceof GPGSHelperServiceClient)) {
-      Log.e(TAG, "Leaderboard circle button used without context being a GPGSHelperServiceClient!");
+    if (!(context instanceof GPGSHelperClient)) {
+      Log.e(TAG, "Leaderboard circle button used without context being a GPGSHelperClient!");
       return;
     }
     
-    gpgsHelperClient = (GPGSHelperServiceClient) context;
+    gpgsHelperClient = (GPGSHelperClient) context;
   }
   
   @Override
   protected void onClick() {
     if (gpgsHelperClient == null) {
-      Log.e(TAG, "Leaderboard circle button not in a GPGSHelperServiceClient: ignoring click!");
+      Log.e(TAG, "Leaderboard circle button not in a GPGSHelperClient: ignoring click!");
       return;
     }
     

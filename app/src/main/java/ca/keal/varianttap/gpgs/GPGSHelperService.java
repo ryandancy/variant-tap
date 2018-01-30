@@ -27,7 +27,7 @@ import ca.keal.varianttap.util.Util;
  * (but are not required to) call either {@link #tryAutoConnect(Activity)} or
  * {@link #connectWithoutSignInFlow(Activity)} as soon as they receive an instance of this service
  * (usually in an implementation of
- * {@link GPGSHelperServiceClient#receiveService(GPGSHelperService)}).
+ * {@link GPGSHelperClient#receiveService(GPGSHelperService)}).
  */
 public class GPGSHelperService extends Service
     implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
