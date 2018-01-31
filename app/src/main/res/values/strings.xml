@@ -48,6 +48,8 @@
   <string name="best_score">Best</string>
   <string name="average_score">Average</string>
   <string name="play_again">Play Again</string>
+  <string name="leaderboard_button_caption">Leaderboards</string>
+  <string name="achievements_button_caption">Achievements</string>
   
   <!-- DifficultyButtonsFragment -->
   <string name="close_difficulty_btns">Close</string>
