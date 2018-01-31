@@ -79,11 +79,6 @@ public class AboutActivity extends AppCompatActivity implements GPGSHelperClient
     gpgsHelper.connectWithoutSignInFlow(this);
   }
   
-  @Override
-  public GPGSHelperService getService() {
-    return gpgsHelper;
-  }
-  
   public void signInOrOutOfGPGS(View v) {
     if (gpgsHelper.isConnected()) {
       gpgsHelper.signOut();

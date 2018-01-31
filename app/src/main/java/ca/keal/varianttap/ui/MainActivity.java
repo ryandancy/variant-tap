@@ -145,11 +145,6 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     gpgsHelper.tryAutoConnect(this);
   }
   
-  @Override
-  public GPGSHelperService getService() {
-    return gpgsHelper;
-  }
-  
   /**
    * "Throw" (animate) a random image from the game across the screen. The image follows a parabolic
    * path across the screen and rotates. This is for a cool animation for the MainActivity.
