@@ -53,9 +53,6 @@ public class PostGameActivity extends AppCompatActivity
   private TextView averageText;
   private TextView newBestScoreText;
   
-  private ImageView leaderboardButton;
-  private ImageView achievementsButton;
-  
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
   
@@ -107,8 +104,8 @@ public class PostGameActivity extends AppCompatActivity
     averageText = findViewById(R.id.average_score_text);
     newBestScoreText = findViewById(R.id.new_best_score_text);
     
-    leaderboardButton = findViewById(R.id.leaderboard_button);
-    achievementsButton = findViewById(R.id.achievements_button);
+    ImageView leaderboardButton = findViewById(R.id.leaderboard_button);
+    ImageView achievementsButton = findViewById(R.id.achievements_button);
     fixTextViewButtonColoursAndSize(leaderboardButton, achievementsButton);
   
     if (savedInstanceState == null) { // is this a fresh start?
@@ -130,8 +127,7 @@ public class PostGameActivity extends AppCompatActivity
   
   private void accessAndUpdateSharedPreferences() {
     // Get data from shared preferences for the difficulty
-    // The user is allowed to mess with the shared preferences, Google Play Games won't use them
-    // TODO: Google Play Games integration
+    // The user is allowed to mess with the shared preferences, Google Play Games doesn't use them
     
     SharedPreferences prefs = getSharedPreferences(
         SHARED_PREFS_LEADERBOARD_PREFIX + difficulty, MODE_PRIVATE);
