@@ -39,6 +39,8 @@
           style="@style/AboutText.Body"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:autoLink="web"
+          android:linksClickable="true"
           android:text="@string/music_attrib" />
       
       <TextView
