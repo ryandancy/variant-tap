@@ -106,13 +106,14 @@
       android:gravity="center_vertical"
       android:orientation="horizontal">
     
+    <!-- Using LinearLayouts instead of drawableTop because size can't be set on drawableTop -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/post_game_buttons_spacing"
         android:onClick="toLeaderboard"
         android:orientation="vertical"
-        tools:ignore="RtlHardcoded">
+        tools:ignore="RtlHardcoded,UseCompoundDrawables">
       
       <ImageView
           android:id="@+id/leaderboard_button"
@@ -137,7 +138,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:onClick="toAchievements">
+        android:onClick="toAchievements"
+        tools:ignore="UseCompoundDrawables">
       
       <ImageView
           android:id="@+id/achievements_button"
