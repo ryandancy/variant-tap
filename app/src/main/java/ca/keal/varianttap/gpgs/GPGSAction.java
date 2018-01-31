@@ -44,6 +44,16 @@ public enum GPGSAction {
     }
   },
   
+  ShowAchievements() {
+    @Override
+    public void performAction(Activity activity, GoogleApiClient client, Bundle args) {
+      super.performAction(activity, client, args);
+      activity.startActivityForResult(
+          Games.Achievements.getAchievementsIntent(client),
+          Util.REQUEST_ACHIEVEMENTS);
+    }
+  },
+  
   Nothing;
   
   private static final String TAG = "GPGSAction";

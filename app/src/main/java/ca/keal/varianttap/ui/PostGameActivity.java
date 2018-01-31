@@ -2,15 +2,19 @@ package ca.keal.varianttap.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.gpgs.GPGSAction;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
@@ -48,6 +52,9 @@ public class PostGameActivity extends AppCompatActivity
   private TextView bestText;
   private TextView averageText;
   private TextView newBestScoreText;
+  
+  private ImageView leaderboardButton;
+  private ImageView achievementsButton;
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
@@ -99,6 +106,10 @@ public class PostGameActivity extends AppCompatActivity
     bestText = findViewById(R.id.best_score_text);
     averageText = findViewById(R.id.average_score_text);
     newBestScoreText = findViewById(R.id.new_best_score_text);
+    
+    leaderboardButton = findViewById(R.id.leaderboard_button);
+    achievementsButton = findViewById(R.id.achievements_button);
+    fixTextViewButtonColoursAndSize(leaderboardButton, achievementsButton);
   
     if (savedInstanceState == null) { // is this a fresh start?
       accessAndUpdateSharedPreferences();
@@ -107,6 +118,14 @@ public class PostGameActivity extends AppCompatActivity
     }
     
     connection = new GPGSHelperServiceConnection(this);
+  }
+  
+  /** Make sure {@code imgs} have the proper colour/size. */
+  private void fixTextViewButtonColoursAndSize(ImageView... imgs) {
+    int textButtonColor = ContextCompat.getColor(this, R.color.postGameButtonColor);
+    for (ImageView img : imgs) {
+      img.getDrawable().setColorFilter(textButtonColor, PorterDuff.Mode.MULTIPLY);
+    }
   }
   
   private void accessAndUpdateSharedPreferences() {
@@ -236,6 +255,26 @@ public class PostGameActivity extends AppCompatActivity
   public void afterToGameActivity(int difficulty) {
     // Remove this activity from the stack
     finish();
+  }
+  
+  /** Hook from leaderboard button. */
+  public void toLeaderboard(View v) {
+    if (gpgsHelper.isConnected()) {
+      GPGSAction.ShowLeaderboard.performAction(this, gpgsHelper.getApiClient());
+    } else {
+      gpgsHelper.setActionOnSignIn(this, GPGSAction.ShowLeaderboard);
+      gpgsHelper.connect(this);
+    }
+  }
+  
+  /** Hook from achievements button. */
+  public void toAchievements(View v) {
+    if (gpgsHelper.isConnected()) {
+      GPGSAction.ShowAchievements.performAction(this, gpgsHelper.getApiClient());
+    } else {
+      gpgsHelper.setActionOnSignIn(this, GPGSAction.ShowAchievements);
+      gpgsHelper.connect(this);
+    }
   }
   
 }

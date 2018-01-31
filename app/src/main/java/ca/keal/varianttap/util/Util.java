@@ -23,6 +23,7 @@ public final class Util {
   
   /** Arbitrary request codes for starting activities with a result. */
   public static final int REQUEST_LEADERBOARD = 4182;
+  public static final int REQUEST_ACHIEVEMENTS = 7492;
   
   /** The filename for the SharedPreferences file that's actually preferences, not a leaderboard. */
   public static final String PREF_FILE = "preferences";

@@ -69,6 +69,7 @@
   
   <!-- Average score text -->
   <LinearLayout
+      android:id="@+id/average_score_text_layout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_below="@id/best_score_text_layout"
@@ -93,10 +94,73 @@
     
   </LinearLayout>
   
-  <!-- TODO: what should go in between average and the play again button? Currently empty space!
-       (Are the difficulty buttons enough to fill the space?) -->
+  <!-- Achievement & leaderboard buttons -->
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_below="@id/average_score_text_layout"
+      android:layout_above="@+id/circle_buttons"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="@dimen/post_game_buttons_margin_top"
+      android:layout_marginBottom="@dimen/post_game_buttons_margin_bottom"
+      android:gravity="center_vertical"
+      android:orientation="horizontal">
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/post_game_buttons_spacing"
+        android:onClick="toLeaderboard"
+        android:orientation="vertical"
+        tools:ignore="RtlHardcoded">
+      
+      <ImageView
+          android:id="@+id/leaderboard_button"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:maxWidth="@dimen/post_game_buttons_size"
+          android:maxHeight="@dimen/post_game_buttons_size"
+          android:adjustViewBounds="true"
+          android:src="@drawable/leaderboard"
+          tools:ignore="ContentDescription" />
+      
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/leaderboard_button_caption"
+          android:textColor="@color/textDark"
+          android:textSize="@dimen/post_game_button_text_size" />
+      
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:onClick="toAchievements">
+      
+      <ImageView
+          android:id="@+id/achievements_button"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:maxWidth="@dimen/post_game_buttons_size"
+          android:maxHeight="@dimen/post_game_buttons_size"
+          android:adjustViewBounds="true"
+          android:src="@drawable/achievement"
+          tools:ignore="ContentDescription" />
+      
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/achievements_button_caption"
+          android:textColor="@color/textDark"
+          android:textSize="@dimen/post_game_button_text_size" />
+      
+    </LinearLayout>
+    
+  </LinearLayout>
   
-  <include android:id="@+id/circle_buttons"
+  <include android:id="@id/circle_buttons"
       layout="@layout/circle_button_bar" />
   
   <fragment
