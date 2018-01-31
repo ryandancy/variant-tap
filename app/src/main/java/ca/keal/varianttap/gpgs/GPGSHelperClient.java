@@ -11,10 +11,4 @@ public interface GPGSHelperClient {
    */
   void receiveService(GPGSHelperService service);
   
-  /**
-   * Return the service previously passed to {@link #receiveService(GPGSHelperService)}. This method
-   * is guaranteed to be called after {@link #receiveService(GPGSHelperService)}.
-   */
-  GPGSHelperService getService();
-  
 }

@@ -433,11 +433,6 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   }
   
   @Override
-  public GPGSHelperService getService() {
-    return gpgsHelper;
-  }
-  
-  @Override
   protected void onPause() {
     super.onPause();
     

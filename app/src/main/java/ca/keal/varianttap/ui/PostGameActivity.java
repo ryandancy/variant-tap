@@ -189,11 +189,6 @@ public class PostGameActivity extends AppCompatActivity
     gpgsHelper.connectWithoutSignInFlow(this);
   }
   
-  @Override
-  public GPGSHelperService getService() {
-    return gpgsHelper;
-  }
-  
   private void updateUi() {
     bestText.setText(String.valueOf(bestScore));
     averageText.setText(String.valueOf(averageScore));
