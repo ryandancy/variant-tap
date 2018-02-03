@@ -250,22 +250,12 @@ public class PostGameActivity extends AppCompatActivity
   
   /** Hook from leaderboard button. */
   public void toLeaderboard(View v) {
-    if (gpgsHelper.isConnected()) {
-      GPGSAction.ShowLeaderboard.performAction(this, gpgsHelper.getApiClient());
-    } else {
-      gpgsHelper.setActionOnSignIn(this, GPGSAction.ShowLeaderboard);
-      gpgsHelper.connect(this);
-    }
+    gpgsHelper.tryActionOrConnect(this, GPGSAction.ShowLeaderboard);
   }
   
   /** Hook from achievements button. */
   public void toAchievements(View v) {
-    if (gpgsHelper.isConnected()) {
-      GPGSAction.ShowAchievements.performAction(this, gpgsHelper.getApiClient());
-    } else {
-      gpgsHelper.setActionOnSignIn(this, GPGSAction.ShowAchievements);
-      gpgsHelper.connect(this);
-    }
+    gpgsHelper.tryActionOrConnect(this, GPGSAction.ShowAchievements);
   }
   
 }
