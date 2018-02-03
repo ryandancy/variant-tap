@@ -12,6 +12,7 @@
     <item name="toggleSoundCircleButtonStyle">@style/CircleButton.ToggleSound</item>
     <item name="aboutCircleButtonStyle">@style/CircleButton.About</item>
     <item name="leaderboardCircleButtonStyle">@style/CircleButton.Leaderboard</item>
+    <item name="achievementsCircleButtonStyle">@style/CircleButton.Achievements</item>
     <item name="removeAdsCircleButtonStyle">@style/CircleButton.RemoveAds</item>
   </style>
   
@@ -34,6 +35,7 @@
   </style>
   
   <style name="CircleButton.ToggleSound">
+    <!-- contentDescription set in code -->
     <item name="android:src">@drawable/music_note</item>
   </style>
   
@@ -46,6 +48,12 @@
     <item name="android:contentDescription">@string/leaderboard_desc</item>
     <item name="android:padding">@dimen/circle_button_small_padding</item>
     <item name="android:src">@drawable/leaderboard</item>
+  </style>
+  
+  <style name="CircleButton.Achievements">
+    <item name="android:contentDescription">@string/achievements_desc</item>
+    <item name="android:padding">@dimen/circle_button_small_padding</item>
+    <item name="android:src">@drawable/achievement</item>
   </style>
   
   <style name="CircleButton.RemoveAds">

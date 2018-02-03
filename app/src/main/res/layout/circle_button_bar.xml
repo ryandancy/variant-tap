@@ -23,8 +23,12 @@
       style="@style/CircleButton.Leaderboard"
       android:layout_marginLeft="@dimen/circle_button_spacing" />
   
+  <ca.keal.varianttap.ui.circlebutton.AchievementsCircleButton
+      style="@style/CircleButton.Achievements"
+      android:layout_marginLeft="@dimen/circle_button_spacing" />
+  
   <ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton
       style="@style/CircleButton.RemoveAds"
       android:layout_marginLeft="@dimen/circle_button_spacing" />
-
+  
 </LinearLayout>

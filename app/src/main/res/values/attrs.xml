@@ -14,5 +14,6 @@
   <attr name="toggleSoundCircleButtonStyle" type="reference" />
   <attr name="aboutCircleButtonStyle" type="reference" />
   <attr name="leaderboardCircleButtonStyle" type="reference" />
+  <attr name="achievementsCircleButtonStyle" type="reference" />
   <attr name="removeAdsCircleButtonStyle" type="reference" />
 </resources>
