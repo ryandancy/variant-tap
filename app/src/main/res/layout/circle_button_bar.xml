@@ -2,33 +2,25 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="?android:attr/buttonBarStyle"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/circle_button_diameter"
+    style="@style/CircleButtonBar"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
     android:layout_marginBottom="@dimen/circle_button_margin_bottom"
-    android:gravity="center_horizontal"
-    android:orientation="horizontal"
     tools:ignore="RtlHardcoded">
   
   <ca.keal.varianttap.ui.circlebutton.SoundToggleCircleButton
       style="@style/CircleButton.ToggleSound" />
   
   <ca.keal.varianttap.ui.circlebutton.AboutCircleButton
-      style="@style/CircleButton.About"
-      android:layout_marginLeft="@dimen/circle_button_spacing" />
+      style="@style/CircleButton.About" />
   
   <ca.keal.varianttap.ui.circlebutton.LeaderboardCircleButton
-      style="@style/CircleButton.Leaderboard"
-      android:layout_marginLeft="@dimen/circle_button_spacing" />
+      style="@style/CircleButton.Leaderboard" />
   
   <ca.keal.varianttap.ui.circlebutton.AchievementsCircleButton
-      style="@style/CircleButton.Achievements"
-      android:layout_marginLeft="@dimen/circle_button_spacing" />
+      style="@style/CircleButton.Achievements" />
   
   <ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton
-      style="@style/CircleButton.RemoveAds"
-      android:layout_marginLeft="@dimen/circle_button_spacing" />
+      style="@style/CircleButton.RemoveAds" />
   
 </LinearLayout>
