@@ -8,6 +8,7 @@ import android.os.Binder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -173,6 +174,18 @@ public class GPGSHelperService extends Service
     SharedPreferences.Editor editor = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE).edit();
     editor.putBoolean(Util.PREF_AUTO_SIGN_IN, autoSignIn);
     editor.apply();
+  }
+  
+  public void unlockAchievement(@StringRes int id) {
+    Games.Achievements.unlock(client, getString(id));
+  }
+  
+  public void incrementAchievement(@StringRes int id, int numSteps) {
+    Games.Achievements.increment(client, getString(id), numSteps);
+  }
+  
+  public void incrementAchievement(@StringRes int id) {
+    incrementAchievement(id, 1);
   }
   
   @Override
