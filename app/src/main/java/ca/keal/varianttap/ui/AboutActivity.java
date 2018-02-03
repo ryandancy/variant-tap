@@ -98,7 +98,7 @@ public class AboutActivity extends AppCompatActivity implements GPGSHelperClient
   /** Center the button's text and icon by manipulating the padding. */
   private void centerButtonTextAndIcon() {
     float iconPadding = getResources().getDimension(R.dimen.button_drawable_padding);
-  
+    
     float iconSize = signInOutButton.getHeight() - iconPadding;
     float iconSpacing = getResources().getDimension(R.dimen.button_drawable_spacing);
     float textWidth = signInOutButton.getPaint().measureText(signInOutButton.getText().toString());
@@ -118,6 +118,10 @@ public class AboutActivity extends AppCompatActivity implements GPGSHelperClient
   @Override
   public void hideSignInButton() {
     updateButtonText();
+    
+    // There's an achievement for reading the about - unlock it
+    // Note that at this point we're always signed in because that's when this method is called
+    gpgsHelper.unlockAchievement(R.string.achievement_id_read_about);
   }
   
   @Override
