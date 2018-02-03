@@ -156,6 +156,19 @@ public class GPGSHelperService extends Service
     setActionOnSignIn(activity, action, null);
   }
   
+  /**
+   * Try to perform {@code action}. If we aren't connected to GPGS, connect and perform
+   * {@code action} after connecting.
+   */
+  public void tryActionOrConnect(Activity activity, GPGSAction action) {
+    if (isConnected()) {
+      action.performAction(activity, getApiClient());
+    } else {
+      setActionOnSignIn(activity, action);
+      connect(activity);
+    }
+  }
+  
   private void setAutoSignIn(boolean autoSignIn) {
     SharedPreferences.Editor editor = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE).edit();
     editor.putBoolean(Util.PREF_AUTO_SIGN_IN, autoSignIn);

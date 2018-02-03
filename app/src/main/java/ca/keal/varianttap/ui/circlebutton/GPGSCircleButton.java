@@ -59,16 +59,7 @@ abstract class GPGSCircleButton extends BaseCircleButton implements GPGSHelperCl
       Log.e(TAG, "A GPGSCircleButton can only be used inside an activity. Ignoring click!");
       return;
     }
-    
-    Activity activity = (Activity) context;
-    
-    if (gpgsHelper.isConnected()) {
-      gpgsAction.performAction(activity, gpgsHelper.getApiClient());
-    } else {
-      // try to connect, then trigger the gpgsAction
-      gpgsHelper.setActionOnSignIn(activity, gpgsAction);
-      gpgsHelper.connect(activity);
-    }
+    gpgsHelper.tryActionOrConnect((Activity) context, gpgsAction);
   }
   
 }
