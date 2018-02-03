@@ -176,16 +176,30 @@ public class GPGSHelperService extends Service
     editor.apply();
   }
   
+  /** Unlock an achievement. Make sure you're signed in before calling this. */
   public void unlockAchievement(@StringRes int id) {
-    Games.Achievements.unlock(client, getString(id));
+    setCurrentActivityAsPopupView();
+    String strId = getString(id);
+    Games.Achievements.unlock(client, strId);
+    Log.d(TAG, "Unlocking achievement with id " + strId);
   }
   
+  /** Increment an achievement by numSteps. Make sure you're signed in before calling this. */
   public void incrementAchievement(@StringRes int id, int numSteps) {
-    Games.Achievements.increment(client, getString(id), numSteps);
+    setCurrentActivityAsPopupView();
+    String strId = getString(id);
+    Games.Achievements.increment(client, strId, numSteps);
+    Log.d(TAG, "Incrementing achievement with id " + strId);
   }
   
+  /** Increment an achievement by 1. Make sure you're signed in before calling this. */
   public void incrementAchievement(@StringRes int id) {
     incrementAchievement(id, 1);
+  }
+  
+  private void setCurrentActivityAsPopupView() {
+    Games.setViewForPopups(client, currentActivity.getWindow().getDecorView()
+        .findViewById(android.R.id.content));
   }
   
   @Override
