@@ -25,12 +25,6 @@ public class LeaderboardCircleButton extends BaseCircleButton implements GPGSHel
   
   public LeaderboardCircleButton(Context context, AttributeSet attrs) {
     super(context, attrs, R.attr.leaderboardCircleButtonStyle);
-    
-    if (!(context instanceof GPGSHelperClient)) {
-      Log.e(TAG, "Leaderboard circle button used without context being a GPGSHelperClient!");
-      return;
-    }
-    
     connection = new GPGSHelperServiceConnection(this);
   }
   
