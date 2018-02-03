@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_id">885088898223</string>
-  <string name="leaderboard_id_easy">CgkIr5mjm-EZEAIQAQ</string>
-  <string name="leaderboard_id_normal">CgkIr5mjm-EZEAIQAg</string>
-  <string name="leaderboard_id_hard">CgkIr5mjm-EZEAIQAw</string>
+  <string name="app_id" translatable="false">885088898223</string>
+  
+  <!-- Leaderboards -->
+  <string name="leaderboard_id_easy" translatable="false">CgkIr5mjm-EZEAIQAQ</string>
+  <string name="leaderboard_id_normal" translatable="false">CgkIr5mjm-EZEAIQAg</string>
+  <string name="leaderboard_id_hard" translatable="false">CgkIr5mjm-EZEAIQAw</string>
+  
+  <!-- Achievements -->
+  <string name="achievement_id_5_games" translatable="false">CgkIr5mjm-EZEAIQBA</string>
+  <string name="achievement_id_30_games" translatable="false">CgkIr5mjm-EZEAIQBQ</string>
+  <string name="achievement_id_100_games" translatable="false">CgkIr5mjm-EZEAIQBg</string>
+  <string name="achievement_id_score_500_easy" translatable="false">CgkIr5mjm-EZEAIQBw</string>
+  <string name="achievement_id_score_5000_easy" translatable="false">CgkIr5mjm-EZEAIQCA</string>
+  <string name="achievement_id_score_10000_easy" translatable="false">CgkIr5mjm-EZEAIQCQ</string>
+  <string name="achievement_id_score_500_normal" translatable="false">CgkIr5mjm-EZEAIQCg</string>
+  <string name="achievement_id_score_5000_normal" translatable="false">CgkIr5mjm-EZEAIQCw</string>
+  <string name="achievement_id_score_10000_normal" translatable="false">CgkIr5mjm-EZEAIQDA</string>
+  <string name="achievement_id_score_500_hard" translatable="false">CgkIr5mjm-EZEAIQDQ</string>
+  <string name="achievement_id_score_5000_hard" translatable="false">CgkIr5mjm-EZEAIQDg</string>
+  <string name="achievement_id_score_10000_hard" translatable="false">CgkIr5mjm-EZEAIQDw</string>
+  <string name="achievement_id_200_variants" translatable="false">CgkIr5mjm-EZEAIQEA</string>
+  <string name="achievement_id_lose_no_taps" translatable="false">CgkIr5mjm-EZEAIQEQ</string>
+  <string name="achievement_id_play_with_drawer" translatable="false">CgkIr5mjm-EZEAIQEg</string>
+  <string name="achievement_id_stare_animation" translatable="false">CgkIr5mjm-EZEAIQFA</string>
+  <string name="achievement_id_read_about" translatable="false">CgkIr5mjm-EZEAIQEw</string>
 </resources>
