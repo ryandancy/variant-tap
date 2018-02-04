@@ -16,6 +16,7 @@
   
   <!-- ACHIEVEMENT-RELATED INTEGERS -->
   
+  <integer name="achievement_play_with_drawer_times">10</integer>
   <!-- 120000ms = 2min -->
   <integer name="achievement_stare_animation_time_ms">120000</integer>
   
