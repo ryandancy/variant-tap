@@ -22,6 +22,9 @@ import java.util.Collections;
 import java.util.List;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.gpgs.GPGSHelperClient;
+import ca.keal.varianttap.gpgs.GPGSHelperService;
+import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.util.ReverseInterpolator;
 import ca.keal.varianttap.util.Util;
 
@@ -34,7 +37,8 @@ import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
  * events. Use the {@link DifficultyButtonsFragment#newInstance} factory method (or one of its
  * sister {@code newInstance()} methods) to create an instance of this fragment.
  */
-public class DifficultyButtonsFragment extends Fragment implements View.OnClickListener {
+public class DifficultyButtonsFragment extends Fragment implements View.OnClickListener,
+    GPGSHelperClient {
   
   // The fragment initialization parameters
   private static final String ARG_SHOW_TEXT = "SHOW_TEXT";
@@ -60,6 +64,12 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   private List<Animation> slideUpAnims = new ArrayList<>();
   
   private boolean difficultyBtnsShowing = false;
+  
+  // For the achievement for toggling so many times
+  private GPGSHelperService gpgsHelper;
+  private GPGSHelperServiceConnection connection;
+  private int timesToggled = 0;
+  private boolean awardedAchievement = false;
   
   /** Required empty public constructor. */
   public DifficultyButtonsFragment() {}
@@ -123,10 +133,13 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    
     if (getArguments() != null) {
       showText = getArguments().getString(ARG_SHOW_TEXT);
       hideText = getArguments().getString(ARG_HIDE_TEXT);
     }
+  
+    connection = new GPGSHelperServiceConnection(this);
   }
   
   /** Handle the fragment's custom attributes: showText and hideText. */
@@ -202,6 +215,33 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     });
     
     return view;
+  }
+  
+  @Override
+  public void onStart() {
+    super.onStart();
+    
+    // Connected to the GPGSHelperService
+    Intent intent = new Intent(getContext(), GPGSHelperService.class);
+    getContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
+  }
+  
+  @Override
+  public void onStop() {
+    super.onStop();
+    getContext().unbindService(connection);
+  }
+  
+  @Override
+  public void receiveService(GPGSHelperService service) {
+    gpgsHelper = service;
+    gpgsHelper.connectWithoutSignInFlow(getActivity());
+  }
+  
+  @Override
+  public void onResume() {
+    super.onResume();
+    timesToggled = 0; // reset timesToggled for this 'sitting'
   }
   
   @Override
@@ -310,6 +350,15 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     });
     
     playButton.setText(showText);
+    
+    // There's an achievement for toggling the difficulty buttons so many times
+    if (!awardedAchievement) {
+      timesToggled++;
+      if (timesToggled >= getResources().getInteger(R.integer.achievement_play_with_drawer_times)) {
+        gpgsHelper.unlockAchievement(R.string.achievement_id_play_with_drawer);
+        awardedAchievement = true;
+      }
+    }
   }
   
   /** Go to {@link GameActivity}, setting the difficulty extra with the parameter. */
