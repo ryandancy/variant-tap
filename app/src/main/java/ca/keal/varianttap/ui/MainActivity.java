@@ -23,6 +23,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import ca.keal.varianttap.R;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
   private Handler throwingHandler;
   private boolean throwFromLeft;
   private int msBetweenThrows;
+  
+  // For the achievement triggered after a certain amount of time staring at this activity
+  private Timer timer;
   
   /** Contains all throw animations currently playing; used to pause and restart the animations. */
   private List<AnimatorSet> throwAnims;
@@ -122,6 +127,19 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     
     // Start/restart adding more throwing animations
     throwingRunnable.run();
+    
+    // Start the achievement-granting timer
+    Log.d(TAG, "Starting 'stare at animation' achievement timer");
+    timer = new Timer("MainActivity achievement timer");
+    timer.schedule(new GrantAchievementTask(),
+        getResources().getInteger(R.integer.achievement_stare_animation_time_ms));
+  }
+  
+  private class GrantAchievementTask extends TimerTask {
+    @Override
+    public void run() {
+      gpgsHelper.unlockAchievement(R.string.achievement_id_stare_animation);
+    }
   }
   
   @Override
@@ -137,6 +155,11 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
         anim.pause();
       }
     }
+    
+    // Cancel the achievement-granting timer because the user is no longer staring at the animation
+    Log.d(TAG, "Stopping 'stare at animation' achievement timer");
+    timer.cancel();
+    timer = null; // so we don't have to do it in onDestroy()
   }
   
   @Override
