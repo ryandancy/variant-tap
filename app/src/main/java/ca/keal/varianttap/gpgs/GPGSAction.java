@@ -1,7 +1,6 @@
 package ca.keal.varianttap.gpgs;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -17,27 +16,27 @@ import ca.keal.varianttap.util.Util;
  */
 public enum GPGSAction {
   
-  HideSignInButton() {
+  CallCallback() {
     @Override
-    public void performAction(Activity activity, GoogleApiClient client, Bundle args) {
-      super.performAction(activity, client, args);
+    public void performAction(Activity activity, GoogleApiClient client) {
+      super.performAction(activity, client);
       
-      // Check that it has a sign-in button
-      if (!(activity instanceof HasSignInButton)) {
-        Log.w(TAG, "HideSignInButton: activity does not have sign-in button");
+      // Check that it's a gpgsCallback
+      if (!(activity instanceof GPGSCallback)) {
+        Log.w(TAG, "CallCallback: activity does not implement GPGSCallback");
         return;
       }
       
-      // Hide it
-      HasSignInButton hsib = (HasSignInButton) activity;
-      hsib.hideSignInButton();
+      // Call it
+      GPGSCallback cb = (GPGSCallback) activity;
+      cb.gpgsCallback();
     }
   },
   
   ShowLeaderboard() {
     @Override
-    public void performAction(Activity activity, GoogleApiClient client, Bundle args) {
-      super.performAction(activity, client, args);
+    public void performAction(Activity activity, GoogleApiClient client) {
+      super.performAction(activity, client);
       activity.startActivityForResult(
           Games.Leaderboards.getAllLeaderboardsIntent(client),
           Util.REQUEST_LEADERBOARD);
@@ -46,25 +45,18 @@ public enum GPGSAction {
   
   ShowAchievements() {
     @Override
-    public void performAction(Activity activity, GoogleApiClient client, Bundle args) {
-      super.performAction(activity, client, args);
+    public void performAction(Activity activity, GoogleApiClient client) {
+      super.performAction(activity, client);
       activity.startActivityForResult(
           Games.Achievements.getAchievementsIntent(client),
           Util.REQUEST_ACHIEVEMENTS);
     }
-  },
-  
-  Nothing;
+  };
   
   private static final String TAG = "GPGSAction";
   
-  public void performAction(Activity activity, GoogleApiClient client, Bundle args) {
-    Log.d(TAG, "GPGS action " + this + " performed in " + activity.getLocalClassName()
-        + (args == null ? "" : " (arguments: " + args + ")"));
-  }
-  
   public void performAction(Activity activity, GoogleApiClient client) {
-    performAction(activity, client, null);
+    Log.d(TAG, "GPGS action " + this + " performed in " + activity.getLocalClassName());
   }
   
 }

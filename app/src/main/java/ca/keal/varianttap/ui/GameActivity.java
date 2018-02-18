@@ -41,8 +41,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.keal.varianttap.R;
-import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
+import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.gpgs.Score;
 import ca.keal.varianttap.util.ImageSupplier;
