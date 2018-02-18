@@ -94,6 +94,9 @@ public class GPGSHelperService extends Service
       Log.w(TAG, "Attempted to connect while resolving connection failure");
       return;
     }
+  
+    this.trySignIn = trySignIn;
+    currentActivity = activity;
     
     if (isConnected()) {
       // Treat it as if we connected and succeeded
@@ -102,8 +105,6 @@ public class GPGSHelperService extends Service
     }
     
     Log.d(TAG, "Attempting to connect...");
-    this.trySignIn = trySignIn;
-    currentActivity = activity;
     client.connect();
   }
   
