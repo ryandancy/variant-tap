@@ -17,6 +17,11 @@ import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesActivityResultCodes;
 import com.google.example.games.basegameutils.BaseGameUtils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import ca.keal.varianttap.R;
 import ca.keal.varianttap.util.Util;
 
@@ -45,8 +50,7 @@ public class GPGSHelperService extends Service
   private boolean resolvingConnectionFailure = false;
   private boolean trySignIn = false; // try to sign in when connection fails?
   
-  private GPGSAction actionOnSignIn = GPGSAction.Nothing;
-  private Bundle actionOnSignInArgs = null;
+  private Map<Activity, List<GPGSAction>> activityToActionOnSignIn = new HashMap<>();
   
   private ScoreCache scoreCache = new ScoreCache();
   private boolean trySubmitCacheOnSignIn = true; // try to submit the cache when signed in?
@@ -93,7 +97,7 @@ public class GPGSHelperService extends Service
     
     if (isConnected()) {
       // Treat it as if we connected and succeeded
-      actionOnSignIn.performAction(activity, client);
+      performActionsOnSignIn(activity);
       return;
     }
     
@@ -147,14 +151,20 @@ public class GPGSHelperService extends Service
     }
   }
   
-  public void setActionOnSignIn(Activity activity, GPGSAction action, Bundle args) {
-    currentActivity = activity;
-    actionOnSignIn = action;
-    actionOnSignInArgs = args;
+  public void addActionOnSignIn(Activity activity, GPGSAction action) {
+    if (!activityToActionOnSignIn.containsKey(activity)) {
+      activityToActionOnSignIn.put(activity, new ArrayList<GPGSAction>());
+    }
+    activityToActionOnSignIn.get(activity).add(action);
   }
   
-  public void setActionOnSignIn(Activity activity, GPGSAction action) {
-    setActionOnSignIn(activity, action, null);
+  private void performActionsOnSignIn(Activity activity) {
+    if (!activityToActionOnSignIn.containsKey(activity)) return;
+    for (GPGSAction action : activityToActionOnSignIn.get(activity)) {
+      action.performAction(activity, client);
+    }
+    // Clear the actions to prevent them being called multiple times
+    activityToActionOnSignIn.get(activity).clear();
   }
   
   /**
@@ -165,7 +175,7 @@ public class GPGSHelperService extends Service
     if (isConnected()) {
       action.performAction(activity, getApiClient());
     } else {
-      setActionOnSignIn(activity, action);
+      addActionOnSignIn(activity, action);
       connect(activity);
     }
   }
@@ -253,7 +263,7 @@ public class GPGSHelperService extends Service
   public void onConnected(@Nullable Bundle bundle) {
     Log.d(TAG, "Connected");
     
-    actionOnSignIn.performAction(currentActivity, client, actionOnSignInArgs);
+    performActionsOnSignIn(currentActivity);
     setAutoSignIn(true);
     
     if (trySubmitCacheOnSignIn) {

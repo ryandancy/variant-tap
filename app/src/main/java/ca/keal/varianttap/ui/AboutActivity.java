@@ -15,12 +15,12 @@ import ca.keal.varianttap.gpgs.GPGSAction;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
-import ca.keal.varianttap.gpgs.HasSignInButton;
+import ca.keal.varianttap.gpgs.GPGSCallback;
 import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class AboutActivity extends AppCompatActivity implements GPGSHelperClient, HasSignInButton {
+public class AboutActivity extends AppCompatActivity implements GPGSHelperClient, GPGSCallback {
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
@@ -75,7 +75,7 @@ public class AboutActivity extends AppCompatActivity implements GPGSHelperClient
   @Override
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
-    gpgsHelper.setActionOnSignIn(this, GPGSAction.HideSignInButton);
+    gpgsHelper.addActionOnSignIn(this, GPGSAction.CallCallback);
     gpgsHelper.connectWithoutSignInFlow(this);
   }
   
@@ -84,7 +84,7 @@ public class AboutActivity extends AppCompatActivity implements GPGSHelperClient
       gpgsHelper.signOut();
       updateButtonText();
     } else {
-      gpgsHelper.setActionOnSignIn(this, GPGSAction.HideSignInButton);
+      gpgsHelper.addActionOnSignIn(this, GPGSAction.CallCallback);
       gpgsHelper.connect(this);
     }
   }
@@ -116,7 +116,7 @@ public class AboutActivity extends AppCompatActivity implements GPGSHelperClient
   }
   
   @Override
-  public void hideSignInButton() {
+  public void gpgsCallback() {
     updateButtonText();
     
     // There's an achievement for reading the about - unlock it

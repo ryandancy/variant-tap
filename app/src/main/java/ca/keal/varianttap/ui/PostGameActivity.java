@@ -15,13 +15,14 @@ import android.widget.TextView;
 
 import ca.keal.varianttap.R;
 import ca.keal.varianttap.gpgs.GPGSAction;
+import ca.keal.varianttap.gpgs.GPGSCallback;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.util.Util;
 
-public class PostGameActivity extends AppCompatActivity
-    implements DifficultyButtonsFragment.OnFragmentInteractionListener, GPGSHelperClient {
+public class PostGameActivity extends AppCompatActivity implements
+    DifficultyButtonsFragment.OnFragmentInteractionListener, GPGSHelperClient, GPGSCallback {
   
   private static final String TAG = "PostGameActivity";
   
@@ -41,6 +42,7 @@ public class PostGameActivity extends AppCompatActivity
   private static final String STATE_BEST_SCORE = "bestScore";
   private static final String STATE_AVERAGE_SCORE = "averageScore";
   private static final String STATE_IS_NEW_BEST_SCORE = "isNewBestScore";
+  private static final String STATE_INCREMENT_ACHIEVEMENTS = "incrementAchievements";
   
   private int difficulty;
   private int score;
@@ -55,6 +57,8 @@ public class PostGameActivity extends AppCompatActivity
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
+  
+  private boolean incrementAchievements;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +113,7 @@ public class PostGameActivity extends AppCompatActivity
     fixTextViewButtonColoursAndSize(leaderboardButton, achievementsButton);
   
     if (savedInstanceState == null) { // is this a fresh start?
+      incrementAchievements = true;
       accessAndUpdateSharedPreferences();
     } else {
       restoreState(savedInstanceState);
@@ -164,6 +169,7 @@ public class PostGameActivity extends AppCompatActivity
     bestScore = savedInstanceState.getInt(STATE_BEST_SCORE);
     averageScore = savedInstanceState.getInt(STATE_AVERAGE_SCORE);
     isNewBestScore = savedInstanceState.getBoolean(STATE_IS_NEW_BEST_SCORE);
+    incrementAchievements = savedInstanceState.getBoolean(STATE_INCREMENT_ACHIEVEMENTS);
     
     updateUi();
   }
@@ -186,7 +192,20 @@ public class PostGameActivity extends AppCompatActivity
   @Override
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
+    gpgsHelper.addActionOnSignIn(this, GPGSAction.CallCallback);
     gpgsHelper.connectWithoutSignInFlow(this);
+  }
+  
+  @Override
+  public void gpgsCallback() {
+    if (!incrementAchievements) return;
+    
+    // Increment all the "X games played" achievements here so that the unlocked popup shows here
+    // and not on GameActivity
+    gpgsHelper.incrementAchievement(R.string.achievement_id_5_games);
+    gpgsHelper.incrementAchievement(R.string.achievement_id_30_games);
+    gpgsHelper.incrementAchievement(R.string.achievement_id_100_games);
+    incrementAchievements = false;
   }
   
   private void updateUi() {
@@ -208,6 +227,7 @@ public class PostGameActivity extends AppCompatActivity
     outState.putInt(STATE_BEST_SCORE, bestScore);
     outState.putInt(STATE_AVERAGE_SCORE, averageScore);
     outState.putBoolean(STATE_IS_NEW_BEST_SCORE, isNewBestScore);
+    outState.putBoolean(STATE_INCREMENT_ACHIEVEMENTS, incrementAchievements);
   }
   
   @Override
@@ -244,8 +264,8 @@ public class PostGameActivity extends AppCompatActivity
    */
   @Override
   public void afterToGameActivity(int difficulty) {
-    // Remove this activity from the stack
-    finish();
+    incrementAchievements = true; // allow incrementing achievements next time
+    finish(); // remove this activity from the stack
   }
   
   /** Hook from leaderboard button. */
