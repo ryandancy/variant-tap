@@ -42,7 +42,7 @@ public class PostGameActivity extends AppCompatActivity implements
   private static final String STATE_BEST_SCORE = "bestScore";
   private static final String STATE_AVERAGE_SCORE = "averageScore";
   private static final String STATE_IS_NEW_BEST_SCORE = "isNewBestScore";
-  private static final String STATE_INCREMENT_ACHIEVEMENTS = "incrementAchievements";
+  private static final String STATE_INCREMENT_ACHIEVEMENTS = "incrementXGamesAchievements";
   
   private int difficulty;
   private int score;
@@ -58,7 +58,7 @@ public class PostGameActivity extends AppCompatActivity implements
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
   
-  private boolean incrementAchievements;
+  private boolean incrementXGamesAchievements;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +113,7 @@ public class PostGameActivity extends AppCompatActivity implements
     fixTextViewButtonColoursAndSize(leaderboardButton, achievementsButton);
   
     if (savedInstanceState == null) { // is this a fresh start?
-      incrementAchievements = true;
+      incrementXGamesAchievements = true;
       accessAndUpdateSharedPreferences();
     } else {
       restoreState(savedInstanceState);
@@ -169,7 +169,7 @@ public class PostGameActivity extends AppCompatActivity implements
     bestScore = savedInstanceState.getInt(STATE_BEST_SCORE);
     averageScore = savedInstanceState.getInt(STATE_AVERAGE_SCORE);
     isNewBestScore = savedInstanceState.getBoolean(STATE_IS_NEW_BEST_SCORE);
-    incrementAchievements = savedInstanceState.getBoolean(STATE_INCREMENT_ACHIEVEMENTS);
+    incrementXGamesAchievements = savedInstanceState.getBoolean(STATE_INCREMENT_ACHIEVEMENTS);
     
     updateUi();
   }
@@ -198,14 +198,36 @@ public class PostGameActivity extends AppCompatActivity implements
   
   @Override
   public void gpgsCallback() {
-    if (!incrementAchievements) return;
+    if (!incrementXGamesAchievements) return;
     
     // Increment all the "X games played" achievements here so that the unlocked popup shows here
     // and not on GameActivity
     gpgsHelper.incrementAchievement(R.string.achievement_id_5_games);
     gpgsHelper.incrementAchievement(R.string.achievement_id_30_games);
     gpgsHelper.incrementAchievement(R.string.achievement_id_100_games);
-    incrementAchievements = false;
+    unlockXScoreOnXDifficultyAchievements();
+    incrementXGamesAchievements = false;
+  }
+  
+  private void unlockXScoreOnXDifficultyAchievements() {
+    switch (difficulty) {
+      case 0:
+        if (score >= 500) gpgsHelper.unlockAchievement(R.string.achievement_id_score_500_easy);
+        if (score >= 5000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_5000_easy);
+        if (score >= 10000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_10000_easy);
+        break;
+      case 1:
+        if (score >= 500) gpgsHelper.unlockAchievement(R.string.achievement_id_score_500_normal);
+        if (score >= 5000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_5000_normal);
+        if (score >= 10000) gpgsHelper.unlockAchievement(
+            R.string.achievement_id_score_10000_normal);
+        break;
+      case 2:
+        if (score >= 500) gpgsHelper.unlockAchievement(R.string.achievement_id_score_500_hard);
+        if (score >= 5000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_5000_hard);
+        if (score >= 10000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_10000_hard);
+        break;
+    }
   }
   
   private void updateUi() {
@@ -227,7 +249,7 @@ public class PostGameActivity extends AppCompatActivity implements
     outState.putInt(STATE_BEST_SCORE, bestScore);
     outState.putInt(STATE_AVERAGE_SCORE, averageScore);
     outState.putBoolean(STATE_IS_NEW_BEST_SCORE, isNewBestScore);
-    outState.putBoolean(STATE_INCREMENT_ACHIEVEMENTS, incrementAchievements);
+    outState.putBoolean(STATE_INCREMENT_ACHIEVEMENTS, incrementXGamesAchievements);
   }
   
   @Override
@@ -264,7 +286,7 @@ public class PostGameActivity extends AppCompatActivity implements
    */
   @Override
   public void afterToGameActivity(int difficulty) {
-    incrementAchievements = true; // allow incrementing achievements next time
+    incrementXGamesAchievements = true; // allow incrementing achievements next time
     finish(); // remove this activity from the stack
   }
   
