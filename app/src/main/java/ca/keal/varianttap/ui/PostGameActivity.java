@@ -36,6 +36,7 @@ public class PostGameActivity extends AppCompatActivity implements
   
   public static final String EXTRA_SCORE = "SCORE";
   public static final String EXTRA_DIFFICULTY = "DIFFICULTY";
+  public static final String EXTRA_NO_TAPS = "NO_TAPS";
   
   // Constants for saving the state
   // Difficulty and score aren't saved because they're gotten from the intent
@@ -43,6 +44,7 @@ public class PostGameActivity extends AppCompatActivity implements
   private static final String STATE_AVERAGE_SCORE = "averageScore";
   private static final String STATE_IS_NEW_BEST_SCORE = "isNewBestScore";
   private static final String STATE_INCREMENT_ACHIEVEMENTS = "incrementXGamesAchievements";
+  private static final String STATE_LOST_NO_TAPS = "lostWithNoTaps";
   
   private int difficulty;
   private int score;
@@ -59,6 +61,7 @@ public class PostGameActivity extends AppCompatActivity implements
   private GPGSHelperServiceConnection connection;
   
   private boolean incrementXGamesAchievements;
+  private boolean lostWithNoTaps;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +84,8 @@ public class PostGameActivity extends AppCompatActivity implements
     if (difficulty == -1) { // difficulty was not in the extras
       Log.e(TAG, "Intent did not have \"" + EXTRA_DIFFICULTY + "\" extra!");
     }
+    
+    lostWithNoTaps = getIntent().getExtras().getBoolean(EXTRA_NO_TAPS);
     
     String difficultyStr;
     switch (difficulty) {
@@ -170,6 +175,7 @@ public class PostGameActivity extends AppCompatActivity implements
     averageScore = savedInstanceState.getInt(STATE_AVERAGE_SCORE);
     isNewBestScore = savedInstanceState.getBoolean(STATE_IS_NEW_BEST_SCORE);
     incrementXGamesAchievements = savedInstanceState.getBoolean(STATE_INCREMENT_ACHIEVEMENTS);
+    lostWithNoTaps = savedInstanceState.getBoolean(STATE_LOST_NO_TAPS);
     
     updateUi();
   }
@@ -205,7 +211,13 @@ public class PostGameActivity extends AppCompatActivity implements
     gpgsHelper.incrementAchievement(R.string.achievement_id_5_games);
     gpgsHelper.incrementAchievement(R.string.achievement_id_30_games);
     gpgsHelper.incrementAchievement(R.string.achievement_id_100_games);
+    
     unlockXScoreOnXDifficultyAchievements();
+    
+    if (lostWithNoTaps) {
+      gpgsHelper.unlockAchievement(R.string.achievement_id_lose_no_taps);
+    }
+    
     incrementXGamesAchievements = false;
   }
   
@@ -250,6 +262,7 @@ public class PostGameActivity extends AppCompatActivity implements
     outState.putInt(STATE_AVERAGE_SCORE, averageScore);
     outState.putBoolean(STATE_IS_NEW_BEST_SCORE, isNewBestScore);
     outState.putBoolean(STATE_INCREMENT_ACHIEVEMENTS, incrementXGamesAchievements);
+    outState.putBoolean(STATE_LOST_NO_TAPS, lostWithNoTaps);
   }
   
   @Override

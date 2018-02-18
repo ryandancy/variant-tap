@@ -64,6 +64,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private static final String STATE_ALLOW_IMG_TAPS = "allowImgTaps";
   private static final String STATE_HAS_LOST = "hasLost";
   private static final String STATE_IS_PAUSED = "isPaused";
+  private static final String STATE_HAS_TAPPED = "hasTapped";
   private static final String STATE_SWITCH_ON_RESUME = "switchOnResume";
   private static final String STATE_COUNTDOWN_CIRCLE_MAX = "countdownCircleMax";
   private static final String STATE_COUNTDOWN_CIRCLE_PROGRESS = "countdownCircleProgress";
@@ -86,6 +87,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private boolean allowImgTaps;
   private boolean hasLost;
   private boolean isPaused;
+  private boolean hasTapped;
   
   /** Go to PostGameActivity in onResume()? (used for exiting out of lose animation) */
   private boolean switchOnResume;
@@ -133,6 +135,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     isPaused = false;
     hasLost = false;
     switchOnResume = false;
+    hasTapped = false;
     
     countdownCircle = findViewById(R.id.countdown_circle);
     scoreText = findViewById(R.id.score_text);
@@ -332,6 +335,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     outState.putBoolean(STATE_ALLOW_IMG_TAPS, allowImgTaps);
     outState.putBoolean(STATE_HAS_LOST, hasLost);
     outState.putBoolean(STATE_IS_PAUSED, isPaused);
+    outState.putBoolean(STATE_HAS_TAPPED, hasTapped);
     
     outState.putBoolean(STATE_SWITCH_ON_RESUME, switchOnResume);
     
@@ -358,6 +362,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     allowImgTaps = savedInstanceState.getBoolean(STATE_ALLOW_IMG_TAPS);
     hasLost = savedInstanceState.getBoolean(STATE_HAS_LOST);
     isPaused = savedInstanceState.getBoolean(STATE_IS_PAUSED);
+    hasTapped = savedInstanceState.getBoolean(STATE_HAS_TAPPED);
     
     switchOnResume = savedInstanceState.getBoolean(STATE_SWITCH_ON_RESUME);
     
@@ -579,6 +584,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     if (!allowImgTaps) return;
     
     ImageSwitcher img = (ImageSwitcher) view;
+    hasTapped = true;
     
     // Is img the variant?
     if (img.getId() == variantId) {
@@ -734,11 +740,15 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     Intent intent = new Intent(this, PostGameActivity.class);
     intent.putExtra(PostGameActivity.EXTRA_SCORE, score);
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
+    intent.putExtra(PostGameActivity.EXTRA_NO_TAPS, !hasTapped);
+    
     if (transition) {
       startActivity(intent, Util.getActivityTransition(this));
     } else {
       startActivity(intent);
     }
+    
+    // Remove this activity from the stack
     finish();
   }
   
