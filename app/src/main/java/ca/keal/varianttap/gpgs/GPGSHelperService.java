@@ -189,6 +189,8 @@ public class GPGSHelperService extends Service
   
   /** Unlock an achievement. Make sure you're signed in before calling this. */
   public void unlockAchievement(@StringRes int id) {
+    if (!isConnected()) return;
+    
     setCurrentActivityAsPopupView();
     String strId = getString(id);
     Games.Achievements.unlock(client, strId);
@@ -197,6 +199,8 @@ public class GPGSHelperService extends Service
   
   /** Increment an achievement by numSteps. Make sure you're signed in before calling this. */
   public void incrementAchievement(@StringRes int id, int numSteps) {
+    if (!isConnected()) return;
+    
     setCurrentActivityAsPopupView();
     String strId = getString(id);
     Games.Achievements.increment(client, strId, numSteps);
