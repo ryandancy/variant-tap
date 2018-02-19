@@ -590,6 +590,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     if (img.getId() == variantId) {
       sfx.play(this, R.raw.success);
       nextRound();
+      gpgsHelper.incrementAchievement(R.string.achievement_id_200_variants);
     } else {
       onLose();
     }
