@@ -102,18 +102,22 @@ public final class Util {
         return size;
       }
       
+      Log.v(TAG, "getLargestTextSize() looking: width = " + width + ", widthPlus1 = " + widthPlus1);
+      
       if (width < maxPxWidth && widthPlus1 <= maxPxWidth) {
         // too low
-        low = size + 1;
+        low = size;
       }
       
       if (width > maxPxWidth) {
         // too high
-        high = size - 1;
+        high = size;
       }
     }
     
     Log.w(TAG, "getLargestTextSize() binary search could not complete: check arguments");
+    Log.d(TAG, "getLargestTextSize() arguments: text = " + text + ", maxPxWidth = " + maxPxWidth
+        + ", max = " + max);
     return max; // maybe we're on a tablet or something?
   }
   
