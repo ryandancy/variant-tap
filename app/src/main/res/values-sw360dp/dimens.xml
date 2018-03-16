@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="post_game_score_margin_top">28dp</dimen>
+  <dimen name="difficulty_below_score">25dp</dimen>
+  
+  <dimen name="post_game_buttons_margin_bottom">78dp</dimen>
+  
+  <dimen name="image_size_large">130dp</dimen>
+  <dimen name="image_size_medium">110dp</dimen>
+  <dimen name="image_size_small">100dp</dimen>
+  
+  <dimen name="lose_variant_anim_size">195dp</dimen>
+  <dimen name="lose_variant_anim_pulse_size">210dp</dimen>
+</resources>

@@ -49,4 +49,12 @@
   <integer name="lose_variant_pulse_time_ms">2500</integer>
   <integer name="lose_variant_pulse_times">3</integer>
   <integer name="lose_variant_fall_time_ms">400</integer>
+  
+  <!-- Visibility constants -->
+  <integer name="visibility_visible">0</integer>
+  <integer name="visibility_invisible">1</integer>
+  <integer name="visibility_gone">2</integer>
+  
+  <!-- Visibility values -->
+  <integer name="post_game_buttons_visibility">@integer/visibility_gone</integer>
 </resources>
