@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+  
+  <ImageSwitcher
+      android:id="@+id/img_switcher_0"
+      android:layout_width="@dimen/image_size_large"
+      android:layout_height="@dimen/image_size_large"
+      android:padding="@dimen/grid_spacing"
+      app:layout_constraintBottom_toTopOf="@+id/img_switcher_2"
+      app:layout_constraintRight_toLeftOf="@+id/img_switcher_1" />
+  
+  <ImageSwitcher
+      android:id="@id/img_switcher_1"
+      android:layout_width="@dimen/image_size_large"
+      android:layout_height="@dimen/image_size_large"
+      android:padding="@dimen/grid_spacing"
+      app:layout_constraintBottom_toTopOf="@+id/img_switcher_3"
+      app:layout_constraintLeft_toRightOf="@id/img_switcher_0" />
+  
+  <ImageSwitcher
+      android:id="@id/img_switcher_2"
+      android:layout_width="@dimen/image_size_large"
+      android:layout_height="@dimen/image_size_large"
+      android:padding="@dimen/grid_spacing"
+      app:layout_constraintRight_toLeftOf="@id/img_switcher_3"
+      app:layout_constraintTop_toBottomOf="@id/img_switcher_0" />
+  
+  <ImageSwitcher
+      android:id="@id/img_switcher_3"
+      android:layout_width="@dimen/image_size_large"
+      android:layout_height="@dimen/image_size_large"
+      android:padding="@dimen/grid_spacing"
+      app:layout_constraintLeft_toRightOf="@id/img_switcher_2"
+      app:layout_constraintTop_toBottomOf="@id/img_switcher_1" />
+  
+</merge>

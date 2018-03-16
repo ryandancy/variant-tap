@@ -9,15 +9,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.view.ContextThemeWrapper;
-import android.support.v7.widget.GridLayout;
 import android.util.Log;
 import android.util.Pair;
-import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -60,7 +61,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private static final String STATE_ROUND = "round";
   private static final String STATE_SCORE = "score";
   private static final String STATE_SCORE_FOR_ROUND = "scoreForRound";
-  private static final String STATE_VARIANT_ID = "variantId";
+  private static final String STATE_VARIANT_IDX = "variantIdx";
   private static final String STATE_ALLOW_IMG_TAPS = "allowImgTaps";
   private static final String STATE_HAS_LOST = "hasLost";
   private static final String STATE_IS_PAUSED = "isPaused";
@@ -72,8 +73,11 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private static final String STATE_COUNTDOWN_CIRCLE_RESETTING = "countdownCircleResetting";
   private static final String STATE_IMG_PAIR_ID = "imgPairId";
   
-  /** The ID/index of the variant ImageSwitcher. */
-  private int variantId;
+  /** The index of the variant ImageSwitcher */
+  private int variantIdx;
+  
+  /** The array of ImageSwitcher IDs */
+  private int[] idArray;
   
   /** Which round we're on. */
   private int round;
@@ -210,38 +214,50 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     
     // Initialize the grid of images
     
-    GridLayout imgsGrid = findViewById(R.id.imgs_grid);
+    ConstraintLayout imgsGrid = findViewById(R.id.imgs_grid);
     
-    // Calculate rows/columns
-    int rows, columns;
+    // Choose the correct layout for the grid
+    @LayoutRes int layout;
+    int numImgs;
     switch (difficulty) {
       case 0: // easy
-        rows = 2;
-        columns = 2;
+        layout = R.layout.grid_2x2;
+        numImgs = 4;
         break;
       case 1: // normal
-        rows = 2;
-        columns = 3;
+        layout = R.layout.grid_3x2;
+        numImgs = 6;
         break;
       case 2: // hard
-        rows = 3;
-        columns = 3;
+        layout = R.layout.grid_3x3;
+        numImgs = 9;
         break;
       default:
+        // Something wonky's going on: crash
         Log.e(TAG, "Passed unknown difficulty: " + difficulty);
-        rows = 0;
-        columns = 0;
+        throw new IllegalArgumentException("GameActivity passed unknown difficulty: " + difficulty);
     }
     
-    Log.i(TAG, "Difficulty " + difficulty + ", setting grid to " + rows + "x" + columns);
+    getLayoutInflater().inflate(layout, imgsGrid, true);
     
-    imgsGrid.setRowCount(rows);
-    imgsGrid.setColumnCount(columns);
+    Log.i(TAG, "Difficulty " + difficulty + ", using " + numImgs + " images");
     
-    // Add ImageSwitchers to imgsGrid
+    // Get + set up the ImageSwitchers
     
-    int numImgs = rows * columns;
     imgs = new ImageSwitcher[numImgs];
+    idArray = new int[numImgs];
+    
+    // The ImageSwitcher IDs are stored in an array which is the max length
+    // We take only the first numImgs items to get the required number of IDs
+    TypedArray idTypedArray = getResources().obtainTypedArray(R.array.imageIds);
+    for (int i = 0; i < numImgs; i++) {
+      @IdRes int id = idTypedArray.getResourceId(i, -1);
+      if (id == -1) {
+        Log.e(TAG, "Image ID array index " + i + " had nothing to reference!");
+      }
+      idArray[i] = id;
+    }
+    idTypedArray.recycle();
     
     // Create the animations outside the loop so as not to load them multiple times
     // The out animation is just the in animation reversed, so we use ReverseInterpolator.
@@ -250,19 +266,9 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     out.setInterpolator(new ReverseInterpolator(out.getInterpolator()));
     
     for (int i = 0; i < numImgs; i++) {
-      // Construct the ImageSwitcher and add it to the grid
+      imgs[i] = findViewById(idArray[i]);
       
-      GridLayout.Spec rowSpec = GridLayout.spec(GridLayout.UNDEFINED);
-      GridLayout.Spec columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-      
-      GridLayout.LayoutParams params = new GridLayout.LayoutParams(rowSpec, columnSpec);
-      params.setGravity(Gravity.FILL);
-      
-      int margin = (int) getResources().getDimension(R.dimen.grid_spacing);
-      params.setMargins(margin, margin, margin, margin);
-      
-      imgs[i] = new ImageSwitcher(this);
-      imgs[i].setLayoutParams(params);
+      // Set up the ImageSwitchers
       
       // The factory is to provide correctly formatted ImageViews for the ImageSwitcher
       imgs[i].setFactory(new ViewSwitcher.ViewFactory() { // no lambda expressions *sigh*
@@ -279,10 +285,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
       
       imgs[i].setSoundEffectsEnabled(false);
       
-      imgs[i].setId(i); // for determining which is the variant; equal to the index
       imgs[i].setOnClickListener(this);
-      
-      imgsGrid.addView(imgs[i]);
     }
     
     if (savedInstanceState == null) { // fresh startup with no state to be restored
@@ -330,7 +333,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     outState.putInt(STATE_ROUND, round);
     outState.putInt(STATE_SCORE, score);
     outState.putInt(STATE_SCORE_FOR_ROUND, scoreForRound);
-    outState.putInt(STATE_VARIANT_ID, variantId);
+    outState.putInt(STATE_VARIANT_IDX, variantIdx);
     
     outState.putBoolean(STATE_ALLOW_IMG_TAPS, allowImgTaps);
     outState.putBoolean(STATE_HAS_LOST, hasLost);
@@ -357,7 +360,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     round = savedInstanceState.getInt(STATE_ROUND);
     score = savedInstanceState.getInt(STATE_SCORE);
     scoreForRound = savedInstanceState.getInt(STATE_SCORE_FOR_ROUND);
-    variantId = savedInstanceState.getInt(STATE_VARIANT_ID);
+    variantIdx = savedInstanceState.getInt(STATE_VARIANT_IDX);
     
     allowImgTaps = savedInstanceState.getBoolean(STATE_ALLOW_IMG_TAPS);
     hasLost = savedInstanceState.getBoolean(STATE_HAS_LOST);
@@ -379,7 +382,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
         savedInstanceState.getInt(STATE_IMG_PAIR_ID));
     
     for (int i = 0; i < imgs.length; i++) {
-      imgs[i].setImageDrawable(i == variantId ? currentImgPair.second : currentImgPair.first);
+      imgs[i].setImageDrawable(i == variantIdx ? currentImgPair.second : currentImgPair.first);
     }
     
     // Restore animation state
@@ -557,10 +560,10 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     currentImgPair = ImageSupplier.getInstance(this).getRandomPair();
     Drawable normal = currentImgPair.first, variant = currentImgPair.second;
     
-    variantId = ImageSupplier.getInstance(this).random.nextInt(imgs.length);
+    variantIdx = ImageSupplier.getInstance(this).random.nextInt(imgs.length);
     
     for (int i = 0; i < imgs.length; i++) {
-      imgs[i].setImageDrawable(i == variantId ? variant : normal);
+      imgs[i].setImageDrawable(i == variantIdx ? variant : normal);
     }
   }
   
@@ -587,7 +590,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     hasTapped = true;
     
     // Is img the variant?
-    if (img.getId() == variantId) {
+    if (img.getId() == idArray[variantIdx]) {
       sfx.play(this, R.raw.success);
       nextRound();
       gpgsHelper.incrementAchievement(R.string.achievement_id_200_variants);
@@ -670,11 +673,13 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     
     // Construct the variant animation
     
-    ImageSwitcher variant = imgs[variantId];
+    ImageSwitcher variant = imgs[variantIdx];
     
     // Move into centre
     float transX = (parent.getWidth() / 2f) - (variant.getWidth() / 2f) - variant.getX();
     float transY = (parent.getHeight() / 2f) - (variant.getHeight() / 2f) - variant.getY();
+    
+    Log.d(TAG, "parent width is " + parent.getWidth() + ", variant width is " + variant.getWidth());
     
     ObjectAnimator transXAnim = ObjectAnimator.ofFloat(variant, View.TRANSLATION_X, 0f, transX);
     ObjectAnimator transYAnim = ObjectAnimator.ofFloat(variant, View.TRANSLATION_Y, 0f, transY);
@@ -718,7 +723,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     List<Animator> normalAnims = new ArrayList<>();
     
     for (int i = 0; i < imgs.length; i++) {
-      if (i == variantId) continue;
+      if (i == variantIdx) continue;
       ImageSwitcher normal = imgs[i];
       
       ObjectAnimator normalFallAnim = ObjectAnimator.ofFloat(

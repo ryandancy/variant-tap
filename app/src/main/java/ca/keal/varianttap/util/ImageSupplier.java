@@ -2,6 +2,7 @@ package ca.keal.varianttap.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.util.Pair;
@@ -38,7 +39,7 @@ public class ImageSupplier {
    */
   public static ImageSupplier getInstance(Context context) {
     if (instance == null) {
-      instance = new ImageSupplier(context.getAssets());
+      instance = new ImageSupplier(context.getAssets(), context.getResources());
     }
     return instance;
   }
@@ -49,9 +50,9 @@ public class ImageSupplier {
    * same names. For internal use.
    * @param assets An {@link AssetManager}, most likely accessed via {@code getAssets()}.
    */
-  private ImageSupplier(AssetManager assets) {
+  private ImageSupplier(AssetManager assets, Resources resources) {
     try {
-      load(assets);
+      load(assets, resources);
       Log.i(TAG, imgs.size() + " normal/variant image pairs loaded successfully.");
     } catch (IOException e) {
       Log.e(TAG, "Error loading images: " + e);
@@ -59,7 +60,7 @@ public class ImageSupplier {
     }
   }
   
-  private void load(AssetManager assets) throws IOException {
+  private void load(AssetManager assets, Resources resources) throws IOException {
     // TODO should we check that normals/ and variants/ have same contents or just trust it?
     // Currently, if they aren't the same, the ones in normals/ will be loaded and if they aren't in
     // variants/ an IOException will be thrown. Any extra variants will be ignored.
@@ -68,8 +69,8 @@ public class ImageSupplier {
     
     for (String name : names) {
       imgs.add(Pair.create(
-          Drawable.createFromStream(assets.open("normals/" + name), null),
-          Drawable.createFromStream(assets.open("variants/" + name), null)
+          Drawable.createFromResourceStream(resources, null, assets.open("normals/" + name), null),
+          Drawable.createFromResourceStream(resources, null, assets.open("variants/" + name), null)
       ));
     }
   }
