@@ -16,7 +16,8 @@
       android:layout_centerHorizontal="true"
       android:layout_marginTop="@dimen/post_game_score_margin_top"
       android:textColor="@color/colorPrimary"
-      android:textSize="@dimen/post_score_size" />
+      android:textSize="@dimen/post_score_size"
+      tools:ignore="SpUsage" />
   
   <TextView
       android:id="@+id/new_best_score_text"
@@ -104,7 +105,8 @@
       android:layout_marginTop="@dimen/post_game_buttons_margin_top"
       android:layout_marginBottom="@dimen/post_game_buttons_margin_bottom"
       android:gravity="center_vertical"
-      android:orientation="horizontal">
+      android:orientation="horizontal"
+      android:visibility="@integer/post_game_buttons_visibility">
     
     <!-- Using LinearLayouts instead of drawableTop because size can't be set on drawableTop -->
     <LinearLayout

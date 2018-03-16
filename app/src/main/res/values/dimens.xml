@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Note: dimensions are for a 1440x2560/640dpi screen because that's my testing phone (LG G4) -->
 <resources>
   <!-- RANGES FOR MAIN ACTIVITY IMAGE-THROWING ANIMATION -->
   
@@ -53,8 +52,8 @@
   
   <dimen name="score_text_margin_bottom">10dp</dimen>
   
-  <dimen name="post_game_score_margin_top">30dp</dimen>
-  <dimen name="difficulty_below_score">12dp</dimen>
+  <dimen name="post_game_score_margin_top">45dp</dimen>
+  <dimen name="difficulty_below_score">30dp</dimen>
   
   <dimen name="post_game_buttons_margin_top">15dp</dimen>
   <!-- post_game_buttons_margin_top + 65dp for circle buttons -->
@@ -81,7 +80,7 @@
   <dimen name="paused_text_size">80dp</dimen>
   <dimen name="unpause_countdown_text_size">300dp</dimen>
   
-  <dimen name="post_score_size">95sp</dimen>
+  <dimen name="post_score_size">95dp</dimen>
   <dimen name="new_best_score_size">20sp</dimen>
   
   <dimen name="post_game_stats_size">20sp</dimen>

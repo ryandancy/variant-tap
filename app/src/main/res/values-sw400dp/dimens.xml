@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="thrown_image_size">65dp</dimen>
+  
+  <dimen name="countdown_circle_diameter">120dp</dimen>
+  <dimen name="countdown_circle_text_size">32dp</dimen>
+  
+  <dimen name="image_size_large">145dp</dimen>
+  <dimen name="image_size_medium">120dp</dimen>
+  <dimen name="image_size_small">115dp</dimen>
+  
+  <dimen name="lose_variant_anim_size">220dp</dimen>
+  <dimen name="lose_variant_anim_pulse_size">235dp</dimen>
+  
+  <dimen name="post_score_size">120dp</dimen>
+  
+  <dimen name="difficulty_below_score">30dp</dimen>
+</resources>
