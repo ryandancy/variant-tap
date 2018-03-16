@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,9 +14,10 @@
       android:id="@+id/countdown_circle"
       android:layout_width="@dimen/countdown_circle_diameter"
       android:layout_height="@dimen/countdown_circle_diameter"
-      android:layout_alignParentTop="true"
-      android:layout_centerHorizontal="true"
       android:layout_margin="@dimen/countdown_circle_margin"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
       app:donut_circle_starting_degree="-90"
       app:donut_finished_color="@color/countdownCircleFinished"
       app:donut_finished_stroke_width="@dimen/countdown_circle_width"
@@ -28,68 +29,73 @@
       app:donut_unfinished_color="@color/countdownCircleUnfinished"
       app:donut_unfinished_stroke_width="@dimen/countdown_circle_width" />
   
-  <android.support.v7.widget.GridLayout
+  <android.support.constraint.ConstraintLayout
       android:id="@+id/imgs_grid"
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
       android:clipChildren="false"
       android:clipToPadding="false"
-      android:padding="@dimen/grid_padding" />
+      app:layout_constraintTop_toBottomOf="@id/countdown_circle"
+      app:layout_constraintBottom_toTopOf="@+id/score_label"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent" />
   
   <TextView
       android:id="@+id/starting_countdown_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:paddingBottom="@dimen/starting_countdown_text_offset"
       android:textColor="@color/colorPrimary"
       android:textSize="@dimen/starting_countdown_text_size"
+      app:layout_constraintTop_toBottomOf="@id/countdown_circle"
+      app:layout_constraintBottom_toTopOf="@+id/starting_countdown_hint"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
       tools:ignore="SpUsage" />
   
   <TextView
-      android:id="@+id/starting_countdown_hint"
+      android:id="@id/starting_countdown_hint"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_below="@id/starting_countdown_text"
-      android:layout_centerHorizontal="true"
-      android:layout_marginLeft="@dimen/starting_countdown_hint_margin_sides"
-      android:layout_marginRight="@dimen/starting_countdown_hint_margin_sides"
-      android:layout_marginTop="@dimen/starting_countdown_hint_margin_top"
+      android:paddingLeft="@dimen/starting_countdown_hint_margin_sides"
+      android:paddingRight="@dimen/starting_countdown_hint_margin_sides"
+      android:paddingBottom="@dimen/starting_countdown_hint_offset"
       android:text="@string/countdown_hint"
       android:textAlignment="center"
       android:textColor="@color/textDark"
-      android:textSize="20sp" />
+      android:textSize="20sp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/score_label" />
   
   <TextView
       android:id="@+id/score_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true"
       android:paddingBottom="@dimen/score_text_margin_bottom"
       android:text="0"
       android:textColor="@color/gameMain"
       android:textSize="@dimen/score_text_size"
-      tools:ignore="HardcodedText" />
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      tools:ignore="HardcodedText,SpUsage" />
   
   <TextView
-      android:id="@+id/score_label"
+      android:id="@id/score_label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_above="@id/score_text"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="-20dp"
+      android:layout_marginBottom="@dimen/score_label_margin_bottom"
       android:text="@string/score_label"
       android:textColor="@color/gameMain"
-      android:textSize="20sp" />
+      android:textSize="20sp"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toBottomOf="@id/score_text" />
   
   <ImageButton
       android:id="@+id/pause_button"
       android:layout_width="@dimen/pause_button_width"
       android:layout_height="wrap_content"
-      android:layout_alignParentRight="true"
-      android:layout_alignParentTop="true"
       android:layout_margin="@dimen/pause_button_margin"
       android:adjustViewBounds="true"
       android:background="@android:color/transparent"
@@ -98,6 +104,8 @@
       android:scaleType="fitCenter"
       android:src="@drawable/pause"
       android:visibility="invisible"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
       tools:ignore="RtlHardcoded" />
   
   <include
@@ -105,4 +113,4 @@
       layout="@layout/game_paused"
       android:visibility="invisible" />
   
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

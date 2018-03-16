@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <array name="imageIds">
+    <!-- This array will be truncated at runtime to the desired length, so it's the max length 9 -->
+    <item>@id/img_switcher_0</item>
+    <item>@id/img_switcher_1</item>
+    <item>@id/img_switcher_2</item>
+    <item>@id/img_switcher_3</item>
+    <item>@id/img_switcher_4</item>
+    <item>@id/img_switcher_5</item>
+    <item>@id/img_switcher_6</item>
+    <item>@id/img_switcher_7</item>
+    <item>@id/img_switcher_8</item>
+  </array>
+</resources>
