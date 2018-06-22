@@ -68,7 +68,7 @@
   
   <!-- TEXT SIZES (and other textual dimensions) -->
   
-  <dimen name="max_main_title_size">150sp</dimen>
+  <dimen name="max_main_title_size">300sp</dimen>
   
   <dimen name="starting_countdown_text_size">200dp</dimen>
   <dimen name="countdown_circle_text_size">24dp</dimen>

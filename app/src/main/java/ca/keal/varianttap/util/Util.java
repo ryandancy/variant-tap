@@ -91,7 +91,7 @@ public final class Util {
     float high = max;
     float size;
     
-    while (low < high) {
+    while (low + 1 < high) {
       size = (int) ((low + high) / 2);
       float width = measureText(textView, text, size);
       float widthPlus1 = measureText(textView, text, size + 1);
@@ -118,7 +118,7 @@ public final class Util {
     Log.w(TAG, "getLargestTextSize() binary search could not complete: check arguments");
     Log.d(TAG, "getLargestTextSize() arguments: text = " + text + ", maxPxWidth = " + maxPxWidth
         + ", max = " + max);
-    return max; // maybe we're on a tablet or something?
+    return max; // maybe we're on a tablet?
   }
   
   private static float measureText(TextView textView, String text, float size) {
