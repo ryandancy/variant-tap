@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <bool name="default_sound_on">true</bool>
+  
+  <!-- on non-tablets (<sw600dp), lock portrait -->
+  <bool name="portrait_only">true</bool>
 </resources>
