@@ -5,6 +5,8 @@
     android:id="@+id/difficulty_button_fragment_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/difficulty_buttons_margin_side"
+    android:paddingRight="@dimen/difficulty_buttons_margin_side"
     tools:context="ca.keal.varianttap.ui.DifficultyButtonsFragment">
   
   <Button
@@ -12,7 +14,10 @@
       style="@style/ButtonStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true" />
+      android:layout_alignParentBottom="true"
+      android:paddingBottom="@dimen/difficulty_buttons_text_padding"
+      android:paddingTop="@dimen/difficulty_buttons_text_padding"
+      android:textSize="@dimen/difficulty_buttons_text_size" />
   
   <LinearLayout
       android:id="@+id/difficulty_button_layout"
@@ -29,7 +34,10 @@
         style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/easy" />
+        android:paddingBottom="@dimen/difficulty_buttons_text_padding"
+        android:paddingTop="@dimen/difficulty_buttons_text_padding"
+        android:text="@string/easy"
+        android:textSize="@dimen/difficulty_buttons_text_size" />
     
     <Button
         android:id="@+id/normal_button"
@@ -37,7 +45,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/difficulty_buttons_spacing"
-        android:text="@string/normal" />
+        android:paddingBottom="@dimen/difficulty_buttons_text_padding"
+        android:paddingTop="@dimen/difficulty_buttons_text_padding"
+        android:text="@string/normal"
+        android:textSize="@dimen/difficulty_buttons_text_size" />
     
     <Button
         android:id="@+id/hard_button"
@@ -45,7 +56,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/difficulty_buttons_spacing"
-        android:text="@string/hard" />
+        android:paddingBottom="@dimen/difficulty_buttons_text_padding"
+        android:paddingTop="@dimen/difficulty_buttons_text_padding"
+        android:text="@string/hard"
+        android:textSize="@dimen/difficulty_buttons_text_size" />
     
   </LinearLayout>
   

@@ -65,6 +65,7 @@
   <dimen name="button_margin_sides">20dp</dimen>
   
   <dimen name="difficulty_buttons_spacing">10dp</dimen>
+  <dimen name="difficulty_buttons_margin_side">0dp</dimen>
   
   <!-- TEXT SIZES (and other textual dimensions) -->
   
@@ -88,6 +89,9 @@
   <dimen name="post_game_stats_space_width">5sp</dimen>
   
   <dimen name="post_game_button_text_size">17sp</dimen>
+  
+  <dimen name="difficulty_buttons_text_size">20sp</dimen>
+  <dimen name="difficulty_buttons_text_padding">10dp</dimen>
   
   <!-- MISCELLANEOUS -->
   
