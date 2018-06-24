@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -60,6 +61,11 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    
+    // Lock portrait orientation if we're not on a tablet
+    if (getResources().getBoolean(R.bool.portrait_only)) {
+      setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
     
     // Set up periodic throwing animations
     

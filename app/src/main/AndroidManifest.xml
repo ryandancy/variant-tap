@@ -14,7 +14,7 @@
       tools:ignore="UnusedAttribute">
     <activity
         android:name=".ui.MainActivity"
-        android:screenOrientation="portrait">
+        android:screenOrientation="fullUser">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         
@@ -23,13 +23,13 @@
     </activity>
     <activity
         android:name=".ui.GameActivity"
-        android:screenOrientation="portrait" />
+        android:screenOrientation="locked" />
     <activity
         android:name=".ui.PostGameActivity"
-        android:screenOrientation="portrait" />
+        android:screenOrientation="behind" />
     <activity
         android:name=".ui.AboutActivity"
-        android:screenOrientation="portrait" />
+        android:screenOrientation="behind" />
     
     <meta-data
         android:name="com.google.android.gms.games.APP_ID"
