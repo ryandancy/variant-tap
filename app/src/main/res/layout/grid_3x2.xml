@@ -8,7 +8,9 @@
       android:layout_height="@dimen/image_size_medium"
       android:padding="@dimen/grid_spacing"
       app:layout_constraintBottom_toTopOf="@+id/img_switcher_3"
-      app:layout_constraintRight_toLeftOf="@+id/img_switcher_1" />
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/img_switcher_1"
+      app:layout_constraintTop_toTopOf="parent" />
   
   <ImageSwitcher
       android:id="@id/img_switcher_1"
@@ -17,7 +19,8 @@
       android:padding="@dimen/grid_spacing"
       app:layout_constraintBottom_toTopOf="@+id/img_switcher_4"
       app:layout_constraintLeft_toRightOf="@id/img_switcher_0"
-      app:layout_constraintRight_toLeftOf="@+id/img_switcher_2" />
+      app:layout_constraintRight_toLeftOf="@+id/img_switcher_2"
+      app:layout_constraintTop_toTopOf="parent" />
   
   <ImageSwitcher
       android:id="@id/img_switcher_2"
@@ -25,13 +28,17 @@
       android:layout_height="@dimen/image_size_medium"
       android:padding="@dimen/grid_spacing"
       app:layout_constraintBottom_toTopOf="@+id/img_switcher_5"
-      app:layout_constraintLeft_toRightOf="@id/img_switcher_1" />
+      app:layout_constraintLeft_toRightOf="@id/img_switcher_1"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
   
   <ImageSwitcher
       android:id="@id/img_switcher_3"
       android:layout_width="@dimen/image_size_medium"
       android:layout_height="@dimen/image_size_medium"
       android:padding="@dimen/grid_spacing"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toLeftOf="@id/img_switcher_4"
       app:layout_constraintTop_toBottomOf="@id/img_switcher_0" />
   
@@ -40,6 +47,7 @@
       android:layout_width="@dimen/image_size_medium"
       android:layout_height="@dimen/image_size_medium"
       android:padding="@dimen/grid_spacing"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toRightOf="@id/img_switcher_3"
       app:layout_constraintRight_toLeftOf="@id/img_switcher_5"
       app:layout_constraintTop_toBottomOf="@id/img_switcher_1" />
@@ -49,7 +57,9 @@
       android:layout_width="@dimen/image_size_medium"
       android:layout_height="@dimen/image_size_medium"
       android:padding="@dimen/grid_spacing"
+      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toRightOf="@id/img_switcher_4"
+      app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@id/img_switcher_2" />
   
 </merge>
