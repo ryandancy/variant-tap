@@ -3,4 +3,20 @@
   <!-- For tablets in portrait mode -->
   <dimen name="main_menu_title_side_padding">50dp</dimen>
   <dimen name="circle_button_spacing">40dp</dimen>
+  
+  <dimen name="starting_countdown_text_size">400dp</dimen>
+  <dimen name="starting_countdown_hint_offset">35dp</dimen>
+  
+  <dimen name="score_text_size">120dp</dimen>
+  <!-- enough to get over the score text -->
+  <dimen name="score_label_margin_bottom">145dp</dimen>
+  <dimen name="score_label_text_size">30sp</dimen>
+  
+  <dimen name="image_size_large">240dp</dimen>
+  <dimen name="image_size_medium">185dp</dimen>
+  <dimen name="image_size_small">185dp</dimen>
+  <dimen name="grid_spacing">15dp</dimen>
+  
+  <dimen name="lose_variant_anim_size">450dp</dimen>
+  <dimen name="lose_variant_anim_pulse_size">470dp</dimen>
 </resources>
