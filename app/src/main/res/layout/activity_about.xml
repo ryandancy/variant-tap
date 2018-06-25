@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,10 @@
   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_alignParentTop="true">
+      app:layout_constraintBottom_toTopOf="@+id/sign_in_out_button"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -114,15 +118,22 @@
   </ScrollView>
   
   <Button
-      android:id="@+id/sign_in_out_button"
+      android:id="@id/sign_in_out_button"
       style="@style/ButtonStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
       android:layout_marginBottom="@dimen/bottom_button_margin_bottom"
+      android:layout_marginLeft="@dimen/sign_in_out_button_margin_side"
+      android:layout_marginRight="@dimen/sign_in_out_button_margin_side"
       android:drawablePadding="@dimen/button_drawable_spacing"
       android:gravity="center|end"
       android:onClick="signInOrOutOfGPGS"
-      android:text="@string/gpgs_sign_in" />
+      android:paddingBottom="@dimen/full_length_buttons_text_padding"
+      android:paddingTop="@dimen/full_length_buttons_text_padding"
+      android:text="@string/gpgs_sign_in"
+      android:textSize="@dimen/full_length_buttons_text_size"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent" />
   
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

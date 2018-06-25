@@ -79,13 +79,13 @@
     <item name="android:layout_marginTop">20dp</item>
     <item name="android:layout_marginBottom">10dp</item>
     <item name="android:textColor">@color/colorPrimary</item>
-    <item name="android:textSize">25sp</item>
+    <item name="android:textSize">@dimen/about_text_header_size</item>
   </style>
   
   <style name="AboutText.Body">
     <item name="android:layout_marginBottom">@dimen/post_game_stats_line_spacing</item>
     <item name="android:textColor">@color/textDark</item>
-    <item name="android:textSize">14sp</item>
+    <item name="android:textSize">@dimen/about_text_body_size</item>
   </style>
   
   <style name="AboutText.Body.Key">
