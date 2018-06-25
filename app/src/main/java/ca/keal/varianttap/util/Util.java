@@ -68,6 +68,14 @@ public final class Util {
     return px / resources.getDisplayMetrics().scaledDensity;
   }
   
+  public static float getWidthDp(Resources resources) {
+    return pxToDp(resources, Resources.getSystem().getDisplayMetrics().widthPixels);
+  }
+  
+  public static float getHeightDp(Resources resources) {
+    return pxToDp(resources, Resources.getSystem().getDisplayMetrics().heightPixels);
+  }
+  
   public static float getFloatResource(Context context, @DimenRes int floatRes) {
     TypedValue floatValue = new TypedValue();
     context.getResources().getValue(floatRes, floatValue, true);

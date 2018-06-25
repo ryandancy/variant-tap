@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
   private Runnable throwingRunnable;
   private Handler throwingHandler;
   private boolean throwFromLeft;
-  private int msBetweenThrows;
+  private long msBetweenThrows;
   
   // For the achievement triggered after a certain amount of time staring at this activity
   private Timer timer;
@@ -201,38 +201,53 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     image.setAdjustViewBounds(true);
     image.setScaleType(ImageView.ScaleType.FIT_XY);
     
-    // Generate the starting and minimum vertical biases
-    // Starting bias is the position at x=0, min bias is the min of the parabola
+    final float width = Util.getWidthDp(getResources());
+    final float height = Util.getHeightDp(getResources());
     
-    float minVertBias = Util.getFloatResource(this, R.dimen.min_thrown_image_vertical_bias);
-    float maxVertBias = Util.getFloatResource(this, R.dimen.max_thrown_image_vertical_bias);
-    float minBiasDiff = Util.getFloatResource(this, R.dimen.min_start_min_thrown_image_bias_diff);
+    // Multiplication/division by width/height is to convert bias "units" <-> dp
     
-    float startBias = Util.randomFloatBetween(random, minVertBias + minBiasDiff, maxVertBias);
-    final float minBias = Util.randomFloatBetween(random, minVertBias, startBias - minBiasDiff);
+    final float gravity = Util.getFloatResource(this, R.dimen.thrown_image_gravity)
+        * (height / 1280); // adjustment factor to make it look good on all devices
     
-    // Generate the vertex horizontal bias - the horizontal bias at the max vertical bias (the AoS)
+    // Generate the difference between the starting and ending vertical positions (diffY)
+    float minDiffY = Util.getFloatResource(this, R.dimen.min_thrown_image_diff_y) * height;
+    float maxDiffY = Util.getFloatResource(this, R.dimen.max_thrown_image_diff_y) * height;
+    float diffY = Util.randomFloatBetween(random, minDiffY, maxDiffY);
     
-    float minHorizBias = Util.getFloatResource(this, R.dimen.min_thrown_image_horizontal_bias);
-    float maxHorizBias = Util.getFloatResource(this, R.dimen.max_thrown_image_horizontal_bias);
+    // Generate the horizontal speed
+    float minSpeedX = Util.getFloatResource(this, R.dimen.min_thrown_image_speed_x);
+    float maxSpeedX = Util.getFloatResource(this, R.dimen.max_thrown_image_speed_x);
+    final float speedX = Util.randomFloatBetween(random, minSpeedX, maxSpeedX)
+        * (width / 800); // adjustment factor to make it look good on all devices
     
-    final float vertexHorizBias = Util.randomFloatBetween(random, minHorizBias, maxHorizBias);
+    // Calculate the vertical speed + maximum height + total time
+    // Derived via kinematics
+    final float totalTime = width / speedX;
+    final float initialSpeedY = diffY / totalTime - (gravity * totalTime) / 2;
+    float maxY = (-(initialSpeedY * initialSpeedY) / (2 * gravity)) / height;
     
-    // Equation of the parabola is y = a(x - h)^2 + k where (h, k) is the vertex
-    // Find a (factor) by subbing in (0, b) - the y-intercept
-    // Rearranges to a = (b - k) / h^2
-    final float factor = (startBias - minBias) / (float) Math.pow(vertexHorizBias, 2);
+    // Get the maximum height possible
+    float absoluteMaxY = Util.getFloatResource(this, R.dimen.max_thrown_image_vertical_bias);
+    
+    // Generate the distance from the maximum height possible to the maximum height of the image
+    float minDiffMaxY = Util.getFloatResource(this, R.dimen.min_thrown_image_diff_max_y);
+    float maxDiffMaxY = Util.getFloatResource(this, R.dimen.max_thrown_image_diff_max_y);
+    float diffMaxY = Util.randomFloatBetween(random, minDiffMaxY, maxDiffMaxY);
+    
+    // Calculate the starting bias
+    final float startBias = absoluteMaxY - diffMaxY - maxY;
     
     // Generate the number of times the image will rotate
-    
     float minRotateTimes = Util.getFloatResource(this, R.dimen.min_thrown_image_rotate_times);
     float maxRotateTimes = Util.getFloatResource(this, R.dimen.max_thrown_image_rotate_times);
     float rotateTimes = Util.randomFloatBetween(random, minRotateTimes, maxRotateTimes);
     
     float initialRotation = Util.randomFloatBetween(random, 0, 360);
     
-    Log.v(TAG, "Throwing image with startBias = " + startBias + ", vertex = ("
-        + vertexHorizBias + ", " + minBias + "), rotating " + rotateTimes + " times");
+    Log.v(TAG, "Throwing image with startBias = " + startBias + " bias, x speed = " + speedX
+        + " dp/s, initial y speed = " + initialSpeedY + " dp/s, max height = "
+        + (absoluteMaxY - diffMaxY) + " bias, vertical difference = " + diffY
+        + " dp, total time = " + totalTime + " s, rotating " + rotateTimes + " times");
     
     // Construct the parabola animator, which moves the image
     
@@ -240,15 +255,22 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     parabolaAnimator.setInterpolator(new LinearInterpolator());
     parabolaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
       public void onAnimationUpdate(ValueAnimator animation) {
-        float xBias = (float) animation.getAnimatedValue();
+        float value = (float) animation.getAnimatedValue();
+        float time = totalTime * value;
         
-        // Equation is y = a(x - h)^2 + k
-        float yBias = factor * (float) Math.pow(xBias - vertexHorizBias, 2) + minBias;
+        // d_x = v_x*t
+        float x = speedX * time;
+        
+        // d_y = v_iy*t + 1/2 gt^2
+        float dy = (initialSpeedY * time) + (gravity * time * time) / 2; 
+        
+        float xBias = x / width;
+        float yBias = startBias + (dy / height);
         
         xBias = invert ? 1f - xBias : xBias; // handle right-to-left
         
         params.leftMargin = (int) (parentLayout.getWidth() * xBias);
-        params.topMargin = (int) (parentLayout.getHeight() * yBias);
+        params.topMargin = (int) (parentLayout.getHeight() * (1f - yBias));
         image.setLayoutParams(params);
       }
     });
@@ -272,7 +294,7 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     
     // Put them together and play
     throwAnim.play(parabolaAnimator).with(rotateAnimator);
-    throwAnim.setDuration(getResources().getInteger(R.integer.image_throw_duration));
+    throwAnim.setDuration((long) (totalTime * 1.4 * 1000)); // *1.4 to account for -0.2 to 1.2
     throwAnims.add(throwAnim);
     
     parentLayout.addView(image, 0); // add at back, below all other elements

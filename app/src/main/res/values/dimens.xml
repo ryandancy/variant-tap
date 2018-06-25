@@ -4,14 +4,23 @@
   
   <dimen name="thrown_image_size">50dp</dimen>
   
-  <!-- These define range of vertical biases thrown images can have without overlapping anything -->
-  <item name="min_thrown_image_vertical_bias" type="dimen" format="float">0.3</item>
-  <item name="max_thrown_image_vertical_bias" type="dimen" format="float">0.75</item>
-  <item name="min_start_min_thrown_image_bias_diff" type="dimen" format="float">0.25</item>
+  <!-- Acceleration due to gravity, in dp/s/s, at height = 1280 dp -->
+  <item name="thrown_image_gravity" type="dimen" format="float">-750</item>
   
-  <!-- These define the range of horizontal biases the horizontal bias at the vertex can be -->
-  <item name="min_thrown_image_horizontal_bias" type="dimen" format="float">0.6</item>
-  <item name="max_thrown_image_horizontal_bias" type="dimen" format="float">1.0</item>
+  <!-- The absolute maximum vertical bias an image can have -->
+  <item name="max_thrown_image_vertical_bias" type="dimen" format="float">0.75</item>
+  
+  <!-- These define the range of differences between start and end y-positions, in bias units -->
+  <item name="min_thrown_image_diff_y" type="dimen" format="float">-0.15</item>
+  <item name="max_thrown_image_diff_y" type="dimen" format="float">0.15</item>
+  
+  <!-- These define the range of horizontal speeds, in dp/s, at width = 800 dp -->
+  <item name="min_thrown_image_speed_x" type="dimen" format="float">450</item>
+  <item name="max_thrown_image_speed_x" type="dimen" format="float">700</item>
+  
+  <!-- These define the range of differences between max height and absolute max, in bias units -->
+  <item name="min_thrown_image_diff_max_y" type="dimen" format="float">0</item>
+  <item name="max_thrown_image_diff_max_y" type="dimen" format="float">0.35</item>
   
   <!-- These define the range of number of times the thrown images can rotate -->
   <item name="min_thrown_image_rotate_times" type="dimen" format="float">0.3</item>
