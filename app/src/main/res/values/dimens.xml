@@ -55,8 +55,6 @@
   <dimen name="image_size_large">115dp</dimen>
   <dimen name="image_size_medium">95dp</dimen>
   <dimen name="image_size_small">85dp</dimen>
-  
-  <dimen name="grid_padding">40dp</dimen>
   <dimen name="grid_spacing">10dp</dimen>
   
   <dimen name="score_text_margin_bottom">10dp</dimen>
@@ -86,9 +84,11 @@
   <dimen name="about_text_body_size">14sp</dimen>
   
   <dimen name="starting_countdown_text_size">200dp</dimen>
+  <dimen name="starting_countdown_hint_size">20sp</dimen>
   <dimen name="countdown_circle_text_size">24dp</dimen>
   <dimen name="pause_button_width">25dp</dimen>
   <dimen name="score_text_size">70dp</dimen>
+  <dimen name="score_label_text_size">20sp</dimen>
   <!-- enough to get over the score text -->
   <dimen name="score_label_margin_bottom">82.5dp</dimen>
   

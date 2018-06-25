@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="starting_countdown_text_size">450dp</dimen>
+  <dimen name="starting_countdown_hint_offset">40dp</dimen>
+  
+  <dimen name="score_text_size">140dp</dimen>
+  <!-- enough to get over the score text -->
+  <dimen name="score_label_margin_bottom">165dp</dimen>
+  <dimen name="score_label_text_size">40sp</dimen>
+  
+  <dimen name="image_size_large">320dp</dimen>
+  <dimen name="image_size_medium">220dp</dimen>
+  <dimen name="image_size_small">220dp</dimen>
+  <dimen name="grid_spacing">20dp</dimen>
+  
+  <dimen name="lose_variant_anim_size">500dp</dimen>
+  <dimen name="lose_variant_anim_pulse_size">520dp</dimen>
+</resources>
