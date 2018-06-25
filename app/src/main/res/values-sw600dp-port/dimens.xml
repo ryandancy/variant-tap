@@ -2,4 +2,5 @@
 <resources>
   <!-- For tablets in portrait mode -->
   <dimen name="main_menu_title_side_padding">50dp</dimen>
+  <dimen name="circle_button_spacing">40dp</dimen>
 </resources>
