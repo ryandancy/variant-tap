@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -163,7 +165,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   }
   
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+  public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_difficulty_buttons, container, false);
@@ -195,10 +197,19 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
         
         int slideUpSpeed = getResources().getInteger(R.integer.slide_up_speed);
         
+        int[] playButtonLocation = new int[2];
+        int[] buttonLocation = new int[2];
+        
+        playButton.getLocationOnScreen(playButtonLocation);
+        int playButtonY = playButtonLocation[1];
+        
         for (int i = 0; i < difficultyBtns.size(); i++) {
           Button button = difficultyBtns.get(i);
           
-          float fromYDelta = Math.abs(button.getY() - (playButton.getY() - playButton.getHeight()));
+          button.getLocationOnScreen(buttonLocation);
+          int buttonY = buttonLocation[1];
+          
+          float fromYDelta = Math.abs(buttonY - playButtonY);
           float duration = Util.pxToDp(getResources(), fromYDelta) / 100 * slideUpSpeed;
           
           TranslateAnimation anim = new TranslateAnimation(0, 0, fromYDelta, 0);
@@ -223,13 +234,13 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     
     // Connected to the GPGSHelperService
     Intent intent = new Intent(getContext(), GPGSHelperService.class);
-    getContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
+    requireContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
   }
   
   @Override
   public void onStop() {
     super.onStop();
-    getContext().unbindService(connection);
+    requireContext().unbindService(connection);
   }
   
   @Override
