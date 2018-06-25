@@ -191,8 +191,6 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     layout.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
       public void onGlobalLayout() {
         // Initialize slideUpAnims with properly initialized animations.
-        // This is in an OnGlobalLayoutListener so that the calls to getY() happen after the layout
-        // is actually laid out (if this was in the main method, getY() would return 0).
         
         int slideUpSpeed = getResources().getInteger(R.integer.slide_up_speed);
         
