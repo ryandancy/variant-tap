@@ -204,10 +204,22 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     final float width = Util.getWidthDp(getResources());
     final float height = Util.getHeightDp(getResources());
     
+    // Make tablets in landscape mode have values like they're in portrait mode
+    float adjustmentWidth, adjustmentHeight;
+    if (width > height) {
+      // noinspection SuspiciousNameCombination
+      adjustmentWidth = height;
+      // noinspection SuspiciousNameCombination
+      adjustmentHeight = width;
+    } else {
+      adjustmentWidth = width;
+      adjustmentHeight = height;
+    }
+    
     // Multiplication/division by width/height is to convert bias "units" <-> dp
     
     final float gravity = Util.getFloatResource(this, R.dimen.thrown_image_gravity)
-        * (height / 1280); // adjustment factor to make it look good on all devices
+        * (adjustmentHeight / 1280); // adjustment factor to make it look good on all devices
     
     // Generate the difference between the starting and ending vertical positions (diffY)
     float minDiffY = Util.getFloatResource(this, R.dimen.min_thrown_image_diff_y) * height;
@@ -218,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     float minSpeedX = Util.getFloatResource(this, R.dimen.min_thrown_image_speed_x);
     float maxSpeedX = Util.getFloatResource(this, R.dimen.max_thrown_image_speed_x);
     final float speedX = Util.randomFloatBetween(random, minSpeedX, maxSpeedX)
-        * (width / 800); // adjustment factor to make it look good on all devices
+        * (adjustmentWidth / 800); // adjustment factor to make it look good on all devices
     
     // Calculate the vertical speed + maximum height + total time
     // Derived via kinematics
