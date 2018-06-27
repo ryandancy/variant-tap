@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="starting_countdown_text_size">550dp</dimen>
+  <dimen name="image_size_large">240dp</dimen>
+  <dimen name="image_size_medium">200dp</dimen>
+  <dimen name="image_size_small">185dp</dimen>
+  <dimen name="grid_spacing">15dp</dimen>
+  <dimen name="lose_variant_anim_size">420dp</dimen>
+  <dimen name="lose_variant_anim_pulse_size">440dp</dimen>
+</resources>

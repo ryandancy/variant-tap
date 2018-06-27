@@ -7,11 +7,6 @@
   <dimen name="circle_button_small_padding">15dp</dimen>
   <dimen name="pause_button_width">35dp</dimen>
   
-  <dimen name="countdown_circle_width">15dp</dimen>
-  <dimen name="countdown_circle_diameter">160dp</dimen>
-  <dimen name="countdown_circle_margin">30dp</dimen>
-  <dimen name="countdown_circle_text_size">38dp</dimen>
-  
   <dimen name="full_length_buttons_text_size">35sp</dimen>
   <dimen name="about_text_header_size">35sp</dimen>
   <dimen name="about_text_body_size">20sp</dimen>
