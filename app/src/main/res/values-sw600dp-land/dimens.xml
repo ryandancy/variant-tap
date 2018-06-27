@@ -6,4 +6,25 @@
   <dimen name="difficulty_buttons_margin_side">200dp</dimen>
   <dimen name="sign_in_out_button_margin_side">220dp</dimen>
   <dimen name="circle_button_spacing">75dp</dimen>
+  
+  <dimen name="countdown_circle_width">15dp</dimen>
+  <dimen name="countdown_circle_diameter">180dp</dimen>
+  <dimen name="countdown_circle_margin">32dp</dimen>
+  <dimen name="countdown_circle_text_size">40dp</dimen>
+  
+  <dimen name="score_text_size">150dp</dimen>
+  <dimen name="score_label_text_size">45sp</dimen>
+  <dimen name="score_label_margin_bottom">175dp</dimen>
+  
+  <dimen name="starting_countdown_text_size">350dp</dimen>
+  <dimen name="starting_countdown_hint_margin_sides">30dp</dimen>
+  <dimen name="starting_countdown_hint_offset">50dp</dimen>
+  
+  <dimen name="image_size_large">230dp</dimen>
+  <dimen name="image_size_medium">175dp</dimen>
+  <dimen name="image_size_small">165dp</dimen>
+  <dimen name="grid_spacing">15dp</dimen>
+  
+  <dimen name="lose_variant_anim_size">380dp</dimen>
+  <dimen name="lose_variant_anim_pulse_size">400dp</dimen>
 </resources>

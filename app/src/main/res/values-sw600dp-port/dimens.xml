@@ -7,6 +7,11 @@
   <dimen name="starting_countdown_text_size">400dp</dimen>
   <dimen name="starting_countdown_hint_offset">35dp</dimen>
   
+  <dimen name="countdown_circle_width">15dp</dimen>
+  <dimen name="countdown_circle_diameter">160dp</dimen>
+  <dimen name="countdown_circle_margin">30dp</dimen>
+  <dimen name="countdown_circle_text_size">38dp</dimen>
+  
   <dimen name="score_text_size">120dp</dimen>
   <!-- enough to get over the score text -->
   <dimen name="score_label_margin_bottom">145dp</dimen>
