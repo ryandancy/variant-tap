@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- TODO maybe all the text shouldn't be the same color??? -->
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,44 +12,48 @@
       android:id="@+id/post_score_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
-      android:layout_centerHorizontal="true"
       android:layout_marginTop="@dimen/post_game_score_margin_top"
       android:textColor="@color/colorPrimary"
       android:textSize="@dimen/post_score_size"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
       tools:ignore="SpUsage" />
   
   <TextView
       android:id="@+id/new_best_score_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_alignBottom="@id/post_score_text"
-      android:layout_centerHorizontal="true"
-      android:layout_marginBottom="-10dp"
+      android:layout_marginTop="@dimen/new_best_score_below_score"
       android:text="@string/new_best_score"
       android:textColor="@color/colorAccent"
       android:textSize="@dimen/new_best_score_size"
-      android:visibility="invisible" />
+      android:visibility="invisible"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="@id/post_score_text" />
   
   <TextView
       android:id="@+id/post_difficulty_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_below="@id/post_score_text"
-      android:layout_centerHorizontal="true"
       android:layout_marginTop="@dimen/difficulty_below_score"
       android:textColor="@color/colorPrimary"
-      android:textSize="@dimen/post_game_stats_size" />
+      android:textSize="@dimen/post_game_stats_size"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/post_score_text" />
   
   <!-- Best score text -->
   <LinearLayout
       android:id="@+id/best_score_text_layout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_below="@id/post_difficulty_text"
-      android:layout_centerHorizontal="true"
       android:layout_marginTop="@dimen/post_game_stats_line_spacing"
-      android:orientation="horizontal">
+      android:orientation="horizontal"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/post_difficulty_text">
     
     <TextView
         android:layout_width="wrap_content"
@@ -73,10 +77,11 @@
       android:id="@+id/average_score_text_layout"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_below="@id/best_score_text_layout"
-      android:layout_centerHorizontal="true"
       android:layout_marginTop="@dimen/post_game_stats_line_spacing"
-      android:orientation="horizontal">
+      android:orientation="horizontal"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/best_score_text_layout">
     
     <TextView
         android:layout_width="wrap_content"
@@ -98,20 +103,22 @@
   <!-- Achievement & leaderboard buttons -->
   <LinearLayout
       android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:layout_below="@id/average_score_text_layout"
-      android:layout_above="@+id/circle_buttons"
-      android:layout_centerHorizontal="true"
+      android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/post_game_buttons_margin_top"
       android:layout_marginBottom="@dimen/post_game_buttons_margin_bottom"
-      android:gravity="center_vertical"
+      android:gravity="bottom"
       android:orientation="horizontal"
-      android:visibility="@integer/post_game_buttons_visibility">
+      android:visibility="@integer/post_game_buttons_visibility"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/average_score_text_layout"
+      app:layout_constraintBottom_toTopOf="@+id/circle_buttons">
     
     <!-- Using LinearLayouts instead of drawableTop because size can't be set on drawableTop -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:layout_marginRight="@dimen/post_game_buttons_spacing"
         android:onClick="toLeaderboard"
         android:orientation="vertical"
@@ -119,10 +126,9 @@
       
       <ImageView
           android:id="@+id/leaderboard_button"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
+          android:layout_width="@dimen/post_game_buttons_size"
+          android:layout_height="@dimen/post_game_buttons_size"
           android:maxWidth="@dimen/post_game_buttons_size"
-          android:maxHeight="@dimen/post_game_buttons_size"
           android:adjustViewBounds="true"
           android:src="@drawable/leaderboard"
           tools:ignore="ContentDescription" />
@@ -139,16 +145,15 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:onClick="toAchievements"
         tools:ignore="UseCompoundDrawables">
       
       <ImageView
           android:id="@+id/achievements_button"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:maxWidth="@dimen/post_game_buttons_size"
-          android:maxHeight="@dimen/post_game_buttons_size"
+          android:layout_width="@dimen/post_game_buttons_size"
+          android:layout_height="@dimen/post_game_buttons_size"
           android:adjustViewBounds="true"
           android:src="@drawable/achievement"
           tools:ignore="ContentDescription" />
@@ -172,9 +177,10 @@
       android:name="ca.keal.varianttap.ui.DifficultyButtonsFragment"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_above="@id/circle_buttons"
-      android:layout_centerHorizontal="true"
       android:layout_marginBottom="@dimen/circle_button_margin_top"
-      app:show_text="@string/play_again" />
+      app:show_text="@string/play_again"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/circle_buttons" />
   
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

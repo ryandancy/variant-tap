@@ -61,6 +61,7 @@
   <dimen name="score_text_margin_bottom">10dp</dimen>
   
   <dimen name="post_game_score_margin_top">45dp</dimen>
+  <dimen name="new_best_score_below_score">105dp</dimen>
   <dimen name="difficulty_below_score">30dp</dimen>
   
   <dimen name="post_game_buttons_margin_top">15dp</dimen>
