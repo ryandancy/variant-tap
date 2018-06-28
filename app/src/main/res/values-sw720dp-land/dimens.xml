@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <dimen name="starting_countdown_text_size">550dp</dimen>
+  
   <dimen name="image_size_large">240dp</dimen>
   <dimen name="image_size_medium">200dp</dimen>
   <dimen name="image_size_small">185dp</dimen>
   <dimen name="grid_spacing">15dp</dimen>
+  
   <dimen name="lose_variant_anim_size">420dp</dimen>
   <dimen name="lose_variant_anim_pulse_size">440dp</dimen>
+  
+  <dimen name="paused_text_size">135dp</dimen>
+  <dimen name="unpause_button_margin_sides">100dp</dimen>
+  <dimen name="quit_button_offset">20dp</dimen>
+  <dimen name="paused_text_offset">45dp</dimen>
+  <dimen name="paused_circle_buttons_offset">50dp</dimen>
+  <dimen name="unpause_countdown_text_size">600dp</dimen>
 </resources>

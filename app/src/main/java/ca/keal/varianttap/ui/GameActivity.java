@@ -96,6 +96,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   /** Go to PostGameActivity in onResume()? (used for exiting out of lose animation) */
   private boolean switchOnResume;
   
+  private ViewGroup root;
   private ImageButton pauseButton;
   private ConstraintLayout pauseOverlay;
   private TextView pausedText;
@@ -141,6 +142,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     switchOnResume = false;
     hasTapped = false;
     
+    root = findViewById(android.R.id.content);
     countdownCircle = findViewById(R.id.countdown_circle);
     scoreText = findViewById(R.id.score_text);
     scoreLabel = findViewById(R.id.score_label);
@@ -785,6 +787,10 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     scoreText.setTextColor(gameMainColor);
     scoreLabel.setTextColor(gameMainColor);
     
+    // Make the background dark for when the paused overlay doesn't cover the whole screen
+    root.setBackgroundColor(
+        ResourcesCompat.getColor(getResources(), R.color.pausedBackground, null));
+    
     // Bring countdownCircle, scoreText, scoreLabel on top of pause overlay
     countdownCircle.bringToFront();
     scoreText.bringToFront();
@@ -847,6 +853,9 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     int gameMainColor = ResourcesCompat.getColor(getResources(), R.color.gameMain, null);
     scoreText.setTextColor(gameMainColor);
     scoreLabel.setTextColor(gameMainColor);
+    
+    root.setBackgroundColor(
+        ResourcesCompat.getColor(getResources(), android.R.color.background_light, null));
     
     // Unpause the animations, make it playable again
     
