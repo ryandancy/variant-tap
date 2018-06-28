@@ -115,7 +115,9 @@ public class PostGameActivity extends AppCompatActivity implements
     
     ImageView leaderboardButton = findViewById(R.id.leaderboard_button);
     ImageView achievementsButton = findViewById(R.id.achievements_button);
-    fixTextViewButtonColoursAndSize(leaderboardButton, achievementsButton);
+    if (leaderboardButton != null && achievementsButton != null) {
+      fixTextViewButtonColoursAndSize(leaderboardButton, achievementsButton);
+    }
   
     if (savedInstanceState == null) { // is this a fresh start?
       incrementXGamesAchievements = true;
