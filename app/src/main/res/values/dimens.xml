@@ -51,6 +51,7 @@
   <dimen name="countdown_circle_margin">20dp</dimen>
   
   <dimen name="pause_button_margin">20dp</dimen>
+  <dimen name="quit_button_offset">10dp</dimen>
   
   <dimen name="image_size_large">115dp</dimen>
   <dimen name="image_size_medium">95dp</dimen>

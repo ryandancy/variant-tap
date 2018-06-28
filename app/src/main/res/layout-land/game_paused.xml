@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- TODO there's lots of overlap between this and layout/game_paused.xml, combine -->
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/pausedBackground">
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:background="@color/pausedBackground"
+    app:layout_constraintLeft_toRightOf="@+id/countdown_circle"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent" >
   
   <TextView
       android:id="@+id/paused_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/paused_text_offset"
       android:layerType="software"
       android:text="@string/paused"
       android:textColor="@color/textLight"
       android:textSize="@dimen/paused_text_size"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/unpause_button"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.3"
       tools:ignore="SpUsage" />
   
   <Button
-      android:id="@+id/unpause_button"
+      android:id="@id/unpause_button"
       style="@style/ButtonStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginLeft="@dimen/unpause_button_margin_sides"
+      android:layout_marginRight="@dimen/unpause_button_margin_sides"
       android:background="@color/gamePausedMain"
       android:onClick="startUnpause"
       android:paddingBottom="@dimen/full_length_buttons_text_padding"
@@ -37,7 +43,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.525" />
+      app:layout_constraintVertical_bias="0.5" />
   
   <Button
       android:id="@+id/quit_button"
@@ -57,11 +63,10 @@
   <LinearLayout
       android:id="@+id/paused_circle_buttons"
       style="@style/CircleButtonBar"
-      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginTop="@dimen/paused_circle_buttons_offset"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.75"
+      app:layout_constraintTop_toBottomOf="@id/quit_button"
       tools:ignore="RtlHardcoded">
     
     <ca.keal.varianttap.ui.circlebutton.SoundToggleCircleButton
@@ -71,7 +76,7 @@
     <ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton
         style="@style/CircleButton.RemoveAds"
         app:baseColor="@color/gamePausedMain" />
-    
+  
   </LinearLayout>
   
   <TextView
@@ -85,7 +90,6 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.5"
       tools:ignore="SpUsage" />
   
 </android.support.constraint.ConstraintLayout>
