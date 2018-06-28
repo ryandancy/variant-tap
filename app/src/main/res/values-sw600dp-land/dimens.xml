@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <!-- For tablets in landscape mode -->
-  <dimen name="main_menu_title_side_padding">300dp</dimen>
-  <dimen name="main_menu_title_margin_top">35dp</dimen>
+  <dimen name="main_menu_title_side_padding">250dp</dimen>
+  <dimen name="main_menu_title_margin_top">10dp</dimen>
   <dimen name="difficulty_buttons_margin_side">200dp</dimen>
   <dimen name="sign_in_out_button_margin_side">220dp</dimen>
   <dimen name="circle_button_spacing">75dp</dimen>
