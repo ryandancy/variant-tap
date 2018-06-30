@@ -13,19 +13,79 @@
     app:layout_constraintRight_toRightOf="parent"
     tools:ignore="RtlHardcoded">
   
-  <ca.keal.varianttap.ui.circlebutton.SoundToggleCircleButton
-      style="@style/CircleButton.ToggleSound" />
+  <FrameLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_background"
+        tools:ignore="ContentDescription" />
+    
+    <ca.keal.varianttap.ui.circlebutton.SoundToggleCircleButton
+        style="@style/CircleButton.ToggleSound" />
+    
+  </FrameLayout>
   
-  <ca.keal.varianttap.ui.circlebutton.AboutCircleButton
-      style="@style/CircleButton.About" />
+  <FrameLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_background"
+        tools:ignore="ContentDescription" />
+    
+    <ca.keal.varianttap.ui.circlebutton.AboutCircleButton
+        style="@style/CircleButton.About" />
+    
+  </FrameLayout>
   
-  <ca.keal.varianttap.ui.circlebutton.LeaderboardCircleButton
-      style="@style/CircleButton.Leaderboard" />
+  <FrameLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_background"
+        tools:ignore="ContentDescription" />
+    
+    <ca.keal.varianttap.ui.circlebutton.LeaderboardCircleButton
+        style="@style/CircleButton.Leaderboard" />
+    
+  </FrameLayout>
   
-  <ca.keal.varianttap.ui.circlebutton.AchievementsCircleButton
-      style="@style/CircleButton.Achievements" />
+  <FrameLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_background"
+        tools:ignore="ContentDescription" />
+    
+    <ca.keal.varianttap.ui.circlebutton.AchievementsCircleButton
+        style="@style/CircleButton.Achievements" />
+    
+  </FrameLayout>
   
-  <ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton
-      style="@style/CircleButton.RemoveAds" />
+  <FrameLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle_background"
+        tools:ignore="ContentDescription" />
+    
+    <ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton
+        style="@style/CircleButton.RemoveAds" />
+    
+  </FrameLayout>
   
 </LinearLayout>
