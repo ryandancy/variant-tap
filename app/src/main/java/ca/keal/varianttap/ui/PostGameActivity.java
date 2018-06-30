@@ -70,6 +70,10 @@ public class PostGameActivity extends AppCompatActivity implements
     
     // Get score from intent, set it to the score TextView
     
+    if (getIntent().getExtras() == null) {
+      throw new IllegalArgumentException("PostGameActivity called without extras");
+    }
+    
     score = getIntent().getExtras().getInt(EXTRA_SCORE, -1);
     if (score == -1) { // score was not in the extras
       Log.e(TAG, "Intent did not have \"" + EXTRA_SCORE + "\" extra!");
@@ -272,10 +276,9 @@ public class PostGameActivity extends AppCompatActivity implements
     super.onPause();
     
     if (isNewBestScore) {
-      // Stop the new best score animation and set it up to start again
+      // Stop the new best score animation
       // It's a view animation so it's not pausable, and no one cares if we miss a bit of pulsing
       newBestScoreText.getAnimation().cancel();
-      newBestScoreText.getAnimation().reset();
     }
   }
   
@@ -285,6 +288,7 @@ public class PostGameActivity extends AppCompatActivity implements
     
     if (isNewBestScore) {
       // Start/restart the pulse animation
+      updateUi(); // needed to set up the pulse animation again
       newBestScoreText.getAnimation().start();
     }
   }
