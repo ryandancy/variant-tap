@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.keal.varianttap.ui.PostGameActivity">
+  
+  <TextView
+      android:id="@+id/post_score_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/post_game_margin_bottom"
+      android:layout_marginEnd="@dimen/post_game_inner_margin"
+      android:textColor="@color/colorPrimary"
+      android:textSize="@dimen/post_score_size"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toLeftOf="@+id/post_game_stats"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/circle_buttons"
+      app:layout_constraintHorizontal_chainStyle="packed"
+      app:layout_constraintVertical_bias="0.41"
+      tools:ignore="SpUsage" />
+  
+  <TextView
+      android:id="@+id/new_best_score_text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/new_best_score_below_score"
+      android:text="@string/new_best_score"
+      android:textColor="@color/colorAccent"
+      android:textSize="@dimen/new_best_score_size"
+      app:layout_constraintLeft_toLeftOf="@id/post_score_text"
+      app:layout_constraintRight_toRightOf="@id/post_score_text"
+      app:layout_constraintTop_toTopOf="@id/post_score_text"
+      android:visibility="invisible" />
+  
+  <LinearLayout
+      android:id="@id/post_game_stats"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/post_game_margin_bottom"
+      android:gravity="center_horizontal"
+      android:orientation="vertical"
+      app:layout_constraintLeft_toRightOf="@id/post_score_text"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/circle_buttons">
+    
+    <TextView
+        android:id="@+id/post_difficulty_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/post_game_stats_size"/>
+    
+    <!-- Best score text -->
+    <LinearLayout
+        android:id="@+id/best_score_text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/post_game_stats_line_spacing"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+      
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/best_score"
+          android:textColor="@color/textDark"
+          android:textSize="@dimen/post_game_stats_size" />
+      
+      <TextView
+          android:id="@+id/best_score_text"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/post_game_stats_space_width"
+          android:textColor="@color/colorAccent"
+          android:textSize="@dimen/post_game_stats_size" />
+    
+    </LinearLayout>
+    
+    <!-- Average score text -->
+    <LinearLayout
+        android:id="@+id/average_score_text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/post_game_stats_line_spacing"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+      
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/average_score"
+          android:textColor="@color/textDark"
+          android:textSize="@dimen/post_game_stats_size" />
+      
+      <TextView
+          android:id="@+id/average_score_text"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/post_game_stats_space_width"
+          android:textColor="@color/colorAccent"
+          android:textSize="@dimen/post_game_stats_size" />
+    
+    </LinearLayout>
+  
+  </LinearLayout>
+  
+  <include android:id="@id/circle_buttons"
+      layout="@layout/circle_button_bar" />
+  
+  <fragment
+      android:id="@+id/post_game_difficulty_buttons_fragment"
+      android:name="ca.keal.varianttap.ui.DifficultyButtonsFragment"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/circle_button_margin_top"
+      app:show_text="@string/play_again"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/circle_buttons" />
+
+</android.support.constraint.ConstraintLayout>
