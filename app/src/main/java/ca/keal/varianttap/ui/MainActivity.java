@@ -252,7 +252,8 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     // Generate the number of times the image will rotate
     float minRotateTimes = Util.getFloatResource(this, R.dimen.min_thrown_image_rotate_times);
     float maxRotateTimes = Util.getFloatResource(this, R.dimen.max_thrown_image_rotate_times);
-    float rotateTimes = Util.randomFloatBetween(random, minRotateTimes, maxRotateTimes);
+    float rotateTimes = Util.randomFloatBetween(random, minRotateTimes, maxRotateTimes)
+        * (random.nextBoolean() ? 1 : -1);
     
     float initialRotation = Util.randomFloatBetween(random, 0, 360);
     
