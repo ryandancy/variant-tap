@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="openclipart_208_basic_yinyang_variant_tmp.svg"
+   sodipodi:modified="true"
+   viewBox="0 0 408.64 408.6"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:version="0.91 r13725">
+  <defs
+     id="defs4">
+    <radialGradient
+       id="radialGradient20787"
+       gradientUnits="userSpaceOnUse"
+       cy="498.07"
+       cx="399.61"
+       r="74.188"
+       inkscape:collect="always"
+       gradientTransform="matrix(0.6788,0,0,0.6788,8.6422856,151.93068)">
+      <stop
+         id="stop19798"
+         style="stop-color:#fbffff"
+         offset="0" />
+      <stop
+         id="stop19800"
+         style="stop-color:#fbffff;stop-opacity:0"
+         offset="1" />
+    </radialGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     inkscape:zoom="0.77575758"
+     height="990px"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="382.5"
+     inkscape:window-y="48"
+     width="765px"
+     inkscape:guide-bbox="true"
+     showguides="true"
+     bordercolor="#666666"
+     inkscape:window-x="-8"
+     guidetolerance="23.8"
+     objecttolerance="10"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     pagecolor="#ffffff"
+     gridtolerance="10000"
+     inkscape:cy="288.75"
+     inkscape:document-units="px"
+     inkscape:window-height="945"
+     showgrid="false"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-73.219 -183.94)">
+    <g
+       id="g3350"
+       transform="matrix(-1,0,0,-1,555.08152,776.46909)">
+      <circle
+         id="path11039"
+         style="fill:#000000;stroke:#000000;stroke-width:2.71519995;stroke-linecap:square;stroke-linejoin:round"
+         cx="277.27222"
+         cy="283.51288"
+         r="49.000874" />
+      <path
+         id="path2168"
+         style="fill:#ffffff;stroke:#000000;stroke-width:1.35759997;stroke-linecap:square;stroke-linejoin:round"
+         d="m 277.54076,184.6149 c -1.01141,0 -2.01604,0.0136 -3.01387,0.0475 -111.02453,1.60876 -200.62613,92.19462 -200.62613,203.59249 -0.0034,111.53362 89.80524,202.18736 201.00626,203.59927 -54.98959,-1.39154 -99.18626,-46.45029 -99.18626,-101.77927 0,-56.20464 45.61536,-101.82 101.82,-101.82 56.20464,0 101.82,-45.61536 101.82,-101.82 0,-56.20464 -45.61536,-101.82 -101.82,-101.82 z m 0,67.88 c 18.73488,0 33.94,15.20512 33.94,33.94 0,18.73488 -15.20512,33.94 -33.94,33.94 -18.73488,0 -33.94,-15.20512 -33.94,-33.94 0,-18.73488 15.20512,-33.94 33.94,-33.94 z"
+         inkscape:connector-curvature="0" />
+      <circle
+         id="path14925"
+         style="fill:url(#radialGradient20787);stroke:#000000;stroke-width:2.71519995;stroke-linecap:square;stroke-linejoin:round"
+         cx="279.89713"
+         cy="490.01743"
+         r="49.000874" />
+      <path
+         id="path5191"
+         style="fill:#000000;stroke:#000000;stroke-width:1.35759997;stroke-linecap:square;stroke-linejoin:round"
+         d="m 277.54076,591.85417 c 1.00462,0 2.00925,-0.0136 3.00708,-0.0407 111.02453,-1.61554 200.63292,-92.19462 200.63292,-203.59927 0,-111.52684 -89.81203,-202.18737 -201.01304,-203.59927 54.98958,1.39832 99.19304,46.45707 99.19304,101.77927 0,56.20464 -45.61536,101.82 -101.82,101.82 -56.20464,0 -101.82,45.61536 -101.82,101.82 0,56.20464 45.61536,101.82 101.82,101.82 z m 0,-67.88 c -18.73488,0 -33.94,-15.20512 -33.94,-33.94 0,-18.73488 15.20512,-33.94 33.94,-33.94 18.73488,0 33.94,15.20512 33.94,33.94 0,18.73488 -15.20512,33.94 -33.94,33.94 z"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+  <metadata
+     id="metadata14">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>BASIC YIN-YANG</dc:title>
+        <dc:date>2007-02-20T10:28:19</dc:date>
+        <dc:description>Just a basic black and white yin-yang symbol.</dc:description>
+        <dc:source>https://openclipart.org/detail/3272/basic-yin-yang-by-clayogre</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>ClayOgre</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>balance</rdf:li>
+            <rdf:li>black &amp; white</rdf:li>
+            <rdf:li>dao</rdf:li>
+            <rdf:li>harmony</rdf:li>
+            <rdf:li>symbol</rdf:li>
+            <rdf:li>tao</rdf:li>
+            <rdf:li>taoism</rdf:li>
+            <rdf:li>yang</rdf:li>
+            <rdf:li>yin</rdf:li>
+            <rdf:li>yin yang</rdf:li>
+            <rdf:li>zen</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

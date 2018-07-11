@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3019"
+   sodipodi:docname="openclipart_0_star.svg"
+   viewBox="0 0 194.22 194.22001"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   width="194.22"
+   height="194.22">
+  <defs
+     id="defs15" />
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="314"
+     fit-margin-left="0"
+     pagecolor="#ffffff"
+     fit-margin-top="0"
+     inkscape:window-maximized="0"
+     inkscape:zoom="0.35"
+     inkscape:window-x="498"
+     inkscape:window-height="480"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="112.11046"
+     inkscape:cy="115.22067"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="578"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-262.89,-453.36999)">
+    <g
+       id="g3867"
+       transform="translate(10.18164,67.162975)">
+      <path
+         id="path2985"
+         sodipodi:r2="23.082041"
+         style="fill:#ffcc00"
+         sodipodi:type="star"
+         d="m 369.21074,535.66915 -27.37826,-13.79201 -26.88268,14.73466 4.65663,-30.30024 -22.3207,-21.01369 30.25622,-4.93457 13.08773,-27.72183 14.04274,27.25051 30.40937,3.88065 -21.57733,21.77631 z"
+         sodipodi:r1="46.164082"
+         inkscape:transform-center-x="-0.0063051932"
+         inkscape:transform-center-y="-9.7444528"
+         transform="matrix(2.2115,0.038861,-0.038861,2.2115,-385.88,-623.3)"
+         sodipodi:arg2="1.5534256"
+         sodipodi:arg1="0.92510704"
+         inkscape:randomized="0"
+         sodipodi:cy="498.79858"
+         sodipodi:cx="341.43155"
+         inkscape:rounded="0"
+         inkscape:flatsided="false"
+         sodipodi:sides="5" />
+      <path
+         id="path3836"
+         sodipodi:nodetypes="cccc"
+         d="m 380.03,451.38 c -30.39,41.369 -30.72,41.819 -30.72,41.819 L 446.721,461.3 Z"
+         inkscape:transform-center-x="-48.70566"
+         inkscape:transform-center-y="-20.909293"
+         inkscape:connector-curvature="0"
+         style="fill:#ffe680" />
+      <path
+         id="path3838"
+         d="m 349.81,492.31 0,51.942 -60.63,31.117 z"
+         style="fill:#ffdd55"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3840"
+         d="m 349.81,492.31 59.613,81.476 -11.189,-65.984 z"
+         style="fill:#ffdd55"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3842"
+         d="m 253.1,461.37 96.715,30.942 -29.882,-40.842 z"
+         style="fill:#ffe680"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3844"
+         d="m 349.81,492.31 0,-101.22 29.83,60.357 z"
+         style="fill:#ffdd55"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3846"
+         d="m 289.8,574.53 11.261,-66.541 48.757,-15.679 z"
+         style="fill:#ffd42a"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+  <metadata
+     id="metadata13">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Star</dc:title>
+        <dc:date>2010-11-13T20:17:55</dc:date>
+        <dc:description>A star with simple shadowing</dc:description>
+        <dc:source>https://openclipart.org/detail/95431/star-by-artokem</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>artokem</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>star</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
