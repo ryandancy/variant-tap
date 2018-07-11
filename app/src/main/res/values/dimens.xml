@@ -35,6 +35,8 @@
   <dimen name="main_menu_title_margin_top">50dp</dimen>
   <dimen name="main_menu_title_side_padding">20dp</dimen>
   
+  <dimen name="about_margin_sides">20dp</dimen>
+  
   <dimen name="circle_button_diameter">43dp</dimen>
   <dimen name="circle_button_thickness">2dp</dimen>
   <dimen name="circle_button_padding">12dp</dimen>
