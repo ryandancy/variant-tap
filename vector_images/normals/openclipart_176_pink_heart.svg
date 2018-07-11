@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg5353"
+   sodipodi:docname="openclipart_176_pink_heart.svg"
+   viewBox="0 0 180 180"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:version="0.91 r13725"
+   width="180"
+   height="180">
+  <defs
+     id="defs5355">
+    <filter
+       id="filter5301"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur5303"
+         stdDeviation="35.518097"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       id="filter5089"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur5091"
+         stdDeviation="2.0296004"
+         inkscape:collect="always" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="48"
+     pagecolor="#ffffff"
+     inkscape:window-height="945"
+     inkscape:zoom="1.7948842"
+     inkscape:window-x="-8"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="121.21831"
+     inkscape:cy="71.597849"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     transform="translate(-5.0007,-88.569999)">
+    <g
+       id="g3344"
+       transform="translate(0,-12.689783)">
+      <path
+         inkscape:connector-curvature="0"
+         d="m 55.967,109.11508 c -50.087,-0.9 -96.436,77.43 38.6,158.64 0.147,-0.27 0.718,-0.27 0.865,0 139.39,-83.83 85.518,-164.58 33.758,-158.29 -20.18,2.45 -29.704,13.64 -34.19,23.28 -4.486,-9.64 -14.009,-20.83 -34.186,-23.28 -1.618,-0.2 -3.231,-0.32 -4.847,-0.35 z"
+         style="fill:#ff0066;fill-rule:evenodd;stroke:#000000;stroke-width:1.62989998;stroke-linejoin:round"
+         sodipodi:nodetypes="cccsccc"
+         id="path5187" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m -17688,4045.3 c -14,19 -24,44.2 -17,67.8 7,20.5 27,35.5 49,34.2 7,-0.2 15,-2 20,-5.2 -31,-1 -59,-28.2 -59,-59.4 0,-13.5 3,-26.9 9,-39 -1,0.5 -1,1 -2,1.6 z"
+         transform="matrix(0.88948,0,0,-0.88948,15761,3803.4)"
+         style="fill:#ff2a7f;fill-rule:evenodd;filter:url(#filter5089)"
+         id="path5195" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m -17698,4072.8 c -8,18.5 -7,42.2 8,57 9,9.7 24,15.1 37,13.4 -29,-9.1 -50,-40 -45,-70.6 l 0,0.2 z"
+         transform="matrix(0.88948,0,0,-0.88948,15761,3803.4)"
+         style="fill:#ff5599;fill-rule:evenodd;filter:url(#filter5089)"
+         id="path5197" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m -17699,4104.4 c 2,13 11,25.2 23,30.6 -10,-8.2 -18,-19 -23,-31.2 l 0,0.6 z"
+         transform="matrix(0.88948,0,0,-0.88948,15761,3803.4)"
+         style="fill:#ffffff;fill-rule:evenodd;filter:url(#filter5089)"
+         id="path5201" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m -3824.4,6087 c 95.5,871.7 -341.5,1448.6 -1185.7,2186.3 1030,-572.9 1706.6,-1491.6 1185.7,-2186.3 z"
+         transform="matrix(0.062423,0,0,0.062423,407.61,-252.74)"
+         style="fill:#ff5599;fill-rule:evenodd;filter:url(#filter5301)"
+         sodipodi:nodetypes="ccc"
+         id="path5278" />
+      <path
+         inkscape:radius="-63.30946"
+         transform="matrix(0.062423,0,0,0.062423,407.61,-252.74)"
+         inkscape:original="M -3824.375 6086.9375 C -3728.8642 6958.7053 -4165.929 7535.6167 -5010.0625 8273.25 C -3980.0516 7700.4255 -3303.5089 6781.7201 -3824.375 6086.9375 z "
+         d="m -3748.8125,6358.9199 c -7.3338,330.3463 -97.4745,624.3222 -261.4473,903.5352 -101.6834,173.1467 -231.25,340.8638 -386.2363,510.1953 213.1753,-183.4393 387.3176,-380.56 506.5625,-579.3848 172.2151,-287.1455 232.6928,-570.6129 141.1211,-834.3457 z"
+         sodipodi:type="inkscape:offset"
+         style="fill:#ffaaaa;fill-rule:evenodd;filter:url(#filter5301)"
+         id="path5307" />
+      <path
+         inkscape:radius="-86.271767"
+         transform="matrix(0.062423,0,0,0.062423,407.61,-252.74)"
+         inkscape:original="M -3824.375 6086.9375 C -3728.8642 6958.7053 -4165.929 7535.6167 -5010.0625 8273.25 C -3980.0516 7700.4255 -3303.5089 6781.7201 -3824.375 6086.9375 z "
+         d="m -3735.3184,6510.7832 c -27.9796,274.0097 -114.917,524.5226 -255.1425,763.2988 -33.7128,57.4061 -70.4318,114.1653 -110.0157,170.541 73.7431,-86.8173 137.9179,-174.908 190.8516,-263.1679 138.4713,-230.8822 203.4528,-456.2937 174.3066,-670.6719 z"
+         sodipodi:type="inkscape:offset"
+         style="fill:#ffffff;fill-rule:evenodd;filter:url(#filter5301)"
+         id="path5309" />
+    </g>
+  </g>
+  <metadata
+     id="metadata17">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>pink heart</dc:title>
+        <dc:date>2009-09-24T23:49:07</dc:date>
+        <dc:description>Pink heart.</dc:description>
+        <dc:source>https://openclipart.org/detail/27536/pink-heart-by-secretlondon</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>secretlondon</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>heart</rdf:li>
+            <rdf:li>pink</rdf:li>
+            <rdf:li>remix</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3170"
+   sodipodi:docname="openclipart_16_green_tick__simple.svg"
+   viewBox="0 0 202.99999 202.99999"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   width="203"
+   height="203">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="56"
+     fit-margin-left="0"
+     pagecolor="#ffffff"
+     fit-margin-top="0"
+     inkscape:window-maximized="0"
+     inkscape:zoom="1.979899"
+     inkscape:window-x="0"
+     inkscape:window-height="929"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="172.03566"
+     inkscape:cy="89.491344"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="624"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-36.097,-591.5)">
+    <path
+       id="path3157"
+       style="fill:#008000"
+       d="m 50.83949,739.31 20,-30 c 16.511,12.907 17.767,19.639 24.949,30.909 36.804,-72.31 74.954,-104.96 128.57,-144.29 -51.91,53.35 -83.23,89.32 -130,198.58 -16.193,-26.29 -27.333,-53.62 -43.523,-55.2 z"
+       inkscape:export-ydpi="90"
+       sodipodi:nodetypes="cccccc"
+       inkscape:export-filename="/home/user/Projects/Ethical Marketing Pro/Nexify/flyer/tick.png"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90" />
+  </g>
+  <metadata
+     id="metadata6">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Green tick - simple</dc:title>
+        <dc:date>2012-01-29T16:43:03</dc:date>
+        <dc:description>A simple green tick</dc:description>
+        <dc:source>https://openclipart.org/detail/167549/green-tick---simple-by-kliponius</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Kliponius</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>check</rdf:li>
+            <rdf:li>correct</rdf:li>
+            <rdf:li>green</rdf:li>
+            <rdf:li>mark</rdf:li>
+            <rdf:li>tick</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

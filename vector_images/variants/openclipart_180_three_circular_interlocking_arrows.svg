@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3816"
+   sodipodi:docname="openclipart_180_three_circular_interlocking_arrows.svg"
+   viewBox="0 0 325.78382 325.78381"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   width="325.78381"
+   height="325.78381">
+  <defs
+     id="defs3818">
+    <linearGradient
+       id="linearGradient3753"
+       y2="1319.9"
+       xlink:href="#linearGradient3731"
+       gradientUnits="userSpaceOnUse"
+       x2="876.95001"
+       y1="1033"
+       x1="1475.5"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient3731"
+       inkscape:collect="always">
+      <stop
+         id="stop3733"
+         style="stop-color:#6f918a"
+         offset="0" />
+      <stop
+         id="stop3735"
+         style="stop-color:#6f918a;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3731"
+       id="linearGradient3366"
+       gradientUnits="userSpaceOnUse"
+       x1="1475.5"
+       y1="1033"
+       x2="876.95001"
+       y2="1319.9" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3731"
+       id="linearGradient3368"
+       gradientUnits="userSpaceOnUse"
+       x1="1475.5"
+       y1="1033"
+       x2="876.95001"
+       y2="1319.9" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3731"
+       id="linearGradient3370"
+       gradientUnits="userSpaceOnUse"
+       x1="1475.5"
+       y1="1033"
+       x2="876.95001"
+       y2="1319.9" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3731"
+       id="linearGradient3372"
+       gradientUnits="userSpaceOnUse"
+       x1="1475.5"
+       y1="1033"
+       x2="876.95001"
+       y2="1319.9" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3731"
+       id="linearGradient3374"
+       gradientUnits="userSpaceOnUse"
+       x1="1475.5"
+       y1="1033"
+       x2="876.95001"
+       y2="1319.9" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     pagecolor="#ffffff"
+     inkscape:zoom="0.70710678"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="135.56943"
+     inkscape:cy="151.1484"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     inkscape:object-paths="true"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="945"
+     inkscape:window-x="-8"
+     inkscape:window-y="48"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(34.386706,-12.3302)">
+    <g
+       id="g3355"
+       transform="matrix(-1,0,0,1,248.5052,0)">
+      <g
+         transform="matrix(-0.21535,-0.38728,0.38728,-0.21535,-22.578398,851.19432)"
+         style="fill:url(#linearGradient3368)"
+         inkscape:transform-center-y="-77.522963"
+         inkscape:transform-center-x="-21.112732"
+         id="g3727">
+        <path
+           d="m 1519.1,921.97 c 1.5263,1.8988 58.968,135.42 -20.718,278.73 -95.65,172.02 -282.38,173.49 -286.33,171.3 l 0.7739,69.198 -124.45,-153.2 125,-149 0,80.311 c 3.1972,-0.1207 99.315,-0.5026 151.88,-92.636 34.47,-60.421 18.922,-124.72 18.501,-126.63 l 98.919,17.44 36.426,-95.515 z"
+           style="fill:url(#linearGradient3366);fill-rule:evenodd"
+           sodipodi:nodetypes="cscccccsccc"
+           id="path3729"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(0.44306,0.0071424,-0.0071424,0.44306,-407.8094,-309.08568)"
+         inkscape:transform-center-y="64.342553"
+         style="fill:url(#linearGradient3372)"
+         inkscape:transform-center-x="-46.541043"
+         id="g3739">
+        <path
+           d="m 1519.1,921.97 c 1.5263,1.8988 58.968,135.42 -20.718,278.73 -95.65,172.02 -282.38,173.49 -286.33,171.3 l 0.7739,69.198 -124.45,-153.2 125,-149 0,80.311 c 3.1972,-0.1207 99.315,-0.5026 151.88,-92.636 34.47,-60.421 18.922,-124.72 18.501,-126.63 l 98.919,17.44 36.426,-95.515 z"
+           style="fill:url(#linearGradient3370);fill-rule:evenodd"
+           sodipodi:nodetypes="cscccccsccc"
+           id="path3741"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         transform="matrix(-0.22772,0.38013,-0.38013,-0.22772,789.6406,-62.571679)"
+         style="fill:url(#linearGradient3753)"
+         inkscape:transform-center-y="21.564513"
+         inkscape:transform-center-x="89.760961"
+         id="g3747">
+        <path
+           d="m 1519.1,921.97 c 1.5263,1.8988 58.968,135.42 -20.718,278.73 -95.65,172.02 -282.38,173.49 -286.33,171.3 l 0.7739,69.198 -124.45,-153.2 125,-149 0,80.311 c 3.1972,-0.1207 99.315,-0.5026 151.88,-92.636 34.47,-60.421 18.922,-124.72 18.501,-126.63 l 98.919,17.44 36.426,-95.515 z"
+           style="fill:url(#linearGradient3374);fill-rule:evenodd"
+           sodipodi:nodetypes="cscccccsccc"
+           id="path3749"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata16">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Three Circular Interlocking Arrows</dc:title>
+        <dc:date>2010-08-20T20:32:23</dc:date>
+        <dc:description>Three arrows interlocking in a circular pattern.</dc:description>
+        <dc:source>https://openclipart.org/detail/81661/three-circular-interlocking-arrows-by-jobrad</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>JoBrad</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>arrow</rdf:li>
+            <rdf:li>arrows</rdf:li>
+            <rdf:li>circle</rdf:li>
+            <rdf:li>circular</rdf:li>
+            <rdf:li>interlocking</rdf:li>
+            <rdf:li>rotate</rdf:li>
+            <rdf:li>rotating</rdf:li>
+            <rdf:li>rotation</rdf:li>
+            <rdf:li>shape</rdf:li>
+            <rdf:li>symbol</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
