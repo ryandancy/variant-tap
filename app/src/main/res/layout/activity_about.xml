@@ -115,6 +115,20 @@
         
       </LinearLayout>
       
+      <TextView
+          style="@style/AboutText.Header"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/images" />
+      
+      <TextView
+          style="@style/AboutText.Body"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:autoLink="web"
+          android:linksClickable="true"
+          android:text="@string/images_attrib" />
+      
     </LinearLayout>
     
   </ScrollView>

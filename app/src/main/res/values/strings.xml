@@ -30,6 +30,8 @@
   <string name="icon_information_attrib">Viktor Vorobyev (The Noun Project)</string>
   <string name="icon_trophy_name">Trophy</string>
   <string name="icon_trophy_attrib">Stanislav Levin (The Noun Project)</string>
+  <string name="images">Images</string>
+  <string name="images_attrib">Many thanks to http://openclipart.org and its contributors.</string>
   
   <!-- GameActivity -->
   <string name="countdown_hint">Tap the image that\'s different than the others!</string>
