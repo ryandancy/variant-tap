@@ -21,6 +21,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    
+    MobileAds.initialize(this, getString(R.string.ad_banner_id));
     
     // Lock portrait orientation if we're not on a tablet
     if (getResources().getBoolean(R.bool.portrait_only)) {

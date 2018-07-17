@@ -25,4 +25,17 @@
   <string name="achievement_id_play_with_drawer" translatable="false">CgkIr5mjm-EZEAIQEg</string>
   <string name="achievement_id_stare_animation" translatable="false">CgkIr5mjm-EZEAIQFA</string>
   <string name="achievement_id_read_about" translatable="false">CgkIr5mjm-EZEAIQEw</string>
+  
+  <!-- Ads -->
+  <!-- Swap between test and real ad IDs here to change between test and real ads -->
+  <!-- TODO obtain + use real ad IDs before publishing -->
+  <string name="test_ad_banner_id" translatable="false">
+    ca-app-pub-3940256099942544/6300978111
+  </string>
+  <string name="ad_banner_id" translatable="false">@string/test_ad_banner_id</string>
+  
+  <string-array name="test_devices">
+    <!-- Samsung tablet -->
+    <item>703B6687695DCCCF77E23B6C06CBA975</item>
+  </string-array>
 </resources>

@@ -77,7 +77,7 @@
       android:textSize="@dimen/score_text_size"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/game_banner_ad"
       tools:ignore="HardcodedText,SpUsage" />
   
   <TextView
@@ -107,6 +107,16 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       tools:ignore="RtlHardcoded" />
+  
+  <com.google.android.gms.ads.AdView
+      android:id="@id/game_banner_ad"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:adSize="SMART_BANNER"
+      app:adUnitId="@string/ad_banner_id" />
   
   <include
       android:id="@+id/pause_overlay"

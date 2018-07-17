@@ -13,6 +13,8 @@ import android.util.TypedValue;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+
 import java.util.Random;
 
 import ca.keal.varianttap.R;
@@ -169,6 +171,25 @@ public final class Util {
   
   public interface CountdownEndListener {
     void onEnd();
+  }
+  
+  // AD UTILS
+  
+  public static AdRequest getAdRequest(Resources resources) {
+    AdRequest.Builder builder = new AdRequest.Builder();
+    
+    // TODO do something with consent here to comply with the GDPR
+    
+    // Add the test devices
+    for (String testDeviceId : resources.getStringArray(R.array.test_devices)) {
+      builder.addTestDevice(testDeviceId);
+    }
+    
+    return builder.build();
+  }
+  
+  public static AdRequest getAdRequest(Context context) {
+    return getAdRequest(context.getResources());
   }
   
 }
