@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     
+    // TODO replace with real ID, not banner ID
     MobileAds.initialize(this, getString(R.string.ad_banner_id));
     
     // Lock portrait orientation if we're not on a tablet

@@ -37,6 +37,7 @@ import android.widget.ViewSwitcher;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.games.Games;
 
 import java.io.IOException;
@@ -127,6 +128,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private SFXManager sfx;
   
   private AdView bannerAd;
+  private InterstitialAd interstitial; // will show in PostGameActivity
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
@@ -294,7 +296,7 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
       imgs[i].setOnClickListener(this);
     }
     
-    setupAd();
+    setupAds();
     
     if (savedInstanceState == null) { // fresh startup with no state to be restored
       startCountdownToGameStart();
@@ -305,7 +307,8 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     connection = new GPGSHelperServiceConnection(this);
   }
   
-  private void setupAd() {
+  private void setupAds() {
+    // Setup the banner ad
     bannerAd = findViewById(R.id.game_banner_ad);
     bannerAd.setAdListener(new AdListener() {
       @Override
@@ -315,6 +318,17 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
       }
     });
     bannerAd.loadAd(Util.getAdRequest(this));
+    
+    // Preload the interstitial for the next activity if we're going to
+    // Yes we're using the ImageSupplier's RNG, whatever
+    if (Util.randomFloatBetween(ImageSupplier.getInstance(this).random, 0, 1)
+        <= Util.getFloatResource(this, R.dimen.interstitial_chance)) {
+      interstitial = new InterstitialAd(this);
+      interstitial.setAdUnitId(getString(R.string.ad_interstitial_id));
+      interstitial.loadAd(Util.getAdRequest(this));
+    } else {
+      interstitial = null;
+    }
   }
   
   private void startCountdownToGameStart() {
@@ -789,6 +803,11 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
       startActivity(intent, Util.getActivityTransition(this));
     } else {
       startActivity(intent);
+    }
+    
+    // Show the interstitial if it exists - it'll be shown on the next activity
+    if (interstitial != null && interstitial.isLoaded()) {
+      interstitial.show();
     }
     
     // Remove this activity from the stack

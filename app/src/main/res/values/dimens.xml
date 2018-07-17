@@ -115,4 +115,6 @@
   
   <dimen name="lose_variant_anim_size">175dp</dimen>
   <dimen name="lose_variant_anim_pulse_size">185dp</dimen>
+  
+  <item name="interstitial_chance" type="dimen" format="float">0.75</item>
 </resources>
