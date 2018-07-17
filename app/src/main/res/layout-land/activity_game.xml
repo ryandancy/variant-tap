@@ -38,11 +38,11 @@
       android:text="0"
       android:textColor="@color/gameMain"
       android:textSize="@dimen/score_text_size"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/game_banner_ad"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toLeftOf="@id/imgs_grid"
       app:layout_constraintTop_toBottomOf="@id/countdown_circle"
-      app:layout_constraintVertical_bias="0.6"
+      app:layout_constraintVertical_bias="0.7"
       tools:ignore="HardcodedText,SpUsage" />
   
   <TextView
@@ -63,7 +63,7 @@
       android:layout_height="wrap_content"
       android:clipChildren="false"
       android:clipToPadding="false"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/game_banner_ad"
       app:layout_constraintLeft_toRightOf="@id/countdown_circle"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
@@ -74,7 +74,7 @@
       android:layout_height="wrap_content"
       android:textColor="@color/colorPrimary"
       android:textSize="@dimen/starting_countdown_text_size"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/game_banner_ad"
       app:layout_constraintLeft_toRightOf="@id/countdown_circle"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
@@ -92,7 +92,7 @@
       android:textAlignment="center"
       android:textColor="@color/textDark"
       android:textSize="@dimen/starting_countdown_hint_size"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toTopOf="@id/game_banner_ad"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toBottomOf="@id/score_text" />
@@ -112,6 +112,16 @@
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       tools:ignore="RtlHardcoded" />
+  
+  <com.google.android.gms.ads.AdView
+      android:id="@id/game_banner_ad"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:adSize="SMART_BANNER"
+      app:adUnitId="@string/ad_banner_id" />
   
   <include
       android:id="@+id/pause_overlay"

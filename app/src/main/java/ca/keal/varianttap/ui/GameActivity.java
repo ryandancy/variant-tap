@@ -35,6 +35,8 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.games.Games;
 
 import java.io.IOException;
@@ -123,6 +125,8 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   private TextView scoreLabel;
   
   private SFXManager sfx;
+  
+  private AdView bannerAd;
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
@@ -290,6 +294,8 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
       imgs[i].setOnClickListener(this);
     }
     
+    setupAd();
+    
     if (savedInstanceState == null) { // fresh startup with no state to be restored
       startCountdownToGameStart();
     } else {
@@ -297,6 +303,18 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     }
     
     connection = new GPGSHelperServiceConnection(this);
+  }
+  
+  private void setupAd() {
+    bannerAd = findViewById(R.id.game_banner_ad);
+    bannerAd.setAdListener(new AdListener() {
+      @Override
+      public void onAdOpened() {
+        // Open the pause overlay when the user opens an ad to prevent time from running out
+        pause(null);
+      }
+    });
+    bannerAd.loadAd(Util.getAdRequest(this));
   }
   
   private void startCountdownToGameStart() {
@@ -444,6 +462,10 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   
   @Override
   protected void onPause() {
+    if (bannerAd != null) {
+      bannerAd.pause();
+    }
+    
     super.onPause();
     
     if (hasLost) {
@@ -463,9 +485,22 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
   protected void onResume() {
     super.onResume();
     
+    if (bannerAd != null) {
+      bannerAd.resume();
+    }
+    
     if (switchOnResume) {
       toPostGameActivity(false);
     }
+  }
+  
+  @Override
+  protected void onDestroy() {
+    if (bannerAd != null) {
+      bannerAd.destroy();
+    }
+    
+    super.onDestroy();
   }
   
   /**
@@ -791,10 +826,11 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     root.setBackgroundColor(
         ResourcesCompat.getColor(getResources(), R.color.pausedBackground, null));
     
-    // Bring countdownCircle, scoreText, scoreLabel on top of pause overlay
+    // Bring countdown circle, score text/label, ad on top of pause overlay
     countdownCircle.bringToFront();
     scoreText.bringToFront();
     scoreLabel.bringToFront();
+    bannerAd.bringToFront();
   }
   
   @Override
