@@ -32,10 +32,17 @@
   <string name="test_ad_banner_id" translatable="false">
     ca-app-pub-3940256099942544/6300978111
   </string>
+  <string name="test_ad_interstitial_id" translatable="false">
+    ca-app-pub-3940256099942544/1033173712
+  </string>
   <string name="ad_banner_id" translatable="false">@string/test_ad_banner_id</string>
+  <string name="ad_interstitial_id" translatable="false">@string/test_ad_interstitial_id</string>
   
   <string-array name="test_devices">
     <!-- Samsung tablet -->
     <item>703B6687695DCCCF77E23B6C06CBA975</item>
+    
+    <!-- LG G4 -->
+    <item>F5C40905380946D7B776DA3D82DD35E6</item>
   </string-array>
 </resources>
