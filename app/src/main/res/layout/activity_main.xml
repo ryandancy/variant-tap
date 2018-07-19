@@ -32,7 +32,7 @@
   <fragment
       android:id="@+id/main_menu_difficulty_buttons_fragment"
       android:name="ca.keal.varianttap.ui.DifficultyButtonsFragment"
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_above="@id/circle_buttons"
       android:layout_centerHorizontal="true"

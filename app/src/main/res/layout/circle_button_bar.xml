@@ -74,6 +74,7 @@
   </FrameLayout>
   
   <FrameLayout
+      android:id="@+id/remove_ads_circle_button_container"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content">
     
@@ -84,6 +85,7 @@
         tools:ignore="ContentDescription" />
     
     <ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton
+        android:id="@+id/remove_ads_circle_button"
         style="@style/CircleButton.RemoveAds" />
     
   </FrameLayout>

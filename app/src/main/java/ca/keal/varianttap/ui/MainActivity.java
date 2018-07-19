@@ -33,6 +33,7 @@ import ca.keal.varianttap.R;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
+import ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton;
 import ca.keal.varianttap.util.ImageSupplier;
 import ca.keal.varianttap.util.Util;
 
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
   
+  // It might need to be removed
+  private RemoveAdsCircleButton removeAdsCircleButton;
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -66,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     
     // TODO replace with real ID, not banner ID
     MobileAds.initialize(this, getString(R.string.ad_banner_id));
+    
+    removeAdsCircleButton = findViewById(R.id.remove_ads_circle_button);
     
     // Lock portrait orientation if we're not on a tablet
     if (getResources().getBoolean(R.bool.portrait_only)) {
@@ -128,6 +134,9 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
   @Override
   protected void onResume() {
     super.onResume();
+    
+    // Remove the 'remove ads' circle button if ads were removed later
+    removeAdsCircleButton.checkAndMaybeRemove();
     
     // Resume all throw animations
     for (AnimatorSet anim : throwAnims) {
