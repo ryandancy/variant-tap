@@ -49,13 +49,16 @@ import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.gpgs.Score;
+import ca.keal.varianttap.util.AdRemovalManager;
+import ca.keal.varianttap.util.HasRemovableAds;
 import ca.keal.varianttap.util.ImageSupplier;
 import ca.keal.varianttap.util.MusicActivity;
 import ca.keal.varianttap.util.ReverseInterpolator;
 import ca.keal.varianttap.util.SFXManager;
 import ca.keal.varianttap.util.Util;
 
-public class GameActivity extends MusicActivity implements View.OnClickListener, GPGSHelperClient {
+public class GameActivity extends MusicActivity
+    implements View.OnClickListener, GPGSHelperClient, HasRemovableAds {
   
   private static final String TAG = "GameActivity";
   
@@ -296,7 +299,9 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
       imgs[i].setOnClickListener(this);
     }
     
-    setupAds();
+    if (!AdRemovalManager.areAdsRemoved()) {
+      setupAds();
+    }
     
     if (savedInstanceState == null) { // fresh startup with no state to be restored
       startCountdownToGameStart();
@@ -329,6 +334,14 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     } else {
       interstitial = null;
     }
+  }
+  
+  @Override
+  public void removeAds() {
+    // the remove ads button on the pause screen was clicked
+    bannerAd.destroy();
+    bannerAd = null;
+    interstitial = null; // won't be shown now
   }
   
   private void startCountdownToGameStart() {
@@ -849,7 +862,10 @@ public class GameActivity extends MusicActivity implements View.OnClickListener,
     countdownCircle.bringToFront();
     scoreText.bringToFront();
     scoreLabel.bringToFront();
-    bannerAd.bringToFront();
+    
+    if (bannerAd != null) {
+      bannerAd.bringToFront();
+    }
   }
   
   @Override
