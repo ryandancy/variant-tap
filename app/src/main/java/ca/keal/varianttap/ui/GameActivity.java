@@ -323,6 +323,7 @@ public class GameActivity extends MusicActivity
       }
     });
     bannerAd.loadAd(Util.getAdRequest(this));
+    bannerAd.setVisibility(View.VISIBLE); // allocate space for it before it loads
     
     // Preload the interstitial for the next activity if we're going to
     // Yes we're using the ImageSupplier's RNG, whatever
@@ -339,6 +340,7 @@ public class GameActivity extends MusicActivity
   @Override
   public void removeAds() {
     // the remove ads button on the pause screen was clicked
+    bannerAd.setVisibility(View.GONE);
     bannerAd.destroy();
     bannerAd = null;
     interstitial = null; // won't be shown now
