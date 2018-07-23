@@ -5,8 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import ca.keal.varianttap.R;
-import ca.keal.varianttap.util.AdRemovalManager;
-import ca.keal.varianttap.util.HasRemovableAds;
+import ca.keal.varianttap.ads.AdRemovalManager;
+import ca.keal.varianttap.ads.HasRemovableAds;
 
 public class RemoveAdsCircleButton extends BaseCircleButton {
   

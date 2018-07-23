@@ -1,4 +1,4 @@
-package ca.keal.varianttap.util;
+package ca.keal.varianttap.ads;
 
 import android.util.Log;
 

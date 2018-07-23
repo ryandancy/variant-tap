@@ -1,4 +1,4 @@
-package ca.keal.varianttap.util;
+package ca.keal.varianttap.ads;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -18,6 +18,7 @@ import com.google.ads.consent.ConsentInformation;
 import com.google.ads.consent.ConsentStatus;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.util.Util;
 
 /**
  * A consent form dialog. Mostly adapted from lenooh's StackOverflow answer at

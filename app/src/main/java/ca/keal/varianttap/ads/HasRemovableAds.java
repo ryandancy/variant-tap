@@ -1,4 +1,4 @@
-package ca.keal.varianttap.util;
+package ca.keal.varianttap.ads;
 
 /**
  * An Activity (or something else) with ads that can be removed.
