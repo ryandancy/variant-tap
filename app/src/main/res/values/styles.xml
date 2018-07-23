@@ -22,7 +22,15 @@
     <item name="android:background">@drawable/button</item>
     <item name="android:textAllCaps">false</item>
     <item name="android:textColor">@color/textLight</item>
-    <item name="android:textSize">20sp</item>
+    <item name="android:textSize">@dimen/full_length_buttons_text_size</item>
+  </style>
+  
+  <style name="ButtonStyle.Dialog">
+    <item name="android:layout_marginLeft">@dimen/dialog_button_margin_sides</item>
+    <item name="android:layout_marginRight">@dimen/dialog_button_margin_sides</item>
+    <item name="android:paddingLeft">@dimen/dialog_button_padding_sides</item>
+    <item name="android:paddingRight">@dimen/dialog_button_padding_sides</item>
+    <item name="android:textSize">@dimen/dialog_buttons_text_size</item>
   </style>
   
   <style name="CircleButton" parent="Base.Widget.AppCompat.ImageButton">
