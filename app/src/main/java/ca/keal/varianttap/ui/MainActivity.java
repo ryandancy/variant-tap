@@ -21,6 +21,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.ads.consent.ConsentInfoUpdateListener;
+import com.google.ads.consent.ConsentInformation;
+import com.google.ads.consent.ConsentStatus;
+import com.google.ads.consent.DebugGeography;
 import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
@@ -34,12 +38,15 @@ import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton;
+import ca.keal.varianttap.util.AdRemovalManager;
+import ca.keal.varianttap.util.EUConsentForm;
 import ca.keal.varianttap.util.ImageSupplier;
 import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class MainActivity extends AppCompatActivity implements GPGSHelperClient {
+public class MainActivity extends AppCompatActivity
+    implements GPGSHelperClient, EUConsentForm.OnCloseListener {
   
   private static final String TAG = "MainActivity";
   
@@ -62,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
   
   // It might need to be removed
   private RemoveAdsCircleButton removeAdsCircleButton;
+  private EUConsentForm euConsentForm;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +122,44 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     });
     
     connection = new GPGSHelperServiceConnection(this);
+    euConsentForm = new EUConsentForm(this); // needs to exist for onDestroy() even if ads removed
+    euConsentForm.setOnCloseListener(this);
+    
+    if (!AdRemovalManager.areAdsRemoved()) {
+      updateConsent();
+    }
+  }
+  
+  private void updateConsent() {
+    final ConsentInformation consentInfo = ConsentInformation.getInstance(this);
+    // TODO add real list of publisher IDs as resource
+    String[] pubIds = {"pub-0123456789012345"};
+    
+    // Add test devices - TODO remove this on release
+    for (String testDeviceId : getResources().getStringArray(R.array.test_devices)) {
+      consentInfo.addTestDevice(testDeviceId);
+    }
+    consentInfo.setDebugGeography(DebugGeography.DEBUG_GEOGRAPHY_EEA);
+    
+    consentInfo.requestConsentInfoUpdate(pubIds, new ConsentInfoUpdateListener() {
+      @Override
+      public void onConsentInfoUpdated(ConsentStatus consentStatus) {
+        if (consentInfo.isRequestLocationInEeaOrUnknown()
+            && consentStatus == ConsentStatus.UNKNOWN) {
+          euConsentForm.show(false);
+        }
+      }
+      
+      @Override
+      public void onFailedToUpdateConsentInfo(String reason) {
+        Log.e(TAG, "Consent info failed to update: " + reason);
+      }
+    });
+  }
+  
+  @Override
+  public void onEUConsentFormClose() {
+    removeAdsCircleButton.checkAndMaybeRemove();
   }
   
   @Override
@@ -180,6 +226,12 @@ public class MainActivity extends AppCompatActivity implements GPGSHelperClient 
     Log.d(TAG, "Stopping 'stare at animation' achievement timer");
     timer.cancel();
     timer = null; // so we don't have to do it in onDestroy()
+  }
+  
+  @Override
+  protected void onDestroy() {
+    euConsentForm.onDestroy();
+    super.onDestroy();
   }
   
   @Override

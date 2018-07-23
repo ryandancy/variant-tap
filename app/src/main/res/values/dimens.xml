@@ -80,12 +80,17 @@
   
   <dimen name="sign_in_out_button_margin_side">20dp</dimen>
   
+  <dimen name="dialog_padding">20dp</dimen>
+  <dimen name="consent_option_spacing">30dp</dimen>
+  
   <!-- TEXT SIZES (and other textual dimensions) -->
   
   <dimen name="max_main_title_size">300sp</dimen>
   
-  <dimen name="about_text_header_size">25sp</dimen>
-  <dimen name="about_text_body_size">14sp</dimen>
+  <dimen name="text_header_size">25sp</dimen>
+  <dimen name="text_body_size">14sp</dimen>
+  <dimen name="text_line_spacing">5sp</dimen>
+  <dimen name="text_space_width">5sp</dimen>
   
   <dimen name="starting_countdown_text_size">200dp</dimen>
   <dimen name="starting_countdown_hint_size">20sp</dimen>
@@ -103,8 +108,6 @@
   <dimen name="new_best_score_size">20sp</dimen>
   
   <dimen name="post_game_stats_size">20sp</dimen>
-  <dimen name="post_game_stats_line_spacing">5sp</dimen>
-  <dimen name="post_game_stats_space_width">5sp</dimen>
   
   <dimen name="post_game_button_text_size">17sp</dimen>
   

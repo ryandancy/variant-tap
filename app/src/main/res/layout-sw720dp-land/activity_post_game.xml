@@ -57,7 +57,7 @@
         android:id="@+id/best_score_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/post_game_stats_line_spacing"
+        android:layout_marginTop="@dimen/text_line_spacing"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -73,7 +73,7 @@
           android:id="@+id/best_score_text"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginStart="@dimen/post_game_stats_space_width"
+          android:layout_marginStart="@dimen/text_space_width"
           android:textColor="@color/colorAccent"
           android:textSize="@dimen/post_game_stats_size" />
       
@@ -84,7 +84,7 @@
         android:id="@+id/average_score_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/post_game_stats_line_spacing"
+        android:layout_marginTop="@dimen/text_line_spacing"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
@@ -100,7 +100,7 @@
           android:id="@+id/average_score_text"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginStart="@dimen/post_game_stats_space_width"
+          android:layout_marginStart="@dimen/text_space_width"
           android:textColor="@color/colorAccent"
           android:textSize="@dimen/post_game_stats_size" />
       

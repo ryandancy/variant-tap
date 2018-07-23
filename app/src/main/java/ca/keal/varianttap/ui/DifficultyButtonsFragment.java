@@ -101,7 +101,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
    * R.string.close_difficulty_btns.
    */
   public static DifficultyButtonsFragment newInstance(Context context, String showText) {
-    return newInstance(showText, context.getString(R.string.close_difficulty_btns));
+    return newInstance(showText, context.getString(R.string.close));
   }
   
   /**
@@ -109,7 +109,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
    * R.string.close_difficulty_btns.
    */
   public static DifficultyButtonsFragment newInstance(Context context, @StringRes int showText) {
-    return newInstance(context, showText, R.string.close_difficulty_btns);
+    return newInstance(context, showText, R.string.close);
   }
   
   @Override
@@ -127,7 +127,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     
     if (hideText == null) {
       // default to "close" - in onAttach() because in onInflate() it may not be attached yet
-      hideText = getString(R.string.close_difficulty_btns);
+      hideText = getString(R.string.close);
     }
   }
   
