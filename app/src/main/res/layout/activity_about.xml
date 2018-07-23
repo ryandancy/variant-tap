@@ -10,8 +10,8 @@
   <ScrollView
       android:layout_width="0dp"
       android:layout_height="0dp"
-      android:layout_marginLeft="@dimen/about_margin_sides"
-      android:layout_marginRight="@dimen/about_margin_sides"
+      android:layout_margin="@dimen/about_margin"
+      android:fillViewport="true"
       android:scrollbars="vertical"
       app:layout_constraintBottom_toTopOf="@+id/eu_consent_status"
       app:layout_constraintLeft_toLeftOf="parent"
@@ -21,8 +21,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical">
       
       <TextView

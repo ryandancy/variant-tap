@@ -35,7 +35,7 @@
   <dimen name="main_menu_title_margin_top">50dp</dimen>
   <dimen name="main_menu_title_side_padding">20dp</dimen>
   
-  <dimen name="about_margin_sides">20dp</dimen>
+  <dimen name="about_margin">20dp</dimen>
   <dimen name="about_consent_spacing">20dp</dimen>
   
   <dimen name="circle_button_diameter">43dp</dimen>
@@ -73,7 +73,7 @@
   <dimen name="post_game_buttons_spacing">25dp</dimen>
   <dimen name="post_game_buttons_size">90dp</dimen>
   
-  <dimen name="bottom_button_margin_bottom">50dp</dimen>
+  <dimen name="bottom_button_margin_bottom">20dp</dimen>
   <dimen name="button_margin_sides">20dp</dimen>
   
   <dimen name="difficulty_buttons_spacing">10dp</dimen>
