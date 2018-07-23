@@ -131,7 +131,8 @@ public class EUConsentForm {
     // Add a list of ad providers with whom AdMob shares data
     for (AdProvider adProvider : ConsentInformation.getInstance(activity).getAdProviders()) {
       TextView adProviderText = new TextView(activity);
-      adProviderText.setTextSize(activity.getResources().getDimension(R.dimen.text_body_size));
+      adProviderText.setTextSize(Util.pxToSp(activity, activity.getResources()
+          .getDimensionPixelSize(R.dimen.text_body_size)));
       adProviderText.setText(Html.fromHtml("- " + buildLink(
           adProvider.getPrivacyPolicyUrlString(), adProvider.getName())));
       adProviderText.setMovementMethod(LinkMovementMethod.getInstance());

@@ -173,7 +173,6 @@
       android:paddingBottom="@dimen/full_length_buttons_text_padding"
       android:paddingTop="@dimen/full_length_buttons_text_padding"
       android:text="@string/gpgs_sign_in"
-      android:textSize="@dimen/full_length_buttons_text_size"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent" />

@@ -16,8 +16,7 @@
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:paddingBottom="@dimen/full_length_buttons_text_padding"
-      android:paddingTop="@dimen/full_length_buttons_text_padding"
-      android:textSize="@dimen/full_length_buttons_text_size" />
+      android:paddingTop="@dimen/full_length_buttons_text_padding" />
   
   <LinearLayout
       android:id="@+id/difficulty_button_layout"
@@ -36,8 +35,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/full_length_buttons_text_padding"
         android:paddingTop="@dimen/full_length_buttons_text_padding"
-        android:text="@string/easy"
-        android:textSize="@dimen/full_length_buttons_text_size" />
+        android:text="@string/easy" />
     
     <Button
         android:id="@+id/normal_button"
@@ -47,8 +45,7 @@
         android:layout_marginTop="@dimen/difficulty_buttons_spacing"
         android:paddingBottom="@dimen/full_length_buttons_text_padding"
         android:paddingTop="@dimen/full_length_buttons_text_padding"
-        android:text="@string/normal"
-        android:textSize="@dimen/full_length_buttons_text_size" />
+        android:text="@string/normal" />
     
     <Button
         android:id="@+id/hard_button"
@@ -58,8 +55,7 @@
         android:layout_marginTop="@dimen/difficulty_buttons_spacing"
         android:paddingBottom="@dimen/full_length_buttons_text_padding"
         android:paddingTop="@dimen/full_length_buttons_text_padding"
-        android:text="@string/hard"
-        android:textSize="@dimen/full_length_buttons_text_size" />
+        android:text="@string/hard" />
     
   </LinearLayout>
   
