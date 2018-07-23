@@ -92,8 +92,7 @@ public class EUConsentForm {
     
     // Setup the "learn more" text as a link
     TextView learnMoreLink = consentLayout.findViewById(R.id.eu_consent_learn_more);
-    learnMoreLink.setText(Html.fromHtml(buildLink("",
-        activity.getString(R.string.eu_consent_learn_more))));
+    learnMoreLink.setText(Util.formatLink(activity.getString(R.string.eu_consent_learn_more)));
     learnMoreLink.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

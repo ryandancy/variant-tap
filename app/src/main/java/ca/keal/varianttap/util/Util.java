@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.DimenRes;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.TextPaint;
 import android.util.Log;
 import android.util.TypedValue;
@@ -185,7 +187,7 @@ public final class Util {
     for (String testDeviceId : context.getResources().getStringArray(R.array.test_devices)) {
       builder.addTestDevice(testDeviceId);
     }
-  
+    
     // Serve non-personalized ads if the user's in the EEA and hasn't opted-in
     ConsentInformation consentInfo = ConsentInformation.getInstance(context);
     if (consentInfo.isRequestLocationInEeaOrUnknown()
@@ -198,6 +200,15 @@ public final class Util {
     }
     
     return builder.build();
+  }
+  
+  // GENERIC UTILS
+  
+  /**
+   * Wrap {@code text} with &lt;a href="">&lt;/a> to get hyperlink formatting.
+   */
+  public static Spanned formatLink(String text) {
+    return Html.fromHtml("<a href=\"\">" + text + "</a>");
   }
   
 }

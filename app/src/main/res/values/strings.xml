@@ -13,6 +13,12 @@
   <string name="play">Play</string>
   
   <!-- AboutActivity -->
+  <string name="consent_yes">You have consented to receive personalized ads.</string>
+  <string name="consent_no">You have not consented to receive personalized ads.</string>
+  <string name="consent_unknown">
+    Somehow, you have not yet indicated whether or not you consent to receive personalized ads.
+  </string>
+  <string name="change_consent">Change your consent…</string>
   <string name="gpgs_sign_in">Sign in to Google Play</string>
   <string name="gpgs_sign_out">Sign out of Google Play</string>
   <string name="developer">Developer</string>

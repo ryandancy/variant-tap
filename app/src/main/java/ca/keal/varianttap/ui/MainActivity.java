@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
   
   // It might need to be removed
   private RemoveAdsCircleButton removeAdsCircleButton;
-  private EUConsentForm euConsentForm;
+  private EUConsentForm euConsentForm = null;
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -122,8 +122,6 @@ public class MainActivity extends AppCompatActivity
     });
     
     connection = new GPGSHelperServiceConnection(this);
-    euConsentForm = new EUConsentForm(this); // needs to exist for onDestroy() even if ads removed
-    euConsentForm.setOnCloseListener(this);
     
     if (!AdRemovalManager.areAdsRemoved()) {
       updateConsent();
@@ -146,6 +144,9 @@ public class MainActivity extends AppCompatActivity
       public void onConsentInfoUpdated(ConsentStatus consentStatus) {
         if (consentInfo.isRequestLocationInEeaOrUnknown()
             && consentStatus == ConsentStatus.UNKNOWN) {
+          // Spawn a non-dismissable EUConsentForm
+          euConsentForm = new EUConsentForm(MainActivity.this);
+          euConsentForm.setOnCloseListener(MainActivity.this);
           euConsentForm.show(false);
         }
       }
@@ -230,7 +231,9 @@ public class MainActivity extends AppCompatActivity
   
   @Override
   protected void onDestroy() {
-    euConsentForm.onDestroy();
+    if (euConsentForm != null) {
+      euConsentForm.onDestroy();
+    }
     super.onDestroy();
   }
   

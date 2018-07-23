@@ -13,7 +13,7 @@
       android:layout_marginLeft="@dimen/about_margin_sides"
       android:layout_marginRight="@dimen/about_margin_sides"
       android:scrollbars="vertical"
-      app:layout_constraintBottom_toTopOf="@+id/sign_in_out_button"
+      app:layout_constraintBottom_toTopOf="@+id/eu_consent_status"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent">
@@ -135,10 +135,34 @@
     
   </ScrollView>
   
+  <!-- Either @string/consent_yes or @string/consent_no depending on status -->
+  <TextView
+      android:id="@id/eu_consent_status"
+      style="@style/AboutText.Body"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="4dp"
+      android:visibility="gone"
+      app:layout_constraintBottom_toTopOf="@+id/change_eu_consent"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent" />
+  
+  <!-- Text added programmatically for hyperlink style -->
+  <TextView
+      android:id="@id/change_eu_consent"
+      style="@style/AboutText.Body"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/about_consent_spacing"
+      android:visibility="gone"
+      app:layout_constraintBottom_toTopOf="@+id/sign_in_out_button"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent" />
+  
   <Button
       android:id="@id/sign_in_out_button"
       style="@style/ButtonStyle"
-      android:layout_width="match_parent"
+      android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginBottom="@dimen/bottom_button_margin_bottom"
       android:layout_marginLeft="@dimen/sign_in_out_button_margin_side"
