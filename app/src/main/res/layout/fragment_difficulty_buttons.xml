@@ -5,8 +5,10 @@
     android:id="@+id/difficulty_button_fragment_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:fillViewport="true"
     android:paddingLeft="@dimen/difficulty_buttons_margin_side"
     android:paddingRight="@dimen/difficulty_buttons_margin_side"
+    android:scrollbars="vertical"
     tools:context="ca.keal.varianttap.ui.DifficultyButtonsFragment">
   
   <Button
