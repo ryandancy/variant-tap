@@ -22,8 +22,8 @@ import ca.keal.varianttap.gpgs.GPGSCallback;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
-import ca.keal.varianttap.util.AdRemovalManager;
-import ca.keal.varianttap.util.EUConsentForm;
+import ca.keal.varianttap.ads.AdRemovalManager;
+import ca.keal.varianttap.ads.EUConsentForm;
 import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;

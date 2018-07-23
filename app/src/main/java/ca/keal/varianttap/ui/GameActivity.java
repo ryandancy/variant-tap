@@ -45,12 +45,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.ads.AdUtil;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.gpgs.Score;
-import ca.keal.varianttap.util.AdRemovalManager;
-import ca.keal.varianttap.util.HasRemovableAds;
+import ca.keal.varianttap.ads.AdRemovalManager;
+import ca.keal.varianttap.ads.HasRemovableAds;
 import ca.keal.varianttap.util.ImageSupplier;
 import ca.keal.varianttap.util.MusicActivity;
 import ca.keal.varianttap.util.ReverseInterpolator;
@@ -322,7 +323,7 @@ public class GameActivity extends MusicActivity
         pause(null);
       }
     });
-    bannerAd.loadAd(Util.getAdRequest(this));
+    bannerAd.loadAd(AdUtil.getAdRequest(this));
     bannerAd.setVisibility(View.VISIBLE); // allocate space for it before it loads
     
     // Preload the interstitial for the next activity if we're going to
@@ -331,7 +332,7 @@ public class GameActivity extends MusicActivity
         <= Util.getFloatResource(this, R.dimen.interstitial_chance)) {
       interstitial = new InterstitialAd(this);
       interstitial.setAdUnitId(getString(R.string.ad_interstitial_id));
-      interstitial.loadAd(Util.getAdRequest(this));
+      interstitial.loadAd(AdUtil.getAdRequest(this));
     } else {
       interstitial = null;
     }
