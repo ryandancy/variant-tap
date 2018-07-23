@@ -40,7 +40,7 @@
   <string name="images_attrib">Many thanks to http://openclipart.org and its contributors.</string>
   
   <!-- GameActivity -->
-  <string name="countdown_hint">Tap the image that\'s different than the others!</string>
+  <string name="countdown_hint">Tap the image which is different than the others!</string>
   <string name="score_label">Score</string>
   <string name="pause_button_desc">Pause button</string>
   <string name="paused">Paused</string>
