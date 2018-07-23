@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.TypedArray;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -19,6 +20,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
 import android.util.Pair;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -45,13 +47,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.ads.AdRemovalManager;
 import ca.keal.varianttap.ads.AdUtil;
+import ca.keal.varianttap.ads.HasRemovableAds;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.gpgs.Score;
-import ca.keal.varianttap.ads.AdRemovalManager;
-import ca.keal.varianttap.ads.HasRemovableAds;
 import ca.keal.varianttap.util.ImageSupplier;
 import ca.keal.varianttap.util.MusicActivity;
 import ca.keal.varianttap.util.ReverseInterpolator;
@@ -215,6 +217,8 @@ public class GameActivity extends MusicActivity
       }
     });
     
+    increasePauseButtonHitbox();
+    
     // There are 3 difficulties: 0 (easy), 1 (normal) and 2 (hard). Each successive difficulty has
     // a higher number of images: easy has 4 images, normal has 6, and hard has 9.
     
@@ -345,6 +349,25 @@ public class GameActivity extends MusicActivity
     bannerAd.destroy();
     bannerAd = null;
     interstitial = null; // won't be shown now
+  }
+  
+  private void increasePauseButtonHitbox() {
+    final View parent = (View) pauseButton.getParent();
+    parent.post(new Runnable() {
+      @Override
+      public void run() {
+        Rect hitbox = new Rect();
+        pauseButton.getHitRect(hitbox);
+        
+        int expansion = getResources().getDimensionPixelSize(R.dimen.pause_button_hitbox_expansion);
+        hitbox.left -= expansion;
+        hitbox.right += expansion;
+        hitbox.top -= expansion;
+        hitbox.bottom += expansion;
+        
+        parent.setTouchDelegate(new TouchDelegate(hitbox, pauseButton));
+      }
+    });
   }
   
   private void startCountdownToGameStart() {

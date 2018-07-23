@@ -2,10 +2,14 @@
 <resources>
   <!-- For tablets in both orientations -->
   <dimen name="thrown_image_size">100dp</dimen>
+  
   <dimen name="circle_button_diameter">70dp</dimen>
   <dimen name="circle_button_padding">20dp</dimen>
   <dimen name="circle_button_small_padding">15dp</dimen>
-  <dimen name="pause_button_width">35dp</dimen>
+  
+  <dimen name="pause_button_width">40dp</dimen>
+  <dimen name="pause_button_margin">40dp</dimen>
+  <dimen name="pause_button_hitbox_expansion">60dp</dimen>
   
   <dimen name="full_length_buttons_text_size">35sp</dimen>
   <dimen name="text_header_size">35sp</dimen>
