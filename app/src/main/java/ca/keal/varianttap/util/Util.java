@@ -13,6 +13,9 @@ import android.util.TypedValue;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
+import com.google.ads.consent.ConsentInformation;
+import com.google.ads.consent.ConsentStatus;
+import com.google.ads.mediation.admob.AdMobAdapter;
 import com.google.android.gms.ads.AdRequest;
 
 import java.util.Random;
@@ -175,21 +178,26 @@ public final class Util {
   
   // AD UTILS
   
-  public static AdRequest getAdRequest(Resources resources) {
+  public static AdRequest getAdRequest(Context context) {
     AdRequest.Builder builder = new AdRequest.Builder();
     
-    // TODO do something with consent here to comply with the GDPR
-    
-    // Add the test devices
-    for (String testDeviceId : resources.getStringArray(R.array.test_devices)) {
+    // Add the test devices - TODO remove this on release
+    for (String testDeviceId : context.getResources().getStringArray(R.array.test_devices)) {
       builder.addTestDevice(testDeviceId);
+    }
+  
+    // Serve non-personalized ads if the user's in the EEA and hasn't opted-in
+    ConsentInformation consentInfo = ConsentInformation.getInstance(context);
+    if (consentInfo.isRequestLocationInEeaOrUnknown()
+        && (consentInfo.getConsentStatus() == ConsentStatus.NON_PERSONALIZED
+            || consentInfo.getConsentStatus() == ConsentStatus.UNKNOWN)) {
+      Log.d(TAG, "Requesting non-personalized ad");
+      Bundle extras = new Bundle();
+      extras.putString("npa", "1");
+      builder.addNetworkExtrasBundle(AdMobAdapter.class, extras);
     }
     
     return builder.build();
-  }
-  
-  public static AdRequest getAdRequest(Context context) {
-    return getAdRequest(context.getResources());
   }
   
 }

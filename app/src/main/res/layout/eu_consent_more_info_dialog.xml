@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  
+  <LinearLayout
+      android:id="@+id/more_info_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="@dimen/dialog_padding">
+    
+    <!-- Text added programmatically -->
+    <TextView
+        android:id="@+id/privacy_policy_link"
+        style="@style/DialogText.Body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        style="@style/DialogText.Body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_data_used" />
+    
+  </LinearLayout>
+  
+</ScrollView>

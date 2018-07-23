@@ -79,18 +79,18 @@
     <item name="android:layout_marginTop">20dp</item>
     <item name="android:layout_marginBottom">10dp</item>
     <item name="android:textColor">@color/colorPrimary</item>
-    <item name="android:textSize">@dimen/about_text_header_size</item>
+    <item name="android:textSize">@dimen/text_header_size</item>
   </style>
   
   <style name="AboutText.Body">
-    <item name="android:layout_marginBottom">@dimen/post_game_stats_line_spacing</item>
+    <item name="android:layout_marginBottom">@dimen/text_line_spacing</item>
     <item name="android:textColor">@color/textDark</item>
-    <item name="android:textSize">@dimen/about_text_body_size</item>
+    <item name="android:textSize">@dimen/text_body_size</item>
   </style>
   
   <style name="AboutText.Body.Key">
     <item name="android:layout_marginBottom">0dp</item>
-    <item name="android:layout_marginEnd">@dimen/post_game_stats_space_width</item>
+    <item name="android:layout_marginEnd">@dimen/text_space_width</item>
     <item name="android:textColor">@color/colorAccent</item>
   </style>
   
@@ -99,8 +99,25 @@
   </style>
   
   <style name="AboutTextKeyValueLayout">
-    <item name="android:layout_marginBottom">@dimen/post_game_stats_line_spacing</item>
+    <item name="android:layout_marginBottom">@dimen/text_line_spacing</item>
     <item name="android:orientation">horizontal</item>
+  </style>
+  
+  <style name="DialogText" parent="TextAppearance.AppCompat">
+    <item name="android:textAlignment">center</item>
+  </style>
+  
+  <style name="DialogText.Header">
+    <item name="android:layout_marginTop">7dp</item>
+    <item name="android:layout_marginBottom">10dp</item>
+    <item name="android:textColor">@color/colorPrimary</item>
+    <item name="android:textSize">@dimen/text_header_size</item>
+  </style>
+  
+  <style name="DialogText.Body">
+    <item name="android:layout_marginBottom">@dimen/text_line_spacing</item>
+    <item name="android:textColor">@color/textDark</item>
+    <item name="android:textSize">@dimen/text_body_size</item>
   </style>
 
 </resources>

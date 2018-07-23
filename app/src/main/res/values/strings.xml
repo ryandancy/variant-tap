@@ -55,8 +55,43 @@
   <string name="achievements_button_caption">Achievements</string>
   
   <!-- DifficultyButtonsFragment -->
-  <string name="close_difficulty_btns">Close</string>
   <string name="easy">Easy</string>
   <string name="normal">Normal</string>
   <string name="hard">Hard</string>
+  
+  <!-- EU consent dialog -->
+  <string name="eu_consent_intro">
+    We care about your privacy and data security. We keep this app free by showing you ads.
+  </string>
+  <string name="eu_consent_question">
+    Can we continue to use your data to tailor ads for you?
+  </string>
+  <string name="eu_consent_meat">
+    You can change your choice anytime in the About screen. Google and its partners will collect
+    data and use a unique identifier on your device to show you ads.
+  </string>
+  <string name="eu_consent_learn_more">
+    Learn more about how your data is used.
+  </string>
+  <string name="eu_consent_yes">Yes, continue to see relevant ads</string>
+  <string name="eu_consent_no">No, see ads that are less relevant</string>
+  <string name="eu_consent_remove">Remove ads</string>
+  <string name="eu_consent_selected_yes">
+    The ads that you see will be relevant to you.
+  </string>
+  <string name="eu_consent_selected_no">
+    The ads that you see will be less relevant to you.
+  </string>
+  <string name="privacy_policy_link_text">Privacy policy</string>
+  <!-- TODO a real privacy policy URL -->
+  <string name="privacy_policy_url" translatable="false">
+    http://copperium.xyz/varianttap-privacy-policy.html
+  </string>
+  <string name="how_data_used">
+    With your consent, for the purpose of serving ads, your data is shared with Google and its
+    partners:
+  </string>
+  
+  <!-- Generic -->
+  <string name="close">Close</string>
 </resources>

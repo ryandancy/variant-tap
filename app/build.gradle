@@ -23,6 +23,7 @@ dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation project(':BaseGameUtils')
   implementation "com.google.android.gms:play-services-ads:${gms_library_version}"
+  implementation "com.google.android.ads.consent:consent-library:1.0.6"
   androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
