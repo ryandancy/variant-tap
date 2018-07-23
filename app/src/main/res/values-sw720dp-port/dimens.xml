@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <dimen name="about_consent_spacing">50dp</dimen>
+  
   <dimen name="starting_countdown_text_size">450dp</dimen>
   <dimen name="starting_countdown_hint_offset">40dp</dimen>
   
