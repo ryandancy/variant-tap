@@ -98,6 +98,7 @@
     partners:
   </string>
   
-  <!-- Generic -->
+  <!-- Miscellaneous -->
   <string name="close">Close</string>
+  <string name="gpgs_action_intent_failed">Failed to retrieve Google Play Games content</string>
 </resources>

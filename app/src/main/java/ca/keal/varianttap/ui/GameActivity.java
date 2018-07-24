@@ -40,7 +40,6 @@ import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.games.Games;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -510,7 +509,13 @@ public class GameActivity extends MusicActivity
   @Override
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
-    gpgsHelper.connectWithoutSignInFlow(this);
+    gpgsHelper.signInSilently(this);
+  }
+  
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    gpgsHelper.onActivityResult(this, requestCode, resultCode, data);
   }
   
   @Override
@@ -537,6 +542,10 @@ public class GameActivity extends MusicActivity
   @Override
   protected void onResume() {
     super.onResume();
+    
+    if (gpgsHelper != null) {
+      gpgsHelper.signInSilently(this);
+    }
     
     if (bannerAd != null) {
       bannerAd.resume();
@@ -724,11 +733,7 @@ public class GameActivity extends MusicActivity
     String leaderboardId = getString(leaderboardRes);
     
     // Submit or cache the score
-    if (gpgsHelper.isConnected()) {
-      Games.Leaderboards.submitScore(gpgsHelper.getApiClient(), leaderboardId, score);
-    } else {
-      gpgsHelper.getScoreCache().cache(this, new Score(leaderboardId, score));
-    }
+    gpgsHelper.submitScore(new Score(leaderboardId, score));
     
     // Play the lose animation, go to PostGameActivity afterwards
     loseAnim = getLoseAnimation();

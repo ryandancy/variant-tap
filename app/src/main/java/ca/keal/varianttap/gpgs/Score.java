@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.games.Games;
 
 /**
@@ -36,8 +36,8 @@ public class Score {
   }
   
   /** Submit this Score to the client, assuming that the client is signed in. */
-  public void submit(GoogleApiClient client) {
-    Games.Leaderboards.submitScore(client, leaderboardId, score);
+  public void submit(Context context, GoogleSignInAccount account) {
+    Games.getLeaderboardsClient(context, account).submitScore(leaderboardId, score);
   }
   
   public String toStorableString() {

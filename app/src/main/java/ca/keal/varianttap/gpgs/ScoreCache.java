@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -95,11 +95,11 @@ public class ScoreCache {
    * It is the caller's responsibility to ensure that the device is connected to the internet prior
    * to using this method.
    */
-  public void submitCache(Context context, GoogleApiClient client) {
-    new SubmitCacheAsyncTask(context).execute(client);
+  public void submitCache(Context context, GoogleSignInAccount account) {
+    new SubmitCacheAsyncTask(context).execute(account);
   }
   
-  private class SubmitCacheAsyncTask extends AsyncTask<GoogleApiClient, Void, Void> {
+  private class SubmitCacheAsyncTask extends AsyncTask<GoogleSignInAccount, Void, Void> {
     
     private Context context;
     
@@ -108,14 +108,14 @@ public class ScoreCache {
     }
     
     @Override
-    protected Void doInBackground(GoogleApiClient... params) {
+    protected Void doInBackground(GoogleSignInAccount... params) {
       submitCacheSync(context, params[0]);
       return null;
     }
     
   }
   
-  private void submitCacheSync(Context context, GoogleApiClient client) {
+  private void submitCacheSync(Context context, GoogleSignInAccount account) {
     Log.d(TAG, "Submitting cached scores...");
     String cache;
     
@@ -162,7 +162,7 @@ public class ScoreCache {
     
     // Submit the scores
     for (Score score : scores) {
-      score.submit(client);
+      score.submit(context, account);
     }
     
     Log.d(TAG, "Decrypted and submitted " + scores.length + " scores");

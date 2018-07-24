@@ -243,13 +243,17 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   @Override
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
-    gpgsHelper.connectWithoutSignInFlow(getActivity());
+    gpgsHelper.signInSilently(getActivity());
   }
   
   @Override
   public void onResume() {
     super.onResume();
     timesToggled = 0; // reset timesToggled for this 'sitting'
+    
+    if (gpgsHelper != null) {
+      gpgsHelper.signInSilently(getActivity());
+    }
   }
   
   @Override

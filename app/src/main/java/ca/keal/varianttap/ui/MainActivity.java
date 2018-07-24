@@ -182,6 +182,11 @@ public class MainActivity extends AppCompatActivity
   protected void onResume() {
     super.onResume();
     
+    // Respond to out-of-app changes in sign-in status
+    if (gpgsHelper != null) {
+      gpgsHelper.signInSilently(this);
+    }
+    
     // Remove the 'remove ads' circle button if ads were removed later
     removeAdsCircleButton.checkAndMaybeRemove();
     
@@ -240,7 +245,7 @@ public class MainActivity extends AppCompatActivity
   @Override
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
-    gpgsHelper.tryAutoConnect(this);
+    gpgsHelper.trySignIn(this);
   }
   
   /**
@@ -386,7 +391,7 @@ public class MainActivity extends AppCompatActivity
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    gpgsHelper.onActivityResult(this, requestCode, resultCode);
+    gpgsHelper.onActivityResult(this, requestCode, resultCode, data);
   }
   
 }

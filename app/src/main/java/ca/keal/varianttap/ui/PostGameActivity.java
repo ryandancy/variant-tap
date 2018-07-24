@@ -198,14 +198,15 @@ public class PostGameActivity extends AppCompatActivity implements
   @Override
   protected void onStop() {
     super.onStop();
+    gpgsHelper.clearActionOnSignIn(this);
     unbindService(connection);
   }
   
   @Override
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
-    gpgsHelper.addActionOnSignIn(this, GPGSAction.CallCallback);
-    gpgsHelper.connectWithoutSignInFlow(this);
+    gpgsHelper.setActionOnSignIn(this, GPGSAction.CallCallback);
+    gpgsHelper.signInSilently(this);
   }
   
   @Override
@@ -285,6 +286,10 @@ public class PostGameActivity extends AppCompatActivity implements
   @Override
   protected void onResume() {
     super.onResume();
+    
+    if (gpgsHelper != null) {
+      gpgsHelper.signInSilently(this);
+    }
     
     if (isNewBestScore) {
       // Start/restart the pulse animation

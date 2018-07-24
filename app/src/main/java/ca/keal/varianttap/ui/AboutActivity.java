@@ -131,6 +131,15 @@ public class AboutActivity extends AppCompatActivity
   }
   
   @Override
+  protected void onResume() {
+    super.onResume();
+    
+    if (gpgsHelper != null) {
+      gpgsHelper.signInSilently(this);
+    }
+  }
+  
+  @Override
   protected void onStart() {
     super.onStart();
     
@@ -142,6 +151,7 @@ public class AboutActivity extends AppCompatActivity
   @Override
   protected void onStop() {
     super.onStop();
+    gpgsHelper.clearActionOnSignIn(this);
     unbindService(connection);
   }
   
@@ -157,22 +167,21 @@ public class AboutActivity extends AppCompatActivity
   @Override
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
-    gpgsHelper.addActionOnSignIn(this, GPGSAction.CallCallback);
-    gpgsHelper.connectWithoutSignInFlow(this);
+    gpgsHelper.setActionOnSignIn(this, GPGSAction.CallCallback);
+    gpgsHelper.signInSilently(this);
   }
   
   public void signInOrOutOfGPGS(View v) {
-    if (gpgsHelper.isConnected()) {
+    if (gpgsHelper.isSignedIn()) {
       gpgsHelper.signOut();
       updateButtonText();
     } else {
-      gpgsHelper.addActionOnSignIn(this, GPGSAction.CallCallback);
-      gpgsHelper.connect(this);
+      gpgsHelper.signIn(this);
     }
   }
   
   private void updateButtonText() {
-    signInOutButton.setText(gpgsHelper.isConnected()
+    signInOutButton.setText(gpgsHelper.isSignedIn()
         ? R.string.gpgs_sign_out : R.string.gpgs_sign_in);
     centerButtonTextAndIcon();
   }
@@ -194,7 +203,7 @@ public class AboutActivity extends AppCompatActivity
   @Override
   protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    gpgsHelper.onActivityResult(this, requestCode, resultCode);
+    gpgsHelper.onActivityResult(this, requestCode, resultCode, data);
   }
   
   @Override

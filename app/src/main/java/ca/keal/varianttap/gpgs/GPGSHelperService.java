@@ -5,21 +5,24 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Binder;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.util.Log;
 
-import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesActivityResultCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.example.games.basegameutils.BaseGameUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import ca.keal.varianttap.R;
@@ -28,15 +31,15 @@ import ca.keal.varianttap.util.Util;
 /**
  * A bound service that provies access to one instance of {@link GoogleApiClient} across multiple
  * activities and handles its lifecycle. Activities binding to this service must call
- * {@link #onActivityResult(Activity, int, int)} from their
+ * {@link #onActivityResult(Activity, int, int, Intent)} from their
  * {@link Activity#onActivityResult(int, int, Intent)} methods. Binding activities should also
- * (but are not required to) call either {@link #tryAutoConnect(Activity)} or
- * {@link #connectWithoutSignInFlow(Activity)} as soon as they receive an instance of this service
+ * (but are not required to) call either {@link #trySignIn(Activity)} or
+ * {@link #signInSilently(Activity)} as soon as they receive an instance of this service
  * (usually in an implementation of
- * {@link GPGSHelperClient#receiveService(GPGSHelperService)}).
+ * {@link GPGSHelperClient#receiveService(GPGSHelperService)}); they should also call
+ * {@link #signInSilently(Activity)} in {@link Activity#onResume()}.
  */
-public class GPGSHelperService extends Service
-    implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
+public class GPGSHelperService extends Service {
   
   private static final String TAG = "GPGSHelperService";
   
@@ -44,99 +47,107 @@ public class GPGSHelperService extends Service
   
   private final GPGSHelperBinder binder = new GPGSHelperBinder();
   
-  private GoogleApiClient client;
+  private GoogleSignInClient client;
+  private GoogleSignInAccount account;
   
   private Activity currentActivity;
-  private boolean resolvingConnectionFailure = false;
-  private boolean trySignIn = false; // try to sign in when connection fails?
   
-  private Map<Activity, List<GPGSAction>> activityToActionOnSignIn = new HashMap<>();
+  private Map<Activity, GPGSAction[]> activityToActionOnSignIn = new HashMap<>();
   
   private ScoreCache scoreCache = new ScoreCache();
   private boolean trySubmitCacheOnSignIn = true; // try to submit the cache when signed in?
   
-  public GoogleApiClient getApiClient() {
-    return client;
-  }
-  
-  public ScoreCache getScoreCache() {
-    return scoreCache;
-  }
-  
-  public boolean isConnected() {
-    return client != null && client.isConnected();
-  }
-  
-  public void tryAutoConnect(Activity activity) {
-    if (isConnected()) return;
-    
-    // Auto-connect if the shared preferences say we should
-    SharedPreferences prefs = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE);
-    if (prefs.getBoolean(Util.PREF_AUTO_SIGN_IN, true)) {
-      connect(activity);
+  /** Null only if we aren't signed in, in which case why are you accessing the account anyways? */
+  private GoogleSignInAccount getAccount() {
+    if (account == null && isSignedIn()) {
+      account = GoogleSignIn.getLastSignedInAccount(this);
     }
+    return account;
   }
   
-  public void connect(Activity activity) {
-    connect(activity, true);
+  public boolean isSignedIn() {
+    return account != null && GoogleSignIn.getLastSignedInAccount(this) != null;
   }
   
   /**
-   * Attempt to connect, but if the attempt fails, don't try to resolve it (i.e. don't start the
-   * sign-in flow).
+   * Attempt to sign in to GPGS silently, but if that cannot be done, sign in interactively, unless
+   * the user has previously declined to sign in.
    */
-  public void connectWithoutSignInFlow(Activity activity) {
-    connect(activity, false);
+  public void trySignIn(final Activity activity) {
+    // Connect interactively if the shared preferences say we should
+    SharedPreferences prefs = getSharedPreferences(Util.PREF_FILE, MODE_PRIVATE);
+    boolean tryInteractively = prefs.getBoolean(Util.PREF_AUTO_SIGN_IN, true);
+    signIn(activity, tryInteractively);
   }
   
-  private void connect(Activity activity, boolean trySignIn) {
-    if (resolvingConnectionFailure) {
-      Log.w(TAG, "Attempted to connect while resolving connection failure");
-      return;
-    }
+  /**
+   * Attempt to sign in to GPGS silently, but if that cannot be done, sign in interactively.
+   */
+  public void signIn(Activity activity) {
+    signIn(activity, true);
+  }
   
-    this.trySignIn = trySignIn;
+  /**
+   * Attempt to sign in to GPGS silently, but if that cannot be done, do not attempt to sign in
+   * interactively. Call this method in onResume().
+   */
+  public void signInSilently(Activity activity) {
+    signIn(activity, false);
+  }
+  
+  private void signIn(final Activity activity, final boolean tryInteractively) {
     currentActivity = activity;
     
-    if (isConnected()) {
-      // Treat it as if we connected and succeeded
+    if (isSignedIn()) {
+      // Treat it as if we signed in and succeeded
       performActionsOnSignIn(activity);
       return;
     }
     
-    Log.d(TAG, "Attempting to connect...");
-    client.connect();
+    Log.d(TAG, "Attempting silent sign-in");
+    
+    client.silentSignIn().addOnCompleteListener(new OnCompleteListener<GoogleSignInAccount>() {
+      @Override
+      public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
+        if (task.isSuccessful()) {
+          account = task.getResult();
+          onSignInSuccessful();
+        } else if (tryInteractively) {
+          Log.d(TAG, "Silent sign-in failed, attempting interactive sign-in");
+          activity.startActivityForResult(client.getSignInIntent(), REQUEST_SIGN_IN);
+        } else {
+          Log.d(TAG, "Silent sign-in failed");
+        }
+      }
+    });
   }
   
   public void signOut() {
-    if (!isConnected()) {
-      Log.w(TAG, "Attempted to sign out when already disconnected");
-      return;
-    }
-    
     Log.d(TAG, "Signing out");
+    trySubmitCacheOnSignIn = true;
     setAutoSignIn(false);
-    Games.signOut(client);
-    client.disconnect();
+    client.signOut();
+    client.revokeAccess();
+    account = null;
   }
   
-  public void onActivityResult(Activity activity, int requestCode, int resultCode) {
+  /**
+   * Call this in onActivityResult().
+   */
+  public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) {
     Log.d(TAG, "Received activity result in " + activity.getLocalClassName()
         + " (request = " + requestCode + ", result = " + resultCode + ")");
     
     if (requestCode == REQUEST_SIGN_IN) {
-      trySignIn = false;
-      resolvingConnectionFailure = false;
-  
-      if (resultCode == Activity.RESULT_OK) {
-        Log.d(TAG, "Resolved connection failure, connecting...");
-        client.connect();
-      } else if (resultCode == GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED) {
-        Log.d(TAG, "Reconnect required, connecting...");
-        client.connect();
+      GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+      
+      if (result.isSuccess()) {
+        Log.d(TAG, "User successfully signed in interactively");
+        account = result.getSignInAccount();
+        onSignInSuccessful();
       } else if (resultCode == Activity.RESULT_CANCELED) {
-        // The user canceled the sign-in flow
-        Log.d(TAG, "User canceled sign-in");
+        // The user canceled the interactive sign-in
+        Log.d(TAG, "User canceled interactive sign-in");
         setAutoSignIn(false);
       } else {
         // Can't sign in
@@ -147,37 +158,75 @@ public class GPGSHelperService extends Service
     } else if (resultCode == GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED) {
       // The user signed out from within one of the default GPGS UIs (i.e. the leaderboard UI)
       Log.d(TAG, "User signed out from within default GPGS UI");
-      setAutoSignIn(false);
-      client.disconnect();
+      signOut();
     }
   }
   
-  public void addActionOnSignIn(Activity activity, GPGSAction action) {
-    if (!activityToActionOnSignIn.containsKey(activity)) {
-      activityToActionOnSignIn.put(activity, new ArrayList<GPGSAction>());
+  public void onSignInSuccessful() {
+    Log.d(TAG, "Successfully signed in");
+    
+    setCurrentActivityAsPopupView(); // for the "welcome back" notification
+    performActionsOnSignIn(currentActivity);
+    setAutoSignIn(true);
+    
+    if (trySubmitCacheOnSignIn) {
+      trySubmitCacheOnSignIn = false;
+      scoreCache.submitCache(currentActivity, getAccount());
     }
-    activityToActionOnSignIn.get(activity).add(action);
+  }
+  
+  /*
+   * There are two actions on sign in for each activity: a primary one and a secondary one.
+   * The primary action on sign in is set by activities; the secondary action is set internally as
+   * part of tryActionOrConnect(). The two GPGSActions are stored as a length 2 array for
+   * simplicity, with the 0th being the primary action and the 1st being the secondary action. This
+   * array is then mapped to each activity with the HashMap activityToActionsOnSignIn.
+   */
+  
+  public void setActionOnSignIn(Activity activity, GPGSAction action) {
+    setActionOnSignIn(activity, action, 0);
+  }
+  
+  private void setSecondaryActionOnSignIn(Activity activity, GPGSAction action) {
+    setActionOnSignIn(activity, action, 1);
+  }
+  
+  private void setActionOnSignIn(Activity activity, GPGSAction action, int which) {
+    if (!activityToActionOnSignIn.containsKey(activity)) {
+      activityToActionOnSignIn.put(activity, new GPGSAction[2]);
+    }
+    
+    activityToActionOnSignIn.get(activity)[which] = action;
+  }
+  
+  /** If the activity uses actions on sign in, please call this in onStop() */
+  public void clearActionOnSignIn(Activity activity) {
+    activityToActionOnSignIn.remove(activity);
   }
   
   private void performActionsOnSignIn(Activity activity) {
     if (!activityToActionOnSignIn.containsKey(activity)) return;
+    
     for (GPGSAction action : activityToActionOnSignIn.get(activity)) {
-      action.performAction(activity, client);
+      if (action != null) {
+        action.performAction(activity, getAccount());
+      }
     }
-    // Clear the actions to prevent them being called multiple times
-    activityToActionOnSignIn.get(activity).clear();
+    
+    // Remove the actions to prevent them being called multiple times
+    activityToActionOnSignIn.remove(activity);
   }
   
   /**
-   * Try to perform {@code action}. If we aren't connected to GPGS, connect and perform
+   * Try to perform {@code action}. If we aren't connected to GPGS, sign in and perform
    * {@code action} after connecting.
    */
   public void tryActionOrConnect(Activity activity, GPGSAction action) {
-    if (isConnected()) {
-      action.performAction(activity, getApiClient());
+    if (isSignedIn()) {
+      action.performAction(activity, getAccount());
     } else {
-      addActionOnSignIn(activity, action);
-      connect(activity);
+      setSecondaryActionOnSignIn(activity, action);
+      signIn(activity);
     }
   }
   
@@ -187,23 +236,31 @@ public class GPGSHelperService extends Service
     editor.apply();
   }
   
+  public void submitScore(Score score) {
+    if (isSignedIn()) {
+      score.submit(this, getAccount());
+    } else {
+      scoreCache.cache(this, score);
+    }
+  }
+  
   /** Unlock an achievement. Make sure you're signed in before calling this. */
   public void unlockAchievement(@StringRes int id) {
-    if (!isConnected()) return;
+    if (!isSignedIn()) return;
     
     setCurrentActivityAsPopupView();
     String strId = getString(id);
-    Games.Achievements.unlock(client, strId);
+    Games.getAchievementsClient(this, getAccount()).unlock(strId);
     Log.d(TAG, "Unlocking achievement with id " + strId);
   }
   
   /** Increment an achievement by numSteps. Make sure you're signed in before calling this. */
   public void incrementAchievement(@StringRes int id, int numSteps) {
-    if (!isConnected()) return;
+    if (!isSignedIn()) return;
     
     setCurrentActivityAsPopupView();
     String strId = getString(id);
-    Games.Achievements.increment(client, strId, numSteps);
+    Games.getAchievementsClient(this, getAccount()).increment(strId, numSteps);
     Log.d(TAG, "Incrementing achievement with id " + strId);
   }
   
@@ -213,73 +270,30 @@ public class GPGSHelperService extends Service
   }
   
   private void setCurrentActivityAsPopupView() {
-    Games.setViewForPopups(client, currentActivity.getWindow().getDecorView()
-        .findViewById(android.R.id.content));
+    Games.getGamesClient(this, getAccount()).setViewForPopups(
+        currentActivity.getWindow().getDecorView().findViewById(android.R.id.content));
   }
   
   @Override
   public void onCreate() {
     // Create the client
-    Log.d(TAG, "Creating API client");
-    client = new GoogleApiClient.Builder(this)
-        .addConnectionCallbacks(this)
-        .addOnConnectionFailedListener(this)
-        .addApi(Games.API).addScope(Games.SCOPE_GAMES)
-        .build();
+    Log.d(TAG, "Creating sign-in client");
+    client = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN);
   }
   
   @Override
   public void onDestroy() {
     // There are no activities left - disconnect from the API
-    Log.d(TAG, "Destroying service: disconnecting from API");
-    client.unregisterConnectionCallbacks(this);
-    client.unregisterConnectionFailedListener(this);
-    client.disconnect();
+    Log.d(TAG, "Destroying service: signing out from API");
+    client.signOut();
     client = null;
+    account = null;
   }
   
   @Override
   public GPGSHelperBinder onBind(Intent intent) {
     Log.d(TAG, "Bound to activity");
     return binder;
-  }
-  
-  @Override
-  public void onConnectionFailed(@NonNull ConnectionResult result) {
-    if (resolvingConnectionFailure) return; // already resolving
-    
-    if (trySignIn) {
-      // Attempt to resolve the connection failure, usually resulting in the sign-in flow
-      Log.d(TAG, "Attempt to connect failed, attempting to resolve...");
-      Log.d(TAG, "(Error: " + result + ")");
-      trySignIn = false;
-      resolvingConnectionFailure = true;
-      
-      //noinspection RedundantIfStatement
-      if (!BaseGameUtils.resolveConnectionFailure(currentActivity, client, result, REQUEST_SIGN_IN,
-          R.string.sign_in_other_error)) {
-        Log.d(TAG, "Could not resolve connection failure");
-        resolvingConnectionFailure = false;
-      }
-    }
-  }
-  
-  @Override
-  public void onConnected(@Nullable Bundle bundle) {
-    Log.d(TAG, "Connected");
-    
-    performActionsOnSignIn(currentActivity);
-    setAutoSignIn(true);
-    
-    if (trySubmitCacheOnSignIn) {
-      trySubmitCacheOnSignIn = false;
-      scoreCache.submitCache(currentActivity, client);
-    }
-  }
-  
-  @Override
-  public void onConnectionSuspended(int i) {
-    Log.d(TAG, "Connection suspended, cause = " + i);
   }
   
   class GPGSHelperBinder extends Binder {
