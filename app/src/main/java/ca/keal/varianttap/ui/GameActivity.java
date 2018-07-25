@@ -79,7 +79,7 @@ public class GameActivity extends MusicActivity
   private static final String STATE_COUNTDOWN_CIRCLE_PROGRESS = "countdownCircleProgress";
   private static final String STATE_COUNTDOWN_CIRCLE_VALUE = "countdownCircleValue";
   private static final String STATE_COUNTDOWN_CIRCLE_RESETTING = "countdownCircleResetting";
-  private static final String STATE_IMG_PAIR_ID = "imgPairId";
+  private static final String STATE_IMG_PAIR_NAME = "imgPairName";
   
   /** The index of the variant ImageSwitcher */
   private int variantIdx;
@@ -115,6 +115,7 @@ public class GameActivity extends MusicActivity
   
   /** The array of images in imgsGrid. */
   private ImageSwitcher[] imgs;
+  private String currentImgName; // needed for saving state
   private Pair<Drawable, Drawable> currentImgPair;
   
   private TextView startingCountdownText;
@@ -217,6 +218,9 @@ public class GameActivity extends MusicActivity
     });
     
     increasePauseButtonHitbox();
+    
+    // Start preloading the images
+    ImageSupplier.getInstance(this).preload(getResources().getInteger(R.integer.images_to_preload));
     
     // There are 3 difficulties: 0 (easy), 1 (normal) and 2 (hard). Each successive difficulty has
     // a higher number of images: easy has 4 images, normal has 6, and hard has 9.
@@ -419,7 +423,7 @@ public class GameActivity extends MusicActivity
     outState.putInt(STATE_COUNTDOWN_CIRCLE_VALUE, Integer.valueOf(countdownCircle.getText()));
     outState.putBoolean(STATE_COUNTDOWN_CIRCLE_RESETTING, resetCountdownAnim.isRunning());
     
-    outState.putInt(STATE_IMG_PAIR_ID, ImageSupplier.getInstance(this).getPairId(currentImgPair));
+    outState.putString(STATE_IMG_PAIR_NAME, currentImgName);
   }
   
   private void restoreState(Bundle savedInstanceState) {
@@ -450,8 +454,8 @@ public class GameActivity extends MusicActivity
     
     scoreText.setText(String.valueOf(score));
     
-    currentImgPair = ImageSupplier.getInstance(this).getPairById(
-        savedInstanceState.getInt(STATE_IMG_PAIR_ID));
+    currentImgPair = ImageSupplier.getInstance(this).getPairByName(
+        savedInstanceState.getString(STATE_IMG_PAIR_NAME));
     
     for (int i = 0; i < imgs.length; i++) {
       imgs[i].setImageDrawable(i == variantIdx ? currentImgPair.second : currentImgPair.first);
@@ -656,7 +660,15 @@ public class GameActivity extends MusicActivity
    * others have the corresponding normal image.
    */
   private void updateImages() {
-    currentImgPair = ImageSupplier.getInstance(this).getRandomPair();
+    ImageSupplier supplier = ImageSupplier.getInstance(this);
+    
+    Pair<String, Pair<Drawable, Drawable>> nameAndPair = supplier.getRandomPair();
+    currentImgName = nameAndPair.first;
+    currentImgPair = nameAndPair.second;
+    
+    // Start preloading an image to replace this one
+    supplier.preload(getResources().getInteger(R.integer.images_to_preload), currentImgName);
+    
     Drawable normal = currentImgPair.first, variant = currentImgPair.second;
     
     variantIdx = ImageSupplier.getInstance(this).random.nextInt(imgs.length);

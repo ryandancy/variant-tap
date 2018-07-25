@@ -13,6 +13,8 @@
   <integer name="min_time_ms">1000</integer>
   <integer name="min_time_rounds">85</integer>
   
+  <integer name="images_to_preload">15</integer>
+  
   <!-- ACHIEVEMENT-RELATED INTEGERS -->
   
   <integer name="achievement_play_with_drawer_times">10</integer>

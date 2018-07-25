@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
@@ -34,12 +35,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import ca.keal.varianttap.R;
+import ca.keal.varianttap.ads.AdRemovalManager;
+import ca.keal.varianttap.ads.EUConsentForm;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton;
-import ca.keal.varianttap.ads.AdRemovalManager;
-import ca.keal.varianttap.ads.EUConsentForm;
 import ca.keal.varianttap.util.ImageSupplier;
 import ca.keal.varianttap.util.Util;
 
@@ -75,6 +76,9 @@ public class MainActivity extends AppCompatActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    
+    // Start preloading the images
+    ImageSupplier.getInstance(this).preload(getResources().getInteger(R.integer.images_to_preload));
     
     // TODO replace with real ID, not banner ID
     MobileAds.initialize(this, getString(R.string.ad_banner_id));
@@ -270,10 +274,14 @@ public class MainActivity extends AppCompatActivity
         = new FrameLayout.LayoutParams(length, length, Gravity.TOP | Gravity.LEFT);
     image.setLayoutParams(params);
     
-    Drawable drawable = ImageSupplier.getInstance(this).getRandomImage();
-    image.setImageDrawable(drawable);
+    ImageSupplier supplier = ImageSupplier.getInstance(this);
+    Pair<String, Drawable> nameAndDrawable = supplier.getRandomImage();
+    image.setImageDrawable(nameAndDrawable.second);
     image.setAdjustViewBounds(true);
     image.setScaleType(ImageView.ScaleType.FIT_XY);
+    
+    // Start loading an image to replace this one
+    supplier.preload(getResources().getInteger(R.integer.images_to_preload), nameAndDrawable.first);
     
     final float width = Util.getWidthDp(getResources());
     final float height = Util.getHeightDp(getResources());
