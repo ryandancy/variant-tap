@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="openclipart_270_key_variant_tmp.svg"
+   viewBox="0 0 935.53 935.53003"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:version="0.91 r13725"
+   width="935.53003"
+   height="935.53003">
+  <defs
+     id="defs4">
+    <filter
+       id="filter3252"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur3254"
+         stdDeviation="1.1789063"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       id="filter3208"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur3210"
+         stdDeviation="1.14875"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       id="filter3148"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur3150"
+         stdDeviation="1.4028125"
+         inkscape:collect="always" />
+    </filter>
+    <filter
+       id="filter3135"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur3137"
+         stdDeviation="2.8346875"
+         inkscape:collect="always" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="-8"
+     pagecolor="#ffffff"
+     inkscape:window-height="660"
+     inkscape:zoom="0.72028434"
+     inkscape:window-x="1272"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="g2346"
+     inkscape:cx="642.85995"
+     inkscape:cy="416.7151"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     transform="translate(-58.414,369.72003)">
+    <g
+       id="g2346"
+       inkscape:label="Warstwa 1"
+       transform="matrix(2.1166,0,0,2.1166,-102.65,-694.2926)">
+      <path
+         id="path2907"
+         sodipodi:nodetypes="csscccccccccccccccccccccccc"
+         style="fill:#ffcc00;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round"
+         d="m 173.53,283.56 c -53.64,0 -97.186,40.89 -97.186,91.28 0,50.4 43.546,91.32 97.186,91.32 40.29,0 74.87,-23.07 89.59,-55.91 l 25.26,0 c 0.33,-17.89 -0.7,-15.44 -0.7,-15.44 l 20.88,8.25 2.13,0 10.37,-15.44 9.47,14.29 3.07,0.11 12.65,-13.86 19.33,17.05 8.4,0 22.08,-17.59 14.81,16.11 3.4,-0.13 9.54,-6.72 13.13,5.01 11.57,-0.53 14.83,-15.77 11.21,14.39 6.94,0 36.35,-47.14 0,-13.4 -254.72,0 c -14.72,-32.83 -49.3,-55.88 -89.59,-55.88 z"
+         inkscape:connector-curvature="0" />
+      <rect
+         id="rect2918"
+         style="fill:#d4aa00;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round"
+         height="7.6531"
+         width="236.00999"
+         y="347.76001"
+         x="268.10001" />
+      <rect
+         id="rect2920"
+         style="fill:#d4aa00;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round"
+         height="7.6531"
+         width="223.84"
+         y="364.67999"
+         x="268.10001" />
+      <path
+         id="path3126"
+         style="fill:#000000;stroke:#000000;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;filter:url(#filter3135)"
+         d="m 517.27,337.7 0,11.1 -36.37,47.12 -6.94,0 -11.19,-14.37 -14.84,15.75 -11.56,0.53 -13.13,-5 -9.56,6.72 -3.37,0.12 -14.82,-16.09 -22.09,17.59 -8.41,-0.03 -19.31,-17.03 -12.66,13.84 -3.06,-0.09 -9.47,-14.28 -10.37,15.43 -2.13,0 -20.62,-8.15 c 0.27,0.72 0.65,3.77 0.44,15.34 l -25.25,0 c -14.73,32.84 -49.31,55.91 -89.6,55.91 -45.57,0 -83.85,-29.53 -94.342,-69.31 9.599,40.93 48.462,71.62 94.902,71.62 40.29,0 74.87,-23.07 89.6,-55.91 l 25.25,0 c 0.21,-11.18 -0.11,-14.42 -0.38,-15.28 l 20.57,8.1 2.12,0 10.38,-15.44 9.46,14.28 3.07,0.09 12.65,-13.84 19.35,17.03 8.4,0.03 22.07,-17.59 14.81,16.09 3.4,-0.12 9.54,-6.72 13.12,5 11.59,-0.53 14.82,-15.75 11.22,14.37 6.93,0 36.35,-47.12 0,-13.41 z"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="ccccccccccccccccccccccscsccccccccccccccccccccccc" />
+      <path
+         id="path3139"
+         style="fill:#ffffff;filter:url(#filter3148)"
+         d="m 173.53,283.56 c -53.64,0 -97.186,40.89 -97.186,91.28 0,6.3 0.673,12.47 1.968,18.41 -0.917,-5.04 -1.374,-10.22 -1.374,-15.5 0,-50.39 43.542,-91.28 97.182,-91.28 40.29,0 74.87,23.05 89.6,55.87 l 254.12,0 0,-2.9 -254.72,0 c -14.72,-32.83 -49.3,-55.88 -89.59,-55.88 z"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="sscssccccs" />
+      <path
+         id="path3171"
+         style="fill:#808080;filter:url(#filter3208)"
+         d="m 191,294.92 c -2.04,0.38 -3.96,1.35 -5.47,2.81 -2.07,2 -3.22,4.75 -3.22,7.63 l 0,138.53 c 0,2.83 1.12,5.53 3.09,7.5 -0.87,-1.56 -1.37,-3.32 -1.37,-5.16 l 0,-138.53 c 0,-2.87 1.15,-5.62 3.22,-7.62 1.07,-1.04 2.36,-1.84 3.75,-2.35 l 0,-2.81 z m 4.62,0.19 0,159.03 c 0.58,-0.14 1.15,-0.29 1.72,-0.44 l 0,-156.25 c 2.56,0.62 5.08,1.36 7.53,2.19 l 0,-1.75 c -3.01,-1.08 -6.08,-2.01 -9.25,-2.78 z m 13.88,4.56 0,149.91 c 0.58,-0.25 1.14,-0.49 1.72,-0.75 l 0,-146.81 c 2.57,1.08 5.09,2.25 7.53,3.56 l 0,-1.38 c -2.97,-1.67 -6.07,-3.19 -9.25,-4.53 z m 13.87,7.35 0,135.21 c 0.58,-0.37 1.15,-0.73 1.72,-1.12 l 0,-131.75 c 2.62,1.69 5.13,3.5 7.53,5.44 l 0,-0.91 c -2.91,-2.48 -6,-4.77 -9.25,-6.87 z m 13.88,11.15 0,112.91 c 0.58,-0.58 1.15,-1.16 1.72,-1.75 l 0,-108.81 c 2.53,2.5 4.93,5.12 7.12,7.9 -2.65,-3.63 -5.61,-7.06 -8.84,-10.25 z m 8.84,10.25 c 0.14,0.18 0.27,0.36 0.41,0.53 l 0,-0.03 c -0.13,-0.17 -0.28,-0.33 -0.41,-0.5 z m 5.03,7.78 0,76.82 c 0.6,-1.07 1.17,-2.13 1.72,-3.22 l 0,-70.35 c -0.55,-1.09 -1.12,-2.18 -1.72,-3.25 z"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3166"
+         style="fill:#ffdd55;filter:url(#filter3252)"
+         d="m 191.5,295.42 c -1.01,0.19 -1.99,0.54 -2.91,1 l 0,156.06 c -1.1,-0.2 -2.16,-0.58 -3.16,-1.12 0.43,0.48 0.9,0.94 1.41,1.34 1.38,1.09 2.98,1.79 4.66,2.1 l 0,-159.38 z m 10.97,2 0,152.13 c -2.08,0.74 -4.2,1.43 -6.35,2.03 l 0,3.06 c 3.17,-0.77 6.24,-1.7 9.25,-2.78 l 0,-153.47 c -0.96,-0.34 -1.93,-0.65 -2.9,-0.97 z m 13.87,5.72 0,140.09 c -2.06,1.16 -4.17,2.25 -6.34,3.25 l 0,3.6 c 3.18,-1.34 6.28,-2.86 9.25,-4.53 l 0,-140.85 c -0.96,-0.53 -1.93,-1.05 -2.91,-1.56 z m 13.88,8.94 0,121.44 c -2.03,1.72 -4.16,3.35 -6.35,4.9 l 0,4.31 c 3.26,-2.1 6.34,-4.42 9.25,-6.9 l 0,-121.44 c -0.94,-0.8 -1.92,-1.55 -2.9,-2.31 z m 7.53,6.59 0,0.69 c 2.28,2.46 4.4,5.04 6.34,7.75 l 0,91.37 c -1.94,2.71 -4.07,5.29 -6.34,7.75 l 0,5.35 c 3.38,-3.34 6.5,-6.95 9.25,-10.78 l 0,-91.38 c -2.75,-3.83 -5.87,-7.41 -9.25,-10.75 z m 13.87,18.03 0,3.32 c 4.7,10.05 7.31,21.15 7.31,32.78 0,11.63 -2.61,22.72 -7.31,32.78 l 0,7.94 c 6.51,-11.49 10.22,-24.57 10.22,-38.41 0,-13.84 -3.71,-26.92 -10.22,-38.41 z"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+  <metadata
+     id="metadata22">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Key</dc:title>
+        <dc:date>2007-11-29T14:56:41</dc:date>
+        <dc:description>golden key with a little of 3D</dc:description>
+        <dc:source>https://openclipart.org/detail/9277/key-by-koliberek</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>koliberek</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>key</rdf:li>
+            <rdf:li>klucz</rdf:li>
+            <rdf:li>kluczyk</rdf:li>
+            <rdf:li>tajemnica</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

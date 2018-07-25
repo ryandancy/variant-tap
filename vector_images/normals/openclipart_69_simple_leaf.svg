@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="openclipart_69_simple_leaf.svg"
+   viewBox="0 0 172.40818 172.40818"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   width="172.40817"
+   height="172.40817">
+  <defs
+     id="defs15" />
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="-8"
+     pagecolor="#ffffff"
+     inkscape:window-height="660"
+     inkscape:window-maximized="1"
+     inkscape:zoom="1.4"
+     inkscape:window-x="1272"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="118.85917"
+     inkscape:cy="122.12673"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     id="layer1"
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     transform="translate(-211.02813,-262.18057)">
+    <g
+       id="g4512"
+       transform="translate(0,-13.993406)">
+      <path
+         id="path3765"
+         sodipodi:nodetypes="cssssscccccc"
+         style="fill:#5dc328;stroke:#167d16;stroke-width:3.75"
+         d="m 381.57,295.1 c -1.7708,18.314 -1.575,36.925 -4.9421,54.989 -3.1333,16.81 -6.7883,34.095 -15.44,49.053 -6.0902,10.53 -14.155,20.461 -24.719,26.596 -23.916,13.887 -52.123,5.8352 -70.584,-13.241 -13.902,-14.365 -19.149,-31.903 -15.115,-50.891 3.451,-16.243 17.33,-28.331 30.878,-37.245 28.595,-19.045 64.401,-24.085 97.801,-28.92 l 1.0612,-0.16839 1.0606,-0.17174 1e-5,6e-5 z"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path2839"
+         sodipodi:nodetypes="cc"
+         style="fill:none;stroke:#167d16;stroke-width:3.75"
+         d="M 371.18,306.96 C 278.263,407.24 274.035,411 274.035,411"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3885"
+         sodipodi:nodetypes="cc"
+         style="fill:none;stroke:#167d16;stroke-width:3.75"
+         d="m 309.42,331.48 c 5.1414,22.574 19.839,34.544 42.296,37.902"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3885-8"
+         sodipodi:nodetypes="cc"
+         style="fill:none;stroke:#167d16;stroke-width:3.75"
+         d="m 285.55,350.22 c 5.9985,26.337 23.146,40.303 49.347,44.221"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3885-2"
+         sodipodi:nodetypes="cc"
+         style="fill:none;stroke:#167d16;stroke-width:3.75"
+         d="m 269.28,374.7 c 5.1414,22.574 19.839,34.544 42.296,37.902"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3885-7"
+         sodipodi:nodetypes="cc"
+         style="fill:none;stroke:#167d16;stroke-width:3.75"
+         d="m 334,317.81 c 3.5636,15.647 13.751,23.943 29.316,26.271"
+         inkscape:connector-curvature="0" />
+      <path
+         id="path3885-2-9"
+         sodipodi:nodetypes="cc"
+         style="fill:none;stroke:#167d16;stroke-width:3.75"
+         d="m 212.01,419.12 c 19.724,12.124 38.559,10.001 56.673,-3.6916"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+  <metadata
+     id="metadata13">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Simple leaf</dc:title>
+        <dc:date>2010-05-20T23:26:23</dc:date>
+        <dc:description>A very simple green leaf. uma folha verde bem simples.</dc:description>
+        <dc:source>https://openclipart.org/detail/61483/simple-leaf-by-laobc</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>laobc</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>green</rdf:li>
+            <rdf:li>leaf</rdf:li>
+            <rdf:li>spring2010</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

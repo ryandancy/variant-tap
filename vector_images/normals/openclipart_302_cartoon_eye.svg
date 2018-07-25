@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3441"
+   sodipodi:docname="openclipart_302_cartoon_eye.svg"
+   viewBox="0 0 611.00758 611.00758"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:version="0.91 r13725"
+   width="611.00757"
+   height="611.00757">
+  <defs
+     id="defs3443">
+    <filter
+       id="filter3301"
+       height="1.2351"
+       width="1.2316"
+       y="-0.11755"
+       x="-0.1158"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur3303"
+         stdDeviation="1.6419579"
+         inkscape:collect="always" />
+    </filter>
+    <linearGradient
+       id="linearGradient3327">
+      <stop
+         id="stop3329"
+         style="stop-color:#00a1ff"
+         offset="0" />
+      <stop
+         id="stop3331"
+         style="stop-color:#000001"
+         offset="1" />
+    </linearGradient>
+    <filter
+       id="filter3405"
+       height="1.4529999"
+       width="1.4362"
+       y="-0.2265"
+       x="-0.21811"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur3407"
+         stdDeviation="0.61965375"
+         inkscape:collect="always" />
+    </filter>
+    <radialGradient
+       id="radialGradient3511"
+       gradientUnits="userSpaceOnUse"
+       cy="312.64999"
+       cx="349.34"
+       gradientTransform="matrix(0.94194,1.2208,-1.3554,1.0458,445.1,-438.96)"
+       r="17.014999"
+       inkscape:collect="always">
+      <stop
+         id="stop3317"
+         style="stop-color:#000000"
+         offset="0" />
+      <stop
+         id="stop3319"
+         style="stop-color:#000000;stop-opacity:0"
+         offset="1" />
+    </radialGradient>
+    <radialGradient
+       id="radialGradient3513"
+       xlink:href="#linearGradient3327"
+       gradientUnits="userSpaceOnUse"
+       cy="321.23001"
+       cx="358.25"
+       gradientTransform="matrix(0.45591,0.49017,-0.78641,0.73144,450.89,-86.132)"
+       r="17.014999"
+       inkscape:collect="always" />
+    <radialGradient
+       id="radialGradient3515"
+       xlink:href="#linearGradient3327"
+       gradientUnits="userSpaceOnUse"
+       cy="329.07999"
+       cx="356.07999"
+       gradientTransform="matrix(-4.1714e-7,0.63359,-1.1671,-6.7369e-7,738.52,103.5)"
+       r="17.014999"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview3445"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="-8"
+     pagecolor="#ffffff"
+     inkscape:window-height="660"
+     inkscape:zoom="0.25455844"
+     inkscape:window-x="1272"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="386.43602"
+     inkscape:cy="516.18813"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="in"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-148.10332,-24.9637)">
+    <ellipse
+       id="path3185"
+       style="fill:#ffffff;stroke:#000000;stroke-width:12.30584812;stroke-linecap:round"
+       transform="matrix(0.97039722,0.24151446,-0.24151446,0.97039722,0,0)"
+       cx="514.47461"
+       cy="209.79341"
+       rx="168.33351"
+       ry="165.74377" />
+    <ellipse
+       id="path3305"
+       style="fill:url(#radialGradient3511);stroke:#000000;stroke-width:1.20000005;stroke-linecap:round;filter:url(#filter3301)"
+       transform="matrix(8.8994,2.2149,-2.2149,8.8994,-1994.5,-3301.274)"
+       cx="354.43729"
+       cy="319.87531"
+       rx="16.414978"
+       ry="16.162441" />
+    <ellipse
+       id="path3325"
+       style="fill:url(#radialGradient3513);stroke:#000000;stroke-width:1.20000005;stroke-linecap:round;filter:url(#filter3301)"
+       transform="matrix(8.8994,2.2149,-2.2149,8.8994,-1994.5,-3301.274)"
+       cx="354.43729"
+       cy="319.87531"
+       rx="16.414978"
+       ry="16.162441" />
+    <ellipse
+       id="path3409"
+       style="fill:url(#radialGradient3515);stroke:#000000;stroke-width:1.20000005;stroke-linecap:round;filter:url(#filter3301)"
+       transform="matrix(8.8994,2.2149,-2.2149,8.8994,-1994.5,-3301.274)"
+       cx="354.43729"
+       cy="319.87531"
+       rx="16.414978"
+       ry="16.162441" />
+    <circle
+       id="path3323"
+       style="fill:#000000;stroke:#000000;stroke-width:14.16657257;stroke-linecap:round"
+       transform="matrix(0.97039708,0.24151503,-0.24151503,0.97039708,0,0)"
+       cx="525.77838"
+       cy="187.87006"
+       r="76.023994" />
+    <path
+       id="path3170"
+       sodipodi:nodetypes="cscccssscscscssscsssc"
+       style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.06229997"
+       d="m 366.91,163.62604 c -144.49,71.97 -202.64,210.61 -202.64,210.61 19.04,-27.74 41.99,-52.27 66.71,-73.84 -38.05,59.47 -55.12,115.31 -55.12,115.31 l -27.16,36.06 c 3.26,9.1 37.19,24.32 48.22,-8.88 111.9,-336.89 362.82,-253.56 456.24,-208.43 0.11,0.05 0.47,0.41 0.58,0.46 0.92,0.99 9.31,3.88 22.99,11.65 -2.31,20.33 -13.94,141.34 -110.72,226.45 -61.48,54.07 -187.26,54.21 -290.44,50.09 0,0 130.22,25.78 246.5,-9.17 136.07,-40.88 181.01,-209.37 185.83,-261.73 3.71,-1.41 6.56,-3.32 6.49,-3.38 -0.12,-0.09 62.06,-33.01 39.1,-43.44 -46.55,-21.15 -88.2,-35.98 -126.87,-45.35 -16.3,-3.94 -31.87,-6.69 -47.28,-8.77 55.21,-10.07 93.78,-13.47 96.97,-15.06 -0.18,-0.07 -0.19,-0.39 -0.58,-0.46 -5.56,-0.95 -41.51,-10.74 -97.93,-13.78 -84.63,-4.57 -154.35,13.49 -210.89,41.66 z"
+       inkscape:connector-curvature="0" />
+    <ellipse
+       id="path3335"
+       style="fill:#ffffff;stroke-width:0;filter:url(#filter3405)"
+       transform="matrix(10.434,2.5968,-2.5968,10.434,-2402,-3924.774)"
+       cx="355.95251"
+       cy="317.4762"
+       rx="3.4092648"
+       ry="3.2829957" />
+  </g>
+  <metadata
+     id="metadata26">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>cartoon eye</dc:title>
+        <dc:date>2008-07-14T03:06:11</dc:date>
+        <dc:description>Sort of an anime kind of look. I hope it useful to someone.</dc:description>
+        <dc:source>https://openclipart.org/detail/17816/cartoon-eye-by-narrowhouse</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>narrowhouse</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>cartoon</rdf:li>
+            <rdf:li>cleanup</rdf:li>
+            <rdf:li>eye</rdf:li>
+            <rdf:li>face</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

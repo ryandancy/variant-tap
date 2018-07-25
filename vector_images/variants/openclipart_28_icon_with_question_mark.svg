@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg1901"
+   sodipodi:docname="openclipart_28_icon_with_question_mark_variant_tmp.svg"
+   inkscape:export-filename="C:\Important\svg\globe.png"
+   viewBox="0 0 255.4 255.4"
+   sodipodi:version="0.32"
+   inkscape:export-xdpi="90"
+   version="1.0"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-ydpi="90"
+   inkscape:version="0.91 r13725">
+  <defs
+     id="defs1903">
+    <filter
+       id="filter4174"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur4176"
+         stdDeviation="3.8309765"
+         inkscape:collect="always" />
+    </filter>
+    <radialGradient
+       id="radialGradient4178"
+       gradientUnits="userSpaceOnUse"
+       cy="95.362"
+       cx="-789"
+       gradientTransform="matrix(.81781 .98038 -.81622 .68087 -65.915 803.96)"
+       r="409"
+       inkscape:collect="always">
+      <stop
+         id="stop11434"
+         style="stop-color:#0085f8"
+         offset="0" />
+      <stop
+         id="stop11436"
+         style="stop-color:#003b6e"
+         offset="1" />
+    </radialGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="-8"
+     pagecolor="#ffffff"
+     gridtolerance="10000"
+     inkscape:window-height="660"
+     inkscape:zoom="1.4142136"
+     inkscape:window-x="1272"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="242.83852"
+     inkscape:cy="127.6345"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     inkscape:window-maximized="1" />
+  <g
+     id="layer1"
+     inkscape:label="Taso 1"
+     inkscape:groupmode="layer"
+     transform="translate(794.7 -99.66)">
+    <path
+       id="path3394"
+       sodipodi:nodetypes="csssc"
+       style="filter:url(#filter4174);fill:#000000"
+       d="m-667 99.66c-70.44 0-127.7 57.27-127.7 127.71 0 70.43 57.26 127.69 127.7 127.69s127.7-57.26 127.7-127.69c0-70.44-57.26-127.71-127.7-127.71z" />
+    <path
+       id="path10461"
+       sodipodi:rx="409"
+       sodipodi:ry="409"
+       style="stroke-linejoin:round;stroke:#ffffff;stroke-linecap:round;stroke-width:33.333;fill:url(#radialGradient4178)"
+       sodipodi:type="arc"
+       d="m -258,227.36218 a 409,409 0 0 1 -409,409 409,409 0 0 1 -409,-409 409,409 0 0 1 409,-409 409,409 0 0 1 409,409 z"
+       inkscape:export-ydpi="70.477676"
+       inkscape:export-filename="C:\Important\kuvat\My_OS\que.png"
+       transform="matrix(.3 0 0 .3 -466.9 159.15)"
+       sodipodi:cy="227.36218"
+       sodipodi:cx="-667"
+       inkscape:export-xdpi="70.477676" />
+    <path
+       id="path11521"
+       sodipodi:rx="61.518291"
+       sodipodi:ry="61.518291"
+       style="stroke-linejoin:round;stroke:#000000;stroke-linecap:round;stroke-width:39.804;fill:#000000"
+       sodipodi:type="arc"
+       d="m -576.9991,463.34222 a 61.518291,61.518291 0 0 1 -61.5183,61.5183 61.518291,61.518291 0 0 1 -61.51829,-61.5183 61.518291,61.518291 0 0 1 61.51829,-61.51829 61.518291,61.518291 0 0 1 61.5183,61.51829 z"
+       transform="matrix(.25123 0 0 .25123 -509.28 174.45)"
+       sodipodi:cy="463.34222"
+       sodipodi:cx="-638.5174" />
+    <path
+       id="path11457"
+       sodipodi:rx="61.518291"
+       sodipodi:ry="61.518291"
+       style="stroke-linejoin:round;stroke:#ffffff;stroke-linecap:round;stroke-width:39.804;fill:#ffffff"
+       sodipodi:type="arc"
+       d="m -576.9991,463.34222 a 61.518291,61.518291 0 0 1 -61.5183,61.5183 61.518291,61.518291 0 0 1 -61.51829,-61.5183 61.518291,61.518291 0 0 1 61.51829,-61.51829 61.518291,61.518291 0 0 1 61.5183,61.51829 z"
+       transform="matrix(.25123 0 0 .25123 -509.28 174.45)"
+       sodipodi:cy="463.34222"
+       sodipodi:cx="-638.5174" />
+    <path
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m -688.43306,251.65581 0,-108.58189 c 0,-9.88105 37.47666,-10.20011 37.47666,0 l 0,108.58189 c 0,9.87108 -37.47666,9.47077 -37.47666,0 z"
+       id="path3349"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+  <metadata
+     id="metadata17">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Icon with question mark</dc:title>
+        <dc:date>2009-12-25T10:25:12</dc:date>
+        <dc:description>An icon with a question mark.</dc:description>
+        <dc:source>https://openclipart.org/detail/28725/icon-with-question-mark-by-purzen</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>purzen</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>cartoon</rdf:li>
+            <rdf:li>colour</rdf:li>
+            <rdf:li>help</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>info</rdf:li>
+            <rdf:li>question</rdf:li>
+            <rdf:li>sign</rdf:li>
+            <rdf:li>symbol</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

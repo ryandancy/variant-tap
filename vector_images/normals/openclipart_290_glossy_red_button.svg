@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg11772"
+   sodipodi:docname="openclipart_290_glossy_red_button.svg"
+   viewBox="0 0 323.01932 323.01932"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   width="323.01932"
+   height="323.01932">
+  <defs
+     id="defs11774">
+    <linearGradient
+       id="linearGradient11732"
+       y2="367.88"
+       gradientUnits="userSpaceOnUse"
+       x2="315.47"
+       y1="287.48999"
+       x1="241.41"
+       inkscape:collect="always">
+      <stop
+         id="stop4158-0"
+         style="stop-color:#ffffff"
+         offset="0" />
+      <stop
+         id="stop4160-0"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+    <filter
+       id="filter6126-7"
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB">
+      <feGaussianBlur
+         id="feGaussianBlur6128-1"
+         stdDeviation="0.53035713"
+         inkscape:collect="always" />
+    </filter>
+    <linearGradient
+       id="linearGradient11734"
+       y2="391.45001"
+       gradientUnits="userSpaceOnUse"
+       x2="342"
+       y1="300.85999"
+       x1="275.60999"
+       inkscape:collect="always">
+      <stop
+         id="stop7201"
+         style="stop-color:#550000"
+         offset="0" />
+      <stop
+         id="stop7203"
+         style="stop-color:#ff0000"
+         offset="1" />
+    </linearGradient>
+    <radialGradient
+       id="radialGradient11736"
+       gradientUnits="userSpaceOnUse"
+       cy="386.57001"
+       cx="312.78"
+       gradientTransform="matrix(-0.59327,-0.59327,0.71505,-0.71505,243.27,849.03)"
+       r="53.035999"
+       inkscape:collect="always">
+      <stop
+         id="stop7113-1"
+         style="stop-color:#ffffff;stop-opacity:.40816"
+         offset="0" />
+      <stop
+         id="stop7115-8"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1" />
+    </radialGradient>
+    <linearGradient
+       id="linearGradient11925"
+       y2="338.82001"
+       gradientUnits="userSpaceOnUse"
+       y1="286.67001"
+       gradientTransform="matrix(0.95534,0,0,0.95534,-84.897,472.67)"
+       x2="300.26999"
+       x1="255.32001"
+       inkscape:collect="always">
+      <stop
+         id="stop4150-3"
+         style="stop-color:#ffffff"
+         offset="0" />
+      <stop
+         id="stop4152-8"
+         style="stop-color:#ffffff;stop-opacity:0"
+         offset="1" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     inkscape:window-y="-8"
+     pagecolor="#ffffff"
+     inkscape:window-height="660"
+     inkscape:window-maximized="1"
+     inkscape:zoom="0.98994949"
+     inkscape:window-x="1272"
+     showgrid="false"
+     borderopacity="1.0"
+     inkscape:current-layer="layer1"
+     inkscape:cx="175.39814"
+     inkscape:cy="156.54889"
+     inkscape:window-width="1280"
+     inkscape:pageopacity="0.0"
+     inkscape:document-units="px"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     id="layer1"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     transform="translate(-35.847126,-695.52762)">
+    <g
+       id="g11689"
+       transform="matrix(2.9051,0,0,2.9051,-368.53,-1417.5)">
+      <circle
+         id="path7177"
+         style="fill:#999999"
+         transform="matrix(0.97354,0,0,0.97354,-100.92,445.99)"
+         cx="303.75"
+         cy="346.11218"
+         r="53.035713" />
+      <circle
+         id="path7179"
+         style="fill:url(#linearGradient11732)"
+         transform="matrix(0.9596,0,0,0.9596,-96.687,450.82)"
+         cx="303.75"
+         cy="346.11218"
+         r="53.035713" />
+      <circle
+         id="path7181"
+         style="fill:#ececec;filter:url(#filter6126-7)"
+         transform="matrix(0.87355,0,0,0.87355,-70.55,480.6)"
+         cx="303.75"
+         cy="346.11218"
+         r="53.035713" />
+      <circle
+         id="path7183"
+         style="fill:#999999;filter:url(#filter6126-7)"
+         transform="matrix(0.83838,0,0,0.83838,-59.869,492.77)"
+         cx="303.75"
+         cy="346.11218"
+         r="53.035713" />
+      <circle
+         id="path7185"
+         style="fill:url(#linearGradient11734)"
+         transform="matrix(0.80587,0,0,0.80587,-49.992,504.02)"
+         cx="303.75"
+         cy="346.11218"
+         r="53.035713" />
+      <circle
+         id="path7187"
+         style="fill:url(#radialGradient11736)"
+         transform="matrix(0.75825,0,0,0.75825,-34.266,522.52)"
+         cx="303.75"
+         cy="346.11218"
+         r="53.035713" />
+      <path
+         id="path7189"
+         style="opacity:0.31771001;fill:url(#linearGradient11925)"
+         inkscape:connector-curvature="0"
+         d="m 193.79,742.76 c -13.331,0.30069 -26.186,7.358 -33.336,19.742 -7.6903,13.32 -6.7139,29.266 1.1545,41.331 0.85306,-26.532 21.132,-46.515 46.324,-45.054 8.2589,0.47907 16.054,3.2001 22.859,7.5908 -3.2578,-7.4498 -8.8171,-13.953 -16.394,-18.327 -6.4867,-3.7451 -13.625,-5.4393 -20.608,-5.2818 z" />
+    </g>
+  </g>
+  <metadata
+     id="metadata28">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>glossy red button</dc:title>
+        <dc:date>2011-02-26T02:58:54</dc:date>
+        <dc:description />
+        <dc:source>https://openclipart.org/detail/122749/glossy-red-button-by-ricardomaia</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>ricardomaia</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>button</rdf:li>
+            <rdf:li>glass</rdf:li>
+            <rdf:li>glossy</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
