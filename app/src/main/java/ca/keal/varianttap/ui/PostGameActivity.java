@@ -231,20 +231,28 @@ public class PostGameActivity extends AppCompatActivity implements
   private void unlockXScoreOnXDifficultyAchievements() {
     switch (difficulty) {
       case 0:
-        if (score >= 500) gpgsHelper.unlockAchievement(R.string.achievement_id_score_500_easy);
+        if (score >= 1000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_1000_easy);
         if (score >= 5000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_5000_easy);
         if (score >= 10000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_10000_easy);
+        if (score >= 15000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_15000_easy);
+        if (score >= 20000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_20000_easy);
         break;
       case 1:
-        if (score >= 500) gpgsHelper.unlockAchievement(R.string.achievement_id_score_500_normal);
+        if (score >= 1000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_1000_normal);
         if (score >= 5000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_5000_normal);
         if (score >= 10000) gpgsHelper.unlockAchievement(
             R.string.achievement_id_score_10000_normal);
+        if (score >= 15000) gpgsHelper.unlockAchievement(
+            R.string.achievement_id_score_15000_normal);
+        if (score >= 20000) gpgsHelper.unlockAchievement(
+            R.string.achievement_id_score_20000_normal);
         break;
       case 2:
-        if (score >= 500) gpgsHelper.unlockAchievement(R.string.achievement_id_score_500_hard);
+        if (score >= 1000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_1000_hard);
         if (score >= 5000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_5000_hard);
         if (score >= 10000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_10000_hard);
+        if (score >= 15000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_15000_hard);
+        if (score >= 20000) gpgsHelper.unlockAchievement(R.string.achievement_id_score_20000_hard);
         break;
     }
   }
