@@ -79,8 +79,26 @@ public class ImageSupplier {
    * @param toUnloadAfter Optionally, filenames to be unloaded from memory after preloading.
    */
   public void preload(int upTo, String... toUnloadAfter) {
-    int howMany = upTo + toUnloadAfter.length - loaded.size();
-    if (howMany <= 0) return;
+    int howMany = upTo + toUnloadAfter.length - loaded.size() - currentlyPreloading.size();
+    if (howMany == 0) {
+      return;
+    } else if (howMany < 0) {
+      // Unload however many needed randomly so we don't get stuck in a situation with no new images
+      int toUnload = Math.min(loaded.size(), -howMany);
+      Log.w(TAG, "Attempted to preload " + howMany + " images, unloading " + toUnload);
+      
+      List<String> loadedNames = new ArrayList<>(loaded.keySet());
+      if (toUnloadAfter.length > 0) {
+        loadedNames.removeAll(Arrays.asList(toUnloadAfter));
+      }
+      Collections.shuffle(loadedNames);
+      
+      unload(loadedNames.subList(0, toUnload).toArray(new String[toUnload]));
+      
+      // parameters calculated so that howMany = 0 to avoid infinite recursion if something goes bad
+      preload(loaded.size() + currentlyPreloading.size() - toUnloadAfter.length, toUnloadAfter);
+      return;
+    }
     
     // Get a list of the non-preloaded images
     List<String> nonPreloaded = new ArrayList<>();
@@ -119,18 +137,33 @@ public class ImageSupplier {
     @Override
     protected Void doInBackground(String... filenames) {
       for (String filename : filenames) {
-        try {
-          loaded.put(filename, loadPair(filename));
-          Log.v(TAG, "Loaded: " + filename);
-        } catch (IOException e) {
-          Log.e(TAG, "Failed to load \"" + filename + "\" images", e);
-        } finally {
-          currentlyPreloading.remove(filename);
-        }
+        loadFilename(filename);
       }
       return null;
     }
-  
+    
+    private void loadFilename(String filename) {
+      try {
+        loaded.put(filename, loadPair(filename));
+        Log.v(TAG, "Loaded: " + filename);
+      } catch (IOException e) {
+        Log.e(TAG, "Failed to load \"" + filename + "\" images", e);
+      } catch (OutOfMemoryError e) {
+        Log.e(TAG, "Ran out of memory!", e);
+      
+        // try unloading toUnloadAfter first
+        if (toUnloadAfter.length > 0) {
+          unload(toUnloadAfter);
+          toUnloadAfter = new String[0];
+          loadFilename(filename);
+        } else {
+          Log.e(TAG, "Skipping loading \"" + filename + "\" due to lack of memory!");
+        }
+      } finally {
+        currentlyPreloading.remove(filename);
+      }
+    }
+    
     @Override
     protected void onPostExecute(Void v) {
       if (toUnloadAfter.length > 0) {
