@@ -3,6 +3,7 @@ package ca.keal.varianttap.ui.circlebutton;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 
@@ -77,6 +78,7 @@ public class SoundToggleCircleButton extends BaseCircleButton
     setBackgroundResource(R.drawable.circle);
     getBackground().setColorFilter(baseColor, PorterDuff.Mode.MULTIPLY);
     setContentDescription(context.getString(R.string.sound_on_desc));
+    fixPaddingOnApi19();
   }
   
   private void toggleOff() {
@@ -85,6 +87,14 @@ public class SoundToggleCircleButton extends BaseCircleButton
     setBackgroundResource(R.drawable.circle_slashed);
     getBackground().setColorFilter(disabledColor, PorterDuff.Mode.MULTIPLY);
     setContentDescription(context.getString(R.string.sound_off_desc));
+    fixPaddingOnApi19();
+  }
+  
+  private void fixPaddingOnApi19() {
+    if (Build.VERSION.SDK_INT <= 19) {
+      int padding = getResources().getDimensionPixelSize(R.dimen.circle_button_padding);
+      setPadding(padding, padding, padding, padding);
+    }
   }
   
   @Override
