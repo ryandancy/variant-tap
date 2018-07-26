@@ -16,16 +16,16 @@
     <item name="removeAdsCircleButtonStyle">@style/CircleButton.RemoveAds</item>
   </style>
   
-  <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
+  <style name="FullLengthButton" parent="Widget.AppCompat.Button.Borderless">
     <item name="android:layout_marginLeft">@dimen/button_margin_sides</item>
     <item name="android:layout_marginRight">@dimen/button_margin_sides</item>
-    <item name="android:background">@drawable/button</item>
+    <item name="android:background">@drawable/full_length_button</item>
     <item name="android:textAllCaps">false</item>
     <item name="android:textColor">@color/textLight</item>
     <item name="android:textSize">@dimen/full_length_buttons_text_size</item>
   </style>
   
-  <style name="ButtonStyle.Dialog">
+  <style name="FullLengthButton.Dialog">
     <item name="android:layout_marginLeft">@dimen/dialog_button_margin_sides</item>
     <item name="android:layout_marginRight">@dimen/dialog_button_margin_sides</item>
     <item name="android:paddingLeft">@dimen/dialog_button_padding_sides</item>

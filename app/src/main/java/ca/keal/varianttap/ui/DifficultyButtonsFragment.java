@@ -3,6 +3,7 @@ package ca.keal.varianttap.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
@@ -334,6 +335,9 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     }
     
     playButton.setText(hideText);
+    
+    ((TransitionDrawable) playButton.getBackground()).startTransition(
+        getResources().getInteger(R.integer.play_button_transition_ms));
   }
   
   private void hideDifficultyButtons() {
@@ -362,6 +366,9 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     });
     
     playButton.setText(showText);
+  
+    ((TransitionDrawable) playButton.getBackground()).reverseTransition(
+        getResources().getInteger(R.integer.play_button_transition_ms));
     
     // There's an achievement for toggling the difficulty buttons so many times
     if (!awardedAchievement) {

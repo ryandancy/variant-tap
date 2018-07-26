@@ -42,7 +42,7 @@
     
     <Button
         android:id="@+id/eu_consent_yes_button"
-        style="@style/ButtonStyle.Dialog"
+        style="@style/FullLengthButton.Dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/consent_option_spacing"
@@ -50,7 +50,7 @@
     
     <Button
         android:id="@+id/eu_consent_no_button"
-        style="@style/ButtonStyle.Dialog"
+        style="@style/FullLengthButton.Dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/consent_option_spacing"
@@ -58,7 +58,7 @@
     
     <Button
         android:id="@+id/eu_consent_remove_button"
-        style="@style/ButtonStyle.Dialog"
+        style="@style/FullLengthButton.Dialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/consent_option_spacing"

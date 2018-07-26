@@ -13,10 +13,11 @@
   
   <Button
       android:id="@+id/play_button"
-      style="@style/ButtonStyle"
+      style="@style/FullLengthButton"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
+      android:background="@drawable/play_button_transition"
       android:paddingBottom="@dimen/full_length_buttons_text_padding"
       android:paddingTop="@dimen/full_length_buttons_text_padding" />
   
@@ -32,7 +33,7 @@
     
     <Button
         android:id="@+id/easy_button"
-        style="@style/ButtonStyle"
+        style="@style/FullLengthButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/full_length_buttons_text_padding"
@@ -41,7 +42,7 @@
     
     <Button
         android:id="@+id/normal_button"
-        style="@style/ButtonStyle"
+        style="@style/FullLengthButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/difficulty_buttons_spacing"
@@ -51,7 +52,7 @@
     
     <Button
         android:id="@+id/hard_button"
-        style="@style/ButtonStyle"
+        style="@style/FullLengthButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/difficulty_buttons_spacing"

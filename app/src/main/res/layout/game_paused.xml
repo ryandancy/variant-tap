@@ -24,7 +24,7 @@
   
   <Button
       android:id="@+id/unpause_button"
-      style="@style/ButtonStyle"
+      style="@style/FullLengthButton"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:background="@color/gamePausedMain"
@@ -40,7 +40,7 @@
   
   <Button
       android:id="@+id/quit_button"
-      style="@style/ButtonStyle"
+      style="@style/FullLengthButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="@dimen/quit_button_offset"

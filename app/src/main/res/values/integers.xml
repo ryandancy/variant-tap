@@ -29,6 +29,7 @@
   
   <!-- The difficulty buttons will take this time (in ms) to move 100dp -->
   <integer name="slide_up_speed">200</integer>
+  <integer name="play_button_transition_ms">200</integer>
   
   <integer name="img_in_out_transition_ms">200</integer>
   

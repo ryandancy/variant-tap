@@ -6,6 +6,8 @@
   <!-- TODO the accent colour should probably not be purple -->
   <color name="colorBackground">#ffffff</color>
   
+  <color name="closeButton">#691b7e</color>
+  
   <color name="circleButtonColor">@color/colorPrimaryDark</color>
   <color name="circleButtonDisabled">#888888</color>
   

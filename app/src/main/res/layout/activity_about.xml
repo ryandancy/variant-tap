@@ -160,7 +160,7 @@
   
   <Button
       android:id="@id/sign_in_out_button"
-      style="@style/ButtonStyle"
+      style="@style/FullLengthButton"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_marginBottom="@dimen/bottom_button_margin_bottom"
