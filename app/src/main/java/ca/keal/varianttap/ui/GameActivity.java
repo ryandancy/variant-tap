@@ -850,24 +850,34 @@ public class GameActivity extends MusicActivity
   }
   
   private void toPostGameActivity(boolean transition) {
-    Intent intent = new Intent(this, PostGameActivity.class);
+    final Intent intent = new Intent(this, PostGameActivity.class);
     intent.putExtra(PostGameActivity.EXTRA_SCORE, score);
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
     intent.putExtra(PostGameActivity.EXTRA_NO_TAPS, !hasTapped);
     
+    // Show the interstitial if it exists - it'll be shown on the next activity
+    if (interstitial != null && interstitial.isLoaded()) {
+      interstitial.setAdListener(new AdListener() {
+        @Override
+        public void onAdClosed() {
+          startPostGameActivity(intent, false);
+        }
+      });
+      interstitial.show();
+    } else {
+      startPostGameActivity(intent, transition);
+    }
+    
+    // Remove this activity from the stack
+    finish();
+  }
+  
+  private void startPostGameActivity(Intent intent, boolean transition) {
     if (transition) {
       startActivity(intent, Util.getActivityTransition(this));
     } else {
       startActivity(intent);
     }
-    
-    // Show the interstitial if it exists - it'll be shown on the next activity
-    if (interstitial != null && interstitial.isLoaded()) {
-      interstitial.show();
-    }
-    
-    // Remove this activity from the stack
-    finish();
   }
   
   /**
