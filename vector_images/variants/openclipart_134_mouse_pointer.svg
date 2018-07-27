@@ -11,11 +11,14 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
    sodipodi:docname="openclipart_134_mouse_pointer.svg"
-   viewBox="0 0 1045.4 1045.4"
+   viewBox="0 0 22.027999 22.027999"
    version="1.1"
    inkscape:version="0.91 r13725"
-   width="1045.4"
-   height="1045.4">
+   width="22.028"
+   height="22.028"
+   inkscape:export-filename="C:\Users\Ryan\VariantTapGraphicsGetter\variants\openclipart_134_mouse_pointer.png"
+   inkscape:export-xdpi="2091.8831"
+   inkscape:export-ydpi="2091.8831">
   <defs
      id="defs4">
     <style
@@ -30,17 +33,17 @@
      id="base"
      bordercolor="#666666"
      inkscape:pageshadow="2"
-     inkscape:window-y="48"
+     inkscape:window-y="-8"
      pagecolor="#ffffff"
-     inkscape:window-height="945"
+     inkscape:window-height="660"
      inkscape:window-maximized="1"
-     inkscape:zoom="0.35355339"
-     inkscape:window-x="-8"
+     inkscape:zoom="13.448793"
+     inkscape:window-x="1272"
      showgrid="false"
      borderopacity="1.0"
      inkscape:current-layer="layer1"
-     inkscape:cx="-50.179731"
-     inkscape:cy="763.62091"
+     inkscape:cx="-9.70298"
+     inkscape:cy="14.51028"
      inkscape:window-width="1280"
      inkscape:pageopacity="0.0"
      inkscape:document-units="px" />
@@ -48,10 +51,10 @@
      id="layer1"
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
-     transform="translate(4673.5,-600.91001)">
+     transform="translate(4673.5,-1624.282)">
     <g
        id="g5252"
-       transform="translate(8.2158622,-45.255)">
+       transform="matrix(0.01714213,0,0,0.01714213,-4591.1916,1617.8332)">
       <path
          id="path5216"
          d="m 423.72,124.66 0,235 12.188,0 0,55.875 55.875,0 0,111.72 -55.875,0 0,55.719 0.1875,0.1875 -233.22,0 0,-55.906 233.03,0 0,-111.72 -291.38,0.25 -0.1875,113.75 0,125.72 55.875,0 0,111.72 55.906,0 0,111.75 55.844,0 0,125.72 460.94,0 0,-125.72 69.844,0 0,-167.59 55.875,0 0,-405.06 -55.875,0 0,-69.875 -69.844,0 0,181.59 -55.875,0 0,-237.47 -111.72,0 0,181.59 -55.875,0 0,-237.44 -125.72,0 0,0.1875 z m -167.59,0 0,234.81 111.72,0.1875 0,-235 -111.72,0 z"
