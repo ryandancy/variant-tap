@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:docname="openclipart_369_atom_model_variant_tmp.svg"
+   viewBox="0 0 201.15375 201.15375"
+   sodipodi:version="0.32"
+   version="1.0"
+   inkscape:version="0.91 r13725"
+   width="201.15375"
+   height="201.15375">
+  <sodipodi:namedview
+     id="base"
+     bordercolor="#666666"
+     inkscape:pageshadow="2"
+     guidetolerance="10.0"
+     pagecolor="#ffffff"
+     gridtolerance="10.0"
+     inkscape:zoom="1.3364318"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     inkscape:current-layer="svg2"
+     inkscape:cx="294.06768"
+     inkscape:cy="74.04967"
+     inkscape:window-y="-8"
+     inkscape:window-x="1272"
+     inkscape:window-height="660"
+     inkscape:pageopacity="0.0"
+     inkscape:window-width="1280"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-maximized="1"
+     inkscape:snap-center="true" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5502">
+      <stop
+         id="stop5504"
+         style="stop-color:#00cbfa"
+         offset="0" />
+      <stop
+         id="stop5506"
+         style="stop-color:#0000fa;stop-opacity:.97255"
+         offset="1" />
+    </linearGradient>
+    <radialGradient
+       id="radialGradient4597"
+       gradientUnits="userSpaceOnUse"
+       cy="96.031998"
+       cx="98.942001"
+       gradientTransform="matrix(1,0,0,1.0227,0,-2.1825)"
+       r="11.64">
+      <stop
+         id="stop4579"
+         style="stop-color:#ffa000"
+         offset="0" />
+      <stop
+         id="stop4581"
+         style="stop-color:#f80000;stop-opacity:.96907"
+         offset="1" />
+    </radialGradient>
+    <radialGradient
+       id="radialGradient5500"
+       xlink:href="#linearGradient5502"
+       gradientUnits="userSpaceOnUse"
+       cy="20.106001"
+       cx="12.698"
+       gradientTransform="matrix(1,0,0,0.86618,0,2.6906)"
+       r="7.9074001" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5502"
+       id="radialGradient3354"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86618,0,2.6906)"
+       cx="12.698"
+       cy="20.106001"
+       r="7.9074001" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5502"
+       id="radialGradient3356"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86618,0,2.6906)"
+       cx="12.698"
+       cy="20.106001"
+       r="7.9074001" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5502"
+       id="radialGradient3358"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86618,0,2.6906)"
+       cx="12.698"
+       cy="20.106001"
+       r="7.9074001" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5502"
+       id="radialGradient3360"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86618,0,2.6906)"
+       cx="12.698"
+       cy="20.106001"
+       r="7.9074001" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5502"
+       id="radialGradient3362"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86618,0,2.6906)"
+       cx="12.698"
+       cy="20.106001"
+       r="7.9074001" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5502"
+       id="radialGradient3364"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86618,0,2.6906)"
+       cx="12.698"
+       cy="20.106001"
+       r="7.9074001" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5502"
+       id="radialGradient3366"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,0.86618,0,2.6906)"
+       cx="12.698"
+       cy="20.106001"
+       r="7.9074001" />
+  </defs>
+  <g
+     id="layer1"
+     transform="matrix(0.92387953,0.38268343,-0.38268343,0.92387953,46.39523,-29.510275)"
+     inkscape:transform-center-x="-1.9488089"
+     inkscape:transform-center-y="0.30483229">
+    <path
+       id="path3682"
+       style="fill:none;stroke:#000000"
+       d="m 119.58,109.26 a 23.0175,78.576121 0 1 1 -46.035,0 23.0175,78.576121 0 1 1 46.035,0 z"
+       transform="matrix(0.99742,0,0,1.2551,2.3658,-36.871)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path3690"
+       style="fill:url(#radialGradient4597)"
+       d="m 110.58,96.032 a 11.64,11.905 0 1 1 -23.278,0 11.64,11.905 0 1 1 23.278,0 z"
+       transform="translate(-1.0582,4.2328)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4599"
+       style="fill:none;stroke:#000000"
+       d="m 119.58,109.26 a 23.0175,78.576121 0 1 1 -46.035,0 23.0175,78.576121 0 1 1 46.035,0 z"
+       transform="matrix(0.70528,-0.70528,0.88752,0.88752,-66.394,71.398)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4601"
+       style="fill:none;stroke:#000000"
+       d="m 119.58,109.26 a 23.0175,78.576121 0 1 1 -46.035,0 23.0175,78.576121 0 1 1 46.035,0 z"
+       transform="matrix(0.70528,0.70528,-0.88752,0.88752,127.54,-64.807)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4603"
+       style="fill:none;stroke:#000000"
+       d="m 119.58,109.26 a 23.0175,78.576121 0 1 1 -46.035,0 23.0175,78.576121 0 1 1 46.035,0 z"
+       transform="matrix(0,0.99726,-1.2719,0,238.97,3.9685)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4607"
+       style="fill:url(#radialGradient3354);fill-rule:evenodd"
+       d="m 20.106,20.106 a 7.4075,6.3492857 0 1 1 -14.815,0 7.4075,6.3492857 0 1 1 14.815,0 z"
+       transform="matrix(0.99376,0,0,1.201,26.005,38.021)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path5508"
+       style="fill:url(#radialGradient3356);fill-rule:evenodd"
+       d="m 20.106,20.106 a 7.4075,6.3492857 0 1 1 -14.815,0 7.4075,6.3492857 0 1 1 14.815,0 z"
+       transform="matrix(0.99376,0,0,1.201,145.58,111.04)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path5512"
+       style="fill:url(#radialGradient3358);fill-rule:evenodd"
+       d="m 20.106,20.106 a 7.4075,6.3492857 0 1 1 -14.815,0 7.4075,6.3492857 0 1 1 14.815,0 z"
+       transform="matrix(0.99376,0,0,1.201,118.6,18.974)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path5516"
+       style="fill:url(#radialGradient3360);fill-rule:evenodd"
+       d="m 20.106,20.106 a 7.4075,6.3492857 0 1 1 -14.815,0 7.4075,6.3492857 0 1 1 14.815,0 z"
+       transform="matrix(0.99376,0,0,1.201,49.815,134.85)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path5520"
+       style="fill:url(#radialGradient3362);fill-rule:evenodd"
+       d="m 20.106,20.106 a 7.4075,6.3492857 0 1 1 -14.815,0 7.4075,6.3492857 0 1 1 14.815,0 z"
+       transform="matrix(0.99376,0,0,1.201,157.22,59.714)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path5524"
+       style="fill:url(#radialGradient3364);fill-rule:evenodd"
+       d="m 20.106,20.106 a 7.4075,6.3492857 0 1 1 -14.815,0 7.4075,6.3492857 0 1 1 14.815,0 z"
+       transform="matrix(0.99376,0,0,1.201,16.481,92.519)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path5528"
+       style="fill:url(#radialGradient3366);fill-rule:evenodd"
+       d="m 20.106,20.106 a 7.4075,6.3492857 0 1 1 -14.815,0 7.4075,6.3492857 0 1 1 14.815,0 z"
+       transform="matrix(0.99376,0,0,1.201,101.14,148.07)"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path5532"
+       style="fill:url(#radialGradient5500);fill-rule:evenodd"
+       d="m 20.106,20.106 a 7.4075,6.3492857 0 1 1 -14.815,0 7.4075,6.3492857 0 1 1 14.815,0 z"
+       transform="matrix(0.99376,0,0,1.201,70.979,2.0424)"
+       inkscape:connector-curvature="0" />
+  </g>
+  <metadata
+     id="metadata26">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Atom Model</dc:title>
+        <dc:date>2006-10-16T00:11:56</dc:date>
+        <dc:description>Model of an atom.</dc:description>
+        <dc:source>https://openclipart.org/detail/652/atom-model-by-logomancer</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>logomancer</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>atom</rdf:li>
+            <rdf:li>colour</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>physics</rdf:li>
+            <rdf:li>science</rdf:li>
+            <rdf:li>sign</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
