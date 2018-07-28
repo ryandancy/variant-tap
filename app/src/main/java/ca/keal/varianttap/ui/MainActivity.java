@@ -81,7 +81,9 @@ public class MainActivity extends AppCompatActivity
     ImageSupplier.getInstance(this).preload(getResources().getInteger(R.integer.images_to_preload));
     
     // TODO replace with real ID, not banner ID
-    MobileAds.initialize(this, getString(R.string.ad_banner_id));
+    if (!AdRemovalManager.areAdsRemoved()) {
+      MobileAds.initialize(this, getString(R.string.ad_banner_id));
+    }
     
     removeAdsCircleButton = findViewById(R.id.remove_ads_circle_button);
     
