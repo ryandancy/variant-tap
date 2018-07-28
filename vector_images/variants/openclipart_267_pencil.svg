@@ -11,11 +11,11 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2"
    sodipodi:docname="openclipart_267_pencil.svg"
-   inkscape:export-filename="/home/sarah/questchest/media/img/pencil.png"
+   inkscape:export-filename="C:\Users\Ryan\VariantTapGraphicsGetter\variants\openclipart_267_pencil.png"
    viewBox="0 0 75.36 75.36"
-   inkscape:export-xdpi="90.044647"
+   inkscape:export-xdpi="611.46497"
    version="1.1"
-   inkscape:export-ydpi="90.044647"
+   inkscape:export-ydpi="611.46497"
    inkscape:version="0.91 r13725"
    width="75.360001"
    height="75.360001">
@@ -29,7 +29,7 @@
        y1="487.98999"
        x1="279.92001"
        inkscape:collect="always"
-       gradientTransform="translate(0.96160075,-1.2142405)">
+       gradientTransform="matrix(0.94015814,0.05778863,0.05778863,0.94419417,-17.352477,16.524958)">
       <stop
          id="stop3692"
          style="stop-color:#f09092"
@@ -82,13 +82,13 @@
      pagecolor="#ffffff"
      inkscape:window-height="945"
      inkscape:window-maximized="1"
-     inkscape:zoom="7.9195959"
+     inkscape:zoom="5.6"
      inkscape:window-x="-8"
      showgrid="false"
      borderopacity="1.0"
      inkscape:current-layer="layer1"
-     inkscape:cx="23.162114"
-     inkscape:cy="33.554992"
+     inkscape:cx="38.060008"
+     inkscape:cy="30.041642"
      inkscape:object-nodes="true"
      inkscape:window-width="1280"
      inkscape:pageopacity="0.0"
@@ -103,8 +103,10 @@
        id="path2830"
        sodipodi:nodetypes="cccscsscccc"
        style="fill:url(#linearGradient3696);stroke:#000000;stroke-width:1px"
-       d="m 230.7216,554.18575 3.25611,-9.2703 6.92299,-19.71 c 0,0 39.38364,-38.89837 41.61265,-40.00137 2.22929,-1.1029 4.57299,0.56973 4.57299,0.56973 0,0 4.63541,2.0837 8.8807,6.9637 4.24521,4.88 6.3782,7.5724 6.23,10.106 -0.14829,2.53361 -41.60266,40.25335 -41.60266,40.25335 l -19.735,7.3258 -10.138,3.7632 z"
-       inkscape:connector-curvature="0" />
+       d="m 230.75408,554.2079 3.34627,-8.88046 8.0596,-16.86016 c 0,0 31.26831,-35.48586 33.30022,-36.39851 2.03212,-0.91251 4.33223,0.8022 4.33223,0.8022 0,0 4.47844,2.23532 8.75169,7.08829 4.27317,4.85301 6.43411,7.51842 6.44118,9.90207 0.007,2.38366 -40.82142,32.0614 -40.82142,32.0614 l -7.2776,6.16119 -16.1324,6.12408 z"
+       inkscape:connector-curvature="0"
+       inkscape:transform-center-x="-32.450054"
+       inkscape:transform-center-y="-31.207886" />
     <path
        id="path2834"
        sodipodi:nodetypes="ccccccccsccc"
@@ -126,18 +128,13 @@
        id="path2832"
        sodipodi:nodetypes="cccc"
        style="fill:#000000"
-       d="m 236.94645,536.9646 10.7571,10.34604 -16.9501,6.84537 6.19283,-17.19141 z"
+       d="m 236.25197,537.40654 10.7571,10.34604 -16.9501,6.84537 6.19283,-17.19141 z"
        inkscape:connector-curvature="0" />
     <path
        id="path2840"
        sodipodi:nodetypes="ccccccccsccc"
        style="fill:none;stroke:#000000;stroke-width:1px"
        d="m 239.92985,528.37761 0.38756,3.2698 7.1132,-2.1889 1.3838,9.042 7.9794,0.42929 0.7179,5.1518 3.1176,-1.0132 18.5,-17.192 c 0,0 -3.9188,-6.1573 -9.3203,-11.495 -5.3588,-5.2956 -9.8054,-7.9366 -9.8054,-7.9366 l -19.069,18.732 -1.0054,3.2009 z"
-       inkscape:connector-curvature="0" />
-    <path
-       id="path2842"
-       style="fill:url(#linearGradient3724);stroke:#000000;stroke-width:1px"
-       d="m 234.33985,544.47761 6.2295,5.8246 16.94,-6.2219 -0.7179,-5.1518 -7.9794,-0.42929 -1.3838,-9.042 -7.1132,2.1889 -0.38756,-3.2698 -5.5873,16.101 z"
        inkscape:connector-curvature="0" />
     <path
        id="path2844"
@@ -161,19 +158,12 @@
        style="fill:none;stroke:#000000;stroke-width:1px"
        d="m 274.11985,493.34761 c 0,0 6.4173,2.3893 10.652,7.017 4.2348,4.6277 8.9574,11.889 8.9574,11.889 l -14.604,13.619 c 0,0 -5.7015,-8.2713 -8.7359,-11.369 -2.8179,-2.8765 -10.39,-8.0629 -10.39,-8.0629 l 14.12,-13.093 z"
        inkscape:connector-curvature="0" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:3.97079134px;line-height:125%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="-184.53729"
-       y="560.73468"
-       id="text3355"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.7193398,-0.69465837,0.69465837,0.7193398,0,0)"><tspan
-         sodipodi:role="line"
-         id="tspan3357"
-         x="-184.53729"
-         y="560.73468"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:serif;-inkscape-font-specification:serif">HB No. 2</tspan></text>
+    <path
+       id="path2842"
+       style="fill:url(#linearGradient3724);stroke:#000000;stroke-width:1px"
+       d="m 234.33985,544.47761 6.2295,5.8246 16.94,-6.2219 -0.7179,-5.1518 -7.9794,-0.42929 -1.3838,-9.042 -7.1132,2.1889 -0.38756,-3.2698 c -1.83325,5.37697 -3.79018,10.71216 -5.58764,16.10129 z"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc" />
   </g>
   <metadata
      id="metadata27">

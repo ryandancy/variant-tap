@@ -11,14 +11,17 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg2185"
-   sodipodi:docname="openclipart_668_dna_variant_tmp.svg"
+   sodipodi:docname="openclipart_668_dna.svg"
    viewBox="0 0 442.8282 442.82819"
    sodipodi:version="0.32"
    version="1.1"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:version="0.91 r13725"
    width="442.82819"
-   height="442.82819">
+   height="442.82819"
+   inkscape:export-filename="C:\Users\Ryan\VariantTapGraphicsGetter\variants\openclipart_668_dna.png"
+   inkscape:export-xdpi="104.05842"
+   inkscape:export-ydpi="104.05842">
   <title
      id="title2896">DNA</title>
   <defs
@@ -281,13 +284,13 @@
      pagecolor="#ffffff"
      inkscape:window-height="945"
      inkscape:window-maximized="1"
-     inkscape:zoom="1.095627"
+     inkscape:zoom="0.77472528"
      inkscape:window-x="-8"
      showgrid="false"
      borderopacity="1.0"
      inkscape:current-layer="g3414"
-     inkscape:cx="175.46559"
-     inkscape:cy="148.99827"
+     inkscape:cx="68.866696"
+     inkscape:cy="177.44505"
      inkscape:window-width="1280"
      inkscape:pageopacity="0.0"
      inkscape:document-units="px"
@@ -392,7 +395,7 @@
          x="291.72" />
       <rect
          id="rect5306"
-         style="fill:#37c84b;stroke-width:0;fill-opacity:1"
+         style="fill:#08f729;stroke-width:0;fill-opacity:1"
          rx="0.14211001"
          ry="1.3519"
          height="16.780001"
@@ -401,7 +404,7 @@
          x="285.26001" />
       <rect
          id="rect5308"
-         style="fill:#37c84c;stroke-width:0;fill-opacity:1"
+         style="fill:#08f72a;stroke-width:0;fill-opacity:1"
          rx="0.14211001"
          ry="0.92497998"
          height="13.247"
@@ -410,7 +413,7 @@
          x="268.48001" />
       <rect
          id="rect5310"
-         style="fill:#37c84b;stroke-width:0;fill-opacity:1"
+         style="fill:#08f729;stroke-width:0;fill-opacity:1"
          rx="0.18171"
          ry="1.3519"
          height="11.617"
@@ -419,7 +422,7 @@
          x="316.23001" />
       <rect
          id="rect5312"
-         style="fill:#37c84b;stroke-width:0;fill-opacity:1"
+         style="fill:#08f729;stroke-width:0;fill-opacity:1"
          rx="0.14211001"
          ry="1.3519"
          height="12.908"
@@ -428,7 +431,7 @@
          x="318.82001" />
       <rect
          id="rect5314"
-         style="fill:#37c84b;stroke-width:0;fill-opacity:1"
+         style="fill:#08f729;stroke-width:0;fill-opacity:1"
          rx="0.14211001"
          ry="0.99137998"
          height="10.412"
@@ -437,7 +440,7 @@
          x="254.28" />
       <rect
          id="rect5316"
-         style="fill:#37c84b;stroke-width:0;fill-opacity:1"
+         style="fill:#08f729;stroke-width:0;fill-opacity:1"
          rx="0.15815"
          ry="0.76043999"
          height="8.7128"
@@ -446,7 +449,7 @@
          x="279.25" />
       <rect
          id="rect5318"
-         style="fill:#37c84b;stroke-width:0;fill-opacity:1"
+         style="fill:#08f729;stroke-width:0;fill-opacity:1"
          rx="0.13185"
          ry="1.3519"
          height="15.489"
@@ -455,7 +458,7 @@
          x="264.32999" />
       <rect
          id="rect5320"
-         style="fill:#37c84b;stroke-width:0;fill-opacity:1"
+         style="fill:#08f729;stroke-width:0;fill-opacity:1"
          rx="0.14211001"
          ry="1.0139"
          height="11.617"
@@ -464,7 +467,7 @@
          x="262.03" />
       <rect
          id="rect5322"
-         style="fill:#37c84b;stroke-width:0;fill-opacity:1"
+         style="fill:#08f729;stroke-width:0;fill-opacity:1"
          rx="0.14211001"
          ry="1.3519"
          height="14.199"
