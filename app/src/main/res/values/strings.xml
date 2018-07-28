@@ -1,9 +1,9 @@
 <resources>
   <!-- App-wide -->
-  <string name="app_name">VariantTap</string>
+  <string name="app_name">Variant Tap</string>
   
   <!-- MainActivity -->
-  <string name="app_name_lowercase">variant tap</string>
+  <string name="main_title">@string/app_name</string>
   <string name="sound_on_desc">Turn sound off</string>
   <string name="sound_off_desc">Turn sound on</string>
   <string name="about_desc">About</string>
