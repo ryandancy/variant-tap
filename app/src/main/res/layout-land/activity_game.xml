@@ -19,7 +19,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toLeftOf="@+id/imgs_grid"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.6"
+      app:layout_constraintVertical_bias="0.65"
       app:donut_circle_starting_degree="-90"
       app:donut_finished_color="@color/countdownCircleFinished"
       app:donut_finished_stroke_width="@dimen/countdown_circle_width"
@@ -42,7 +42,7 @@
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toLeftOf="@id/imgs_grid"
       app:layout_constraintTop_toBottomOf="@id/countdown_circle"
-      app:layout_constraintVertical_bias="0.6"
+      app:layout_constraintVertical_bias="0.65"
       tools:ignore="HardcodedText,SpUsage" />
   
   <TextView
@@ -127,6 +127,7 @@
   <include
       android:id="@+id/pause_overlay"
       layout="@layout/game_paused"
-      android:visibility="invisible" />
+      android:visibility="invisible"
+      app:layout_constraintBottom_toTopOf="@id/game_banner_ad"/>
   
 </android.support.constraint.ConstraintLayout>

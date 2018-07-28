@@ -22,6 +22,7 @@
   <dimen name="paused_text_offset">45dp</dimen>
   <dimen name="paused_circle_buttons_offset">50dp</dimen>
   <dimen name="unpause_countdown_text_size">600dp</dimen>
+  <dimen name="unpause_countdown_margin_bottom">100dp</dimen>
   
   <dimen name="post_score_size">190dp</dimen>
   <dimen name="new_best_score_size">45sp</dimen>

@@ -10,7 +10,7 @@
     app:layout_constraintLeft_toRightOf="@+id/countdown_circle"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent" >
+    app:layout_constraintBottom_toTopOf="@id/game_banner_ad">
   
   <TextView
       android:id="@+id/paused_text"
@@ -81,6 +81,7 @@
       android:id="@+id/unpause_countdown_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/unpause_countdown_margin_bottom"
       android:textColor="@color/textLight"
       android:textSize="@dimen/unpause_countdown_text_size"
       android:visibility="invisible"
