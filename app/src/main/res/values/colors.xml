@@ -30,4 +30,6 @@
   <color name="textSubtleOnDark">#bbbbbb</color>
   
   <color name="pausedBackground">#212121</color>
+  
+  <color name="ic_launcher_background">@color/colorBackground</color>
 </resources>
