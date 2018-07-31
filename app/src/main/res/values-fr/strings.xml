@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Toucher Variante</string>
+  
+  <string name="sound_on_desc">Éteindez le son</string>
+  <string name="sound_off_desc">Allumez le son</string>
+  <string name="about_desc">Information</string>
+  <string name="leaderboard_desc">Classements</string>
+  <string name="achievements_desc">Réussites</string>
+  <string name="remove_ads_desc">Enlevez les publicités</string>
+  <string name="play">Jouez</string>
+  
+  <string name="consent_yes">Vouz avez consenti à recevoir des publicités personnalisées.</string>
+  <string name="consent_no">
+    Vous n\'avez pas consenti à recevoir des publicités personnalisées.
+  </string>
+  <string name="consent_unknown">
+    Curieusement, vous n\'avez pas encore indiqué si vous consentez à recevoir des publicités
+    personnalisées.
+  </string>
+  <string name="change_consent">Changez votre consentement…</string>
+  <string name="gpgs_sign_in">Connectez-vous à Google Play</string>
+  <string name="gpgs_sign_out">Déconnectez-vous de Google Play</string>
+  <string name="developer">Le développeur</string>
+  <string name="developer_name">Un jeu par Ryan Dancy.</string>
+  <string name="music">La musique</string>
+  <string name="music_attrib">
+    \"Shiny Tech II\" Kevin Macleod (incompetech.com)
+    \nAutorisé sous Licence Creative Commons: Attribution
+    \nhttp://creativecommons.org/licenses/by/3.0/deed.fr
+  </string>
+  <string name="icons">Les icônes</string>
+  <string name="icon_music_note_name">Note de Musique</string>
+  <string name="icon_music_note_attrib">Hea Poh Lea (Le Projet Nom)</string>
+  <string name="icon_information_name">Information</string>
+  <string name="icon_information_attrib">Viktor Vorobyev (Le Projet Nom)</string>
+  <string name="icon_trophy_name">Trophée</string>
+  <string name="icon_trophy_attrib">Stanislav Levin (Le Projet Nom)</string>
+  <string name="images">Les images</string>
+  <string name="images_attrib">
+    Merci beaucoup à http://openclipart.org et ses contributeurs.
+  </string>
+  
+  <string name="countdown_hint">Touchez l\'image qui est différente des autres&#160;!</string>
+  <string name="score_label">Score</string>
+  <string name="pause_button_desc">Bouton de pause</string>
+  <string name="paused">Mis en pause</string>
+  <string name="unpause">Reprenez le jeu</string>
+  <string name="quit">Quittez le jeu</string>
+  <string name="quit_message">Êtes-vous sûr de vouloir quitter le jeu&#160;?</string>
+  <string name="quit_action">Oui, quittez</string>
+  
+  <string name="new_best_score">Nouveau Meilleur Score&#160;!</string>
+  <string name="easy_mode">Mode Facile</string>
+  <string name="normal_mode">Mode Normal</string>
+  <string name="hard_mode">Mode Difficile</string>
+  <string name="best_score">Meilleur</string>
+  <string name="average_score">Moyen</string>
+  <string name="play_again">Jouez encore</string>
+  <string name="leaderboard_button_caption">Les classements</string>
+  <string name="achievements_button_caption">Les réussites</string>
+  <string name="easy">Facile</string>
+  <string name="normal">Normal</string>
+  <string name="hard">Difficile</string>
+  
+  <string name="eu_consent_intro">
+    Nous nous sentons concerné par votre vie privée et votre sécurité informatique. Nous continuous
+    à offrir cette appli gratuitement en vous montrant des publicités.
+  </string>
+  <string name="eu_consent_question">
+    Pouvons-nous continuer à utiliser vos données pour personnaliser des publicités pour vous&#160;?
+  </string>
+  <string name="eu_consent_meat">
+    Vous pouvez changez votre choix n\'import quand à l\'écran d\'information. Google et ses
+    associés collectioneront vos données et utiliseront un identificateur unique sur votre appareil
+    pour vous montrer des publicités.
+  </string>
+  <string name="eu_consent_learn_more">
+    Apprenez plus à propos de comment vos données sont utilisées.
+  </string>
+  <string name="eu_consent_yes">Oui, continuez à voir des publicités pertinentes</string>
+  <string name="eu_consent_no">Non, voyez des publicités moins pertinentes</string>
+  <string name="eu_consent_remove">Enlevez les publicités</string>
+  <string name="eu_consent_selected_yes">
+    Les publicités qui vous voyez seront pertinentes à vous.
+  </string>
+  <string name="eu_consent_selected_no">
+    Les publicités qui vous voyez seront moins pertinentes à vous.
+  </string>
+  <string name="privacy_policy_link_text">Politique de confidentialité</string>
+  <string name="privacy_policy_url">
+    https://copperium-studios.github.io/privacy/variant-tap/fr.html.
+  </string>
+  <string name="how_data_used">
+    Si vous consentez, dans le but de vous servir des publicités, vos données sont partagées avec
+    Google et ses associés&#160;:
+  </string>
+  <string name="close">Fermez</string>
+  <string name="gpgs_action_intent_failed">Échoué à extraire contenu de Google Play Jeux</string>
+</resources>
