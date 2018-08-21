@@ -37,7 +37,10 @@
   <string name="icon_trophy_name">Trophy</string>
   <string name="icon_trophy_attrib">Stanislav Levin (The Noun Project)</string>
   <string name="images">Images</string>
-  <string name="images_attrib">Many thanks to http://openclipart.org and its contributors.</string>
+  <string name="images_attrib">
+    Many thanks to http://openclipart.org and its contributors, who provided many public-domain
+    vector graphics for this game.
+  </string>
   
   <!-- GameActivity -->
   <string name="countdown_hint">Tap the image which is different than the others!</string>

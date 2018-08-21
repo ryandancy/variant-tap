@@ -38,7 +38,8 @@
   <string name="icon_trophy_attrib">Stanislav Levin (Le Projet Nom)</string>
   <string name="images">Les images</string>
   <string name="images_attrib">
-    Merci beaucoup à http://openclipart.org et ses contributeurs.
+    Merci beaucoup à http://openclipart.org et ses contributeurs, qui ont fourni beaucoup des
+    images du domain public pour ce jeu.
   </string>
   
   <string name="countdown_hint">Touchez l\'image qui est différente des autres&#160;!</string>
