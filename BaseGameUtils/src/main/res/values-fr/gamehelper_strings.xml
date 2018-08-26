@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="gamehelper_sign_in_failed">L\'application n\'a pas réussi à connecter. Veuillez vérifier votre connexion de réseau et réessayer.</string>
+  <string name="gamehelper_license_failed">La verification de la licence a échoué.</string>
+  <string name="gamehelper_unknown_error">Erreur inconnue.</string>
+</resources>

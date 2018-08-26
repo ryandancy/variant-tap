@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="sign_in_other_error">Il y avait un problème en connectant, veuillez réessayer plus tard.</string>
+  <string name="sign_in_failed">L\'application n\'a pas réussi à connecter. Veuillez vérifier votre connexion de réseau et réessayer.</string>
+  <string name="license_failed">La verification de la licence a échoué.</string>
+  <string name="unknown_error">Erreur inconnue.</string>
+</resources>

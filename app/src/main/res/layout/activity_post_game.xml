@@ -131,7 +131,7 @@
           android:maxWidth="@dimen/post_game_buttons_size"
           android:adjustViewBounds="true"
           android:src="@drawable/leaderboard"
-          tools:ignore="ContentDescription" />
+          tools:ignore="ContentDescription,InconsistentLayout" />
       
       <TextView
           android:layout_width="wrap_content"
@@ -156,7 +156,7 @@
           android:layout_height="@dimen/post_game_buttons_size"
           android:adjustViewBounds="true"
           android:src="@drawable/achievement"
-          tools:ignore="ContentDescription" />
+          tools:ignore="ContentDescription,InconsistentLayout" />
       
       <TextView
           android:layout_width="wrap_content"

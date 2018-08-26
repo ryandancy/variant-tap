@@ -63,6 +63,14 @@ public class AboutActivity extends AppCompatActivity
         
         Drawable controllerIcon = ContextCompat.getDrawable(
             AboutActivity.this, R.drawable.controller);
+        
+        // ContextCompat.getDrawable() is @Nullable even though it *should* never be null;
+        // this is just to quiet the inspector.
+        if (controllerIcon == null) {
+          Log.wtf(TAG, "The controller icon was null??");
+          throw new RuntimeException("The controller icon was null??");
+        }
+        
         controllerIcon.setColorFilter(ContextCompat.getColor(AboutActivity.this, R.color.textLight),
             PorterDuff.Mode.MULTIPLY);
         controllerIcon.setBounds(0, 0, (int) size, (int) size);

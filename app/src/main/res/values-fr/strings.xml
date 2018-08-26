@@ -2,6 +2,7 @@
 <resources>
   <string name="app_name">Toucher Variante</string>
   
+  <string name="main_title">@string/app_name</string>
   <string name="sound_on_desc">Éteindez le son</string>
   <string name="sound_off_desc">Allumez le son</string>
   <string name="about_desc">Information</string>
