@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+  <!-- If we use GCM, exclude the shared preferences file that contains the GCM registrationId -->
+  <include domain="sharedpref" />
+</full-backup-content>
