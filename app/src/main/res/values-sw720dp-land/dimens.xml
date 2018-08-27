@@ -16,7 +16,7 @@
   <dimen name="lose_variant_anim_size">420dp</dimen>
   <dimen name="lose_variant_anim_pulse_size">440dp</dimen>
   
-  <dimen name="paused_text_size">135dp</dimen>
+  <dimen name="max_paused_text_size">135dp</dimen>
   <dimen name="unpause_button_margin_sides">100dp</dimen>
   <dimen name="quit_button_offset">20dp</dimen>
   <dimen name="paused_text_offset">45dp</dimen>

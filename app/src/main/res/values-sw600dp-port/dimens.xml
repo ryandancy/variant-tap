@@ -28,7 +28,7 @@
   <dimen name="lose_variant_anim_size">450dp</dimen>
   <dimen name="lose_variant_anim_pulse_size">470dp</dimen>
   
-  <dimen name="paused_text_size">120dp</dimen>
+  <dimen name="max_paused_text_size">120dp</dimen>
   <dimen name="unpause_countdown_text_size">500dp</dimen>
   
   <dimen name="post_score_size">140dp</dimen>

@@ -64,6 +64,8 @@
   
   <dimen name="score_text_margin_bottom">2dp</dimen>
   
+  <dimen name="paused_text_margin_sides">30dp</dimen>
+  
   <dimen name="post_game_score_margin_top">45dp</dimen>
   <dimen name="new_best_score_below_score">105dp</dimen>
   <dimen name="difficulty_below_score">30dp</dimen>
@@ -107,7 +109,7 @@
   <!-- enough to get over the score text -->
   <dimen name="score_label_margin_bottom">82.5dp</dimen>
   
-  <dimen name="paused_text_size">80dp</dimen>
+  <dimen name="max_paused_text_size">80dp</dimen>
   <dimen name="unpause_countdown_text_size">300dp</dimen>
   
   <dimen name="post_score_size">95dp</dimen>

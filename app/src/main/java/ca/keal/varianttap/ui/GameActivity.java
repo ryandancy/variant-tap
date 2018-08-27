@@ -219,6 +219,19 @@ public class GameActivity extends MusicActivity
     
     increasePauseButtonHitbox();
     
+    // Make the paused text auto-resize to prevent translations messing it up
+    pausedText.post(new Runnable() {
+      @Override
+      public void run() {
+        pausedText.setTextSize(Util.getLargestTextSize(
+            pausedText,
+            getString(R.string.paused),
+            pauseOverlay.getWidth() - 2 * getResources()
+                .getDimensionPixelSize(R.dimen.paused_text_margin_sides),
+            pausedText.getTextSize()));
+      }
+    });
+    
     // Start preloading the images
     ImageSupplier.getInstance(this).preload(getResources().getInteger(R.integer.images_to_preload));
     
