@@ -191,6 +191,7 @@ public class AboutActivity extends AppCompatActivity
       gpgsHelper.signOut();
       updateButtonText();
     } else {
+      gpgsHelper.setActionOnSignIn(this, GPGSAction.CallCallback);
       gpgsHelper.signIn(this);
     }
   }
