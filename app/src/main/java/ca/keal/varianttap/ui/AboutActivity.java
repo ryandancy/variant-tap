@@ -63,6 +63,13 @@ public class AboutActivity extends AppCompatActivity
         
         Drawable controllerIcon = ContextCompat.getDrawable(
             AboutActivity.this, R.drawable.controller);
+  
+        signInOutButton.setTextSize(Util.getLargestTextSize(
+            signInOutButton,
+            getString(R.string.gpgs_sign_out),
+            signInOutButton.getWidth() - 2*padding - 1.25f*size,
+            signInOutButton.getTextSize()
+        ));
         
         // ContextCompat.getDrawable() is @Nullable even though it *should* never be null;
         // this is just to quiet the inspector.
