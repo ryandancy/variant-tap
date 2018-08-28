@@ -46,6 +46,7 @@ import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
+// Note: there is no app link logic here because nothing special needs to happen
 public class MainActivity extends AppCompatActivity
     implements GPGSHelperClient, EUConsentForm.OnCloseListener {
   
