@@ -34,3 +34,6 @@ captures/
 
 #NDK
 obj/
+
+# Sensitive IDs
+ids.xml
