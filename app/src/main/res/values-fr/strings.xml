@@ -90,9 +90,6 @@
     Les publicités qui vous voyez seront moins pertinentes à vous.
   </string>
   <string name="privacy_policy_link_text">Politique de confidentialité</string>
-  <string name="privacy_policy_url">
-    https://copperium-studios.github.io/variant-tap/privacy/fr.html
-  </string>
   <string name="how_data_used">
     Si vous consentez, dans le but de vous servir des publicités, vos données sont partagées avec
     Google et ses associés&#160;:
