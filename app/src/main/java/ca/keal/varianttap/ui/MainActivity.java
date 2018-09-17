@@ -22,12 +22,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.ads.consent.ConsentInfoUpdateListener;
-import com.google.ads.consent.ConsentInformation;
-import com.google.ads.consent.ConsentStatus;
-import com.google.ads.consent.DebugGeography;
-import com.google.android.gms.ads.MobileAds;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -35,20 +29,16 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import ca.keal.varianttap.R;
-import ca.keal.varianttap.ads.AdRemovalManager;
-import ca.keal.varianttap.ads.EUConsentForm;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
-import ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton;
 import ca.keal.varianttap.util.ImageSupplier;
 import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 // Note: there is no app link logic here because nothing special needs to happen
-public class MainActivity extends AppCompatActivity
-    implements GPGSHelperClient, EUConsentForm.OnCloseListener {
+public class MainActivity extends AppCompatActivity implements GPGSHelperClient {
   
   private static final String TAG = "MainActivity";
   
@@ -69,10 +59,6 @@ public class MainActivity extends AppCompatActivity
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
   
-  // It might need to be removed
-  private RemoveAdsCircleButton removeAdsCircleButton;
-  private EUConsentForm euConsentForm = null;
-  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -80,13 +66,6 @@ public class MainActivity extends AppCompatActivity
     
     // Start preloading the images
     ImageSupplier.getInstance(this).preload(getResources().getInteger(R.integer.images_to_preload));
-    
-    // TODO replace with real ID, not banner ID
-    if (!AdRemovalManager.areAdsRemoved()) {
-      MobileAds.initialize(this, getString(R.string.ad_banner_id));
-    }
-    
-    removeAdsCircleButton = findViewById(R.id.remove_ads_circle_button);
     
     // Lock portrait orientation if we're not on a tablet
     if (getResources().getBoolean(R.bool.portrait_only)) {
@@ -129,45 +108,6 @@ public class MainActivity extends AppCompatActivity
     });
     
     connection = new GPGSHelperServiceConnection(this);
-    
-    if (!AdRemovalManager.areAdsRemoved()) {
-      updateConsent();
-    }
-  }
-  
-  private void updateConsent() {
-    final ConsentInformation consentInfo = ConsentInformation.getInstance(this);
-    // TODO add real list of publisher IDs as resource
-    String[] pubIds = {"pub-0123456789012345"};
-    
-    // Add test devices - TODO remove this on release
-    for (String testDeviceId : getResources().getStringArray(R.array.test_devices)) {
-      consentInfo.addTestDevice(testDeviceId);
-    }
-    consentInfo.setDebugGeography(DebugGeography.DEBUG_GEOGRAPHY_EEA);
-    
-    consentInfo.requestConsentInfoUpdate(pubIds, new ConsentInfoUpdateListener() {
-      @Override
-      public void onConsentInfoUpdated(ConsentStatus consentStatus) {
-        if (consentInfo.isRequestLocationInEeaOrUnknown()
-            && consentStatus == ConsentStatus.UNKNOWN) {
-          // Spawn a non-dismissable EUConsentForm
-          euConsentForm = new EUConsentForm(MainActivity.this);
-          euConsentForm.setOnCloseListener(MainActivity.this);
-          euConsentForm.show(false);
-        }
-      }
-      
-      @Override
-      public void onFailedToUpdateConsentInfo(String reason) {
-        Log.e(TAG, "Consent info failed to update: " + reason);
-      }
-    });
-  }
-  
-  @Override
-  public void onEUConsentFormClose() {
-    removeAdsCircleButton.checkAndMaybeRemove();
   }
   
   @Override
@@ -193,9 +133,6 @@ public class MainActivity extends AppCompatActivity
     if (gpgsHelper != null) {
       gpgsHelper.signInSilently(this);
     }
-    
-    // Remove the 'remove ads' circle button if ads were removed later
-    removeAdsCircleButton.checkAndMaybeRemove();
     
     // Resume all throw animations
     for (AnimatorSet anim : throwAnims) {
@@ -242,14 +179,6 @@ public class MainActivity extends AppCompatActivity
   }
   
   @Override
-  protected void onDestroy() {
-    if (euConsentForm != null) {
-      euConsentForm.onDestroy();
-    }
-    super.onDestroy();
-  }
-  
-  @Override
   public void receiveService(GPGSHelperService service) {
     gpgsHelper = service;
     gpgsHelper.trySignIn(this);
@@ -264,6 +193,17 @@ public class MainActivity extends AppCompatActivity
   private void throwImage(final boolean invert) {
     if (random == null) random = new Random();
     
+    // Get the images at the beginning so as not to waste time if they don't exist
+    ImageSupplier supplier = ImageSupplier.getInstance(this);
+    Pair<String, Drawable> nameAndDrawable;
+    
+    try {
+      nameAndDrawable = supplier.getRandomImage();
+    } catch (IllegalStateException e) {
+      // Not ready: don't throw an image yet
+      return;
+    }
+    
     // Construct the ImageView to be thrown
     
     final ImageView image = new ImageView(this);
@@ -277,8 +217,6 @@ public class MainActivity extends AppCompatActivity
         = new FrameLayout.LayoutParams(length, length, Gravity.TOP | Gravity.LEFT);
     image.setLayoutParams(params);
     
-    ImageSupplier supplier = ImageSupplier.getInstance(this);
-    Pair<String, Drawable> nameAndDrawable = supplier.getRandomImage();
     image.setImageDrawable(nameAndDrawable.second);
     image.setAdjustViewBounds(true);
     image.setScaleType(ImageView.ScaleType.FIT_XY);

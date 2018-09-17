@@ -5,16 +5,11 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
-import com.google.ads.consent.ConsentInformation;
-import com.google.ads.consent.ConsentStatus;
 
 import ca.keal.varianttap.R;
 import ca.keal.varianttap.gpgs.GPGSAction;
@@ -22,23 +17,17 @@ import ca.keal.varianttap.gpgs.GPGSCallback;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
-import ca.keal.varianttap.ads.AdRemovalManager;
-import ca.keal.varianttap.ads.EUConsentForm;
 import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 public class AboutActivity extends AppCompatActivity
-    implements GPGSHelperClient, GPGSCallback, EUConsentForm.OnCloseListener {
+    implements GPGSHelperClient, GPGSCallback {
   
   private static final String TAG = "AboutActivity";
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
-  
-  private TextView statusText;
-  private TextView changeLink;
-  private EUConsentForm euConsentForm = null;
   
   private Button signInOutButton;
   
@@ -49,8 +38,6 @@ public class AboutActivity extends AppCompatActivity
     
     connection = new GPGSHelperServiceConnection(this);
     
-    statusText = findViewById(R.id.eu_consent_status);
-    changeLink = findViewById(R.id.change_eu_consent);
     signInOutButton = findViewById(R.id.sign_in_out_button);
     
     signInOutButton.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
@@ -88,61 +75,6 @@ public class AboutActivity extends AppCompatActivity
         signInOutButton.getViewTreeObserver().removeOnGlobalLayoutListener(this);
       }
     });
-    
-    if (!AdRemovalManager.areAdsRemoved()) {
-      ConsentInformation consentInfo = ConsentInformation.getInstance(this);
-      if (consentInfo.isRequestLocationInEeaOrUnknown()) {
-        setupConsentLink(consentInfo.getConsentStatus());
-      }
-    }
-  }
-  
-  private void setupConsentLink(ConsentStatus consentStatus) {
-    selectStatusText(consentStatus);
-    
-    // Give the change link a hyperlink formatting, add its functionality
-    changeLink.setText(Util.formatLink(getString(R.string.change_consent)));
-    changeLink.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        // Spawn a dismissable EUConsentForm
-        euConsentForm = new EUConsentForm(AboutActivity.this);
-        euConsentForm.setOnCloseListener(AboutActivity.this);
-        euConsentForm.show(true);
-      }
-    });
-    
-    statusText.setVisibility(View.VISIBLE);
-    changeLink.setVisibility(View.VISIBLE);
-  }
-  
-  @Override
-  public void onEUConsentFormClose() {
-    if (AdRemovalManager.areAdsRemoved()) {
-      statusText.setVisibility(View.GONE);
-      changeLink.setVisibility(View.GONE);
-    } else {
-      selectStatusText(ConsentInformation.getInstance(this).getConsentStatus());
-    }
-  }
-  
-  private void selectStatusText(ConsentStatus consentStatus) {
-    // Choose the status string based on the consent status
-    @StringRes int statusStringId;
-    switch (consentStatus) {
-      case PERSONALIZED:
-        statusStringId = R.string.consent_yes;
-        break;
-      case NON_PERSONALIZED:
-        statusStringId = R.string.consent_no;
-        break;
-      case UNKNOWN:
-      default: // compiler requires this case
-        // how did this happen? this isn't supposed to happen.
-        Log.e(TAG, "Consent status is unknown past consent dialog");
-        statusStringId = R.string.consent_unknown;
-    }
-    statusText.setText(statusStringId);
   }
   
   @Override
@@ -168,15 +100,6 @@ public class AboutActivity extends AppCompatActivity
     super.onStop();
     gpgsHelper.clearActionOnSignIn(this);
     unbindService(connection);
-  }
-  
-  @Override
-  protected void onDestroy() {
-    if (euConsentForm != null) {
-      euConsentForm.onDestroy();
-    }
-    
-    super.onDestroy();
   }
   
   @Override

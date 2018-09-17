@@ -37,18 +37,12 @@ import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import ca.keal.varianttap.R;
-import ca.keal.varianttap.ads.AdRemovalManager;
-import ca.keal.varianttap.ads.AdUtil;
-import ca.keal.varianttap.ads.HasRemovableAds;
 import ca.keal.varianttap.gpgs.GPGSHelperClient;
 import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
@@ -59,8 +53,7 @@ import ca.keal.varianttap.util.ReverseInterpolator;
 import ca.keal.varianttap.util.SFXManager;
 import ca.keal.varianttap.util.Util;
 
-public class GameActivity extends MusicActivity
-    implements View.OnClickListener, GPGSHelperClient, HasRemovableAds {
+public class GameActivity extends MusicActivity implements View.OnClickListener, GPGSHelperClient {
   
   private static final String TAG = "GameActivity";
   
@@ -132,9 +125,6 @@ public class GameActivity extends MusicActivity
   private TextView scoreLabel;
   
   private SFXManager sfx;
-  
-  private AdView bannerAd;
-  private InterstitialAd interstitial; // will show in PostGameActivity
   
   private GPGSHelperService gpgsHelper;
   private GPGSHelperServiceConnection connection;
@@ -320,10 +310,6 @@ public class GameActivity extends MusicActivity
       imgs[i].setOnClickListener(this);
     }
     
-    if (!AdRemovalManager.areAdsRemoved()) {
-      setupAds();
-    }
-    
     if (savedInstanceState == null) { // fresh startup with no state to be restored
       startCountdownToGameStart();
     } else {
@@ -331,40 +317,6 @@ public class GameActivity extends MusicActivity
     }
     
     connection = new GPGSHelperServiceConnection(this);
-  }
-  
-  private void setupAds() {
-    // Setup the banner ad
-    bannerAd = findViewById(R.id.game_banner_ad);
-    bannerAd.setAdListener(new AdListener() {
-      @Override
-      public void onAdOpened() {
-        // Open the pause overlay when the user opens an ad to prevent time from running out
-        pause(null);
-      }
-    });
-    bannerAd.loadAd(AdUtil.getAdRequest(this));
-    bannerAd.setVisibility(View.VISIBLE); // allocate space for it before it loads
-    
-    // Preload the interstitial for the next activity if we're going to
-    // Yes we're using the ImageSupplier's RNG, whatever
-    if (Util.randomFloatBetween(ImageSupplier.getInstance(this).random, 0, 1)
-        <= Util.getFloatResource(this, R.dimen.interstitial_chance)) {
-      interstitial = new InterstitialAd(this);
-      interstitial.setAdUnitId(getString(R.string.ad_interstitial_id));
-      interstitial.loadAd(AdUtil.getAdRequest(this));
-    } else {
-      interstitial = null;
-    }
-  }
-  
-  @Override
-  public void removeAds() {
-    // the remove ads button on the pause screen was clicked
-    bannerAd.setVisibility(View.GONE);
-    bannerAd.destroy();
-    bannerAd = null;
-    interstitial = null; // won't be shown now
   }
   
   private void increasePauseButtonHitbox() {
@@ -537,10 +489,6 @@ public class GameActivity extends MusicActivity
   
   @Override
   protected void onPause() {
-    if (bannerAd != null) {
-      bannerAd.pause();
-    }
-    
     super.onPause();
     
     if (hasLost) {
@@ -564,10 +512,6 @@ public class GameActivity extends MusicActivity
       gpgsHelper.signInSilently(this);
     }
     
-    if (bannerAd != null) {
-      bannerAd.resume();
-    }
-    
     if (switchOnResume) {
       toPostGameActivity(false);
     }
@@ -575,10 +519,6 @@ public class GameActivity extends MusicActivity
   
   @Override
   protected void onDestroy() {
-    if (bannerAd != null) {
-      bannerAd.destroy();
-    }
-    
     super.onDestroy();
   }
   
@@ -868,18 +808,7 @@ public class GameActivity extends MusicActivity
     intent.putExtra(PostGameActivity.EXTRA_DIFFICULTY, difficulty);
     intent.putExtra(PostGameActivity.EXTRA_NO_TAPS, !hasTapped);
     
-    // Show the interstitial if it exists - it'll be shown on the next activity
-    if (interstitial != null && interstitial.isLoaded()) {
-      interstitial.setAdListener(new AdListener() {
-        @Override
-        public void onAdClosed() {
-          startPostGameActivity(intent, false);
-        }
-      });
-      interstitial.show();
-    } else {
-      startPostGameActivity(intent, transition);
-    }
+    startPostGameActivity(intent, transition);
     
     // Remove this activity from the stack
     finish();
@@ -928,10 +857,6 @@ public class GameActivity extends MusicActivity
     countdownCircle.bringToFront();
     scoreText.bringToFront();
     scoreLabel.bringToFront();
-    
-    if (bannerAd != null) {
-      bannerAd.bringToFront();
-    }
   }
   
   @Override

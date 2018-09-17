@@ -33,8 +33,6 @@ dependencies {
   implementation 'com.android.support.constraint:constraint-layout:1.1.2'
   implementation "com.google.android.gms:play-services-games:${gms_library_version}"
   implementation "com.google.android.gms:play-services-auth:${gms_library_version}"
-  implementation "com.google.android.gms:play-services-ads:${gms_library_version}"
-  implementation "com.google.android.ads.consent:consent-library:1.0.6"
   implementation 'com.github.lzyzsd:circleprogress:1.2.1'
   implementation 'com.github.simbiose:Encryption:2.0.1'
 }

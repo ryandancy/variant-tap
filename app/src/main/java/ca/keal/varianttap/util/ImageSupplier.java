@@ -198,8 +198,8 @@ public class ImageSupplier {
     List<Map.Entry<String, Pair<Drawable, Drawable>>> entries = new ArrayList<>(loaded.entrySet());
     
     if (entries.size() == 0) {
-      Log.e(TAG, "No images available to get!");
-      throw new IllegalStateException("No images available to get!");
+      Log.w(TAG, "Images weren't fast enough to load: none to get!");
+      throw new IllegalStateException("Images weren't fast enough to load: none to get!");
     }
     
     Map.Entry<String, Pair<Drawable, Drawable>> entry = entries.get(random.nextInt(entries.size()));

@@ -67,10 +67,6 @@
         style="@style/CircleButton.ToggleSound"
         app:baseColor="@color/gamePausedMain" />
     
-    <ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton
-        style="@style/CircleButton.RemoveAds"
-        app:baseColor="@color/gamePausedMain" />
-    
   </LinearLayout>
   
   <TextView
