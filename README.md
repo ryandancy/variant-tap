@@ -3,6 +3,11 @@ Variant Tap
 
 A fast-paced, arcade-style Android game. Coming soon to the Google Play Store!
 
+[Download the APK](http://copperium-studios.github.io/variant-tap.apk) or scan:
+![QR code: http://copperium-studios.github.io/variant-tap.apk](qr-code.png)
+
+Screenshots:
+
 ![MainActivity](screenshots/title.png)
 ![GameActivity - Easy Mode](screenshots/easy.png)
 ![GameActivity - Normal Mode](screenshots/normal.png)
