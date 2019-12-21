@@ -128,4 +128,13 @@
   <dimen name="lose_variant_anim_pulse_size">185dp</dimen>
   
   <item name="interstitial_chance" type="dimen" format="float">0.75</item>
+  
+  <!-- Landscape-specific, defined in the various -land files, here so Android Studio stops complaining -->
+  
+  <dimen name="unpause_button_margin_sides">0dp</dimen>
+  <dimen name="paused_text_offset">0dp</dimen>
+  <dimen name="paused_circle_buttons_offset">0dp</dimen>
+  <dimen name="unpause_countdown_margin_bottom">0dp</dimen>
+  <dimen name="post_game_inner_margin">0dp</dimen>
+  <dimen name="post_game_margin_bottom">0dp</dimen>
 </resources>

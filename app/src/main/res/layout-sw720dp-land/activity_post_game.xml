@@ -23,13 +23,13 @@
       android:id="@+id/new_best_score_text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/new_best_score_below_score"
+      android:translationY="@dimen/new_best_score_below_score"
       android:text="@string/new_best_score"
       android:textColor="@color/colorAccent"
       android:textSize="@dimen/new_best_score_size"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
-      app:layout_constraintTop_toTopOf="@id/post_score_text"
+      app:layout_constraintBaseline_toBaselineOf="@id/post_score_text"
       android:visibility="invisible" />
   
   <LinearLayout
