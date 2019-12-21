@@ -137,8 +137,7 @@ public class MainActivity extends AppCompatActivity
   
   private void updateConsent() {
     final ConsentInformation consentInfo = ConsentInformation.getInstance(this);
-    // TODO add real list of publisher IDs as resource
-    String[] pubIds = {"pub-0123456789012345"};
+    String[] pubIds = getResources().getStringArray(R.array.ad_pub_ids);
     
     // Add test devices - TODO remove this on release
     for (String testDeviceId : getResources().getStringArray(R.array.test_devices)) {
