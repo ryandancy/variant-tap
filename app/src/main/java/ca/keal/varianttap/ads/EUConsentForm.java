@@ -2,8 +2,8 @@ package ca.keal.varianttap.ads;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.support.annotation.StringRes;
-import android.support.v7.app.AlertDialog;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;

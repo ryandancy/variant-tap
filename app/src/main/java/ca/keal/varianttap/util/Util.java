@@ -6,7 +6,7 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.DimenRes;
+import androidx.annotation.DimenRes;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextPaint;

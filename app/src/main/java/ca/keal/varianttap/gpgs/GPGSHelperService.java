@@ -5,8 +5,8 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Binder;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import android.util.Log;
 
 import com.google.android.gms.auth.api.Auth;
@@ -29,7 +29,7 @@ import ca.keal.varianttap.R;
 import ca.keal.varianttap.util.Util;
 
 /**
- * A bound service that provies access to one instance of {@link GoogleApiClient} across multiple
+ * A bound service that provides access to one instance of {@link GoogleApiClient} across multiple
  * activities and handles its lifecycle. Activities binding to this service must call
  * {@link #onActivityResult(Activity, int, int, Intent)} from their
  * {@link Activity#onActivityResult(int, int, Intent)} methods. Binding activities should also

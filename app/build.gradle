@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
   compileSdkVersion android_compile_version
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
   buildToolsVersion build_tools_version
   defaultConfig {
     applicationId 'ca.keal.varianttap'
@@ -9,7 +13,7 @@ android {
     targetSdkVersion android_compile_version
     versionCode 1
     versionName '1.0.0'
-    testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
   }
   buildTypes {
     release {
@@ -22,19 +26,20 @@ android {
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation project(':BaseGameUtils')
-  androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+  androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  implementation "com.android.support:gridlayout-v7:${android_support_library_version}"
-  implementation "com.android.support:customtabs:${android_support_library_version}"
-  implementation "com.android.support:support-v4:${android_support_library_version}"
-  implementation "com.android.support:support-media-compat:${android_support_library_version}"
-  implementation "com.android.support:appcompat-v7:${android_support_library_version}"
-  implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-  implementation "com.google.android.gms:play-services-games:${gms_library_version}"
-  implementation "com.google.android.gms:play-services-auth:${gms_library_version}"
-  implementation "com.google.android.gms:play-services-ads:${gms_library_version}"
-  implementation "com.google.android.ads.consent:consent-library:1.0.6"
+  implementation "androidx.gridlayout:gridlayout:1.0.0"
+  implementation "androidx.browser:browser:1.2.0"
+  implementation "androidx.legacy:legacy-support-v4:1.0.0"
+  implementation "androidx.media:media:1.1.0"
+  implementation "androidx.appcompat:appcompat:1.1.0"
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+  implementation 'com.google.android.gms:play-services-base:17.1.0'
+  implementation "com.google.android.gms:play-services-games:19.0.0"
+  implementation "com.google.android.gms:play-services-auth:17.0.0"
+  implementation "com.google.android.gms:play-services-ads:18.3.0"
+  implementation "com.google.android.ads.consent:consent-library:1.0.8"
   implementation 'com.github.lzyzsd:circleprogress:1.2.1'
   implementation 'com.github.simbiose:Encryption:2.0.1'
 }

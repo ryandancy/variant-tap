@@ -6,7 +6,7 @@ import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
-import android.support.annotation.RawRes;
+import androidx.annotation.RawRes;
 import android.util.Log;
 import android.util.SparseIntArray;
 

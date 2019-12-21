@@ -10,7 +10,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity
       public void onConsentInfoUpdated(ConsentStatus consentStatus) {
         if (consentInfo.isRequestLocationInEeaOrUnknown()
             && consentStatus == ConsentStatus.UNKNOWN) {
-          // Spawn a non-dismissable EUConsentForm
+          // Spawn a non-dismissible EUConsentForm
           euConsentForm = new EUConsentForm(MainActivity.this);
           euConsentForm.setOnCloseListener(MainActivity.this);
           euConsentForm.show(false);
