@@ -33,7 +33,7 @@
   
   <dimen name="post_score_size">140dp</dimen>
   <dimen name="new_best_score_size">35sp</dimen>
-  <dimen name="new_best_score_below_score">155dp</dimen>
+  <dimen name="new_best_score_below_score">43sp</dimen>
   <dimen name="difficulty_below_score">47dp</dimen>
   
   <dimen name="post_game_stats_size">35sp</dimen>

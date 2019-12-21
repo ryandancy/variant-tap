@@ -26,9 +26,9 @@
   
   <dimen name="post_score_size">190dp</dimen>
   <dimen name="new_best_score_size">45sp</dimen>
+  <dimen name="new_best_score_below_score">53sp</dimen>
   
   <dimen name="post_game_score_margin_top">30dp</dimen>
-  <dimen name="new_best_score_below_score">205dp</dimen>
   <dimen name="difficulty_below_score">20dp</dimen>
   <dimen name="post_game_margin_bottom">130dp</dimen>
   

@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity
     // Start preloading the images
     ImageSupplier.getInstance(this).preload(getResources().getInteger(R.integer.images_to_preload));
     
-    // TODO replace with real ID, not banner ID
     if (!AdRemovalManager.areAdsRemoved()) {
       MobileAds.initialize(this, getString(R.string.ad_banner_id));
     }
