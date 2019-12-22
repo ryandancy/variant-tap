@@ -43,7 +43,7 @@ public class RemoveAdsCircleButton extends BaseCircleButton {
    * activity stack.
    */
   public void checkAndMaybeRemove() {
-    if (AdRemovalManager.areAdsRemoved()) {
+    if (!AdRemovalManager.ENABLE_AD_REMOVAL || AdRemovalManager.areAdsRemoved()) {
       removeSelf();
     }
   }

@@ -66,6 +66,11 @@ public class EUConsentForm {
     Button buttonNo = consentLayout.findViewById(R.id.eu_consent_no_button);
     Button buttonRemoveAds = consentLayout.findViewById(R.id.eu_consent_remove_button);
     
+    // Remove the "remove ads" button if we've disabled ad removal
+    if (!AdRemovalManager.ENABLE_AD_REMOVAL) {
+      buttonRemoveAds.setVisibility(View.GONE);
+    }
+    
     buttonYes.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -82,14 +87,16 @@ public class EUConsentForm {
       }
     });
     
-    buttonRemoveAds.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        AdRemovalManager.setAdsRemoved();
-        mainDialog.cancel(); // TODO cancel dialog only once they've actually bought the IAP
-        if (onCloseListener != null) onCloseListener.onEUConsentFormClose();
-      }
-    });
+    if (AdRemovalManager.ENABLE_AD_REMOVAL) {
+      buttonRemoveAds.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          AdRemovalManager.setAdsRemoved();
+          mainDialog.cancel(); // TODO cancel dialog only once they've actually bought the IAP
+          if (onCloseListener != null) onCloseListener.onEUConsentFormClose();
+        }
+      });
+    }
     
     // Setup the "learn more" text as a link
     TextView learnMoreLink = consentLayout.findViewById(R.id.eu_consent_learn_more);
