@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -89,12 +91,30 @@ public class AboutActivity extends AppCompatActivity
       }
     });
     
+    setupLegalLinks();
+    
     if (!AdRemovalManager.areAdsRemoved()) {
       ConsentInformation consentInfo = ConsentInformation.getInstance(this);
       if (consentInfo.isRequestLocationInEeaOrUnknown()) {
         setupConsentLink(consentInfo.getConsentStatus());
       }
     }
+  }
+  
+  private void setupLegalLinks() {
+    // Make privacy policy and terms of service links work
+    TextView privacyPolicyLink = findViewById(R.id.privacy_policy_link);
+    TextView termsLink = findViewById(R.id.terms_link);
+    
+    privacyPolicyLink.setText(Util.buildLink(
+        getString(R.string.privacy_policy_url),
+        getString(R.string.privacy_policy_link_text)));
+    termsLink.setText(Util.buildLink(
+        getString(R.string.terms_url),
+        getString(R.string.terms_link_text)));
+    
+    privacyPolicyLink.setMovementMethod(LinkMovementMethod.getInstance());
+    termsLink.setMovementMethod(LinkMovementMethod.getInstance());
   }
   
   private void setupConsentLink(ConsentStatus consentStatus) {
@@ -105,7 +125,7 @@ public class AboutActivity extends AppCompatActivity
     changeLink.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        // Spawn a dismissable EUConsentForm
+        // Spawn a dismissible EUConsentForm
         euConsentForm = new EUConsentForm(AboutActivity.this);
         euConsentForm.setOnCloseListener(AboutActivity.this);
         euConsentForm.show(true);

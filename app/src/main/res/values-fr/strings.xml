@@ -42,6 +42,8 @@
     Merci beaucoup à http://openclipart.org et ses contributeurs, qui ont fourni beaucoup des
     images du domain public pour ce jeu.
   </string>
+  <string name="legal">Liens juridiques</string>
+  <string name="terms_link_text">Conditions générales d\'utilisation</string>
   
   <string name="countdown_hint">Touchez l\'image qui est différente des autres&#160;!</string>
   <string name="score_label">Score</string>

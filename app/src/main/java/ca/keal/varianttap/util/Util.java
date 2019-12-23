@@ -179,7 +179,14 @@ public final class Util {
    * Wrap {@code text} with &lt;a href="">&lt;/a> to get hyperlink formatting.
    */
   public static Spanned formatLink(String text) {
-    return Html.fromHtml("<a href=\"\">" + text + "</a>");
+    return buildLink("", text);
+  }
+  
+  /**
+   * Make a hyperlink linking to {@code url} with text {@code text}.
+   */
+  public static Spanned buildLink(String url, String text) {
+    return Html.fromHtml("<a href=\"" + url + "\">" + text + "</a>");
   }
   
 }

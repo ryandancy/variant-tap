@@ -128,12 +128,12 @@ public class EUConsentForm {
         .inflate(R.layout.eu_consent_more_info_dialog, null);
     
     ViewGroup moreInfoLayout = moreInfoRootLayout.findViewById(R.id.more_info_layout);
-    TextView privacyPolicyLink = moreInfoLayout.findViewById(R.id.privacy_policy_link);
+    TextView privacyPolicyLink = moreInfoLayout.findViewById(R.id.eu_consent_privacy_policy_link);
     
     // Make the privacy policy link a hyperlink
-    privacyPolicyLink.setText(Html.fromHtml(buildLink(
+    privacyPolicyLink.setText(Util.buildLink(
         activity.getString(R.string.privacy_policy_url),
-        activity.getString(R.string.privacy_policy_link_text))));
+        activity.getString(R.string.privacy_policy_link_text)));
     privacyPolicyLink.setMovementMethod(LinkMovementMethod.getInstance());
     
     // Add a list of ad providers with whom AdMob shares data
@@ -141,8 +141,8 @@ public class EUConsentForm {
       TextView adProviderText = new TextView(activity);
       adProviderText.setTextSize(Util.pxToSp(activity, activity.getResources()
           .getDimensionPixelSize(R.dimen.text_body_size)));
-      adProviderText.setText(Html.fromHtml("- " + buildLink(
-          adProvider.getPrivacyPolicyUrlString(), adProvider.getName())));
+      adProviderText.setText(Html.fromHtml("- <a href=\"" +
+          adProvider.getPrivacyPolicyUrlString() + "\">" + adProvider.getName() + "</a>"));
       adProviderText.setMovementMethod(LinkMovementMethod.getInstance());
       moreInfoLayout.addView(adProviderText);
     }
@@ -153,10 +153,6 @@ public class EUConsentForm {
       .setPositiveButton(R.string.close, null)
       .create();
     moreInfoDialog.show();
-  }
-  
-  private String buildLink(String url, String text) {
-    return "<a href=\"" + url + "\">" + text + "</a>";
   }
   
   /**
