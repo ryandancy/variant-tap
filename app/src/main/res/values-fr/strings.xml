@@ -2,6 +2,15 @@
 <resources>
   <string name="app_name">Toucher Variante</string>
   
+  <string name="legal_agreement_title">Acceptez les conditions</string>
+  <string name="legal_agreement_message">
+    En utilisant cet appli, vous acceptez les
+    <a href="https://copperium-studios.github.io/variant-tap/terms.html">Conditions générales d\'utilisation</a>
+    et la <a href="http://copperium-studios.github.io/variant-tap/privacy.html">Politique de confidentialité</a>.
+    Si vous ne les acceptez pas, veuillez désinstaller l\'appli.
+  </string>
+  <string name="legal_agree">Acceptez</string>
+  
   <string name="main_title">@string/app_name</string>
   <string name="sound_on_desc">Éteindez le son</string>
   <string name="sound_off_desc">Allumez le son</string>

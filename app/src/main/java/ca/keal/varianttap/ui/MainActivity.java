@@ -5,12 +5,15 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Gravity;
@@ -42,6 +45,7 @@ import ca.keal.varianttap.gpgs.GPGSHelperService;
 import ca.keal.varianttap.gpgs.GPGSHelperServiceConnection;
 import ca.keal.varianttap.ui.circlebutton.RemoveAdsCircleButton;
 import ca.keal.varianttap.util.ImageSupplier;
+import ca.keal.varianttap.util.LegalAgreementManager;
 import ca.keal.varianttap.util.Util;
 
 import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -132,6 +136,8 @@ public class MainActivity extends AppCompatActivity
     if (!AdRemovalManager.areAdsRemoved()) {
       updateConsent();
     }
+    
+    getLegalAgreementIfNecessary();
   }
   
   private void updateConsent() {
@@ -166,6 +172,30 @@ public class MainActivity extends AppCompatActivity
   @Override
   public void onEUConsentFormClose() {
     removeAdsCircleButton.checkAndMaybeRemove();
+  }
+  
+  private void getLegalAgreementIfNecessary() {
+    // Has the user already agreed to the legal stuff?
+    LegalAgreementManager legalManager = new LegalAgreementManager(this);
+    
+    if (legalManager.hasUserAgreed()) {
+      Log.i(TAG, "User already agreed to terms of service and privacy policy; skipping agreement dialog");
+    } else {
+      Log.i(TAG, "Launching dialog to get user agreement to terms of service and privacy policy");
+      
+      // Show a dialog to get them to agree
+      AlertDialog dialog = new AlertDialog.Builder(this)
+          .setTitle(R.string.legal_agreement_title)
+          .setMessage(R.string.legal_agreement_message)
+          .setPositiveButton(R.string.legal_agree, (dialog1, which) -> legalManager.agree())
+          .setCancelable(false)
+          .create();
+      dialog.show();
+      
+      // Make the links clickable
+      TextView dialogMsg = dialog.findViewById(android.R.id.message);
+      dialogMsg.setMovementMethod(LinkMovementMethod.getInstance());
+    }
   }
   
   @Override

@@ -4,6 +4,16 @@
   <!-- App-wide -->
   <string name="app_name">Variant Tap</string>
   
+  <!-- Legal agreement dialog -->
+  <string name="legal_agreement_title">Accept terms</string>
+  <string name="legal_agreement_message">
+    By using this app, you agree to the Variant Tap
+    <a href="https://copperium-studios.github.io/variant-tap/terms.html">Terms of Service</a>
+    and <a href="http://copperium-studios.github.io/variant-tap/privacy.html">Privacy Policy</a>.
+    If you do not agree, please uninstall the app.
+  </string>
+  <string name="legal_agree">Agree</string>
+  
   <!-- MainActivity -->
   <string name="main_title">@string/app_name</string>
   <string name="sound_on_desc">Turn sound off</string>
