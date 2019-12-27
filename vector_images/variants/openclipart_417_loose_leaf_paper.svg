@@ -14,13 +14,13 @@
    viewBox="0 0 11084 11084"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    sodipodi:docname="openclipart_417_loose_leaf_paper.svg"
    width="11084"
    height="11084"
-   inkscape:export-filename="C:\Users\Ryan\VariantTapGraphicsGetter\variants\openclipart_417_loose_leaf_paper.png"
-   inkscape:export-xdpi="4.1573439"
-   inkscape:export-ydpi="4.1573439"><sodipodi:namedview
+   inkscape:export-filename="/Users/ryan/projects/variant-tap/app/src/main/assets/variants/openclipart_417_loose_leaf_paper.png"
+   inkscape:export-xdpi="4.4345002"
+   inkscape:export-ydpi="4.4345002"><sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1"
@@ -29,8 +29,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="945"
+     inkscape:window-width="1440"
+     inkscape:window-height="800"
      id="namedview111"
      showgrid="false"
      fit-margin-top="0"
@@ -38,10 +38,10 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.040598657"
-     inkscape:cx="-103.41805"
-     inkscape:cy="3531.3696"
-     inkscape:window-x="-8"
-     inkscape:window-y="48"
+     inkscape:cx="-1950.7698"
+     inkscape:cy="6487.1324"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
      inkscape:window-maximized="1"
      inkscape:current-layer="g9" /><defs
      id="defs4"><style
@@ -54,7 +54,11 @@
   </style></defs><g
      id="Layer_x0020_1"
      transform="translate(792,-271)"><g
-       id="g9"><g
+       id="g9"><path
+         style="fill:#ffffff"
+         d="m 608,271 c -42,0 -80,19 -107,49 -26,29 -43,68 -43,112 v 10762 c 0,44 17,83 43,112 27,30 65,49 107,49 h 8283.9999 c 42,0 80,-19 107,-49 26,-29 43,-68 43,-112 V 432 c 0,-44 -17,-83 -43,-112 -27,-30 -65,-49 -107,-49 z"
+         id="path74"
+         inkscape:connector-curvature="0" /><g
          id="g11"><path
            class="fil0"
            d="m 500,1271 8500,0 0,84 -8500,0 0,-84 z"
