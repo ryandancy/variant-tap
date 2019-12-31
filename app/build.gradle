@@ -11,8 +11,8 @@ android {
     applicationId 'ca.keal.varianttap'
     minSdkVersion android_min_sdk_version
     targetSdkVersion android_compile_version
-    versionCode 3
-    versionName '1.0.0 \'Radical Dentistry\''
+    versionCode 4
+    versionName '1.0.1 \'Radical Dentistry\''
     testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
   }
   buildTypes {
