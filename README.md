@@ -1,10 +1,9 @@
 Variant Tap
 ===========
 
-A fast-paced, arcade-style Android game. Coming soon to the Google Play Store!
+A fast-paced, arcade-style Android game. [Get it now on Google Play!](https://play.google.com/store/apps/details?id=ca.keal.varianttap)
 
-[Download the APK](http://copperium-studios.github.io/variant-tap.apk) or scan:
-![QR code: http://copperium-studios.github.io/variant-tap.apk](qr-code.png)
+[![Get it now on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=ca.keal.varianttap&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1)
 
 Screenshots:
 
@@ -18,3 +17,5 @@ Screenshots:
 Note: this repository cannot be run as-is because the file app/src/main/res/values/ids.xml is
 missing. This file contains sensitive Google Play Games IDs and thus cannot be included in a
 possibly-public repository. To compile this repo, add your own GPGS IDs in ids.xml.
+
+Google Play and the Google Play logo are trademarks of Google LLC.
