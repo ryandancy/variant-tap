@@ -78,10 +78,15 @@ public class ScoreCache {
       return;
     }
     
+    // Add a newline if there isn't one at the end
+    if (!encrypted.endsWith("\n")) {
+      encrypted += "\n";
+    }
+    
     // Write it
     try {
       FileOutputStream fos = context.openFileOutput(SCORE_CACHE_FILE, Context.MODE_APPEND);
-      fos.write((encrypted + "\n").getBytes());
+      fos.write(encrypted.getBytes());
       fos.close();
       Log.d(TAG, "Score cached successfully");
     } catch (FileNotFoundException e) {
@@ -162,7 +167,9 @@ public class ScoreCache {
     
     // Submit the scores
     for (Score score : scores) {
-      score.submit(context, account);
+      if (score != null) {
+        score.submit(context, account);
+      }
     }
     
     Log.d(TAG, "Decrypted and submitted " + scores.length + " scores");

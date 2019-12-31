@@ -1,6 +1,8 @@
 package ca.keal.varianttap.gpgs;
 
 import android.content.Context;
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
@@ -12,6 +14,8 @@ import com.google.android.gms.games.Games;
  */
 // TODO maybe add scoretags?
 public class Score {
+  
+  private static final String TAG = "Score";
   
   @NonNull
   private final String leaderboardId;
@@ -46,6 +50,10 @@ public class Score {
   
   public static Score fromStorableString(String string) {
     String[] parts = string.split(" ");
+    if (parts.length != 2) {
+      Log.w(TAG, "Could not recover Score from storable string \"" + string + "\"");
+      return null;
+    }
     
     String leaderboardId = parts[0];
     int score = Integer.parseInt(parts[1]);
