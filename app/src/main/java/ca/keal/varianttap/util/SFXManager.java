@@ -7,7 +7,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Build;
 import androidx.annotation.RawRes;
-import android.util.Log;
 import android.util.SparseIntArray;
 
 import ca.keal.varianttap.R;
@@ -35,7 +34,6 @@ public class SFXManager implements SharedPreferences.OnSharedPreferenceChangeLis
           .setAudioAttributes(attrs)
           .build();
     } else {
-      //noinspection deprecation
       sound = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
     }
     
@@ -65,42 +63,6 @@ public class SFXManager implements SharedPreferences.OnSharedPreferenceChangeLis
     
     int streamId = sound.play(soundId, 1f, 1f, 0, 0, 1f);
     resToStreamIds.put(resId, streamId);
-  }
-  
-  public void pause(@RawRes int resId) {
-    if (!soundOn) return;
-    
-    int streamId = resToSoundIds.get(resId, -1);
-    if (streamId == -1) {
-      Log.e(getClass().getName(), "Attempted to pause nonexistent or non-playing SFX!");
-      return;
-    }
-    
-    sound.pause(streamId);
-  }
-  
-  public void resume(@RawRes int resId) {
-    if (!soundOn) return;
-    
-    int streamId = resToSoundIds.get(resId, -1);
-    if (streamId == -1) {
-      Log.e(getClass().getName(), "Attempted to resume nonexistent or non-paused SFX!");
-      return;
-    }
-    
-    sound.resume(streamId);
-  }
-  
-  public void stop(@RawRes int resId) {
-    if (!soundOn) return;
-    
-    int streamId = resToSoundIds.get(resId, -1);
-    if (streamId == -1) {
-      Log.e(getClass().getName(), "Attempted to stop nonexistent or non-paused SFX!");
-      return;
-    }
-    
-    sound.stop(streamId);
   }
   
   public void release(Context context) {

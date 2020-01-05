@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -63,9 +64,9 @@ public class ImageSupplier {
     
     try {
       // TODO should we check that normals/ and variants/ have same contents or just trust it?
-      imgNames = Arrays.asList(assets.list("normals"));
+      imgNames = Arrays.asList(Objects.requireNonNull(assets.list("normals")));
       Log.i(TAG, "Found " + imgNames.size() + " normal/variant image pairs.");
-    } catch (IOException e) {
+    } catch (IOException | NullPointerException e) {
       Log.e(TAG, "Error loading images filenames: " + e);
       throw new RuntimeException(e); // UncheckedIOException is API Level 24, our min is 19
     }
@@ -118,7 +119,7 @@ public class ImageSupplier {
     // Get a random sublist to preload
     Collections.shuffle(nonPreloaded);
     List<String> toPreload = nonPreloaded.subList(0, howMany);
-    String[] toPreloadArray = toPreload.toArray(new String[toPreload.size()]);
+    String[] toPreloadArray = toPreload.toArray(new String[0]);
     
     // Preload them
     currentlyPreloading.addAll(toPreload);
@@ -191,7 +192,7 @@ public class ImageSupplier {
   }
   
   /**
-   * @return A psuedorandom image name and normal/variant Drawable pair. Please don't modify it.
+   * @return A pseudorandom image name and normal/variant Drawable pair. Please don't modify it.
    */
   public Pair<String, Pair<Drawable, Drawable>> getRandomPair() {
     // Holy Generics, Batman!
@@ -207,7 +208,7 @@ public class ImageSupplier {
   }
   
   /**
-   * @return A psuedorandom image name and normal or variant. Please don't modify it.
+   * @return A pseudorandom image name and normal or variant. Please don't modify it.
    */
   public Pair<String, Drawable> getRandomImage() {
     Pair<String, Pair<Drawable, Drawable>> nameAndPossible = getRandomPair();

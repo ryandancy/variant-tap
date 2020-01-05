@@ -6,7 +6,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.TypedArray;
@@ -15,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.appcompat.view.ContextThemeWrapper;
@@ -34,7 +34,6 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 import com.google.android.gms.ads.AdListener;
@@ -171,16 +170,14 @@ public class GameActivity extends MusicActivity
     unpauseCountdownText = findViewById(R.id.unpause_countdown_text);
     
     countdownAnim = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.countdown);
-    countdownAnim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-      public void onAnimationUpdate(ValueAnimator animation) {
-        float progress = (float) animation.getAnimatedValue();
-        countdownCircle.setProgress(progress);
-        
-        // round to nearest step
-        int step = getResources().getInteger(R.integer.score_step);
-        scoreForRound = Math.round(progress / step) * step;
-        countdownCircle.setText(String.valueOf(scoreForRound));
-      }
+    countdownAnim.addUpdateListener(animation -> {
+      float progress = (float) animation.getAnimatedValue();
+      countdownCircle.setProgress(progress);
+      
+      // round to nearest step
+      int step = getResources().getInteger(R.integer.score_step);
+      scoreForRound = Math.round(progress / step) * step;
+      countdownCircle.setText(String.valueOf(scoreForRound));
     });
     countdownAnim.addListener(new Animator.AnimatorListener() {
       // The whole thing with canceled is to not lose on a canceled animation, which happens every
@@ -220,17 +217,12 @@ public class GameActivity extends MusicActivity
     increasePauseButtonHitbox();
     
     // Make the paused text auto-resize to prevent translations messing it up
-    pausedText.post(new Runnable() {
-      @Override
-      public void run() {
-        pausedText.setTextSize(Util.getLargestTextSize(
-            pausedText,
-            getString(R.string.paused),
-            pauseOverlay.getWidth() - 2 * getResources()
-                .getDimensionPixelSize(R.dimen.paused_text_margin_sides),
-            pausedText.getTextSize()));
-      }
-    });
+    pausedText.post(() -> pausedText.setTextSize(Util.getLargestTextSize(
+        pausedText,
+        getString(R.string.paused),
+        pauseOverlay.getWidth() - 2 * getResources()
+            .getDimensionPixelSize(R.dimen.paused_text_margin_sides),
+        pausedText.getTextSize())));
     
     // Start preloading the images
     ImageSupplier.getInstance(this).preload(getResources().getInteger(R.integer.images_to_preload));
@@ -303,13 +295,11 @@ public class GameActivity extends MusicActivity
       // Set up the ImageSwitchers
       
       // The factory is to provide correctly formatted ImageViews for the ImageSwitcher
-      imgs[i].setFactory(new ViewSwitcher.ViewFactory() { // no lambda expressions *sigh*
-        public View makeView() {
-          ImageView imgView = new ImageView(GameActivity.this);
-          imgView.setAdjustViewBounds(true);
-          imgView.setScaleType(ImageView.ScaleType.FIT_XY);
-          return imgView;
-        }
+      imgs[i].setFactory(() -> {
+        ImageView imgView = new ImageView(GameActivity.this);
+        imgView.setAdjustViewBounds(true);
+        imgView.setScaleType(ImageView.ScaleType.FIT_XY);
+        return imgView;
       });
       
       imgs[i].setInAnimation(in);
@@ -369,20 +359,17 @@ public class GameActivity extends MusicActivity
   
   private void increasePauseButtonHitbox() {
     final View parent = (View) pauseButton.getParent();
-    parent.post(new Runnable() {
-      @Override
-      public void run() {
-        Rect hitbox = new Rect();
-        pauseButton.getHitRect(hitbox);
-        
-        int expansion = getResources().getDimensionPixelSize(R.dimen.pause_button_hitbox_expansion);
-        hitbox.left -= expansion;
-        hitbox.right += expansion;
-        hitbox.top -= expansion;
-        hitbox.bottom += expansion;
-        
-        parent.setTouchDelegate(new TouchDelegate(hitbox, pauseButton));
-      }
+    parent.post(() -> {
+      Rect hitbox = new Rect();
+      pauseButton.getHitRect(hitbox);
+      
+      int expansion = getResources().getDimensionPixelSize(R.dimen.pause_button_hitbox_expansion);
+      hitbox.left -= expansion;
+      hitbox.right += expansion;
+      hitbox.top -= expansion;
+      hitbox.bottom += expansion;
+      
+      parent.setTouchDelegate(new TouchDelegate(hitbox, pauseButton));
     });
   }
   
@@ -396,14 +383,12 @@ public class GameActivity extends MusicActivity
     Util.getCountdownAnimator(
         getResources().getInteger(R.integer.start_delay_ms),
         startingCountdownText,
-        new Util.CountdownEndListener() {
-          public void onEnd() {
-            isPaused = false;
-            allowImgTaps = true;
-            
-            hideStartingCountdown();
-            startRound();
-          }
+        () -> { // CountdownEndListener
+          isPaused = false;
+          allowImgTaps = true;
+          
+          hideStartingCountdown();
+          startRound();
         }
     ).start();
   }
@@ -415,7 +400,7 @@ public class GameActivity extends MusicActivity
   }
   
   @Override
-  protected void onSaveInstanceState(Bundle outState) {
+  protected void onSaveInstanceState(@NonNull Bundle outState) {
     super.onSaveInstanceState(outState);
     Log.d(TAG, "Saving instance state...");
     
@@ -957,11 +942,7 @@ public class GameActivity extends MusicActivity
     Util.getCountdownAnimator(
         getResources().getInteger(R.integer.unpause_delay_ms),
         unpauseCountdownText,
-        new Util.CountdownEndListener() {
-          public void onEnd() {
-            unpause();
-          }
-        }
+        this::unpause // CountdownEndListener
     ).start();
   }
   
@@ -1009,15 +990,13 @@ public class GameActivity extends MusicActivity
    */
   public void quit(View v) {
     // Send a confirmation dialog
-    new AlertDialog.Builder(new ContextThemeWrapper(this, android.R.style.Theme_Holo_Dialog))
+    new AlertDialog.Builder(new ContextThemeWrapper(this, androidx.appcompat.R.style.Theme_AppCompat_Dialog))
     .setMessage(R.string.quit_message)
-    .setPositiveButton(R.string.quit_action, new DialogInterface.OnClickListener() {
-      public void onClick(DialogInterface dialog, int which) {
-        // Wipe this activity off the stack, which will return the user to MainActivity
-        hasLost = true;
-        finish();
-        Util.doTransition(GameActivity.this);
-      }
+    .setPositiveButton(R.string.quit_action, (dialog, which) -> {
+      // Wipe this activity off the stack, which will return the user to MainActivity
+      hasLost = true;
+      finish();
+      Util.doTransition(GameActivity.this);
     })
     .setNegativeButton(android.R.string.cancel, null)
     .show();

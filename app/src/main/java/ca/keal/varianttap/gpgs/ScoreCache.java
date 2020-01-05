@@ -1,5 +1,6 @@
 package ca.keal.varianttap.gpgs;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -23,7 +24,7 @@ import se.simbio.encryption.Encryption;
  * order to prevent users on rooted devices from messing with the public leaderboards. Everything is
  * done async.
  */
-public class ScoreCache {
+class ScoreCache {
   
   private static final String TAG = "ScoreCache";
   
@@ -38,14 +39,15 @@ public class ScoreCache {
   
   private Encryption encryption;
   
-  public ScoreCache() {
+  ScoreCache() {
     encryption = Encryption.getDefault(SCORE_CACHE_KEY, SCORE_CACHE_SALT, SCORE_CACHE_IV);
   }
   
-  public void cache(Context context, Score... scores) {
+  void cache(Context context, Score... scores) {
     new CacheAsyncTask(context).execute(scores);
   }
   
+  @SuppressLint("StaticFieldLeak")
   private class CacheAsyncTask extends AsyncTask<Score, Void, Void> {
     
     private Context context;
@@ -100,10 +102,11 @@ public class ScoreCache {
    * It is the caller's responsibility to ensure that the device is connected to the internet prior
    * to using this method.
    */
-  public void submitCache(Context context, GoogleSignInAccount account) {
+  void submitCache(Context context, GoogleSignInAccount account) {
     new SubmitCacheAsyncTask(context).execute(account);
   }
   
+  @SuppressLint("StaticFieldLeak")
   private class SubmitCacheAsyncTask extends AsyncTask<GoogleSignInAccount, Void, Void> {
     
     private Context context;

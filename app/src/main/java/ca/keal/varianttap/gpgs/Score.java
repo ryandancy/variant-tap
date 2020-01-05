@@ -26,29 +26,20 @@ public class Score {
     this.score = score;
   }
   
-  public Score(Context context, @StringRes int leaderboardResId, int score) {
-    this(context.getString(leaderboardResId), score);
-  }
-  
-  @NonNull
-  public String getLeaderboardId() {
-    return leaderboardId;
-  }
-  
   public int getScore() {
     return score;
   }
   
   /** Submit this Score to the client, assuming that the client is signed in. */
-  public void submit(Context context, GoogleSignInAccount account) {
+  void submit(Context context, GoogleSignInAccount account) {
     Games.getLeaderboardsClient(context, account).submitScore(leaderboardId, score);
   }
   
-  public String toStorableString() {
+  String toStorableString() {
     return leaderboardId + " " + score;
   }
   
-  public static Score fromStorableString(String string) {
+  static Score fromStorableString(String string) {
     String[] parts = string.split(" ");
     if (parts.length != 2) {
       Log.w(TAG, "Could not recover Score from storable string \"" + string + "\"");
@@ -62,6 +53,7 @@ public class Score {
   }
   
   @Override
+  @NonNull
   public String toString() {
     return "Score{leaderboardId=" + leaderboardId + ", score=" + score + "}";
   }

@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -36,9 +35,9 @@ import static android.view.ViewTreeObserver.OnGlobalLayoutListener;
  * A {@link Fragment} which contains a button that shows the difficulty buttons in order to choose
  * the difficulty. Activities that contain this fragment may implement the
  * {@link DifficultyButtonsFragment.OnFragmentInteractionListener} interface to handle interaction
- * events. Use the {@link DifficultyButtonsFragment#newInstance} factory method (or one of its
- * sister {@code newInstance()} methods) to create an instance of this fragment.
+ * events.
  */
+// Note: if you need to create an instance of this class for whatever reason, newInstance methods are in the Git log
 public class DifficultyButtonsFragment extends Fragment implements View.OnClickListener,
     GPGSHelperClient {
   
@@ -76,54 +75,15 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   /** Required empty public constructor. */
   public DifficultyButtonsFragment() {}
   
-  /**
-   * Create an instance of this fragment using the specified parameters.
-   * @param showText the string shown on the play button when tapping will show the buttons.
-   * @param hideText the string shown on the play button when tapping will hide the buttons.
-   * @return An instance of this fragment.
-   */
-  public static DifficultyButtonsFragment newInstance(String showText, String hideText) {
-    DifficultyButtonsFragment fragment = new DifficultyButtonsFragment();
-    Bundle args = new Bundle();
-    args.putString(ARG_SHOW_TEXT, showText);
-    args.putString(ARG_HIDE_TEXT, hideText);
-    fragment.setArguments(args);
-    return fragment;
-  }
-  
-  /** Like {@link #newInstance(String, String)}, but uses resource IDs instead. */
-  public static DifficultyButtonsFragment newInstance(
-      Context context, @StringRes int showText, @StringRes int hideText) {
-    return newInstance(context.getString(showText), context.getString(hideText));
-  }
-  
-  /**
-   * Like {@link #newInstance(String, String)}, but {@code showText} defaults to
-   * R.string.close_difficulty_btns.
-   */
-  public static DifficultyButtonsFragment newInstance(Context context, String showText) {
-    return newInstance(showText, context.getString(R.string.close));
-  }
-  
-  /**
-   * Like {@link #newInstance(Context, int, int)}, but {@code showText} defaults to
-   * R.string.close_difficulty_btns.
-   */
-  public static DifficultyButtonsFragment newInstance(Context context, @StringRes int showText) {
-    return newInstance(context, showText, R.string.close);
-  }
-  
   @Override
-  public void onAttach(Context context) {
+  public void onAttach(@NonNull Context context) {
     super.onAttach(context);
     
     if (context instanceof OnFragmentInteractionListener) {
       listener = (OnFragmentInteractionListener) context;
     } else {
       // Default to a base no-op listener
-      listener = new OnFragmentInteractionListener() {
-        public void afterToGameActivity(int difficulty) {}
-      };
+      listener = difficulty -> {};
     }
     
     if (hideText == null) {
@@ -146,7 +106,7 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
   
   /** Handle the fragment's custom attributes: showText and hideText. */
   @Override
-  public void onInflate(Context context, AttributeSet attrs, Bundle savedInstanceState) {
+  public void onInflate(@NonNull Context context, @NonNull AttributeSet attrs, Bundle savedInstanceState) {
     super.onInflate(context, attrs, savedInstanceState);
     
     TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DifficultyButtonsFragment);

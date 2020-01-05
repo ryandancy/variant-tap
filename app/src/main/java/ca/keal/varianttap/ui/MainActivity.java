@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity
     final ConsentInformation consentInfo = ConsentInformation.getInstance(this);
     String[] pubIds = getResources().getStringArray(R.array.ad_pub_ids);
     
-    // Add test devices - TODO remove this on release
+    // Add test devices
     for (String testDeviceId : getResources().getStringArray(R.array.test_devices)) {
       consentInfo.addTestDevice(testDeviceId);
     }
@@ -379,26 +379,24 @@ public class MainActivity extends AppCompatActivity
     
     ValueAnimator parabolaAnimator = ValueAnimator.ofFloat(-0.2f, 1.2f);
     parabolaAnimator.setInterpolator(new LinearInterpolator());
-    parabolaAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-      public void onAnimationUpdate(ValueAnimator animation) {
-        float value = (float) animation.getAnimatedValue();
-        float time = totalTime * value;
-        
-        // d_x = v_x*t
-        float x = speedX * time;
-        
-        // d_y = v_iy*t + 1/2 gt^2
-        float dy = (initialSpeedY * time) + (gravity * time * time) / 2; 
-        
-        float xBias = x / width;
-        float yBias = startBias + (dy / height);
-        
-        xBias = invert ? 1f - xBias : xBias; // handle right-to-left
-        
-        params.leftMargin = (int) (parentLayout.getWidth() * xBias);
-        params.topMargin = (int) (parentLayout.getHeight() * (1f - yBias));
-        image.setLayoutParams(params);
-      }
+    parabolaAnimator.addUpdateListener(animation -> {
+      float value = (float) animation.getAnimatedValue();
+      float time = totalTime * value;
+      
+      // d_x = v_x*t
+      float x = speedX * time;
+      
+      // d_y = v_iy*t + 1/2 gt^2
+      float dy = (initialSpeedY * time) + (gravity * time * time) / 2;
+      
+      float xBias = x / width;
+      float yBias = startBias + (dy / height);
+      
+      xBias = invert ? 1f - xBias : xBias; // handle right-to-left
+      
+      params.leftMargin = (int) (parentLayout.getWidth() * xBias);
+      params.topMargin = (int) (parentLayout.getHeight() * (1f - yBias));
+      image.setLayoutParams(params);
     });
     parabolaAnimator.addListener(new Animator.AnimatorListener() {
       public void onAnimationStart(Animator animation) {}

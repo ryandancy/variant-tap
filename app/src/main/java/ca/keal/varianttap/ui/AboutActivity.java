@@ -122,14 +122,11 @@ public class AboutActivity extends AppCompatActivity
     
     // Give the change link a hyperlink formatting, add its functionality
     changeLink.setText(Util.formatLink(getString(R.string.change_consent)));
-    changeLink.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        // Spawn a dismissible EUConsentForm
-        euConsentForm = new EUConsentForm(AboutActivity.this);
-        euConsentForm.setOnCloseListener(AboutActivity.this);
-        euConsentForm.show(true);
-      }
+    changeLink.setOnClickListener(v -> {
+      // Spawn a dismissible EUConsentForm
+      euConsentForm = new EUConsentForm(AboutActivity.this);
+      euConsentForm.setOnCloseListener(AboutActivity.this);
+      euConsentForm.show(true);
     });
     
     statusText.setVisibility(View.VISIBLE);
@@ -231,7 +228,7 @@ public class AboutActivity extends AppCompatActivity
     float textWidth = signInOutButton.getPaint().measureText(signInOutButton.getText().toString());
     
     float totalSize = iconSize + iconSpacing + textWidth;
-    float padding = (signInOutButton.getWidth() / 2) - (totalSize / 2);
+    float padding = (signInOutButton.getWidth() / 2f) - (totalSize / 2f);
     
     signInOutButton.setPaddingRelative(0, 0, (int) padding, 0);
   }

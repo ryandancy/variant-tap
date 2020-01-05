@@ -71,42 +71,28 @@ public class EUConsentForm {
       buttonRemoveAds.setVisibility(View.GONE);
     }
     
-    buttonYes.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Log.i(TAG, "User gave consent for personalized ads");
-        close(ConsentStatus.PERSONALIZED, R.string.eu_consent_selected_yes);
-      }
+    buttonYes.setOnClickListener(v -> {
+      Log.i(TAG, "User gave consent for personalized ads");
+      close(ConsentStatus.PERSONALIZED, R.string.eu_consent_selected_yes);
     });
     
-    buttonNo.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Log.i(TAG, "User declined consent for personalized ads");
-        close(ConsentStatus.NON_PERSONALIZED, R.string.eu_consent_selected_no);
-      }
+    buttonNo.setOnClickListener(v -> {
+      Log.i(TAG, "User declined consent for personalized ads");
+      close(ConsentStatus.NON_PERSONALIZED, R.string.eu_consent_selected_no);
     });
     
     if (AdRemovalManager.ENABLE_AD_REMOVAL) {
-      buttonRemoveAds.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          AdRemovalManager.setAdsRemoved();
-          mainDialog.cancel(); // TODO cancel dialog only once they've actually bought the IAP
-          if (onCloseListener != null) onCloseListener.onEUConsentFormClose();
-        }
+      buttonRemoveAds.setOnClickListener(v -> {
+        AdRemovalManager.setAdsRemoved();
+        mainDialog.cancel(); // TODO cancel dialog only once they've actually bought the IAP
+        if (onCloseListener != null) onCloseListener.onEUConsentFormClose();
       });
     }
     
     // Setup the "learn more" text as a link
     TextView learnMoreLink = consentLayout.findViewById(R.id.eu_consent_learn_more);
     learnMoreLink.setText(Util.formatLink(activity.getString(R.string.eu_consent_learn_more)));
-    learnMoreLink.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        showMoreInfo();
-      }
-    });
+    learnMoreLink.setOnClickListener(v -> showMoreInfo());
     
     mainDialog.show();
   }

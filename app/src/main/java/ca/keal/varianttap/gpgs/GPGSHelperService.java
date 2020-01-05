@@ -5,7 +5,6 @@ import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Binder;
-import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import android.util.Log;
 
@@ -18,12 +17,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
 import com.google.android.gms.games.GamesActivityResultCodes;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.example.games.basegameutils.BaseGameUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import ca.keal.varianttap.R;
 import ca.keal.varianttap.util.Util;
@@ -106,18 +104,15 @@ public class GPGSHelperService extends Service {
     
     Log.d(TAG, "Attempting silent sign-in");
     
-    client.silentSignIn().addOnCompleteListener(new OnCompleteListener<GoogleSignInAccount>() {
-      @Override
-      public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
-        if (task.isSuccessful()) {
-          account = task.getResult();
-          onSignInSuccessful();
-        } else if (tryInteractively) {
-          Log.d(TAG, "Silent sign-in failed, attempting interactive sign-in");
-          activity.startActivityForResult(client.getSignInIntent(), REQUEST_SIGN_IN);
-        } else {
-          Log.d(TAG, "Silent sign-in failed");
-        }
+    client.silentSignIn().addOnCompleteListener(task -> {
+      if (task.isSuccessful()) {
+        account = task.getResult();
+        onSignInSuccessful();
+      } else if (tryInteractively) {
+        Log.d(TAG, "Silent sign-in failed, attempting interactive sign-in");
+        activity.startActivityForResult(client.getSignInIntent(), REQUEST_SIGN_IN);
+      } else {
+        Log.d(TAG, "Silent sign-in failed");
       }
     });
   }
@@ -196,7 +191,7 @@ public class GPGSHelperService extends Service {
       activityToActionOnSignIn.put(activity, new GPGSAction[2]);
     }
     
-    activityToActionOnSignIn.get(activity)[which] = action;
+    Objects.requireNonNull(activityToActionOnSignIn.get(activity))[which] = action;
   }
   
   /** If the activity uses actions on sign in, please call this in onStop() */
@@ -207,7 +202,7 @@ public class GPGSHelperService extends Service {
   private void performActionsOnSignIn(Activity activity) {
     if (!activityToActionOnSignIn.containsKey(activity)) return;
     
-    for (GPGSAction action : activityToActionOnSignIn.get(activity)) {
+    for (GPGSAction action : Objects.requireNonNull(activityToActionOnSignIn.get(activity))) {
       if (action != null) {
         action.performAction(activity, getAccount());
       }
