@@ -170,7 +170,6 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_difficulty_buttons, container, false);
     
-    //noinspection ConstantConditions
     difficultyBtnsLayout = view.findViewById(R.id.difficulty_button_layout);
     
     playButton = view.findViewById(R.id.play_button);
@@ -179,9 +178,9 @@ public class DifficultyButtonsFragment extends Fragment implements View.OnClickL
     
     // Initialize difficultyBtns
     Collections.addAll(difficultyBtns,
-        (Button) view.findViewById(R.id.easy_button),
-        (Button) view.findViewById(R.id.normal_button),
-        (Button) view.findViewById(R.id.hard_button)
+        view.findViewById(R.id.easy_button),
+        view.findViewById(R.id.normal_button),
+        view.findViewById(R.id.hard_button)
     );
     
     for (Button button : difficultyBtns) {

@@ -7,6 +7,8 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
@@ -48,7 +50,7 @@ public abstract class MusicActivity extends AppCompatActivity
   @Override
   protected void onSaveInstanceState(Bundle outState) {
     super.onSaveInstanceState(outState);
-    outState.putInt(STATE_MUSIC_POS, music.getCurrentPosition());
+    outState.putInt(STATE_MUSIC_POS, musicPos);
   }
   
   @Override
@@ -82,7 +84,6 @@ public abstract class MusicActivity extends AppCompatActivity
           .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
           .build());
     } else {
-      //noinspection deprecation
       music.setAudioStreamType(AudioManager.STREAM_MUSIC);
     }
     
